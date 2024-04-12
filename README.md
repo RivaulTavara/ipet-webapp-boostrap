@@ -1,1 +1,28 @@
-Este es un carrito de compras hecho usando boostrap 5
+Este es un carrito de compras hecho usando HTML5, CSS3, Boostrap 5
+- Main contiene el archivo html
+- Documentacion contiene los requerimientos de la evaluacion
+- Src contiene las imagenes y demás archivos o recursos de el carrito de compras 
+
+REQUERIMIENTOS:
+
+1.Crear bosquejo o “mockup” para el análisis de las nuevas funcionalidades requeridas por el cliente.
+
+2. Agregar un menú que permita acceder a las distintas páginas solicitadas.
+
+3. Mejorar la portada del sitio modificando la imagen de portada por un carrusel de imágenes que muestre los productos destacados, acompañado de una descripción y precio de venta (de al menos 3 productos).
+
+4. Incluir una galería de imágenes (de al menos 6 productos) que permita a los visitantes ver todos los productos disponibles hasta ese momento. Cada imagen debe mostrar: imagen del producto, descripción, precio, stock y marca.
+
+5. Construir una página para el registro de nuevos usuarios que cumpla con los siguientes requerimientos solicitados por la Fundación para recopilar información acerca de los postulantes que desean adoptar una mascota:
+
+· Información como texto: Rut, nombre, apellido, correo, fecha de nacimiento y teléfono
+
+· Información seleccionable:Región y nivel educacional (Doctor, Magíster, Profesional, etc)
+
+6. Construir los formularios de los datos maestros o mantenedores requeridos para el proyecto y definidos en el modelo de datos.
+
+7. Escoger los inputs adecuados a los tipos de datos definidos en cada una de las tablas y/o modelo de datos.
+
+8. Considere que las páginas deben ser correctamente visualizado tanto en la versión web como en la versión móvil del sitio. (Responsiva)
+
+9. Aplique estilos CSS propios o bien utilice el apoyo de un framework CSS para lograr que el formulario posea una apariencia acorde al resto del sitio.
