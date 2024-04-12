@@ -1,7 +1,7 @@
-Este es un carrito de compras hecho usando HTML5, CSS3, Boostrap 5
-- Main contiene el archivo html
-- Documentacion contiene los requerimientos de la evaluacion
-- Src contiene las imagenes y demás archivos o recursos de el carrito de compras 
+Este es un carrito de compras hecho usando HTML5, CSS3 y Boostrap 5
+- "Main" contiene los archivos principales de html
+- "Documentacion" contiene los requerimientos de la evaluacion
+- "SRC" contiene las imagenes y demás recursos de el carrito de compras 
 
 REQUERIMIENTOS:
 
