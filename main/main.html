@@ -5,7 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>IPet</title>
-</head>
+    <style>
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+          background-image: none;
+          color: black;
+      }
+
+      .carousel-control-prev-icon:before{
+          content: '‹';
+          font-size: 4em;
+          line-height: 4;
+          color: black;
+          display: inline-block;
+          padding-top: 2px;
+      }
+      .carousel-control-next-icon:before {
+          content: '›';
+          font-size: 4em;
+          line-height: 4;
+          color: black;
+          display: inline-block;
+          padding-top: 2px;
+      }
+    </style>
+  </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
@@ -35,20 +59,19 @@
         </div>
       </nav>
 
-        <!-- Carrusel de productos destacados -->
         <h3 class="text-center mt-4" id="productos">Productos Destacados de la Semana</h3>
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div id="carouselExampleCaptions" class="carousel slide mb-3" data-ride="carousel">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-              <div class="carousel-inner">
+        <div class="container mt-5">
+          <div class="row justify-content-center">
+              <div class="col-7">
+                  <div id="carouselExampleCaptions" class="carousel slide mb-3" data-bs-ride="carousel">
+                      <div class="carousel-indicators">
+                          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                      </div>
+                      <div class="carousel-inner">
                           <div class="carousel-item active">
-                              <img src="src/churu.png" class="d-block w-100" alt="Churu para Gatos">
+                              <img src="src/churu.jpg" class="d-block w-100" alt="Churu para Gatos">
                               <div class="carousel-caption d-none d-md-block">
                                   <h5 style="color: black;">Churu para Gatos</h5>
                                   <p style="color: black;">Los Churu son pequeñas recompensas sabrosas, ideales para el entrenamiento o para mostrar cariño a tu mascota. Consigue 6 unidades por $9.990</p>
@@ -69,11 +92,11 @@
                               </div>
                           </div>
                       </div>
-                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev" style="color: black; background: transparent; border: none;">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Previous</span>
                       </button>
-                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next" style="color: black; background: transparent; border: none;">
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Next</span>
                       </button>
@@ -88,17 +111,18 @@
           
           <div class="container">
             <h3 class="text-center mt-4" id="galeria">Galería de Productos</h3>
-            <div class="row">
+            <div class="row mt-5">
               <div class="col-md-6 mx-auto">
                 <div class="card mb-3" style="max-width: 540px;">
                   <div class="row g-0">
                     <div class="col-md-4">
                       <img src="src/casagato.jpeg" class="img-fluid rounded-start" alt="...">
+                      <span class="badge rounded-pill text-bg-success col-12 mt-4" style="font-size: x-large;">$4.990</span>                    
                     </div>
                     <div class="col-md-8">
                       <div class="card-body">
                         <h5 class="card-title">Casa para Gato</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">Esta acogedora casa para gatos es el refugio perfecto para tu mascota. Hecha con materiales de alta calidad, proporciona un espacio seguro y cómodo para tu gato. Su diseño elegante se adapta a cualquier decoración del hogar.</p>
                         <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                       </div>
                     </div>
@@ -111,12 +135,14 @@
                     <div class="col-md-8">
                       <div class="card-body">
                         <h5 class="card-title">Casa para Perro</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">Esta robusta casa para perros ofrece el espacio perfecto para tu amigo de cuatro patas. Construida con materiales duraderos, garantiza un refugio seguro y cómodo para tu perro. Su diseño práctico y atractivo se integra perfectamente en cualquier espacio exterior.</p>
                         <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <img src="src/casaperro.jpeg" class="img-fluid rounded-start" alt="...">
+                      <span class="badge rounded-pill text-bg-success col-12 mt-4" style="font-size: x-large;">$4.990</span>                    
+
                     </div>
                   </div>
                 </div>
@@ -131,11 +157,13 @@
                   <div class="row g-0">
                     <div class="col-md-4">
                       <img src="src/juguetegato.jpeg" class="img-fluid rounded-start" alt="...">
+                      <span class="badge rounded-pill text-bg-success col-12 mt-4" style="font-size: x-large;">$4.990</span>                    
+
                     </div>
                     <div class="col-md-8">
                       <div class="card-body">
                         <h5 class="card-title">Juguete para gato</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">Este juguete interactivo para gatos garantiza horas de diversión para tu mascota. Diseñado para estimular sus instintos naturales, este juguete mantendrá a tu gato activo y entretenido. Su material resistente asegura una larga durabilidad.</p>
                         <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                       </div>
                     </div>
@@ -148,12 +176,14 @@
                     <div class="col-md-8">
                       <div class="card-body">
                         <h5 class="card-title">Juguete para Perro</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">Este juguete para perros es el compañero de juego perfecto para tu mascota. Diseñado para resistir mordiscos y tirones, este juguete no solo entretiene a tu perro, sino que también ayuda a mantener sus dientes limpios y saludables. Su material duradero garantiza una larga vida útil.</p>
                         <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <img src="src/jugueteperro.jpeg" class="img-fluid rounded-start" alt="...">
+                      <span class="badge rounded-pill text-bg-success col-12 mt-4" style="font-size: x-large;">$4.990</span>                    
+
                     </div>
                   </div>
                 </div>
@@ -168,11 +198,13 @@
                   <div class="row g-0">
                     <div class="col-md-4">
                       <img src="src/correa.jpg" class="img-fluid rounded-start" alt="...">
+                      <span class="badge rounded-pill text-bg-success col-12 mt-4" style="font-size: x-large;">$4.990</span>                    
+
                     </div>
                     <div class="col-md-8">
                       <div class="card-body">
-                        <h5 class="card-title">Correa de paseo para perro</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title">Correa de Paseo para Perro</h5>
+                        <p class="card-text">Esta correa de paseo para perros combina comodidad y control. Hecha con materiales resistentes, garantiza durabilidad y seguridad en cada paseo. Su diseño ergonómico proporciona un agarre cómodo para el dueño y un movimiento libre para el perro.</p>
                         <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                       </div>
                     </div>
@@ -185,12 +217,14 @@
                     <div class="col-md-8">
                       <div class="card-body">
                         <h5 class="card-title">Guante de ducha para Perro</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">Este guante de ducha para perros hace que el baño sea una experiencia agradable para tu mascota. Sus suaves cerdas masajean la piel de tu perro mientras limpian su pelaje, proporcionando una limpieza profunda y un cuidado delicado. Su diseño ergonómico permite un fácil manejo y control.</p>
                         <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <img src="src/guante.jpeg" class="img-fluid rounded-start" alt="...">
+                      <span class="badge rounded-pill text-bg-success col-12 mt-4" style="font-size: x-large;">$4.990</span>                    
+
                     </div>
                   </div>
                 </div>
@@ -205,11 +239,13 @@
                   <div class="row g-0">
                     <div class="col-md-4">
                       <img src="src/hamaca.jpeg" class="img-fluid rounded-start" alt="...">
+                      <span class="badge rounded-pill text-bg-success col-12 mt-4" style="font-size: x-large;">$4.990</span>                    
+
                     </div>
                     <div class="col-md-8">
                       <div class="card-body">
                         <h5 class="card-title">Hamaca para Limpieza Canina</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">Esta hamaca de limpieza canina facilita el aseo de tu mascota. Su diseño seguro y cómodo mantiene a tu perro en posición mientras lo limpias, proporcionando una experiencia de baño más eficiente y agradable. Hecha con materiales resistentes y fáciles de limpiar, es la herramienta perfecta para mantener a tu perro limpio y feliz.</p>
                         <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                       </div>
                     </div>
@@ -222,12 +258,14 @@
                     <div class="col-md-8">
                       <div class="card-body">
                         <h5 class="card-title">Churu para Gatos</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">Los Churus son el premio perfecto para tu mascota. Hechas con ingredientes de alta calidad, proporcionan un sabor delicioso que a tu gato le encantará. Son fáciles de digerir y ayudan a mantener la salud dental de tu gato.</p>
                         <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                       </div>
                     </div>
                     <div class="col-md-4">
-                      <img src="src/churu.png" class="img-fluid rounded-start" alt="...">
+                      <img src="src/churu.jpg" class="img-fluid rounded-start" alt="...">
+                      <span class="badge rounded-pill text-bg-success col-12 mt-3" style="font-size: x-large;">$2.290</span>                    
+
                     </div>
                   </div>
                 </div>
@@ -241,12 +279,14 @@
                 <div class="card mb-3" style="max-width: 540px;">
                   <div class="row g-0">
                     <div class="col-md-4">
-                      <img src="kitlimpieza.jpg" class="img-fluid rounded-start" alt="...">
+                      <img src="src/kitlimpieza.jpg" class="img-fluid rounded-start" alt="...">
+                      <span class="badge rounded-pill text-bg-success col-12 mt-2" style="font-size: x-large;">$4.990</span>                    
+
                     </div>
                     <div class="col-md-8">
                       <div class="card-body">
                         <h5 class="card-title">Kit de limpieza Canina</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">Este kit de limpieza canina es esencial para el cuidado de tu perro. Incluye todo lo que necesitas para mantener a tu mascota limpia y saludable. Los productos son de alta calidad y seguros para tu perro. Con este kit, el aseo de tu perro será una tarea fácil y agradable.</p>
                         <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                       </div>
                     </div>
@@ -258,13 +298,15 @@
                   <div class="row g-0">
                     <div class="col-md-8">
                       <div class="card-body">
-                        <h5 class="card-title">Casa para Perro</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title">Jaula de Transporte</h5>
+                        <p class="card-text">Esta jaula de transporte es ideal para viajar con tu mascota. Su diseño seguro y cómodo garantiza que tu animal esté protegido y tranquilo durante el viaje. Hecha con materiales duraderos, es fácil de limpiar y mantener.</p>
                         <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <img src="src/jaula.jpg" class="img-fluid rounded-start" alt="...">
+                      <span class="badge rounded-pill text-bg-success col-12 mt-2" style="font-size: x-large;">$4.990</span>                    
+
                     </div>
                   </div>
                 </div>
@@ -279,11 +321,12 @@
                   <div class="row g-0">
                     <div class="col-md-4">
                       <img src="src/juguetehamster.jpeg" class="img-fluid rounded-start" alt="...">
+                      <span class="badge rounded-pill text-bg-success col-12 mt-5" style="font-size: x-large;">$4.990</span>                    
                     </div>
                     <div class="col-md-8">
                       <div class="card-body">
                         <h5 class="card-title">Juguete para Hamster</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">Este juguete para hámster es perfecto para mantener a tu mascota activa y entretenida. Diseñado para estimular el comportamiento natural del hámster, este juguete promueve el ejercicio y reduce el aburrimiento. Hecho con materiales seguros y duraderos, es el regalo perfecto para tu pequeño amigo.</p>
                         <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                       </div>
                     </div>
@@ -296,12 +339,14 @@
                     <div class="col-md-8">
                       <div class="card-body">
                         <h5 class="card-title">Jaula para Hamster</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">Esta jaula para hámster ofrece un hogar seguro y cómodo para tu pequeña mascota. Con espacio suficiente para jugar y descansar, esta jaula está diseñada para promover el bienestar de tu hámster. Hecha con materiales duraderos y fáciles de limpiar, es la elección perfecta para tu amigo peludo.</p>
                         <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <img src="src/jaulaparahamster.jpg" class="img-fluid rounded-start" alt="...">
+                      <span class="badge rounded-pill text-bg-success col-12 mt-5" style="font-size: x-large;">$4.990</span>                    
+
                     </div>
                   </div>
                 </div>
