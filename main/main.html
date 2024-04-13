@@ -4,55 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>iPet</title>
-    <style>
-      .carousel {
-          width: 100%;
-          height: 500px;
-      }
-    
-      .carousel-item {
-          height: 500px;
-          background-size: cover;
-          background-position: center;
-      }
-    
-      .carousel-control-prev-icon,
-      .carousel-control-next-icon {
-          background-image: none;
-          color: #7D7D7D;
-      }
-    
-      .carousel-control-prev-icon:before{
-          content: '‹';
-          font-size: 4em;
-          line-height: 4;
-          color: #7D7D7D;
-          display: inline-block;
-          padding-top: 2px;
-      }
-      .carousel-control-next-icon:before {
-          content: '›';
-          font-size: 4em;
-          line-height: 4;
-          color: #7D7D7D;
-          display: inline-block;
-          padding-top: 2px;
-      }
-      .carousel-indicators .active {
-          background-color: #7D7D7D;
-      }
-    </style>
-    <!--<link rel="stylesheet" type="text/css" href="styles.css"> -->
+    <title>IPet</title>
+    <link rel="stylesheet" href="style.css">
+    <!--Para cambiar el color del fondo y el color de la flecha del carrusel, tambien la altura-->
   </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <!-- Aquí comienza la barra de navegación (navbar) -->
-    <nav class="navbar navbar-expand navbar-dark fixed-top" style="background-color: #7D7D7D;">
+
+    <!-- Carrusel con los productos mas destacados-->
+    <nav class="navbar navbar-expand-lg navbar-light rounded" style="background-color: #7D7D7D;">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
-            <img src="src/logo.png" alt="iPet" width="35px" height="35px">
-            iPet
+            <img src="src/logo.png" alt="IPet" width="35px" height="35px">
+            IPet
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -60,10 +24,10 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="#productos">Productos Destacados</a>
+                <a class="nav-link active" aria-current="page" href="#productos">Productos Destacados</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link href="#galeria">Galería de Productos</a>
+                <a class="nav-link" href="#galeria">Galería de Productos</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#registro">Registro de Usuarios</a>
@@ -73,11 +37,9 @@
           </div>
         </div>
       </nav>
-<!-- Aquí termina la barra de navegación -->
 
-<!-- Aquí comienza el contenido de la página -->
         <h3 class="text-center mt-4" id="productos">Productos Destacados de la Semana</h3>
-<!-- Aquí comienza el carrusel (carousel) -->
+        <!--Este codigo está hecho para que el carrusel funcione tal como se ve, no cambiar nada-->
         <div class="container mt-5">
           <div class="row justify-content-center">
               <div class="col-7">
@@ -122,9 +84,17 @@
               </div>
           </div>
       </div>
- <!-- Aquí termina el carrusel -->
-           
-<!-- Galeria de productos -->         
+          
+          
+          
+          <!-- Galeria de productos -->
+          <!--De igual manera en la galeria de fotos, esta codeada para que funcione de esta manera
+          no cambiar , esta codeada en 6 secciones con dos imagenes por seccion,
+          para que se pueda ver una al lado de la otra como espejo
+          -->
+          
+
+          <!--Primera Seccion-->
           <div class="container">
             <h3 class="text-center mt-4" id="galeria">Galería de Productos</h3>
             <div class="row mt-5">
@@ -158,13 +128,14 @@
                     <div class="col-md-4">
                       <img src="src/casaperro.jpeg" class="img-fluid rounded-start" alt="...">
                       <span class="badge rounded-pill text-bg-success col-12 mt-4" style="font-size: x-large;">$4.990</span>                    
-
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>        
+          </div>
+          
+          <!--Segunda Seccion-->
           <div class="container">
             <div class="row">
               <div class="col-md-6 mx-auto">
@@ -173,7 +144,6 @@
                     <div class="col-md-4">
                       <img src="src/juguetegato.jpeg" class="img-fluid rounded-start" alt="...">
                       <span class="badge rounded-pill text-bg-success col-12 mt-4" style="font-size: x-large;">$4.990</span>                    
-
                     </div>
                     <div class="col-md-8">
                       <div class="card-body">
@@ -198,7 +168,6 @@
                     <div class="col-md-4">
                       <img src="src/jugueteperro.jpeg" class="img-fluid rounded-start" alt="...">
                       <span class="badge rounded-pill text-bg-success col-12 mt-4" style="font-size: x-large;">$4.990</span>                    
-
                     </div>
                   </div>
                 </div>
@@ -206,6 +175,8 @@
             </div>
           </div>
           
+
+          <!--Tercera Seccion-->
           <div class="container">
             <div class="row">
               <div class="col-md-6 mx-auto">
@@ -214,7 +185,6 @@
                     <div class="col-md-4">
                       <img src="src/correa.jpg" class="img-fluid rounded-start" alt="...">
                       <span class="badge rounded-pill text-bg-success col-12 mt-4" style="font-size: x-large;">$4.990</span>                    
-
                     </div>
                     <div class="col-md-8">
                       <div class="card-body">
@@ -239,7 +209,6 @@
                     <div class="col-md-4">
                       <img src="src/guante.jpeg" class="img-fluid rounded-start" alt="...">
                       <span class="badge rounded-pill text-bg-success col-12 mt-4" style="font-size: x-large;">$4.990</span>                    
-
                     </div>
                   </div>
                 </div>
@@ -247,6 +216,8 @@
             </div>
           </div>
           
+
+          <!--Cuarta Seccion-->
           <div class="container">
             <div class="row">
               <div class="col-md-6 mx-auto">
@@ -254,8 +225,7 @@
                   <div class="row g-0">
                     <div class="col-md-4">
                       <img src="src/hamaca.jpeg" class="img-fluid rounded-start" alt="...">
-                      <span class="badge rounded-pill text-bg-success col-12 mt-4" style="font-size: x-large;">$4.990</span>                    
-
+                      <span class="badge rounded-pill text-bg-success col-12 mt-4" style="font-size: x-large;">$4.990</span>                   
                     </div>
                     <div class="col-md-8">
                       <div class="card-body">
@@ -280,7 +250,6 @@
                     <div class="col-md-4">
                       <img src="src/churu.jpg" class="img-fluid rounded-start" alt="...">
                       <span class="badge rounded-pill text-bg-success col-12 mt-3" style="font-size: x-large;">$2.290</span>                    
-
                     </div>
                   </div>
                 </div>
@@ -288,6 +257,8 @@
             </div>
           </div>
           
+
+        <!--Quinta Seccion-->
           <div class="container">
             <div class="row">
               <div class="col-md-6 mx-auto">
@@ -296,7 +267,6 @@
                     <div class="col-md-4">
                       <img src="src/kitlimpieza.jpg" class="img-fluid rounded-start" alt="...">
                       <span class="badge rounded-pill text-bg-success col-12 mt-2" style="font-size: x-large;">$4.990</span>                    
-
                     </div>
                     <div class="col-md-8">
                       <div class="card-body">
@@ -321,7 +291,6 @@
                     <div class="col-md-4">
                       <img src="src/jaula.jpg" class="img-fluid rounded-start" alt="...">
                       <span class="badge rounded-pill text-bg-success col-12 mt-2" style="font-size: x-large;">$4.990</span>                    
-
                     </div>
                   </div>
                 </div>
@@ -329,6 +298,8 @@
             </div>
           </div>
 
+
+          <!--Sexta Seccion-->
           <div class="container">
             <div class="row">
               <div class="col-md-6 mx-auto">
@@ -361,21 +332,21 @@
                     <div class="col-md-4">
                       <img src="src/jaulaparahamster.jpg" class="img-fluid rounded-start" alt="...">
                       <span class="badge rounded-pill text-bg-success col-12 mt-5" style="font-size: x-large;">$4.990</span>                    
-
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-<!-- Aquí termina la galería -->   
+          
 
-<!-- Aquí comienza el carrito-->
+
+          <!--Este es el carrito de compras, no se que wea hace todavia-->
           <div class="container mt-5" id="registro">
             <div class="d-flex justify-content-center row">
               <div class="col-md-8">
                   <div class="p-2">
-                      <h4>Carrito de Compras</h4>
+                      <h4>Carrito de compras</h4>
                   </div>
                   <table class="table">
                       <thead>
@@ -389,9 +360,9 @@
                       <tbody>
                           <tr>
                               <td>Producto de ejemplo</td>
-                              <td>$10.000</td>
+                              <td>$10.00</td>
                               <td>1</td>
-                              <td>$10.000</td>
+                              <td>$10.00</td>
                           </tr>
                       </tbody>
                   </table>
@@ -401,6 +372,5 @@
               </div>
           </div>
       </div>
-<!-- Aquí termina el carrito -->
 </body>
 </html>

@@ -1,0 +1,23 @@
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-image: none;
+    color: black;
+}
+
+.carousel-control-prev-icon:before{
+    content: '‹';
+    font-size: 4em;
+    line-height: 4; 
+    color: black;
+    display: inline-block;
+    padding-top: 2px;
+}
+
+.carousel-control-next-icon:before {
+    content: '›';
+    font-size: 4em;
+    line-height: 4;
+    color: black;
+    display: inline-block;
+    padding-top: 2px;
+}
