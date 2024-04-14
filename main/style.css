@@ -52,7 +52,7 @@
     transition: color 0.15s ease-in-out; 
 }
 
-.navbar-brand.no-transition:hover {
+.navbar-brand.no-transition{
     color: inherit; 
 }
 
