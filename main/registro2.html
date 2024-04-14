@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RegisterIPet</title>
+    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f8f9fa;"></nav>
+      <div class="container-fluid">
+        <a class="navbar-brand no-transition" href="main.html">
+          <img src="src/logo.png" alt="IPet" width="35px" height="35px">
+          IPet
+      </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="main.html">Productos Destacados</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="main.html">Galería de Productos</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="inicioSesion.html">Inicio de sesion</a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="form-login">
+      <div class="text-center">
+        <h1>😺🐶</h1>
+        <h2>Bienvenido a IPet</h2>
+        
+      </div>
+      <form class="mt-5" action="#">
+        <div class="mb-4 col-lg-4 mx-auto">
+          <label for="rut" class="form-label fw-semibold"
+            >Rut:</label>
+          <input
+            type=input
+            class="form-control"
+          />
+        </div>
+
+        <div class="mb-4 col-lg-4 mx-auto">
+          <label for="nombreCompleto" class="form-label fw-semibold">Nombre Completo:</label>
+          <input
+            type=""
+            class="form-control"
+
+          />
+        </div>
+        
+        <div class="mb-4 col-lg-4 mx-auto">
+          <label for="correo" class="form-label fw-semibold"
+            >Correo:</label>
+          <input
+            type=input
+            class="form-control"
+          />
+        </div>
+
+        <div class="mb-4 col-lg-4 mx-auto">
+            <label for= "fecha de nacimiento">Fecha de nacimiento:</label>
+            <input
+                type="date"
+                class="form-control"
+                style="resize: vertical;"
+            />
+        </div>
+        
+        <div class="mb-4 col-lg-4 mx-auto">
+            <label for="telefono" class="form-label fw-semibold"
+              >Telefono:</label>
+            <input
+              type=input
+              class="form-control"
+            />
+        </div>
+
+        <div class="mb-4 col-lg-4 mx-auto">
+            <label for="region" class="form-label">Región</label>
+            <select class="form-select" required style="resize: vertical;">
+                <option selected>Selecciona una región</option> 
+                <option value="arica">Arica y Parinacota</option>
+                <option value="tarapaca">Tarapacá</option>
+                <option value="antofagasta">Antofagasta</option>
+                <option value="atacama">Atacama</option>
+                <option value="coquimbo">Coquimbo</option>
+                <option value="valparaiso">Valparaíso</option>
+                <option value="ohiggins">O'Higgins</option>
+                <option value="maule">Maule</option>
+                <option value="biobio">Biobío</option>
+                <option value="araucania">La Araucanía</option>
+                <option value="losrios">Los Ríos</option>
+                <option value="loslagos">Los Lagos</option>
+                <option value="aysen">Aysén</option>
+                <option value="magallanes">Magallanes y de la Antártica Chilena</option>
+                <option value="rm">Región Metropolitana de Santiago</option>
+            </select>
+        </div>
+
+        <div class="mb-4 col-lg-4 mx-auto">
+            <label for="nivelEducacional" class="form-label">Nivel Educacional</label>
+            <select class="form-select" required style="resize: vertical;">
+                <option selected></option>
+                <option value="doctor">Doctor</option>
+                <option value="magister">Magíster</option>
+                <option value="profesional">Profesional</option>
+            </select>
+        </div>
+
+
+
+
+        </div>
+
+        <div class="d-grid col-lg-4 mx-auto">
+            <button type="button" class="btn btn-primary btn-lg" style="margin-top: 10px;" onclick="window.location.href='inicioSesion.html'">Registrar</button>
+        </div>
+        
+      </form>
+      
+    
+   
+    </div>
+
+
+  </body>
+</html>
