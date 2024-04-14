@@ -1,7 +1,10 @@
+/*hace que la navbar y el carrousel hereden el color*/
+
 :root {
     --navbar-color: rgb(117, 114, 115);
 }
 
+/*Carrousel*/
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     background-image: none;
@@ -33,4 +36,22 @@
 
 .carousel-indicators .active {
     background-color: var(--navbar-color);
+}
+
+/*Navbar*/
+.navbar {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: white;
+    
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.15s ease-in-out; 
+}
+
+.navbar-brand.no-transition:hover {
+    color: inherit; 
 }
