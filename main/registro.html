@@ -11,9 +11,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: var(--navbar-color);">
+    <nav class="navbar navbar-expand-lg navbar-light rounded fixed-top" style="background-color: var(--navbar-color);">
         <div class="container-fluid">
-            <a class="navbar-brand no-transition" href="main.html">
+            <a class="navbar-brand no-transition" href="main.html" style="font-size: xx-large;">
                 <img src="src/logo.png" alt="IPet" width="35px" height="35px">
                 IPet
             </a>
@@ -23,13 +23,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="main.html#productos">Productos Destacados</a>
+                        <a class="nav-link" aria-current="page" href="main.html#productos" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Productos Destacados</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="main.html#galeria">Galería de Productos</a>
+                        <a class="nav-link" href="main.html#galeria" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Galería de Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#registro">Registro de Usuarios</a>
+                        <a class="nav-link active" href="registro.html" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Registro de Usuarios</a>
                     </li>
                 </ul>
             </div>
@@ -38,7 +38,7 @@
 
       <!-- Formulario web -->
       <div class="container mt-3" id="registro">
-        <h2>Registro de nuevos usuarios</h2>
+        <h2 class="text-center mt-1" id="registro" style="padding-top: 90px; margin-top: 90px;">Registro de nuevos usuarios</h2>
     <form>
     <div class="mb-3">
         <label for="rut" class="form-label">RUT</label>
