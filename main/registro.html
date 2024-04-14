@@ -43,50 +43,56 @@
       <!-- Formulario web -->
       <div class="container">
         <h2 class="text-center mt-1" id="registro" style="padding-top: 90px; margin-top: 90px;">Registro de nuevos usuarios</h2>
-    <form>
-    <div class="mb-3">
-        <label for="rut" class="form-label">RUT</label>
-        <input type="text" class="form-control" id="rut" required>
-    </div>
-    <div class="mb-3">
-        <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="nombre" required>
-    </div>
-    <div class="mb-3">
-        <label for="apellido" class="form-label">Apellido</label>
-        <input type="text" class="form-control" id="apellido" required>
-    </div>
-    <div class="mb-3">
-        <label for="correo" class="form-label">Correo</label>
-        <input type="email" class="form-control" id="correo" required>
-    </div>
-    <div class="mb-3">
-        <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-        <input type="date" class="form-control" id="fechaNacimiento" required>
-    </div>
-    <div class="mb-3">
-        <label for="telefono" class="form-label">Teléfono</label>
-        <input type="tel" class="form-control" id="telefono" required>
-    </div>
-    <div class="mb-3">
-        <label for="region" class="form-label">Región</label>
-        <select class="form-select" id="region" required>
-            <option selected>Selecciona una región</option>
-            <!-- Aquí puedes agregar las opciones de las regiones -->
-        </select>
-    </div>
-    <div class="mb-3">
-        <label for="nivelEducacional" class="form-label">Nivel Educacional</label>
-        <select class="form-select" id="nivelEducacional" required>
-            <option selected>Selecciona un nivel educacional</option>
-            <option value="doctor">Doctor</option>
-            <option value="magister">Magíster</option>
-            <option value="profesional">Profesional</option>
-            <!-- Aquí puedes agregar más opciones si es necesario -->
-        </select>
-    </div>
-    <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
+      <form>
+        <div class="mb-3">
+          <label for="rut" class="form-label">RUT</label>
+          <input type="text" class="form-control" id="rut" pattern="^\d{7,8}-[\dKk]{1}$" title="Por favor, ingresa el RUT sin puntos y con guión. Ejemplo: 12345678-9" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="correo" class="form-label">Correo</label>
+          <input type="email" class="form-control" id="correo" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Por favor, ingresa un correo válido. Ejemplo: nombre@dominio.com" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="telefono" class="form-label">Teléfono</label>
+          <input type="tel" class="form-control" id="telefono" pattern="^9\d{8}$" inputmode="numeric" title="Por favor, ingresa un número de teléfono válido con 9 dígitos y comenzando con 9. Ejemplo: 912345678" required>
+        </div>
+        <div class="mb-3">
+            <label for="region" class="form-label">Región</label>
+            <select class="form-select" id="region" required>
+                <option value="">- Selecciona una región -</option>
+                <option value="aricaParinacota">Región de Arica y Parinacota</option>
+                <option value="tarapaca">Región de Tarapacá</option>
+                <option value="antofagasta">Región de Antofagasta</option>
+                <option value="atacama">Región de Atacama</option>
+                <option value="coquimbo">Región de Coquimbo</option>
+                <option value="valparaiso">Región de Valparaíso</option>
+                <option value="metropolitana">Región Metropolitana de Santiago</option>
+                <option value="ohiggins">Región del Libertador General Bernardo O'Higgins</option>
+                <option value="maule">Región del Maule</option>
+                <option value="nuble">Región de Ñuble</option>
+                <option value="biobio">Región del Biobío</option>
+                <option value="araucania">Región de La Araucanía</option>
+                <option value="losRios">Región de Los Ríos</option>
+                <option value="losLagos">Región de Los Lagos</option>
+                <option value="aysen">Región de Aysén del General Carlos Ibáñez del Campo</option>
+                <option value="magallanes">Región de Magallanes y de la Antártica Chilena</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="nivelEducacional" class="form-label">Nivel Educacional</label>
+            <select class="form-select" id="nivelEducacional" required>
+                <option value="">- Selecciona un nivel educacional -</option>
+                <option value="doctor">Primer ciclo</option>
+                <option value="magister">Segundo ciclo</option>
+                <option value="profesional">Técnico</option>
+                <option value="tecnico">Profesional</option>
+                <option value="bachiller">Sin estudios</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
     </div>
       
     <!--Pie de pagina, aqui va el quienes somos, direccion, redes sociales, etc...-->

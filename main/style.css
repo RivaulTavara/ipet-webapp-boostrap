@@ -5,27 +5,10 @@
 }
 
 /*Carrousel*/
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-image: none;
-    color: var(--navbar-color);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    transition: color 0.15s ease-in-out;
-}
-
-.carousel-control-prev-icon:hover,
-.carousel-control-next-icon:hover {
-    color: rgba(150, 150, 150); /* Un color más claro que --navbar-color */
-}
-
-.carousel-control-prev-icon:before,
-.carousel-control-next-icon:before {
-    content: '‹', '›';
-    font-size: 4em;
-    line-height: 4; 
-    color: var(--navbar-color);
-    display: inline-block;
-    padding-top: 2px;
+.carousel-control-prev span[aria-hidden="true"],
+.carousel-control-next span[aria-hidden="true"] {
+    color:  var(--navbar-color) !important;
+    font-size: 5em; /* Ajusta este valor para cambiar el tamaño de las flechas */
 }
 
 .carousel-indicators li {
@@ -52,7 +35,7 @@
     transition: color 0.15s ease-in-out; 
 }
 
-.navbar-brand.no-transition{
+.navbar-brand.no-transition:hover {
     color: inherit; 
 }
 

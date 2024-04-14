@@ -34,12 +34,7 @@ APRENDIZAJES ESPERADOS
 • Desarrollar aplicación web móvil en conjunto con sus pares sobre un mismo repositorio.
 • Capacidad de coordinar sus avances mediante la visualización de los logros del resto del equipo con la ayuda de la herramienta seleccionada.
 
-
-
-
-
-
-Enunciado
+ENUNCIADO
 
 Una tienda e-Commerce quiere desarrollar su sitio web para ofrecer sus productos.
 Aprovechando sus nuevos conocimientos en páginas web, se le ha solicitado que incluya en el sitio tres nuevas funcionalidades. Las actividades por realizar por el equipo son las siguientes:
