@@ -41,25 +41,30 @@
       </nav>
 
       <!-- Formulario web -->
+      <div class="form-login" style="margin-top: 100px;">
+        <div class="text-center">
+          <h1>🐶😺</h1>
+          <h2 class="text-center" id="registro">Registro de nuevos usuarios</h2>
+        </div>
+      </div>
       <div class="container">
-        <h2 class="text-center mt-1" id="registro" style="padding-top: 90px; margin-top: 90px;">Registro de nuevos usuarios</h2>
-      <form>
-        <div class="mb-3">
-          <label for="rut" class="form-label">RUT</label>
+      <form class="col-md-6 mx-auto">
+        <div class="mb-3 mt-5">
+          <label for="rut" class="form-label fw-semibold">RUT</label>
           <input type="text" class="form-control" id="rut" pattern="^\d{7,8}-[\dKk]{1}$" title="Por favor, ingresa el RUT sin puntos y con guión. Ejemplo: 12345678-9" required>
         </div>
 
         <div class="mb-3">
-          <label for="correo" class="form-label">Correo</label>
+          <label for="correo" class="form-label fw-semibold">Correo</label>
           <input type="email" class="form-control" id="correo" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Por favor, ingresa un correo válido. Ejemplo: nombre@dominio.com" required>
         </div>
 
         <div class="mb-3">
-          <label for="telefono" class="form-label">Teléfono</label>
+          <label for="telefono" class="form-label fw-semibold">Teléfono</label>
           <input type="tel" class="form-control" id="telefono" pattern="^9\d{8}$" inputmode="numeric" title="Por favor, ingresa un número de teléfono válido con 9 dígitos y comenzando con 9. Ejemplo: 912345678" required>
         </div>
         <div class="mb-3">
-            <label for="region" class="form-label">Región</label>
+            <label for="region" class="form-label fw-semibold">Región</label>
             <select class="form-select" id="region" required>
                 <option value="">- Selecciona una región -</option>
                 <option value="aricaParinacota">Región de Arica y Parinacota</option>
@@ -81,7 +86,7 @@
             </select>
         </div>
         <div class="mb-3">
-            <label for="nivelEducacional" class="form-label">Nivel Educacional</label>
+            <label for="nivelEducacional" class="form-label fw-semibold">Nivel Educacional</label>
             <select class="form-select" id="nivelEducacional" required>
                 <option value="">- Selecciona un nivel educacional -</option>
                 <option value="doctor">Primer ciclo</option>
@@ -91,7 +96,7 @@
                 <option value="bachiller">Sin estudios</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-primary mt-4">Enviar</button>
       </form>
     </div>
       
@@ -105,9 +110,9 @@
             </div>
             <div class="col-md-6">
               <h5>Contacto</h5>
-              <p>Dirección: 123 Calle Principal, Ciudad, País</p>
-              <p>Teléfono: +1234567890</p>
-              <p>Email: info@example.com</p>
+              <p>Dirección: 1153 Las Calilas, Santiago, Chile</p>
+              <p>Teléfono: +56983672634</p>
+              <p>Email: fullinfo@ipet.cl</p>
             </div>
           </div>
         </div>
