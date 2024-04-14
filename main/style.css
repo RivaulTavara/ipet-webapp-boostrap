@@ -1,23 +1,36 @@
+:root {
+    --navbar-color: rgb(117, 114, 115);
+}
+
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     background-image: none;
-    color: black;
+    color: var(--navbar-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: color 0.15s ease-in-out;
 }
 
-.carousel-control-prev-icon:before{
-    content: '‹';
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    color: rgba(150, 150, 150); /* Un color más claro que --navbar-color */
+}
+
+.carousel-control-prev-icon:before,
+.carousel-control-next-icon:before {
+    content: '‹', '›';
     font-size: 4em;
     line-height: 4; 
-    color: black;
+    color: var(--navbar-color);
     display: inline-block;
     padding-top: 2px;
 }
 
-.carousel-control-next-icon:before {
-    content: '›';
-    font-size: 4em;
-    line-height: 4;
-    color: black;
-    display: inline-block;
-    padding-top: 2px;
+.carousel-indicators li {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.carousel-indicators .active {
+    background-color: var(--navbar-color);
 }

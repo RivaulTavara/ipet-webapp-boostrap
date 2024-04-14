@@ -4,7 +4,19 @@ EVALUACIÓN 1
 
 ASIGNATURA: PGY3121 – DESARROLLO WEB
                
-PUNTAJE MÁXIMO100 puntos	NOTAPUNTAJE OBTENIDOFECHADURACIÓN120 minutos
+PUNTAJE MÁXIMO
+100 puntos	
+NOTA
+PUNTAJE OBTENIDO
+
+
+FECHA
+
+
+DURACIÓN
+120 minutos
+
+
 INDICACIONES GENERALES
 
 La nota 4,0 se obtiene logrando un 60% del puntaje total.
