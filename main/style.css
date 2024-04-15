@@ -20,7 +20,7 @@
     
 }
 
-.navbar a {
+.navbar a,i {
     color: white;
     text-decoration: none;
     transition: color 0.15s ease-in-out; 
@@ -49,3 +49,7 @@
     background-color: #4CAF50;
     transition: background-color 0.3s ease-in-out; /* Slow color transition */
 }
+
+.nav-link:hover i {
+    color: black !important;
+  }
