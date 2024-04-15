@@ -8,18 +8,9 @@
 .carousel-control-prev span[aria-hidden="true"],
 .carousel-control-next span[aria-hidden="true"] {
     color:  var(--navbar-color) !important;
-    font-size: 5em; /* Ajusta este valor para cambiar el tamaño de las flechas */
+    font-size: 3em; /* Ajusta este valor para cambiar el tamaño de las flechas */
 }
 
-.carousel-indicators li {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-}
-
-.carousel-indicators .active {
-    background-color: var(--navbar-color);
-}
 
 /*Navbar*/
 .navbar {

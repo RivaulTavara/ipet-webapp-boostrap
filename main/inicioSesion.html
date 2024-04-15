@@ -39,6 +39,8 @@
       </div>
     </nav>
     
+    
+
     <div class="form-login" style="margin-top: 100px;">
       <div class="text-center">
         <h1>🐶😺</h1>
@@ -46,29 +48,37 @@
       </div>
     </div>
 
-      <form class="mt-5" action="#">
-        <div class="mb-4 col-lg-4 mx-auto">
-          <label for="emailAddress" class="form-label fw-semibold">Correo electrónico:</label>
-          <input type="email" id="emailAddress" name="email" class="form-control" required placeholder="ejemplo@gmail.com" />
+      <div class="container">
+      <form class="col-md-6 mx-auto">
+
+        <div class="mb-3">
+          <label for="correo" class="form-label fw-semibold mt-4">Correo</label>
+          <input type="email" class="form-control" id="correo" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$" name="email" title="Por favor, ingresa un correo válido. Ejemplo: ejemplo@correo.com" class="form-control" required placeholder="ejemplo@correo.com" style="border-color: grey;" />
         </div>
 
-        <div class="mb-4 col-lg-4 mx-auto">
-          <label for="password" class="form-label fw-semibold">Contraseña:</label>
-          <input type="password" id="password" name="password" class="form-control" required placeholder="contraseñasegura123" />
+        <div class="mb-3">
+          <label for="telefono" class="form-label fw-semibold">Contraseña</label>
+          <input type="password" id="password" name="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="La contraseña debe contener al menos un carácter especial, una letra mayúscula, una letra minúscula y un número." required placeholder="Xx1234567@" style="border-color: grey;" />
         </div>
-
-        <div class="col-lg-4 mx-auto form-check">
-          <input class="form-check-input" type="checkbox" id="loggedIn" name="loggedIn" />
+        
+       
+        
+        <div class="mb-4 mt-4 mx-auto form-check action="#>
+          <input class="form-check-input" type="checkbox" id="loggedIn" name="loggedIn" style="border-color: grey;" />
           <label class="form-check-label fw-semibold mb-4" for="loggedIn">Mantener sesión iniciada.</label>
         </div>
+        
+      <div class="mb-4 mx-auto d-flex justify-content-center align-items-center" style="padding-bottom: 100px;">
+        <button type="submit" class="btn btn-primary btn-lg float">Iniciar sesion</button>
+      </div>
 
-        <div class="d-grid col-lg-4 mx-auto">
-          <button type="submit" class="btn btn-primary btn-lg">Iniciar sesion</button>
-          <button type="button" class="btn btn-primary btn-lg" style="margin-top: 10px;" onclick="window.location.href='registro.html'">Registrar</button>
-        </div>
+      <div class="alert  alert-dismissible fade show" role="alert" style="position: fixed ; bottom: 10px; right: 10px;">
+        <a href="registro.html" class="btn btn-primary btn-lg">¿Eres nuevo? ¡Regístrate!</a>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+
       </form>
-      
-    </div>
 
      <!--Pie de pagina, aqui va el quienes somos, direccion, redes sociales, etc...-->
      <footer id="pie-pag">
