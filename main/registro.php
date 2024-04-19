@@ -31,7 +31,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="inicioSesion.html" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Iniciar Sesión</a>
               <li class="nav-item">
-                <a class="nav-link" href="registro.html" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Registro de Usuarios</a>
+                <a class="nav-link" href="registro.php" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Registro de Usuarios</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#pie-pag" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">¿Quiénes somos?</a>
@@ -59,11 +59,8 @@
         </div>
       </div>
       <div class="container">
-      <form class="col-md-6 mx-auto" action="register.php" method="post">
-        <?php
-        include("/model/php/model.php");
-        include("/model/php/register.php");
-        ?>
+      
+      <form id="FormRegistro"class="col-md-6 mx-auto"  method="post">     
           <div class="mb-3 mt-5">
             <label for="rut" class="form-label fw-semibold">RUT</label>
             <input type="text" class="form-control" id="rut" name="rut" pattern="^\d{7,8}-[\dKk]{1}$" title="Por favor, ingresa el RUT sin puntos y con guión. Ejemplo: 12345678-9" required style="border-color: grey;" placeholder="XXXXXXXX-X">
@@ -136,7 +133,7 @@
         </div>
 
         <div style="padding-bottom: 90px;">
-          <button type="submit" class="btn btn-primary mt-5" name="registro" >Enviar</button>
+          <button type="submit" class="btn btn-primary mt-5" name="registro">Enviar</button>
         </div>
       </form>
     </div>
