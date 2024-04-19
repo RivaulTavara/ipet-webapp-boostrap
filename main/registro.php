@@ -59,25 +59,29 @@
         </div>
       </div>
       <div class="container">
-      <form class="col-md-6 mx-auto">
+      <form class="col-md-6 mx-auto" action="register.php" method="post">
+        <?php
+        include("/model/php/model.php");
+        include("/model/php/register.php");
+        ?>
           <div class="mb-3 mt-5">
             <label for="rut" class="form-label fw-semibold">RUT</label>
-            <input type="text" class="form-control" id="rut" pattern="^\d{7,8}-[\dKk]{1}$" title="Por favor, ingresa el RUT sin puntos y con guión. Ejemplo: 12345678-9" required style="border-color: grey;" placeholder="XXXXXXXX-X">
+            <input type="text" class="form-control" id="rut" name="rut" pattern="^\d{7,8}-[\dKk]{1}$" title="Por favor, ingresa el RUT sin puntos y con guión. Ejemplo: 12345678-9" required style="border-color: grey;" placeholder="XXXXXXXX-X">
           </div>
 
           <div class="mb-3">
             <label for="correo" class="form-label fw-semibold">Correo</label>
-            <input type="email" class="form-control" id="correo" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$" title="Por favor, ingresa un correo válido. Ejemplo: ejemplo@correo.com" required style="border-color: grey;" placeholder="ejemplo@correo.com">
+            <input type="email" class="form-control" id="correo" name="correo" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$" title="Por favor, ingresa un correo válido. Ejemplo: ejemplo@correo.com" required style="border-color: grey;" placeholder="ejemplo@correo.com">
           </div>
 
           <div class="mb-3">
-            <label for="rut" class="form-label fw-semibold">Nombre</label>
-            <input type="text" class="form-control" id="nombre" pattern="^[a-zA-Z\s]*$" title="Por favor, ingresa solo letras." required style="border-color: grey;" placeholder="Pedro">
+            <label for="nombre" class="form-label fw-semibold">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" pattern="^[a-zA-Z\s]*$" title="Por favor, ingresa solo letras." required style="border-color: grey;" placeholder="Pedro">
           </div>
 
           <div class="mb-3">
-            <label for="correo" class="form-label fw-semibold">Apellidos</label>
-            <input type="text" class="form-control" id="apellido" pattern="^[a-zA-Z\s]*$" title="Por favor, ingresa solo letras." required style="border-color: grey;" placeholder="Balmaceda Pascal">
+            <label for="apellido" class="form-label fw-semibold">Apellidos</label>
+            <input type="text" class="form-control" id="apellido" name="apellido" pattern="^[a-zA-Z\s]*$" title="Por favor, ingresa solo letras." required style="border-color: grey;" placeholder="Balmaceda Pascal">
           </div>
 
         
@@ -88,17 +92,17 @@
 
         <div class="mb-3">
           <label for= "fecha de nacimiento" class="form-label fw-semibold">Fecha de nacimiento</label>
-          <input type="date" style="border-color: grey;" class="form-control fw-semibold" style="resize: vertical;" required/>
+          <input type="date" name="fechaNacimiento" style="border-color: grey;" class="form-control fw-semibold" style="resize: vertical;" required/>
       </div>
 
 
         <div class="mb-3">
           <label for="telefono" class="form-label fw-semibold">Teléfono</label>
-          <input type="tel" class="form-control" id="telefono" pattern="^9\d{8}$" inputmode="numeric" title="Por favor, ingresa un número de teléfono válido con 9 dígitos y comenzando con 9. Ejemplo: 912345678" required style="border-color: grey;" placeholder="9 XXXX XXXX">
+          <input type="tel" class="form-control" id="telefono" name="telefono" pattern="^9\d{8}$" inputmode="numeric" title="Por favor, ingresa un número de teléfono válido con 9 dígitos y comenzando con 9. Ejemplo: 912345678" required style="border-color: grey;" placeholder="9 XXXX XXXX">
         </div>
         <div class="mb-3">
             <label for="region" class="form-label fw-semibold">Región</label>
-            <select class="form-select" id="region" required style="border-color: grey;">
+            <select class="form-select" id="region" name="region" required style="border-color: grey;">
                 <option value="">- Selecciona una región -</option>
                 <option value="aricaParinacota">Región de Arica y Parinacota</option>
                 <option value="tarapaca">Región de Tarapacá</option>
@@ -118,9 +122,10 @@
                 <option value="magallanes">Región de Magallanes y de la Antártica Chilena</option>
             </select>
         </div>
+
         <div class="mb-3">
             <label for="nivelEducacional" class="form-label fw-semibold">Nivel Educacional</label>
-            <select class="form-select" id="nivelEducacional" required style="border-color: grey;">
+            <select class="form-select" id="nivelEducacional" name="nivelEducacional" required style="border-color: grey;">
                 <option value="">- Selecciona un nivel educacional -</option>
                 <option value="doctor">Primer ciclo</option>
                 <option value="magister">Segundo ciclo</option>
@@ -129,8 +134,9 @@
                 <option value="bachiller">Sin estudios</option>
             </select>
         </div>
+
         <div style="padding-bottom: 90px;">
-          <button type="submit" class="btn btn-primary mt-5">Enviar</button>
+          <button type="submit" class="btn btn-primary mt-5" name="registro" >Enviar</button>
         </div>
       </form>
     </div>
