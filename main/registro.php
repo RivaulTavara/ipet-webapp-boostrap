@@ -60,7 +60,7 @@
       </div>
       <div class="container">
       
-      <form id="FormRegistro"class="col-md-6 mx-auto"  method="post">     
+      <form id="FormRegistro" lass="col-md-6 mx-auto"  method="post" action="model\php\controlador_register.php">     
           <div class="mb-3 mt-5">
             <label for="rut" class="form-label fw-semibold">RUT</label>
             <input type="text" class="form-control" id="rut" name="rut" pattern="^\d{7,8}-[\dKk]{1}$" title="Por favor, ingresa el RUT sin puntos y con guión. Ejemplo: 12345678-9" required style="border-color: grey;" placeholder="XXXXXXXX-X">
@@ -73,68 +73,68 @@
 
           <div class="mb-3">
             <label for="nombre" class="form-label fw-semibold">Nombre</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" pattern="^[a-zA-Z\s]*$" title="Por favor, ingresa solo letras." required style="border-color: grey;" placeholder="Pedro">
+            <input type="text" class="form-control" id="nombre" name="nombre" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$" title="Por favor, ingresa solo letras." required style="border-color: grey;" placeholder="Pedro">
           </div>
 
           <div class="mb-3">
             <label for="apellido" class="form-label fw-semibold">Apellidos</label>
-            <input type="text" class="form-control" id="apellido" name="apellido" pattern="^[a-zA-Z\s]*$" title="Por favor, ingresa solo letras." required style="border-color: grey;" placeholder="Balmaceda Pascal">
+            <input type="text" class="form-control" id="apellido" name="apellido" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$" title="Por favor, ingresa solo letras." required style="border-color: grey;" placeholder="Balmaceda Pascal">
           </div>
 
         
-        <div class="mb-3">
-          <label for="telefono" class="form-label fw-semibold">Contraseña</label>
-          <input type="password" id="password" name="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="La contraseña debe contener al menos un carácter especial, una letra mayúscula, una letra minúscula y un número." required style="border-color: grey;" placeholder="Xx1234567@">
-        </div>
+          <div class="mb-3">
+            <label for="telefono" class="form-label fw-semibold">Contraseña</label>
+            <input type="password" id="password" name="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="La contraseña debe contener al menos un carácter especial, una letra mayúscula, una letra minúscula y un número." required style="border-color: grey;" placeholder="Xx1234567@">
+          </div>
 
-        <div class="mb-3">
-          <label for= "fecha de nacimiento" class="form-label fw-semibold">Fecha de nacimiento</label>
-          <input type="date" name="fechaNacimiento" style="border-color: grey;" class="form-control fw-semibold" style="resize: vertical;" required/>
-      </div>
+          <div class="mb-3">
+            <label for= "fecha de nacimiento" class="form-label fw-semibold">Fecha de nacimiento</label>
+            <input type="date" name="fechaNacimiento" style="border-color: grey;" class="form-control fw-semibold" style="resize: vertical;" required/>
+          </div>
 
 
-        <div class="mb-3">
-          <label for="telefono" class="form-label fw-semibold">Teléfono</label>
-          <input type="tel" class="form-control" id="telefono" name="telefono" pattern="^9\d{8}$" inputmode="numeric" title="Por favor, ingresa un número de teléfono válido con 9 dígitos y comenzando con 9. Ejemplo: 912345678" required style="border-color: grey;" placeholder="9 XXXX XXXX">
-        </div>
-        <div class="mb-3">
-            <label for="region" class="form-label fw-semibold">Región</label>
-            <select class="form-select" id="region" name="region" required style="border-color: grey;">
-                <option value="">- Selecciona una región -</option>
-                <option value="aricaParinacota">Región de Arica y Parinacota</option>
-                <option value="tarapaca">Región de Tarapacá</option>
-                <option value="antofagasta">Región de Antofagasta</option>
-                <option value="atacama">Región de Atacama</option>
-                <option value="coquimbo">Región de Coquimbo</option>
-                <option value="valparaiso">Región de Valparaíso</option>
-                <option value="metropolitana">Región Metropolitana de Santiago</option>
-                <option value="ohiggins">Región del Libertador General Bernardo O'Higgins</option>
-                <option value="maule">Región del Maule</option>
-                <option value="nuble">Región de Ñuble</option>
-                <option value="biobio">Región del Biobío</option>
-                <option value="araucania">Región de La Araucanía</option>
-                <option value="losRios">Región de Los Ríos</option>
-                <option value="losLagos">Región de Los Lagos</option>
-                <option value="aysen">Región de Aysén del General Carlos Ibáñez del Campo</option>
-                <option value="magallanes">Región de Magallanes y de la Antártica Chilena</option>
-            </select>
-        </div>
+          <div class="mb-3">
+            <label for="telefono" class="form-label fw-semibold">Teléfono</label>
+            <input type="tel" class="form-control" id="telefono" name="telefono" pattern="^9\d{8}$" inputmode="numeric" title="Por favor, ingresa un número de teléfono válido con 9 dígitos y comenzando con 9. Ejemplo: 912345678" required style="border-color: grey;" placeholder="9 XXXX XXXX">
+          </div>
+          <div class="mb-3">
+              <label for="region" class="form-label fw-semibold">Región</label>
+              <select class="form-select" id="region" name="region" required style="border-color: grey;">
+                  <option value="">- Selecciona una región -</option>
+                  <option value="aricaParinacota">Región de Arica y Parinacota</option>
+                  <option value="tarapaca">Región de Tarapacá</option>
+                  <option value="antofagasta">Región de Antofagasta</option>
+                  <option value="atacama">Región de Atacama</option>
+                  <option value="coquimbo">Región de Coquimbo</option>
+                  <option value="valparaiso">Región de Valparaíso</option>
+                  <option value="metropolitana">Región Metropolitana de Santiago</option>
+                  <option value="ohiggins">Región del Libertador General Bernardo O'Higgins</option>
+                  <option value="maule">Región del Maule</option>
+                  <option value="nuble">Región de Ñuble</option>
+                  <option value="biobio">Región del Biobío</option>
+                  <option value="araucania">Región de La Araucanía</option>
+                  <option value="losRios">Región de Los Ríos</option>
+                  <option value="losLagos">Región de Los Lagos</option>
+                  <option value="aysen">Región de Aysén del General Carlos Ibáñez del Campo</option>
+                  <option value="magallanes">Región de Magallanes y de la Antártica Chilena</option>
+              </select>
+          </div>
 
-        <div class="mb-3">
-            <label for="nivelEducacional" class="form-label fw-semibold">Nivel Educacional</label>
-            <select class="form-select" id="nivelEducacional" name="nivelEducacional" required style="border-color: grey;">
-                <option value="">- Selecciona un nivel educacional -</option>
-                <option value="doctor">Primer ciclo</option>
-                <option value="magister">Segundo ciclo</option>
-                <option value="profesional">Técnico</option>
-                <option value="tecnico">Profesional</option>
-                <option value="bachiller">Sin estudios</option>
-            </select>
-        </div>
+          <div class="mb-3">
+              <label for="nivelEducacional" class="form-label fw-semibold">Nivel Educacional</label>
+              <select class="form-select" id="nivelEducacional" name="nivelEducacional" required style="border-color: grey;">
+                  <option value="">- Selecciona un nivel educacional -</option>
+                  <option value="doctor">Primer ciclo</option>
+                  <option value="magister">Segundo ciclo</option>
+                  <option value="profesional">Técnico</option>
+                  <option value="tecnico">Profesional</option>
+                  <option value="bachiller">Sin estudios</option>
+              </select>
+          </div>
 
-        <div style="padding-bottom: 90px;">
-          <button type="submit" class="btn btn-primary mt-5" name="registro">Enviar</button>
-        </div>
+          <div style="padding-bottom: 90px;">
+            <button type="submit" class="btn btn-primary mt-5" name="registro">Enviar</button>
+          </div>
       </form>
     </div>
       
