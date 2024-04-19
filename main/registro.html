@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
   </head>
 <body>
+  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <!-- Navbar -->
@@ -59,80 +60,88 @@
         </div>
       </div>
       <div class="container">
-      <form class="col-md-6 mx-auto">
+      
+      <form action="database/registro.php" method="post" class="col-md-6 mx-auto">
           <div class="mb-3 mt-5">
             <label for="rut" class="form-label fw-semibold">RUT</label>
-            <input type="text" class="form-control" id="rut" pattern="^\d{7,8}-[\dKk]{1}$" title="Por favor, ingresa el RUT sin puntos y con guión. Ejemplo: 12345678-9" required style="border-color: grey;" placeholder="XXXXXXXX-X">
+            <input type="text" class="form-control" name="rut" id="rut" pattern="^\d{7,8}-[\dKk]{1}$" title="Por favor, ingresa el RUT sin puntos y con guión. Ejemplo: 12345678-9" required style="border-color: grey;" placeholder="XXXXXXXX-X">
           </div>
 
           <div class="mb-3">
             <label for="correo" class="form-label fw-semibold">Correo</label>
-            <input type="email" class="form-control" id="correo" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$" title="Por favor, ingresa un correo válido. Ejemplo: ejemplo@correo.com" required style="border-color: grey;" placeholder="ejemplo@correo.com">
+            <input type="email" class="form-control" name="correo" id="correo" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$" title="Por favor, ingresa un correo válido. Ejemplo: ejemplo@correo.com" required style="border-color: grey;" placeholder="ejemplo@correo.com">
           </div>
 
           <div class="mb-3">
-            <label for="rut" class="form-label fw-semibold">Nombre</label>
-            <input type="text" class="form-control" id="nombre" pattern="^[a-zA-Z\s]*$" title="Por favor, ingresa solo letras." required style="border-color: grey;" placeholder="Pedro">
+            <label for="nombre" class="form-label fw-semibold">Nombre</label>
+            <input type="text" name="nombre" class="form-control" id="nombre" pattern="^[a-zA-Z\s]*$" title="Por favor, ingresa solo letras." required style="border-color: grey;" placeholder="Pedro">
           </div>
 
           <div class="mb-3">
-            <label for="correo" class="form-label fw-semibold">Apellidos</label>
-            <input type="text" class="form-control" id="apellido" pattern="^[a-zA-Z\s]*$" title="Por favor, ingresa solo letras." required style="border-color: grey;" placeholder="Balmaceda Pascal">
+            <label for="apellido" class="form-label fw-semibold">Apellidos</label>
+            <input type="text" name="apellido" class="form-control" id="apellido" pattern="^[a-zA-Z\s]*$" title="Por favor, ingresa solo letras." required style="border-color: grey;" placeholder="Balmaceda Pascal">
           </div>
 
         
         <div class="mb-3">
-          <label for="telefono" class="form-label fw-semibold">Contraseña</label>
+          <label for="contrasena" class="form-label fw-semibold">Contraseña</label>
           <input type="password" id="password" name="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="La contraseña debe contener al menos un carácter especial, una letra mayúscula, una letra minúscula y un número." required style="border-color: grey;" placeholder="Xx1234567@">
+        </div>
+        
+        <div class="mb-3">
+          <label for="direccion" class="form-label fw-semibold">Dirección</label>
+          <input type="text" id="direccion" name="direccion" class="form-control" pattern=".*\S.*" title="Ingrese una dirección" required style="border-color: grey;" placeholder="Calle Falsa 123">
         </div>
 
         <div class="mb-3">
           <label for= "fecha de nacimiento" class="form-label fw-semibold">Fecha de nacimiento</label>
-          <input type="date" style="border-color: grey;" class="form-control fw-semibold" style="resize: vertical;" required/>
+          <input type="date" id="fecha" name="fecha" style="border-color: grey;" class="form-control fw-semibold" style="resize: vertical;" required/>
       </div>
 
 
         <div class="mb-3">
           <label for="telefono" class="form-label fw-semibold">Teléfono</label>
-          <input type="tel" class="form-control" id="telefono" pattern="^9\d{8}$" inputmode="numeric" title="Por favor, ingresa un número de teléfono válido con 9 dígitos y comenzando con 9. Ejemplo: 912345678" required style="border-color: grey;" placeholder="9 XXXX XXXX">
+          <input type="tel" class="form-control" name="telefono" id="telefono" pattern="^9\d{8}$" inputmode="numeric" title="Por favor, ingresa un número de teléfono válido con 9 dígitos y comenzando con 9. Ejemplo: 912345678" required style="border-color: grey;" placeholder="9 XXXX XXXX">
         </div>
+        
         <div class="mb-3">
             <label for="region" class="form-label fw-semibold">Región</label>
-            <select class="form-select" id="region" required style="border-color: grey;">
+            <select class="form-select" name="region" id="region" required style="border-color: grey;">
                 <option value="">- Selecciona una región -</option>
-                <option value="aricaParinacota">Región de Arica y Parinacota</option>
-                <option value="tarapaca">Región de Tarapacá</option>
-                <option value="antofagasta">Región de Antofagasta</option>
-                <option value="atacama">Región de Atacama</option>
-                <option value="coquimbo">Región de Coquimbo</option>
-                <option value="valparaiso">Región de Valparaíso</option>
-                <option value="metropolitana">Región Metropolitana de Santiago</option>
-                <option value="ohiggins">Región del Libertador General Bernardo O'Higgins</option>
-                <option value="maule">Región del Maule</option>
-                <option value="nuble">Región de Ñuble</option>
-                <option value="biobio">Región del Biobío</option>
-                <option value="araucania">Región de La Araucanía</option>
-                <option value="losRios">Región de Los Ríos</option>
-                <option value="losLagos">Región de Los Lagos</option>
-                <option value="aysen">Región de Aysén del General Carlos Ibáñez del Campo</option>
-                <option value="magallanes">Región de Magallanes y de la Antártica Chilena</option>
+                <option value="Región de Arica y Parinacota">Región de Arica y Parinacota</option>
+                <option value="Región de Tarapacá">Región de Tarapacá</option>
+                <option value="Región de Antofagasta">Región de Antofagasta</option>
+                <option value="Región de Atacama">Región de Atacama</option>
+                <option value="Región de Coquimbo">Región de Coquimbo</option>
+                <option value="Región de Valparaíso">Región de Valparaíso</option>
+                <option value="Región Metropolitana de Santiago">Región Metropolitana de Santiago</option>
+                <option value="Región del Libertador General Bernardo O'Higgins">Región del Libertador General Bernardo O'Higgins</option>
+                <option value="Región del Maule">Región del Maule</option>
+                <option value="Región de Ñuble">Región de Ñuble</option>
+                <option value="Región del Biobío">Región del Biobío</option>
+                <option value="Región de La Araucanía">Región de La Araucanía</option>
+                <option value="Región de Los Ríos">Región de Los Ríos</option>
+                <option value="Región de Los Lagos">Región de Los Lagos</option>
+                <option value="Región de Aysén del General Carlos Ibáñez del Campo">Región de Aysén del General Carlos Ibáñez del Campo</option>
+                <option value="Región de Magallanes y de la Antártica Chilena">Región de Magallanes y de la Antártica Chilena</option>
             </select>
         </div>
         <div class="mb-3">
             <label for="nivelEducacional" class="form-label fw-semibold">Nivel Educacional</label>
-            <select class="form-select" id="nivelEducacional" required style="border-color: grey;">
+            <select class="form-select" id="nivelEducacional" name="nivelEducacional" required style="border-color: grey;">
                 <option value="">- Selecciona un nivel educacional -</option>
-                <option value="doctor">Primer ciclo</option>
-                <option value="magister">Segundo ciclo</option>
-                <option value="profesional">Técnico</option>
-                <option value="tecnico">Profesional</option>
-                <option value="bachiller">Sin estudios</option>
+                <option value="Primer ciclo">Primer ciclo</option>
+                <option value="Segundo ciclo">Segundo ciclo</option>
+                <option value="Técnico">Técnico</option>
+                <option value="Profesional">Profesional</option>
+                <option value="Sin estudios">Sin estudios</option>
             </select>
         </div>
         <div style="padding-bottom: 90px;">
           <button type="submit" class="btn btn-primary mt-5">Enviar</button>
         </div>
       </form>
+      
     </div>
       
     <!--Pie de pagina, aqui va el quienes somos, direccion, redes sociales, etc...-->
