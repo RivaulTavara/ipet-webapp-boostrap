@@ -1,21 +1,24 @@
 -- Active: 1713539787748@@127.0.0.1@3306@ipet
-CREATE DATABASE IF NOT EXISTS ipet;
+DROP DATABASE IF EXISTS ipet;
+
+CREATE DATABASE ipet;
+
+USE ipet;
+
 CREATE TABLE IF NOT EXISTS USUARIO (
     id INT AUTO_INCREMENT PRIMARY KEY,
     rut VARCHAR(12) NOT NULL,
-    correo VARCHAR(255) NOT NULL,
+    correo VARCHAR(255) NOT NULL UNIQUE,
     nombre VARCHAR(255) NOT NULL,
     apellido VARCHAR(255) NOT NULL,
     contrasena VARCHAR(255) NOT NULL,
     direccion VARCHAR(255),
     fecha_de_nacimiento DATE,
-    telefono VARCHAR(20),
+    telefono VARCHAR(20) UNIQUE,
     region VARCHAR(255),
     nivel_educacional VARCHAR(255),
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    ultimo_login DATETIME DEFAULT NULL,
-    intentos_login INT DEFAULT 0,
-    esta_bloqueado BOOLEAN DEFAULT false
+    ultimo_login DATETIME DEFAULT NULL
 );
 CREATE TABLE IF NOT EXISTS PRODUCTO (
     id INT AUTO_INCREMENT PRIMARY KEY,

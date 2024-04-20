@@ -1,3 +1,6 @@
+<?php
+include 'model/php/user_view.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +12,7 @@
     <link rel="stylesheet" href="style.css">
   </head>   
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: var(--navbar-color);">
         <div class="container-fluid">
           <a class="navbar-brand no-transition" href="main.html" style="font-size: xx-large;">
@@ -52,43 +55,23 @@
 
       <div class="form-login" style="margin-top: 100px;">
         <div class="text-center">
-          <h1>🐶😺</h1>
-          <h2 class="text-center">Carrito de compras</h2>
+        <div class="container">
+            <h1>🐶😺</h1>
+            <h2>Bienvenido, <?php echo (isset($user['nombre']) ? $user['nombre'] : '') . ' ' . (isset($user['apellido']) ? $user['apellido'] : ''). '!' ; ?></h2>
+            <p>RUT: <?php echo $user['rut']; ?></p>
+            <p>Correo: <?php echo $user['correo']; ?></p>
+            <p>Nombre(s): <?php echo $user['nombre']; ?></p>
+            <p>Apellido: <?php echo $user['apellido']; ?></p>
+            <p>Dirección: <?php echo $user['direccion']; ?></p>
+            <p>Fecha de Nacimiento: <?php echo $user['fecha_de_nacimiento']; ?></p>
+            <p>Teléfono: <?php echo $user['telefono']; ?></p>
+            <p>Región: <?php echo $user['region']; ?></p>
+            <p>Nivel Educacional: <?php echo $user['nivel_educacional']; ?></p>
+            <!-- Aquí puedes agregar más detalles del usuario -->
+        </div> 
         </div>
       </div>
-      <div class="container" id="registro" style="padding-bottom: 100px;">
-        <div class="d-flex justify-content-center row">
-          <div class="col-md-8">
-            <table class="table mt-5">
-              <thead>
-                <tr>
-                  <th scope="col">Producto</th>
-                  <th scope="col">Precio</th>
-                  <th scope="col">Cantidad</th>
-                  <th scope="col">Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Producto de ejemplo</td>
-                  <td>$10.00</td>
-                  <td>1</td>
-                  <td>$10.00</td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="d-flex flex-row align-items-center mt-4 p-2 bg-white rounded">
-              <button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button">Proceder al pago</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--Registro de nuevos usuarios (hypervinculo al archivo registro.html)-->
-      <div class="alert  alert-dismissible fade show" role="alert" style="position: fixed; bottom: 20px; right: 20px;">
-        <a href="registro.html" class="btn btn-primary btn-lg">¿Eres nuevo? ¡Regístrate!</a>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-
+      
       <footer id="pie-pag">
       <div class="container mt-5">
         <div class="row">
