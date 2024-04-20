@@ -31,7 +31,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="inicioSesion.html" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Iniciar Sesión</a>
               <li class="nav-item">
-                <a class="nav-link" href="registro.php" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Registro de Usuarios</a>
+                <a class="nav-link" href="registro.html" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Registro de Usuarios</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#pie-pag" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">¿Quiénes somos?</a>
@@ -83,7 +83,7 @@
 
         
           <div class="mb-3">
-            <label for="telefono" class="form-label fw-semibold">Contraseña</label>
+            <label for="contraseña" class="form-label fw-semibold">Contraseña</label>
             <input type="password" id="password" name="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="La contraseña debe contener al menos un carácter especial, una letra mayúscula, una letra minúscula y un número." required style="border-color: grey;" placeholder="Xx1234567@">
           </div>
 
@@ -97,6 +97,12 @@
             <label for="telefono" class="form-label fw-semibold">Teléfono</label>
             <input type="tel" class="form-control" id="telefono" name="telefono" pattern="^9\d{8}$" inputmode="numeric" title="Por favor, ingresa un número de teléfono válido con 9 dígitos y comenzando con 9. Ejemplo: 912345678" required style="border-color: grey;" placeholder="9 XXXX XXXX">
           </div>
+
+          <div class="mb-3">
+            <label for="direccion" class="form-label fw-semibold">Dirección</label>
+            <input type="text" class="form-control" id="direccion" name="direccion" required style="border-color: grey;" placeholder="Introduce tu dirección">
+          </div>
+          
           <div class="mb-3">
               <label for="region" class="form-label fw-semibold">Región</label>
               <select class="form-select" id="region" name="region" required style="border-color: grey;">
@@ -124,11 +130,11 @@
               <label for="nivelEducacional" class="form-label fw-semibold">Nivel Educacional</label>
               <select class="form-select" id="nivelEducacional" name="nivelEducacional" required style="border-color: grey;">
                   <option value="">- Selecciona un nivel educacional -</option>
-                  <option value="doctor">Primer ciclo</option>
-                  <option value="magister">Segundo ciclo</option>
-                  <option value="profesional">Técnico</option>
-                  <option value="tecnico">Profesional</option>
-                  <option value="bachiller">Sin estudios</option>
+                  <option value="primer ciclo">Primer ciclo</option>
+                  <option value="segundo cliclo">Segundo ciclo</option>
+                  <option value="tecnico">Técnico</option>
+                  <option value="profesional">Profesional</option>
+                  <option value="sin estudios">Sin estudios</option>
               </select>
           </div>
 

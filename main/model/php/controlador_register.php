@@ -9,23 +9,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $correo = $_POST["correo"];
   $nombre = $_POST["nombre"];
   $apellido = $_POST["apellido"];
-  $password = $_POST["password"];
-  $fechaNacimiento = $_POST["fechaNacimiento"];
+  $userPassword = $_POST["password"]; // Cambiado a $userPassword
+  $direccion = $_POST["direccion"];
+  $fechaNacimiento = date('Y-m-d', strtotime($_POST["fechaNacimiento"]));
   $telefono = $_POST["telefono"];
   $region = $_POST["region"];
   $nivelEducacional = $_POST["nivelEducacional"];
 
   // Comprobar que todos los campos están llenos
-  if (empty($rut) || empty($correo) || empty($nombre) || empty($apellido) || empty($password) || empty($fechaNacimiento) || empty($telefono) || empty($region) || empty($nivelEducacional)) {
+  if (empty($rut) || empty($correo) || empty($nombre) || empty($apellido) || empty($userPassword) || empty($direccion) || empty($fechaNacimiento) || empty($telefono) || empty($region) || empty($nivelEducacional)) {
     echo 'Por favor, rellene todos los campos.';
   } else {
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $dbPassword = ""; // Cambiado a $dbPassword
     $dbname = "ipet";
 
     // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $username, $dbPassword, $dbname);
 
     // Check connection
     if ($conn->connect_error) {
@@ -35,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     // Consulta SQL para insertar los datos
-    $sql = "INSERT INTO USUARIO (rut, correo, nombre, apellido, contrasena, fecha_de_nacimiento, telefono, region, nivel_educacional) VALUES ('$rut', '$correo', '$nombre', '$apellido', '$password', '$fechaNacimiento', '$telefono', '$region', '$nivelEducacional')";
+    $sql = "INSERT INTO USUARIO (rut, correo, nombre, apellido, contrasena, direccion, fecha_de_nacimiento, telefono, region, nivel_educacional) VALUES ('$rut', '$correo', '$nombre', '$apellido', '$userPassword', '$direccion', '$fechaNacimiento', '$telefono', '$region', '$nivelEducacional')";
 
     // Ejecutar la consulta
     if ($conn->query($sql) === TRUE) {
