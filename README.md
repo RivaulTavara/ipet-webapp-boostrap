@@ -26,3 +26,17 @@ REQUERIMIENTOS:
 8. Considere que las páginas deben ser correctamente visualizado tanto en la versión web como en la versión móvil del sitio. (Responsiva)
 
 9. Aplique estilos CSS propios o bien utilice el apoyo de un framework CSS para lograr que el formulario posea una apariencia acorde al resto del sitio.
+
+
+[MYSQL]
+
+Para el formulario de registro, los campos se mapearán a las columnas de la base de datos MySQL de la siguiente manera:
+
+- Rut (rut): mapeado a la columna `rut` en la tabla `usuarios`
+- Nombre (nombre): mapeado a la columna `nombre` en la tabla `usuarios`
+- Apellido (apellido): mapeado a la columna `apellido` en la tabla `usuarios`
+- Correo (correo): mapeado a la columna `correo` en la tabla `usuarios`
+- Fecha de nacimiento (fechaNacimiento): mapeado a la columna `fecha_nacimiento` en la tabla `usuarios`
+- Teléfono (telefono): mapeado a la columna `telefono` en la tabla `usuarios`
+- Región (region): mapeado a la columna `region` en la tabla `usuarios`
+- Nivel educacional (nivelEducacional): mapeado a la columna `nivel_educacional` en la tabla `usuarios`
