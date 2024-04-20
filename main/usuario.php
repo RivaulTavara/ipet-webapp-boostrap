@@ -60,7 +60,7 @@ include 'model/php/user_view.php';
             <h2>Bienvenido, <?php echo (isset($user['nombre']) ? $user['nombre'] : '') . ' ' . (isset($user['apellido']) ? $user['apellido'] : ''). '!' ; ?></h2>
             <p>RUT: <?php echo $user['rut']; ?></p>
             <p>Correo: <?php echo $user['correo']; ?></p>
-            <p>Nombre: <?php echo $user['nombre']; ?></p>
+            <p>Nombre(s): <?php echo $user['nombre']; ?></p>
             <p>Apellido: <?php echo $user['apellido']; ?></p>
             <p>Dirección: <?php echo $user['direccion']; ?></p>
             <p>Fecha de Nacimiento: <?php echo $user['fecha_de_nacimiento']; ?></p>

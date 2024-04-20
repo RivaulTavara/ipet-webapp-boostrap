@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS USUARIO (
     contrasena VARCHAR(255) NOT NULL,
     direccion VARCHAR(255),
     fecha_de_nacimiento DATE,
-    telefono VARCHAR(20),
+    telefono VARCHAR(20) UNIQUE,
     region VARCHAR(255),
     nivel_educacional VARCHAR(255),
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
