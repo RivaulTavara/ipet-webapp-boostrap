@@ -31,18 +31,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check connection
     if ($conn->connect_error) {
         die("La conexión ha fallado: " . $conn->connect_error);
-    } else {
-        echo "Conexión exitosa";
     }
 
     // Consulta SQL para insertar los datos
-    $sql = "INSERT INTO USUARIO (rut, correo, nombre, apellido, contrasena, direccion, fecha_de_nacimiento, telefono, region, nivel_educacional) VALUES ('$rut', '$correo', '$nombre', '$apellido', '$userPassword', '$direccion', '$fechaNacimiento', '$telefono', '$region', '$nivelEducacional')";
+    $sql = "INSERT INTO USUARIO (rut, correo, nombre, apellido, contrasena, direccion, fecha_de_nacimiento, telefono, region, nivel_educacional) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ssssssssss', $rut, $correo, $nombre, $apellido, $userPassword, $direccion, $fechaNacimiento, $telefono, $region, $nivelEducacional);
 
     // Ejecutar la consulta
-    if ($conn->query($sql) === TRUE) {
-      echo "Nuevo registro creado con éxito";
+    if ($stmt->execute()) {
+      // Iniciar la sesión
+      if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+      }
+
+      // Establecer $_SESSION['rut'] y $_SESSION['NOMBRE']
+      $_SESSION['rut'] = $rut;
+      $_SESSION['NOMBRE'] = $nombre;
+
+      // Redirigir a usuario.php
+      header("Location: ../../usuario.php");
+      exit;
     } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
+      echo "Error: " . $stmt->error;
     }
 
     // Cerrar la conexión
