@@ -10,9 +10,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $nombre = $_POST["nombre"];
   $apellido = $_POST["apellido"];
   $userPassword = $_POST["password"]; // Cambiado a $userPassword
-  $direccion = $_POST["direccion"];
   $fechaNacimiento = date('Y-m-d', strtotime($_POST["fechaNacimiento"]));
   $telefono = $_POST["telefono"];
+  $direccion = $_POST["direccion"];
   $region = $_POST["region"];
   $nivelEducacional = $_POST["nivelEducacional"];
 

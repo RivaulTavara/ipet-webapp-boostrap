@@ -57,22 +57,23 @@ include 'model/php/user_view.php';
         <div class="text-center">
         <div class="container">
             <h1>🐶😺</h1>
-            <h2>Bienvenido, <?php echo (isset($user['nombre']) ? $user['nombre'] : '') . ' ' . (isset($user['apellido']) ? $user['apellido'] : ''). '!' ; ?></h2>
-            <p>RUT: <?php echo $user['rut']; ?></p>
-            <p>Correo: <?php echo $user['correo']; ?></p>
-            <p>Nombre(s): <?php echo $user['nombre']; ?></p>
-            <p>Apellido: <?php echo $user['apellido']; ?></p>
-            <p>Dirección: <?php echo $user['direccion']; ?></p>
-            <p>Fecha de Nacimiento: <?php echo $user['fecha_de_nacimiento']; ?></p>
-            <p>Teléfono: <?php echo $user['telefono']; ?></p>
-            <p>Región: <?php echo $user['region']; ?></p>
-            <p>Nivel Educacional: <?php echo $user['nivel_educacional']; ?></p>
+            <h2>!Bienvenido a la familia IPet!</h2>
+            <div style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: large;">
+              <p class="mt-5">RUT: <?php echo $user['rut']; ?></p>
+              <p>Correo: <?php echo $user['correo']; ?></p>
+              <p>Nombre: <?php echo (isset($user['nombre']) ? $user['nombre'] : '') . ' ' . (isset($user['apellido']) ? $user['apellido'] : '') ; ?></p>
+              <p>Dirección: <?php echo $user['direccion']; ?></p>
+              <p>Fecha de Nacimiento: <?php echo $user['fecha_de_nacimiento']; ?></p>
+              <p>Teléfono: <?php echo $user['telefono']; ?></p>
+              <p>Región: <?php echo $user['region']; ?></p>
+              <p>Nivel Educacional: <?php echo $user['nivel_educacional']; ?></p>
+            </div>
             <!-- Aquí puedes agregar más detalles del usuario -->
         </div> 
         </div>
       </div>
       
-      <footer id="pie-pag">
+      <footer id="pie-pag" style="background-color: var(--footer-color); padding-top: 1px; color: white; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
       <div class="container mt-5">
         <div class="row">
           <div class="col-md-6">
