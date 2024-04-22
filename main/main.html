@@ -30,25 +30,32 @@
                 <a class="nav-link" href="#galeria" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Galería de Productos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="inicioSesion.html" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Iniciar Sesión</a>
-              <li class="nav-item">
-                <a class="nav-link" href="registro.html" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Registro de Usuarios</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="#pie-pag" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">¿Quiénes somos?</a>
               </li>
+              <!--para que se vea el carrito en telefonos-->
               <li class="nav-item d-none d-md-block">
                 <a class="nav-link" href="carrito.html">
-                  <i class="fas fa-shopping-cart" style="list-style: none; padding-left: 400px; "></i>
+                  <i class="fas fa-shopping-cart" style="list-style: none; padding-left: 620px; "></i>
                 </a>
               </li>              
+              <!--para que se vea el carrito en computadores-->
               <li class="nav-item d-block d-md-none">
                 <a class="nav-link" href="carrito.html">
                   <i class="fas fa-shopping-cart"></i>
                 </a>
               </li>
+              <li class="nav-item dropdown" style="padding-left: 10px;">
+                <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="src/guante.jpeg" class="rounded-circle" alt="Foto de perfil" width="30" height="30">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" style="background-color: rgb(117, 114, 115); border-style: hidden; right: 0;" aria-labelledby="profileDropdown">
+                  <button type="button" class="btn btn-primary mt-1" style="width: 100%;" onclick="location.href='inicioSesion.html'">Iniciar Sesion</button>
+                  <button type="button" class="btn btn-primary mt-1" style="width: 100%;" onclick="location.href='registro.html'">Registrarse</button>
+                </div>
+              </li>
             </ul>
           </div>
+          
           
         </div>
       </nav>
