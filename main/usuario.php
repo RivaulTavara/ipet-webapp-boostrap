@@ -108,7 +108,9 @@ include 'model/php/user_view.php';
                         <input type="checkbox" class="form-check-input" id="loggedIn" name="loggedIn" style="border-color: grey;">
                         <label class="form-check-label fw-semibold mb-2" for="loggedIn"">Mantener sesión iniciada.</label>
                       </div>
-                      <a href="restablecercon.html" style="color: blue; justify-content: center;" >¿Olvidaste tu contraseña?</a>
+                      <div class="text-center mt-3">
+                        <a href="restablecercon.html" style="color: blue; justify-content: center;" >¿Olvidaste tu contraseña?</a>
+                      </div>
                     </div>
                     <div class="mb-1 mx-auto d-flex justify-content-center align-items-center">
                       <button type="submit" class="btn btn-primary btn-lg float" style="width: 300px;">Iniciar sesión</button>
