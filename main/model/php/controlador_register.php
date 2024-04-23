@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $correo = $_POST["correo"];
   $nombre = $_POST["nombre"];
   $apellido = $_POST["apellido"];
-  $userPassword = $_POST["password"]; // Cambiado a $userPassword
+  $userPassword = password_hash($_POST["password"], PASSWORD_DEFAULT); // Hash de la contraseña
   $fechaNacimiento = date('Y-m-d', strtotime($_POST["fechaNacimiento"]));
   $telefono = $_POST["telefono"];
   $direccion = $_POST["direccion"];
