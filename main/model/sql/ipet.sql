@@ -1,4 +1,4 @@
--- Active: 1713539787748@@127.0.0.1@3306@ipet
+
 DROP DATABASE IF EXISTS ipet;
 
 CREATE DATABASE ipet;
@@ -7,14 +7,15 @@ USE ipet;
 
 CREATE TABLE IF NOT EXISTS USUARIO (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    rut VARCHAR(12) NOT NULL,
+    rut VARCHAR(12) NOT NULL UNIQUE,
     correo VARCHAR(255) NOT NULL UNIQUE,
     nombre VARCHAR(255) NOT NULL,
     apellido VARCHAR(255) NOT NULL,
     contrasena VARCHAR(255) NOT NULL,
+    salt VARCHAR(255) NOT NULL,
     direccion VARCHAR(255),
     fecha_de_nacimiento DATE,
-    telefono VARCHAR(20) UNIQUE,
+    telefono VARCHAR(20) NOT NULL UNIQUE,
     region VARCHAR(255),
     nivel_educacional VARCHAR(255),
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

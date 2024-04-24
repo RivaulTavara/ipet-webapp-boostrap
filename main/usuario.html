@@ -128,9 +128,14 @@
       <div class="form-login" style="margin-top: 100px;" id="datos-usuario">
         <div class="text-center">
         <div class="container">
-            <h1>🐶😺</h1>
-            <h2>!Bienvenido a la familia IPet!</h2>
           <div id="datos-usuario"></div>
+          <script>
+            $(document).ready(function(){
+                $.get("model/php/user_view.php", function(data) {
+                    $("#datos-usuario").html(data);
+                });
+            });
+            </script>
         </div> 
         </div>
       </div>
