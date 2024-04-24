@@ -34,53 +34,50 @@ include 'model/php/user_view.php';
                 <a class="nav-link" href="#pie-pag" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">¿Quiénes somos?</a>
               </li>
               
+<!--para que el carrito se vea el carrito y el usuario en telefonos-->
+<div>
+  <div class="d-block d-md-none">
+    <li class="nav-item">
+      <a class="nav-link" href="carrito.html">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+    </li>
+  </div>
 
-              <!--para que el carrito se vea el carrito y el usuario en telefonos-->
-           
-                <div>
-                  <div class="d-block d-md-none">
-                    <li class="nav-item">
-                      <a class="nav-link" href="carrito.html">
-                        <i class="fas fa-shopping-cart"></i>
-                      </a>
-                    </li>
-                  </div>
-
-                  <li class="nav-item dropdown d-block d-md-none">
-                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="src/USUARIOSINFOTO.jpeg" class="rounded-circle" alt="Foto de perfil" width="30" height="30">
-                    </a>
-                    <form class="dropdown-menu dropdown-menu-end p-4" style="max-height: 300px; overflow-y: auto;">
-                      <div class="mb-3">
-                        <label for="exampleDropdownFormEmail2" class="form-label" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: large;" >Correo</label>
-                        <input type="email" class="form-control" id="correo" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$" name="email" title="Por favor, ingresa un correo válido. Ejemplo: ejemplo@correo.com" class="form-control" required placeholder="ejemplo@correo.com" style="border-color: grey;" />
-                      </div>  
-                      <div class="mb-3">
-                        <label for="exampleDropdownFormPassword2" class="form-label" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: large;">Contraseña</label>
-                        <input type="password" id="password" name="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="La contraseña debe contener al menos un carácter especial, una letra mayúscula, una letra minúscula y un número." required placeholder="Xx1234567@" style="border-color: grey;" />
-                      </div>
-                      <div class="mb-3">
-                        <div class="form-check">
-                          <input type="checkbox" class="form-check-input" id="loggedIn" name="loggedIn" style="border-color: grey;">
-                          <label class="form-check-label fw-semibold mb-2" for="loggedIn"">Mantener sesión iniciada.</label>
-                        </div>
-                      </div>
-                      <div class="text-center">
-                        <a href="restablecercon.html" style="color: blue; justify-content: center;">¿Olvidaste tu contraseña?</a>
-                      </div>
-                      <div class="mb-1 mx-auto d-flex justify-content-center align-items-center">
-                        <button type="submit" class="btn btn-primary btn-lg float mt-3" style="width: 95%;">Iniciar sesión</button>
-                      </div>
-                      <div class="mb-1 mx-auto d-flex justify-content-center align-items-center" style="padding-bottom: 75px;">
-                        <a href="registro.html" class="btn btn-primary btn-lg" style="width: 95%;">Regístrate</a>
-                      </div>
-                    </form>
-                  </li>
-                  
-                </div>
-
-              </div>
-
+  <li class="nav-item dropdown d-block d-md-none">
+    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="<?php echo $user['foto'] ? 'data:image/jpeg;base64,'.base64_encode($user['foto']) : 'src/USUARIOSINFOTO.jpeg'; ?>" class="rounded-circle" alt="Foto de perfil" width="30" height="30">
+    </a>
+    <form class="dropdown-menu dropdown-menu-end p-4" style="max-height: 300px; overflow-y: auto;">
+      <div class="mb-3">
+        <h6>Hola, <?php echo htmlspecialchars($_SESSION['NOMBRE']); ?>!</h6>
+      </div>
+      <div class="mb-3">
+        <label for="exampleDropdownFormEmail2" class="form-label" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: large;" >Correo</label>
+        <input type="email" class="form-control" id="correo" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$" name="email" title="Por favor, ingresa un correo válido. Ejemplo: ejemplo@correo.com" class="form-control" required placeholder="ejemplo@correo.com" style="border-color: grey;" />
+      </div>  
+      <div class="mb-3">
+        <label for="exampleDropdownFormPassword2" class="form-label" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: large;">Contraseña</label>
+        <input type="password" id="password" name="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="La contraseña debe contener al menos un carácter especial, una letra mayúscula, una letra minúscula y un número." required placeholder="Xx1234567@" style="border-color: grey;" />
+      </div>
+      <div class="mb-3">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="loggedIn" name="loggedIn" style="border-color: grey;">
+          <label class="form-check-label fw-semibold mb-2" for="loggedIn"">Mantener sesión iniciada.</label>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="restablecercon.html" style="color: blue; justify-content: center;">¿Olvidaste tu contraseña?</a>
+      </div>
+      <div class="mb-1 mx-auto d-flex justify-content-center align-items-center">
+        <button type="submit" class="btn btn-primary btn-lg float mt-3" style="width: 95%;">Iniciar sesión</button>
+      </div>
+      <div class="mb-1 mx-auto d-flex justify-content-center align-items-center" style="padding-bottom: 75px;">
+        <a href="registro.html" class="btn btn-primary btn-lg" style="width: 95%;">Regístrate</a>
+      </div>
+    </form>
+  </li>
+</div>
 
           <!--para que el carrito y el usuario se vean en computadores-->
                 <li class="nav-item d-none d-md-block" style="padding-top: 4px; padding-right: 25px;">
