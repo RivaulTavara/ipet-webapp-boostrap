@@ -51,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       $_SESSION['NOMBRE'] = $nombre;
 
       // Redirigir a usuario.php
-      header("Location: ../../usuario.php");
+      header("Location: ../../usuario.html");
       exit;
     } else {
       echo "Error: " . $stmt->error;
