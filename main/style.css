@@ -313,3 +313,31 @@ a:hover {
     animation: fadeIn 0.5s;
 
 }
+
+
+@media (max-width: 768px) {
+    .card {
+        width: 85%; /* Adjust as needed */
+        margin: 550px auto; /* Center the card */
+    }
+
+    .card img {
+        width: 100%; /* Make the image take up the full width of the card */
+    }
+
+    .card .card-body {
+        padding: 10px; /* Reduce padding */
+    }
+
+    .card .card-body .card-title,
+    .card .card-body .card-text {
+        font-size: 14px; /* Reduce font size */
+    }
+
+    .section-products .single-product .part-1 ul li a,
+    .section-products .single-product .part-1 ul li a i {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+    }
+}
