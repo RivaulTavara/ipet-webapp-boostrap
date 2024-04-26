@@ -7,19 +7,95 @@ document.addEventListener('DOMContentLoaded', function() {
 
             var imagenDeFondo = window.getComputedStyle(boton.closest('.part-1'), '::before').backgroundImage;
             var urlImagen = imagenDeFondo.slice(5, -2);
+
             var modal = document.createElement('div');
             modal.classList.add('modal');
 
-            var contenidoModal = document.createElement('div');
-            contenidoModal.classList.add('contenidoModal');
+            var card = document.createElement('div');
+            card.classList.add('card', 'mb-3');
+            card.style.maxWidth = '1080px';
+            card.style.padding = '25px';
+
+            var row = document.createElement('div');
+            row.classList.add('row', 'g-0');
+
+            var colImg = document.createElement('div');
+            colImg.classList.add('col-md-4');
 
             var imagen = document.createElement('img');
             imagen.src = urlImagen;
-            imagen.style.width = '440px';
-            imagen.style.height = '480px';
+            imagen.classList.add('img-fluid', 'rounded-start');
 
-            contenidoModal.appendChild(imagen);
-            modal.appendChild(contenidoModal);
+            var colText = document.createElement('div');
+            colText.classList.add('col-md-8');
+
+            var cardBody = document.createElement('div');
+            cardBody.classList.add('card-body');
+            cardBody.style.display = 'flex';
+            cardBody.style.flexDirection = 'column';
+            cardBody.style.justifyContent = 'space-between';
+
+            var h5 = document.createElement('h2');
+            h5.classList.add('card-title');
+            h5.textContent = boton.closest('.single-product').querySelector('.product-title').textContent;
+            h5.style.textAlign = 'center';
+
+            var p1 = document.createElement('p');
+            p1.classList.add('card-text','mt-3');
+            p1.textContent = boton.closest('.single-product').querySelector('.product-text').textContent;
+            p1.style.fontSize = 'large';
+
+            var priceContainer = document.createElement('div');
+            priceContainer.style.display = 'flex';
+            priceContainer.style.justifyContent = 'flex-end';
+
+            var p2 = document.createElement('span');
+            p2.classList.add('badge', 'rounded-pill', 'product-button', 'mt-2','card-price');
+            p2.textContent = boton.closest('.single-product').querySelector('.product-price').textContent;
+            p2.style.fontSize = 'xx-large';
+
+            priceContainer.appendChild(p2);
+
+            var p3 = document.createElement('p');
+            p3.classList.add('card-text');
+            var small = document.createElement('medium');
+            small.classList.add('text-body-secondary');
+            small.textContent = boton.closest('.single-product').querySelector('.product-brand').textContent;
+            
+            var small2 = document.createElement('medium');
+            small2.classList.add('text-body-secondary');
+            small2.textContent = boton.closest('.single-product').querySelector('.product-stock').textContent;
+            
+            p3.appendChild(small);
+
+            var closeButton = document.createElement('button');
+            var closeIcon = document.createElement('i');
+            closeIcon.classList.add('fas', 'fa-times');
+            closeButton.appendChild(closeIcon);
+            
+            
+            closeButton.textContent = 'X';
+            closeButton.style.border = 'Transparent';
+            closeButton.style.position = 'absolute';
+            closeButton.style.right = '10px';
+            closeButton.style.top = '10px';
+            closeButton.addEventListener('click', function() {
+                document.body.removeChild(modal);
+            });
+
+            card.appendChild(closeButton);
+            
+            cardBody.appendChild(h5);
+            cardBody.appendChild(p1);
+            cardBody.appendChild(p3);
+            cardBody.appendChild(small2);
+            cardBody.appendChild(priceContainer); // Append the price container instead of p2
+            colText.appendChild(cardBody);
+            colImg.appendChild(imagen);
+            row.appendChild(colImg);
+            row.appendChild(colText);
+            card.appendChild(row);
+            modal.appendChild(card);
 
             modal.addEventListener('click', function(event) {
                 if (event.target === modal) {
