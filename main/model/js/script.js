@@ -148,4 +148,16 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+    document.querySelectorAll('.bbb_name a').forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            var targetId = this.getAttribute('href');
+            var targetElement = document.querySelector(targetId);
+            var expandLink = targetElement.querySelector('li a .fa-expand');
+            if (expandLink) {
+                window.scrollTo(0, targetElement.offsetTop);
+                expandLink.click();
+            }
+        });
+    });
 });
