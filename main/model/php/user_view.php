@@ -1,4 +1,6 @@
 <?php
+include 'config.php';
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -9,8 +11,8 @@ session_start();
 // Aquí puedes acceder a $_SESSION['rut']
 $rut = $_SESSION['rut'];
 
-// Conectar a la base de datos
-$db = new mysqli('localhost', 'root', '', 'ipet');
+// Usar la conexión de la base de datos de config.php
+$db = $conn;
 
 // Verificar la conexión
 if ($db->connect_error) {
@@ -25,7 +27,17 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
+$telefono = $user['telefono'] ?? 'No disponible';
+if ($telefono !== 'No disponible') {
+    $telefono = substr($telefono, 0, 1) . ' ' . substr($telefono, 1, 4) . ' ' . substr($telefono, 5);
+}
 
+$rut = $user['rut'] ?? 'No disponible';
+if ($rut !== 'No disponible') {
+    $partes = explode('-', $rut);
+    $numero = number_format($partes[0], 0, '', '.');
+    $rut = $numero . '-' . $partes[1];
+}
 
 // Imprimir los datos del usuario en formato HTML
 echo "<div class=\"form-login\" style=\"margin-top: 100px;\" id=\"datos-usuario\">" .
@@ -34,12 +46,12 @@ echo "<div class=\"form-login\" style=\"margin-top: 100px;\" id=\"datos-usuario\
      "<h1>🐶😺</h1>" .
      "<h2>!Bienvenido a la familia IPet!</h2>" .
      "<div style=\"font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: large; text-align: center; padding-bottom: 50px;\" class=\"mt-5\">" .
-     "<p>RUT: " . ($user['rut'] ?? 'No disponible') . "</p>" .
+     "<p>RUT: " . ($rut ?? 'No disponible') . "</p>" .
      "<p>Correo: " . ($user['correo'] ?? 'No disponible') . "</p>" .
      "<p>Nombre: " . ($user['nombre'] ?? 'No disponible') . " " . ($user['apellido'] ?? 'No disponible') . "</p>" .
      "<p>Dirección: " . ($user['direccion'] ?? 'No disponible') . "</p>" .
      "<p>Fecha de Nacimiento: " . ($user['fecha_de_nacimiento'] ?? 'No disponible') . "</p>" .
-     "<p>Teléfono: " . ($user['telefono'] ?? 'No disponible') . "</p>" .
+     "<p>Teléfono: " . ($telefono ?? 'No disponible') . "</p>" .
      "<p>Región: " . ($user['region'] ?? 'No disponible') . "</p>" .
      "<p>Nivel Educacional: " . ($user['nivel_educacional'] ?? 'No disponible') . "</p>" .
      "</div>" .

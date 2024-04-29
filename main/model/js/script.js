@@ -160,4 +160,68 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
 });
+
+$('#login-form').on('submit', function(e) {
+    e.preventDefault();
+  
+    $.ajax({
+      url: 'login.php',
+      type: 'POST',
+      data: $(this).serialize(),
+      dataType: 'json',
+      success: function(data) {
+        if (data.success) {
+          // Hacer una solicitud AJAX a user_view.php para obtener los datos del usuario
+          $.ajax({
+            url: 'user_view.php',
+            type: 'POST',
+            dataType: 'html',
+            success: function(data) {
+              // Reemplazar el contenido del formulario de inicio de sesión con los datos del usuario
+              $('#login-form').html(data);
+              // Redirigir al usuario a la página usuario.html
+              window.location.href = 'usuario.html';
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+              // Manejar el error aquí
+              console.error(textStatus, errorThrown);
+            }
+          });
+        } else if (data.error) {
+          // Mostrar el mensaje de error
+          alert(data.error);
+        }
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        // Manejar el error aquí
+        console.error(textStatus, errorThrown);
+      }
+    });
+  });
+  $('.owl-carousel').owlCarousel({
+    loop: true,
+    margin: 20,
+    responsive: {
+        0: {
+            items: 1
+        },
+        768: {
+            items: 3
+        },
+        1080: {
+            items: 3
+        }
+    }
+})
+
+$(window).resize(function() {
+    if ($(window).width() > 768    ) {
+        $('#divdropdown').addClass('d-flex');
+    } else {
+        $('#divdropdown').removeClass('d-flex');
+    }
+}).trigger('resize');
+
+  

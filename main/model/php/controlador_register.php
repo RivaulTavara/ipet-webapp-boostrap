@@ -1,7 +1,5 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+include 'config.php';
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
   // Recoger los datos del formulario
@@ -18,21 +16,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
   // Comprobar que todos los campos están llenos
   if (empty($rut) || empty($correo) || empty($nombre) || empty($apellido) || empty($userPassword) || empty($direccion) || empty($fechaNacimiento) || empty($telefono) || empty($region) || empty($nivelEducacional)) {
-    echo 'Por favor, rellene todos los campos.';
+    echo json_encode(['error' => 'Por favor, rellene todos los campos.']);
   } else {
-    $servername = "localhost";
-    $username = "root";
-    $dbPassword = ""; // Cambiado a $dbPassword
-    $dbname = "ipet";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $dbPassword, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("La conexión ha fallado: " . $conn->connect_error);
-    }
-
     // Consulta SQL para insertar los datos
     $sql = "INSERT INTO USUARIO (rut, correo, nombre, apellido, contrasena, direccion, fecha_de_nacimiento, telefono, region, nivel_educacional) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -50,13 +35,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       $_SESSION['rut'] = $rut;
       $_SESSION['NOMBRE'] = $nombre;
 
-      // Redirigir a usuario.php
-      header("Location: ../../usuario.html");
-      exit;
+      // Devolver una respuesta exitosa
+      echo json_encode(['success' => 'Registro exitoso.']);
     } else {
-      echo "Error: " . $stmt->error;
+      echo json_encode(['error' => "Error: " . $stmt->error]);
     }
-
+    
+    header("Location: ../../usuario.html");
     // Cerrar la conexión
     $conn->close();
   }
