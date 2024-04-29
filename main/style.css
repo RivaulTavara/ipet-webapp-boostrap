@@ -460,6 +460,7 @@ section{
     .bbb_prev, .bbb_next {
         position: relative;
         display: inline-block;
+        align-content: center;
     }
 
     .bbb_prev {
@@ -478,6 +479,16 @@ section{
         max-height: 100vh;
         
     }
+
+    #carruselbutton {
+        display: flex;
+        justify-content: center;
+    }
+
+    .owl-dots {
+        display: none;
+    }
+
     
 
 

@@ -207,6 +207,7 @@ $('#login-form').on('submit', function(e) {
         0: {
             items: 1
         },
+        
         768: {
             items: 3
         },
