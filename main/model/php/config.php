@@ -10,12 +10,13 @@ $conn = mysqli_init();
 // Set SSL options
 mysqli_ssl_set($conn, NULL, NULL, "../sql/DigiCertGlobalRootCA.crt.pem", NULL, NULL);
 
-
 // Establish the connection
 mysqli_real_connect($conn, $servername, $username, $dbPassword, $dbname, 3306, MYSQLI_CLIENT_SSL);
 
 // Check connection
-if ($conn->connect_error) {
-    die("La conexión ha fallado: " . $conn->connect_error);
+if (mysqli_connect_errno()) {
+    die('Falló la conexión: '.mysqli_connect_error().' ('.mysqli_connect_errno().')');
+} else {
+    echo "Conexión exitosa a la base de datos.";
 }
 ?>
