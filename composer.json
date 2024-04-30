@@ -1,5 +1,5 @@
 {
-    "name": "RivaulTavara/carrito-boostrap-5",
+    "name": "rivaultavara/carrito-bootstrap-5",
     "description": "Una tienda en bootstrap",
     "require": {
         "phpmailer/phpmailer": "^6.5"
