@@ -225,4 +225,12 @@ $(window).resize(function() {
     }
 }).trigger('resize');
 
+$(window).resize(function() {
+    if ($(window).width() <= 768    ) {
+        $('#icontel').addClass('ms-auto text-end');
+    } else {
+        $('#icontel').removeClass('ms-auto');
+    }
+}).trigger('resize');
+
   

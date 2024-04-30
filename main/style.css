@@ -475,9 +475,9 @@ section{
         padding: 10px;
     }
     .navbar {
-        overflow-y: auto;
+        overflow-y: scroll;
         max-height: 100vh;
-        
+        scrollbar-width: none; /* Para Firefox */
     }
 
     #carruselbutton {
@@ -488,9 +488,6 @@ section{
     .owl-dots {
         display: none;
     }
-
-    
-
 
 }
 
