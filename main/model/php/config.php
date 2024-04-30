@@ -8,7 +8,7 @@ $dbname = "ipet";
 $conn = mysqli_init();
 
 // Set SSL options
-mysqli_ssl_set($conn, NULL, NULL, "main/model/sql/DigiCertGlobalRootCA.crt.pem", NULL, NULL);
+mysqli_ssl_set($conn, NULL, NULL, "../sql/DigiCertGlobalRootCA.crt.pem", NULL, NULL);
 
 
 // Establish the connection
