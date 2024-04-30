@@ -1,0 +1,73 @@
+﻿
+
+EVALUACIÓN 1
+
+ASIGNATURA: PGY3121 – DESARROLLO WEB
+               
+PUNTAJE MÁXIMO
+100 puntos	
+NOTA
+PUNTAJE OBTENIDO
+
+
+FECHA
+
+
+DURACIÓN
+120 minutos
+
+
+INDICACIONES GENERALES
+
+La nota 4,0 se obtiene logrando un 60% del puntaje total.
+Es una Entrega de Encargo con presentación.
+El equipo de trabajo podrá ser de hasta 3 integrantes como máximo
+Subir al repositorio creado por el equipo.
+
+APRENDIZAJES ESPERADOS
+
+• Crear contenido web incorporando estructura y etiquetado de la versión actual de HTML.
+• Incorporar elementos de estilo en el sitio web usando versión actual de CSS.
+• Integrar elementos de plantillas pre creado para el desarrollo de páginas web, usando tecnologías como Bootstrap para mejorar la experiencia del usuario y visualización en distintas resoluciones o dispositivos.
+• Generar un repositorio para el trabajo colaborativo con su equipo en un mismo proyecto
+• Aplicar las operaciones en el repositorio durante el desarrollo de su aplicación.
+• Desarrollar aplicación web móvil en conjunto con sus pares sobre un mismo repositorio.
+• Capacidad de coordinar sus avances mediante la visualización de los logros del resto del equipo con la ayuda de la herramienta seleccionada.
+
+ENUNCIADO
+
+Una tienda e-Commerce quiere desarrollar su sitio web para ofrecer sus productos.
+Aprovechando sus nuevos conocimientos en páginas web, se le ha solicitado que incluya en el sitio tres nuevas funcionalidades. Las actividades por realizar por el equipo son las siguientes:
+
+1. Crear bosquejo o “mockup” para el análisis de las nuevas funcionalidades requeridas por el cliente.
+
+2. Agregar un menú que permita acceder a las distintas páginas solicitadas.
+
+3. Mejorar la portada del sitio modificando la imagen de portada por un carrusel de imágenes que muestre los productos destacados, acompañado de una descripción y precio de venta (de al menos 3 productos).
+
+4. Incluir una galería de imágenes (de al menos 6 productos) que permita a los visitantes ver todos los productos disponibles hasta ese momento. Cada imagen debe mostrar: imagen del producto, descripción, precio, stock y marca.
+
+5. Construir una página para el registro de nuevos usuarios que cumpla con los siguientes requerimientos solicitados por la Fundación para recopilar información acerca de los postulantes que desean adoptar una mascota:
+
+• Información como texto: Rut, nombre, apellido, correo, fecha de nacimiento y teléfono
+• Información seleccionable:Región y nivel educacional (Doctor, Magíster, Profesional, etc)
+
+
+6. Construir los formularios de los datos maestros o mantenedores requeridos para el proyecto y definidos en el modelo de datos.
+
+7. Escoger los inputs adecuados a los tipos de datos definidos en cada una de las tablas y/o modelo de datos.
+
+8. Considere que las páginas deben ser correctamente visualizado tanto en la versión web como en la versión móvil del sitio. (Responsiva)
+
+9. Aplique estilos CSS propios o bien utilice el apoyo de un framework CSS para lograr que el formulario posea una apariencia acorde al resto del sitio.
+
+10. Crear y utilizar repositorio remoto(github) para generar trabajo colaborativo en su equipo utilizando los distintos comandos para la gestión de los archivos del proyecto
+
+
+NOTA: Solo se debe presentar los diseños de las páginas web, usando los lenguajes, tecnologías (HTML, CSS y BootStrap), reglas y/o convenciones vistas en clases.
+
+
+
+                         Instituto Profesional
+                             Escuela de Informática		
+
