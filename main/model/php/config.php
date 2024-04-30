@@ -1,11 +1,18 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$dbPassword = ""; 
+$servername = "ipetdb.mysql.database.azure.com";
+$username = "ipetadmin";
+$dbPassword = "M3l0d1aFuerT3!42"; 
 $dbname = "ipet";
 
-// Create connection
-$conn = new mysqli($servername, $username, $dbPassword, $dbname);
+// Initialize mysqli
+$conn = mysqli_init();
+
+// Set SSL options
+mysqli_ssl_set($conn, NULL, NULL, "main/model/sql/DigiCertGlobalRootCA.crt.pem", NULL, NULL);
+
+
+// Establish the connection
+mysqli_real_connect($conn, $servername, $username, $dbPassword, $dbname, 3306, MYSQLI_CLIENT_SSL);
 
 // Check connection
 if ($conn->connect_error) {
