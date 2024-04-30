@@ -1,3 +1,4 @@
 <?php
 
-echo "Hello World!";
+header('Location: /main/index.html');
+exit;
