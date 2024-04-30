@@ -1,6 +1,6 @@
 {
     "name": "RivaulTavara/carrito-boostrap-5",
-    "description": "Una tienda en boostrap",
+    "description": "Una tienda en bootstrap",
     "require": {
         "phpmailer/phpmailer": "^6.5"
     }
