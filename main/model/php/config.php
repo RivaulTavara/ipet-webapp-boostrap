@@ -16,8 +16,8 @@ mysqli_real_connect($conn, $servername, $username, $dbPassword, $dbname, 3306, M
 // Check connection
 if (mysqli_connect_errno()) {
     die('Falló la conexión: '.mysqli_connect_error().' ('.mysqli_connect_errno().')');
-} else {
-    echo "Conexión exitosa a la base de datos.";
+}   else {
+    $message = "Conexión exitosa a la base de datos.";
+    error_log($message);
 }
-
 ?>

@@ -1,4 +1,6 @@
 <?php
+session_start(); // Mover esto al principio
+
 include 'config.php';
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -29,15 +31,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Ejecutar la consulta
     if ($stmt->execute()) {
-      // Iniciar la sesión
-      if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-      }
-
       // Establecer las variables de sesión
       $_SESSION['rut'] = $rut;
       $_SESSION['NOMBRE'] = $nombre;
-
+      
       // Redirigir al usuario a la página deseada
       header("Location: ../../usuario.html");
 
