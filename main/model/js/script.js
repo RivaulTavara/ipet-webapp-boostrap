@@ -167,7 +167,7 @@ $('#login-form').on('submit', function(e) {
     e.preventDefault();
   
     $.ajax({
-      url: '/main/model/php/login.php',
+      url: '../model/php/login.php',
       type: 'POST',
       data: $(this).serialize(),
       dataType: 'json',
