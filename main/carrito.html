@@ -44,19 +44,19 @@
                     <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <img src="src/USUARIOSINFOTO.jpeg" class="rounded-circle" alt="Foto de perfil" width="30" height="30">
                     </a>
-                      <form id="login-form" class="dropdown-menu dropdown-menu-end p-4" action="login.php" method="POST" style="width: 350px;">
+                    <form id="login-form" class="dropdown-menu dropdown-menu-end p-4" action="model/php/login.php" method="POST" style="width: 350px;">
                       <div class="mb-3">
                         <label class="form-label" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: large;" >Correo</label>
-                        <input type="email" class="form-control" id="correo" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$" name="email" title="Por favor, ingresa un correo válido. Ejemplo: ejemplo@correo.com" class="form-control" required placeholder="ejemplo@correo.com" style="border-color: grey;" />
+                        <input type="email" class="form-control" id="correo" name="email" required placeholder="ejemplo@correo.com" style="border-color: grey;" />
                       </div>  
                       <div class="mb-3">
                         <label class="form-label" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: large;">Contraseña</label>
-                        <input type="password" id="password" name="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="La contraseña debe contener al menos un carácter especial, una letra mayúscula, una letra minúscula y un número." required placeholder="Xx1234567@" style="border-color: grey;" />
+                        <input type="password" id="password" name="password" class="form-control" required placeholder="Xx1234567@" style="border-color: grey;" />
                       </div>
                       <div class="mb-3">
                         <div class="form-check">
                           <input type="checkbox" class="form-check-input" id="loggedIn" name="loggedIn" style="border-color: grey;">
-                          <label class="form-check-label fw-semibold mb-2" for="loggedIn"">Mantener sesión iniciada.</label>
+                          <label class="form-check-label fw-semibold mb-2" for="loggedIn">Mantener sesión iniciada.</label>
                         </div>
                         <div class="text-center mt-3">
                           <a href="restablecercon.html" style="color: blue; justify-content: center;" >¿Olvidaste tu contraseña?</a>
@@ -68,7 +68,7 @@
                       <div class="mb-1 mx-auto d-flex justify-content-center align-items-center">
                         <a href="registro.html" class="btn btn-primary btn-lg" style="width: 300px;">Regístrate</a>
                       </div>
-                      </form>
+                    </form>
                   </div>
                 </div>
               </div>

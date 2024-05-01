@@ -167,7 +167,7 @@ $('#login-form').on('submit', function(e) {
     e.preventDefault();
   
     $.ajax({
-      url: 'login.php',
+      url: 'https://ipetlovers.azurewebsites.net/main/model/php/login.php',
       type: 'POST',
       data: $(this).serialize(),
       dataType: 'json',
