@@ -14,39 +14,39 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $region = $_POST["region"];
   $nivelEducacional = $_POST["nivelEducacional"];
 
-  // Genera un valor para 'salt'. Esto es solo un ejemplo, debes generar un valor seguro para 'salt' en un entorno de producción.
-  $salt = md5(uniqid(rand(), true));
+  // Genera un valor seguro para 'salt'.
+  $salt = bin2hex(openssl_random_pseudo_bytes(32));
+
 
   // Comprobar que todos los campos están llenos
   if (empty($rut) || empty($correo) || empty($nombre) || empty($apellido) || empty($userPassword) || empty($direccion) || empty($fechaNacimiento) || empty($telefono) || empty($region) || empty($nivelEducacional)) {
     echo json_encode(['error' => 'Por favor, rellene todos los campos.']);
   } else {
     // Consulta SQL para insertar los datos
-    $sql = "INSERT INTO USUARIO (rut, correo, nombre, apellido, contrasena, salt, direccion, fecha_de_nacimiento, telefono, region, nivel_educacional) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO USUARIO (rut, correo, nombre, apellido, contrasena, direccion, fecha_de_nacimiento, telefono, region, nivel_educacional) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('sssssssssss', $rut, $correo, $nombre, $apellido, $userPassword, $salt, $direccion, $fechaNacimiento, $telefono, $region, $nivelEducacional);
+    $stmt->bind_param('ssssssssss', $rut, $correo, $nombre, $apellido, $userPassword, $direccion, $fechaNacimiento, $telefono, $region, $nivelEducacional);
 
     // Ejecutar la consulta
-    if ($stmt->execute()) {
-      // Iniciar la sesión
-      if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-      }
-
-      // Establecer $_SESSION['rut'] y $_SESSION['NOMBRE']
-      $_SESSION['rut'] = $rut;
-      $_SESSION['NOMBRE'] = $nombre;
-
-      // Devolver una respuesta exitosa
-      echo json_encode(['success' => 'Registro exitoso.']);
-    } else {
-      echo json_encode(['error' => "Error: " . $stmt->error]);
+  if ($stmt->execute()) {
+    // Iniciar la sesión
+    if (session_status() == PHP_SESSION_NONE) {
+      session_start();
     }
-    
+
+    // Establecer las variables de sesión
+    $_SESSION['rut'] = $rut;
+    $_SESSION['NOMBRE'] = $nombre;
+
+    // Redirigir al usuario a la página deseada
     header("Location: ../../usuario.html");
-    // Cerrar la conexión
+
+    // No olvides cerrar la conexión a la base de datos
     $conn->close();
+  } else {
+    echo json_encode(['error' => "Error: " . $stmt->error]);
+  }
   }
 }
 ?>
