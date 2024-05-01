@@ -19,4 +19,5 @@ if (mysqli_connect_errno()) {
 } else {
     echo "Conexión exitosa a la base de datos.";
 }
+
 ?>
