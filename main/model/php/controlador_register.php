@@ -17,36 +17,35 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   // Genera un valor seguro para 'salt'.
   $salt = bin2hex(openssl_random_pseudo_bytes(32));
 
-
   // Comprobar que todos los campos están llenos
   if (empty($rut) || empty($correo) || empty($nombre) || empty($apellido) || empty($userPassword) || empty($direccion) || empty($fechaNacimiento) || empty($telefono) || empty($region) || empty($nivelEducacional)) {
     echo json_encode(['error' => 'Por favor, rellene todos los campos.']);
   } else {
     // Consulta SQL para insertar los datos
-    $sql = "INSERT INTO USUARIO (rut, correo, nombre, apellido, contrasena, direccion, fecha_de_nacimiento, telefono, region, nivel_educacional) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO USUARIO (rut, correo, nombre, apellido, contrasena, direccion, fecha_de_nacimiento, telefono, region, nivel_educacional, salt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('ssssssssss', $rut, $correo, $nombre, $apellido, $userPassword, $direccion, $fechaNacimiento, $telefono, $region, $nivelEducacional);
+    $stmt->bind_param('sssssssssss', $rut, $correo, $nombre, $apellido, $userPassword, $direccion, $fechaNacimiento, $telefono, $region, $nivelEducacional, $salt);
 
     // Ejecutar la consulta
-  if ($stmt->execute()) {
-    // Iniciar la sesión
-    if (session_status() == PHP_SESSION_NONE) {
-      session_start();
+    if ($stmt->execute()) {
+      // Iniciar la sesión
+      if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+      }
+
+      // Establecer las variables de sesión
+      $_SESSION['rut'] = $rut;
+      $_SESSION['NOMBRE'] = $nombre;
+
+      // Redirigir al usuario a la página deseada
+      header("Location: ../../usuario.html");
+
+      // No olvides cerrar la conexión a la base de datos
+      $conn->close();
+    } else {
+      echo json_encode(['error' => "Error: " . $stmt->error]);
     }
-
-    // Establecer las variables de sesión
-    $_SESSION['rut'] = $rut;
-    $_SESSION['NOMBRE'] = $nombre;
-
-    // Redirigir al usuario a la página deseada
-    header("Location: ../../usuario.html");
-
-    // No olvides cerrar la conexión a la base de datos
-    $conn->close();
-  } else {
-    echo json_encode(['error' => "Error: " . $stmt->error]);
-  }
   }
 }
 ?>
