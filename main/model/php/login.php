@@ -14,23 +14,15 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
-$response = array();
-
-
 if (password_verify($password, $user['password'])) {
     // Inicio de sesión exitoso
     $_SESSION['rut'] = $user['rut'];
-    echo json_encode(['success' => true]);
+    echo 'Inicio de sesión exitoso.';
 } else {
     // Inicio de sesión fallido
-    echo json_encode(['error' => 'Contraseña incorrecta.']);
+    echo 'Contraseña incorrecta.';
 }
-
 
 $stmt->close();
 $conn->close();
-
-// Send response to client
-header('Content-Type: application/json');
-echo json_encode($response);
 ?>
