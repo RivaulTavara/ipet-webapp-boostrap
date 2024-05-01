@@ -16,25 +16,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $region = $_POST["region"];
   $nivelEducacional = $_POST["nivelEducacional"];
 
-  // Genera un valor seguro para 'salt'.
-  $salt = bin2hex(openssl_random_pseudo_bytes(32));
-
   // Comprobar que todos los campos están llenos
   if (empty($rut) || empty($correo) || empty($nombre) || empty($apellido) || empty($userPassword) || empty($direccion) || empty($fechaNacimiento) || empty($telefono) || empty($region) || empty($nivelEducacional)) {
     echo json_encode(['error' => 'Por favor, rellene todos los campos.']);
   } else {
     // Consulta SQL para insertar los datos
-    $sql = "INSERT INTO USUARIO (rut, correo, nombre, apellido, contrasena, direccion, fecha_de_nacimiento, telefono, region, nivel_educacional, salt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO USUARIO (rut, correo, nombre, apellido, contrasena, direccion, fecha_de_nacimiento, telefono, region, nivel_educacional) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('sssssssssss', $rut, $correo, $nombre, $apellido, $userPassword, $direccion, $fechaNacimiento, $telefono, $region, $nivelEducacional, $salt);
+    $stmt->bind_param('ssssssssss', $rut, $correo, $nombre, $apellido, $userPassword, $direccion, $fechaNacimiento, $telefono, $region, $nivelEducacional);
 
     // Ejecutar la consulta
     if ($stmt->execute()) {
       // Establecer las variables de sesión
       $_SESSION['rut'] = $rut;
       $_SESSION['NOMBRE'] = $nombre;
-      
+
       // Redirigir al usuario a la página deseada
       header("Location: ../../usuario.html");
 

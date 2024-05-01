@@ -17,10 +17,10 @@ $user = $result->fetch_assoc();
 if (password_verify($password, $user['password'])) {
     // Inicio de sesión exitoso
     $_SESSION['rut'] = $user['rut'];
-    echo 'Inicio de sesión exitoso.';
+    http_response_code(200); // OK
 } else {
     // Inicio de sesión fallido
-    echo 'Contraseña incorrecta.';
+    http_response_code(401); // Unauthorized
 }
 
 $stmt->close();
