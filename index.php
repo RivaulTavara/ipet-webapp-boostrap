@@ -1,5 +1,5 @@
 <?php
 
-header('Location: /main/index.html');
+header('Location: /main/inicioSesion.html');
 exit;
 ?>
