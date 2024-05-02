@@ -25,29 +25,26 @@
             <ul class="navbar-nav">
               <div id="divdropdown" class="d-flex">
                 <li class="nav-item">
-                  <a class="nav-link"  href="#productos" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Productos Destacados</a>
+                  <a class="nav-link"  href="index.html#productos" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Productos Destacados</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#galeria" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Galería de Productos</a>
+                  <a class="nav-link" href="index.html#galeria" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Galería de Productos</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#pie-pag" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">¿Quiénes somos?</a>
                 </li>
               </div>
             </ul>
-            <ul class="navbar-nav ms-auto">
-              <div class="d-flex">
-                <li  class="nav-item d-md-block" style="padding-top: 4px; padding-right: 20px;">
-                  <a class="nav-link" href="carrito.html">
+            <div class="navbar-nav ms-auto">
+                <div class="d-flex" style="position: relative;">  
+                  <a id="iconcar" class="nav-link d-md-block" style="padding-top: 13px; padding-right: 35px; height: 38px;" href="carrito.html">
                     <i class="fas fa-shopping-cart" style="color: white;" ></i>
                   </a>
-                </li> 
-                <div id="icontel">
-                  <div class="dropdown d-md-block" style=" padding-right: 15px;">
+                  <div id="icontel" class="dropdown d-md-block">
                     <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <img src="src/USUARIOSINFOTO.jpeg" class="rounded-circle" alt="Foto de perfil" width="30" height="30">
                     </a>
-                    <form id="login-form" class="dropdown-menu dropdown-menu-end p-4" action="model/php/login.php" method="POST" style="width: 350px;">
+                    <form id="login-form" class="dropdown-menu dropdown-menu-end p-4" action="model/php/login.php" method="POST">
                       <div class="mb-3">
                         <label class="form-label" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: large;" >Correo</label>
                         <input type="email" class="form-control" id="correo" name="email" required placeholder="ejemplo@correo.com" style="border-color: grey;" />
@@ -74,8 +71,7 @@
                     </form>
                   </div>
                 </div>
-              </div>
-            </ul>
+            </div>
 
       </div>
     </div>

@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var card = document.createElement('div');
             card.classList.add('card', 'mb-3');
             card.style.maxWidth = '1080px';
-            card.style.padding = '25px';
+            card.style.padding = '20px';
 
             var row = document.createElement('div');
             row.classList.add('row', 'g-0');
@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
             var p1 = document.createElement('p');
             p1.classList.add('card-text','mt-3');
             p1.textContent = boton.closest('.single-product').querySelector('.product-text').textContent;
-            p1.style.fontSize = 'large';
 
             var priceContainer = document.createElement('div');
             priceContainer.style.display = 'flex';
@@ -57,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
             priceContainer.appendChild(p2);
 
             var p3 = document.createElement('p');
-            p3.classList.add('card-text');
+            p3.classList.add('card-brand');
             var small = document.createElement('medium');
             small.classList.add('text-body-secondary');
             small.textContent = boton.closest('.single-product').querySelector('.product-brand').textContent;
@@ -68,22 +67,26 @@ document.addEventListener('DOMContentLoaded', function() {
             
             p3.appendChild(small);
 
+            var closeButtonContainer = document.createElement('div');
+            closeButtonContainer.style.position = 'sticky';
+            closeButtonContainer.style.top = '0';
+            closeButtonContainer.style.right = '0';
+            closeButtonContainer.style.textAlign = 'right';
+
             var closeButton = document.createElement('button');
             var closeIcon = document.createElement('i');
             closeIcon.classList.add('fas', 'fa-times');
             closeButton.appendChild(closeIcon);
-            
-            
+
             closeButton.textContent = 'X';
             closeButton.style.border = 'Transparent';
-            closeButton.style.position = 'absolute';
-            closeButton.style.right = '10px';
-            closeButton.style.top = '10px';
+            closeButton.style.background = 'Transparent';
             closeButton.addEventListener('click', function() {
                 document.body.removeChild(modal);
             });
 
-            card.appendChild(closeButton);
+            closeButtonContainer.appendChild(closeButton);
+            card.appendChild(closeButtonContainer);
             
             cardBody.appendChild(h5);
             cardBody.appendChild(p1);
@@ -106,61 +109,61 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.appendChild(modal);
         });
     });
-    if($('.bbb_slider').length)
-    {
-        var trendsSlider = $('.bbb_slider');
-        trendsSlider.owlCarousel(
-        {
-            loop:false,
-            margin:30,
-            nav:false,
-            dots:false,
-            autoplayHoverPause:true,
-            autoplay:false,
-            responsive:
-            {
-                0:{items:1},
-                575:{items:2},
-                991:{items:3}
-            }
-        });
-
-        trendsSlider.on('click', '.bbb_fav', function (ev)
-        {
-            $(ev.target).toggleClass('active');
-        });
-
-        if($('.bbb_prev').length)
-        {
-            var prev = $('.bbb_prev');
-            prev.on('click', function()
-            {
-                trendsSlider.trigger('prev.owl.carousel');
-            });
-        }
-
-        if($('.bbb_next').length)
-        {
-            var next = $('.bbb_next');
-            next.on('click', function()
-            {
-                trendsSlider.trigger('next.owl.carousel');
-            });
-        }
-    }
-    document.querySelectorAll('.bbb_name a').forEach(function(link) {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            var targetId = this.getAttribute('href');
-            var targetElement = document.querySelector(targetId);
-            var expandLink = targetElement.querySelector('li a .fa-expand');
-            if (expandLink) {
-                window.scrollTo(0, targetElement.offsetTop);
-                expandLink.click();
-            }
-        });
-    });
     
+});
+if($('.bbb_slider').length)
+{
+    var trendsSlider = $('.bbb_slider');
+    trendsSlider.owlCarousel(
+    {
+        loop:false,
+        margin:30,
+        nav:false,
+        dots:false,
+        autoplayHoverPause:true,
+        autoplay:false,
+        responsive:
+        {
+            0:{items:1},
+            575:{items:2},
+            991:{items:3}
+        }
+    });
+
+    trendsSlider.on('click', '.bbb_fav', function (ev)
+    {
+        $(ev.target).toggleClass('active');
+    });
+
+    if($('.bbb_prev').length)
+    {
+        var prev = $('.bbb_prev');
+        prev.on('click', function()
+        {
+            trendsSlider.trigger('prev.owl.carousel');
+        });
+    }
+
+    if($('.bbb_next').length)
+    {
+        var next = $('.bbb_next');
+        next.on('click', function()
+        {
+            trendsSlider.trigger('next.owl.carousel');
+        });
+    }
+}
+document.querySelectorAll('.bbb_name a').forEach(function(link) {
+    link.addEventListener('click', function(event) {
+        event.preventDefault();
+        var targetId = this.getAttribute('href');
+        var targetElement = document.querySelector(targetId);
+        var expandLink = targetElement.querySelector('li a .fa-expand');
+        if (expandLink) {
+            window.scrollTo(0, targetElement.offsetTop);
+            expandLink.click();
+        }
+    });
 });
 
 $('#login-form').on('submit', function(e) {

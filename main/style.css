@@ -325,7 +325,7 @@ a:hover {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 999;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -362,7 +362,7 @@ section{
 .button a{display: block;font-size: 18px;font-weight: 400;line-height: 48px;color: #FFFFFF;padding-left: 35px;padding-right: 35px}
 .button:hover{opacity: 0.8}
 .trends{padding-top: 80px;padding-bottom: 0px; width: auto; height: 630px; }
-.bbb_overlay{position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: rgba(203, 225, 238, 0.3)}
+.bbb_overlay{position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: white}
 .bbb_background{position: absolute;top: 0;left: 0;width: 100%;height: 100%;background-repeat: no-repeat;background-size: cover;background-position: center center}
 .bbb_container{top: 50%;-webkit-transform: translateY(-50%);-moz-transform: translateY(-50%);-ms-transform: translateY(-50%);-o-transform: translateY(-50%);transform: translateY(-50%);padding-right: 40px}
 .bbb_title{padding-right: 50px; padding-top: 400px;}
@@ -398,21 +398,29 @@ section{
 
 @media only screen and (max-width: 768px) {
     .card {
-        width: 85%; /* Adjust as needed */
-        margin: 550px auto; /* Center the card */
+        width: 90%;
+        height: 85%;
+        margin-top: 80px;
+        overflow: auto;
+        scrollbar-width: none;
     }
 
     .card img {
         width: 100%; /* Make the image take up the full width of the card */
+        align-items: center;
     }
 
     .card .card-body {
         padding: 10px; /* Reduce padding */
     }
 
-    .card .card-body .card-title,
+    .card .card-body .card-title{
+        padding-top: 100px;
+        font-size: 24px; /* Reduce font size */
+    }
+
     .card .card-body .card-text {
-        font-size: 14px; /* Reduce font size */
+        font-size: 16px; /* Reduce font size */
     }
 
     .section-products .single-product .part-1 ul li a,
@@ -422,15 +430,15 @@ section{
         line-height: 30px;
     }
     .form-login {
-        padding-top: 50px; /* Ajusta según sea necesario */
+        padding-top: 0px; /* Ajusta según sea necesario */
     }
     .trends {
         height: auto; /* Permite que la altura se ajuste automáticamente */
     }
     .bbb_title {
-        padding-bottom: 50px; /* Reduce el padding */
+        padding-bottom: 30px; /* Reduce el padding */
         padding-top: 0px; /* Reduce el padding */
-        font-size: 24px; /* Reduce el tamaño de la fuente */
+        font-size: 30px; /* Reduce el tamaño de la fuente */
         text-align: center;;
         padding-right: 0%;
     }
@@ -438,6 +446,8 @@ section{
     .bbb_text {
         margin-top: 1px; /* Ajusta según sea necesario */
         text-align: center;
+        font-size: large;
+        
     }
    
     .bbb_nav {
@@ -457,6 +467,10 @@ section{
         margin-top: 20px; /* Añade un margen superior */
     }
 
+    .bbb_slider_container {
+        padding-top:  20px; /* Ajusta según sea necesario */
+    }
+
     .bbb_prev, .bbb_next {
         position: relative;
         display: inline-block;
@@ -474,19 +488,50 @@ section{
         height: 100px; /* Ajusta según sea necesario */
         padding: 10px;
     }
+    
+    #carruselbutton {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .owl-dots {
+        display: none;
+        padding-bottom: 70px;
+    }
+
     .navbar {
         overflow-y: scroll;
         max-height: 100vh;
         scrollbar-width: none; /* Para Firefox */
     }
-
-    #carruselbutton {
-        display: flex;
-        justify-content: center;
+    
+    #icontel {
+        width: 100%;
+        position: relative;
     }
 
-    .owl-dots {
-        display: none;
+    #iconcar{
+        position: absolute;
+        left: 0;
+        z-index: 100;
+    }
+    
+    .navbar-nav {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .dropdown {
+        width: 100%;
+    }
+    
+    .dropdown-menu {
+        width: 100%;
+        z-index: 1000 !important;
+    }
+    
+    .header {
+        padding-top: 110px;
     }
 
 }
