@@ -8,27 +8,6 @@
 }
 
 
-
-
-
-/*Navbar*/
-.navbar {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    color: white;
-    
-}
-
-.navbar a,i {
-    color: white;
-    text-decoration: none;
-    transition: color 0.15s ease-in-out; 
-}
-
-.navbar-brand.no-transition:hover {
-    color: inherit; 
-}
-
 .product-button {
     /* Estilos base para el botón */
     background-color: #353635; /* Verde */
@@ -49,9 +28,7 @@
     transition: background-color 0.3s ease-in-out; /* Slow color transition */
 }
 
-.nav-link:hover i {
-    color: black !important;
-  }
+
 
   @keyframes fadeIn {
     0% { opacity: 0; }
@@ -130,63 +107,63 @@ a:hover {
 }
 
 .section-products #product-1 .part-1::before {
-    background-image: url("src/casagato.jpeg");
+    background-image: url("../../src/casagato.jpeg");
     background-size: cover;
     transition: all 0.3s;
 }
 
 .section-products #product-2 .part-1::before {
-    background-image: url("src/casaperro.jpeg");
+    background-image: url("../../src/casaperro.jpeg");
     background-size: cover;
 }
 
 .section-products #product-3 .part-1::before {
-    background-image: url("src/juguetegato.jpeg");
+    background-image: url("../../src/juguetegato.jpeg");
     background-size: cover;
 }
 
 .section-products #product-4 .part-1::before {
-    background-image: url("src/jugueteperro.jpeg");
+    background-image: url("../../src/jugueteperro.jpeg");
     background-size: cover;
 }
 .section-products #product-5 .part-1::before {
-    background-image: url("src/correa.jpg");
+    background-image: url("../../src/correa.jpg");
     background-size: cover;
 		transition: all 0.3s;
 }
 
 .section-products #product-6 .part-1::before {
-    background-image: url("src/guante.jpeg");
+    background-image: url("../../src/guante.jpeg");
     background-size: cover;
 }
 
 .section-products #product-7 .part-1::before {
-    background-image: url("src/hamaca.jpeg");
+    background-image: url("../../src/hamaca.jpeg");
     background-size: cover;
 }
 
 .section-products #product-8 .part-1::before {
-    background-image: url("src/churu.jpg");
+    background-image: url("../../src/churu.jpg");
     background-size: cover;
 }
 .section-products #product-9 .part-1::before {
-    background-image: url("src/kitlimpieza.jpg");
+    background-image: url("../../src/kitlimpieza.jpg");
     background-size: cover;
 		transition: all 0.3s;
 }
 
 .section-products #product-10 .part-1::before {
-    background-image: url("src/jaula.jpg");
+    background-image: url("../../src/jaula.jpg");
     background-size: cover;
 }
 
 .section-products #product-11 .part-1::before {
-    background-image: url("src/juguetehamster.jpeg");
+    background-image: url("../../src/juguetehamster.jpeg");
     background-size: cover;
 }
 
 .section-products #product-12 .part-1::before {
-    background-image: url("src/jaulaparahamster.jpg");
+    background-image: url("../../src/jaulaparahamster.jpg");
     background-size: cover;
 }
 
@@ -678,143 +655,4 @@ section{
 
 
 
-@media only screen and (max-width: 768px) {
-    .card {
-        width: 90%;
-        height: 85%;
-        margin-top: 80px;
-        overflow: auto;
-        scrollbar-width: none;
-    }
-
-    .card img {
-        width: 100%; /* Make the image take up the full width of the card */
-        align-items: center;
-    }
-
-    .card .card-body {
-        padding: 10px; /* Reduce padding */
-    }
-
-    .card .card-body .card-title{
-        padding-top: 100px;
-        font-size: 24px; /* Reduce font size */
-    }
-
-    .card .card-body .card-text {
-        font-size: 16px; /* Reduce font size */
-    }
-
-    .section-products .single-product .part-1 ul li a,
-    .section-products .single-product .part-1 ul li a i {
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
-    }
-    .form-login {
-        padding-top: 0px; /* Ajusta según sea necesario */
-    }
-    .trends {
-        height: auto; /* Permite que la altura se ajuste automáticamente */
-    }
-    .bbb_title {
-        padding-bottom: 30px; /* Reduce el padding */
-        padding-top: 0px; /* Reduce el padding */
-        font-size: 30px; /* Reduce el tamaño de la fuente */
-        text-align: center;;
-        padding-right: 0%;
-    }
-
-    .bbb_text {
-        margin-top: 1px; /* Ajusta según sea necesario */
-        text-align: center;
-        font-size: large;
-        
-    }
-   
-    .bbb_nav {
-        width: 30px; /* Reduce el tamaño de los botones de navegación */
-        height: 30px;
-    }
-    .bbb_nav i {
-        font-size: 16px; /* Reduce el tamaño de los iconos de navegación */
-    }
-    .bbb_image {
-        height: auto; /* Permite que la altura de las imágenes se ajuste automáticamente */
-    }
-
-    .bbb_slider_nav {
-        position: relative;
-        text-align: center;
-        margin-top: 20px; /* Añade un margen superior */
-    }
-
-    .bbb_slider_container {
-        padding-top:  20px; /* Ajusta según sea necesario */
-    }
-
-    .bbb_prev, .bbb_next {
-        position: relative;
-        display: inline-block;
-        align-content: center;
-    }
-
-    .bbb_prev {
-        margin-right: 10px;
-    }
-
-    .bbb_next {
-        margin-left: 10px;
-    }
-    .bbb_container {
-        height: 100px; /* Ajusta según sea necesario */
-        padding: 10px;
-    }
-    
-    #carruselbutton {
-        display: flex;
-        justify-content: center;
-    }
-    
-    .owl-dots {
-        display: none;
-        padding-bottom: 70px;
-    }
-
-    .navbar {
-        overflow-y: scroll;
-        max-height: 100vh;
-        scrollbar-width: none; /* Para Firefox */
-    }
-    
-    #icontel {
-        width: 100%;
-        position: relative;
-    }
-
-    #iconcar{
-        position: absolute;
-        left: 0;
-        z-index: 100;
-    }
-    
-    .navbar-nav {
-        display: flex;
-        justify-content: space-between;
-    }
-    
-    .dropdown {
-        width: 100%;
-    }
-    
-    .dropdown-menu {
-        width: 100%;
-        z-index: 1000 !important;
-    }
-    
-    .header {
-        padding-top: 110px;
-    }
-
-}
 

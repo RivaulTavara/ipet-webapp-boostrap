@@ -1,0 +1,32 @@
+/*hace que la navbar y el carrousel hereden el color*/
+
+:root {
+    --navbar-color: rgb(117, 114, 115);
+    --footer-color: rgb(117, 114, 115);
+    
+
+}
+
+
+
+
+
+/*Navbar*/
+.navbar {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: white;
+    
+}
+
+.navbar a,i {
+    color: white;
+    text-decoration: none;
+    transition: color 0.15s ease-in-out; 
+}
+.navbar-brand.no-transition:hover {
+    color: inherit; 
+}
+.nav-link:hover i {
+    color: black !important;
+  }
