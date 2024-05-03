@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             card.classList.add('card', 'mb-3');
             card.style.maxWidth = '1080px';
             card.style.padding = '20px';
+            card.style.zIndex = '800';
 
             var row = document.createElement('div');
             row.classList.add('row', 'g-0');
