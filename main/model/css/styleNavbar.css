@@ -7,8 +7,18 @@
 
 }
 
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
 
-
+.dropdown-menu {
+    animation: fadeOut 0.5s;
+  } 
+  
+  .dropdown-menu.show {
+    animation: fadeIn 0.5s;
+  }
 
 
 /*Navbar*/
