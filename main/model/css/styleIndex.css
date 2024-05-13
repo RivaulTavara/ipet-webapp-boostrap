@@ -107,63 +107,63 @@ a:hover {
 }
 
 .section-products #product-1 .part-1::before {
-    background-image: url("../../src/casagato.jpeg");
+    background-image: url("../../src/casagato.png");
     background-size: cover;
     transition: all 0.3s;
 }
 
 .section-products #product-2 .part-1::before {
-    background-image: url("../../src/casaperro.jpeg");
+    background-image: url("../../src/casaperro.png");
     background-size: cover;
 }
 
 .section-products #product-3 .part-1::before {
-    background-image: url("../../src/juguetegato.jpeg");
+    background-image: url("../../src/juguetegato.png");
     background-size: cover;
 }
 
 .section-products #product-4 .part-1::before {
-    background-image: url("../../src/jugueteperro.jpeg");
+    background-image: url("../../src/jugueteperro.png");
     background-size: cover;
 }
 .section-products #product-5 .part-1::before {
-    background-image: url("../../src/correa.jpg");
+    background-image: url("../../src/correa.png");
     background-size: cover;
 		transition: all 0.3s;
 }
 
 .section-products #product-6 .part-1::before {
-    background-image: url("../../src/guante.jpeg");
+    background-image: url("../../src/guante.png");
     background-size: cover;
 }
 
 .section-products #product-7 .part-1::before {
-    background-image: url("../../src/hamaca.jpeg");
+    background-image: url("../../src/hamaca.png");
     background-size: cover;
 }
 
 .section-products #product-8 .part-1::before {
-    background-image: url("../../src/churu.jpg");
+    background-image: url("../../src/churu.png");
     background-size: cover;
 }
 .section-products #product-9 .part-1::before {
-    background-image: url("../../src/kitlimpieza.jpg");
+    background-image: url("../../src/kitdelimpieza.png");
     background-size: cover;
 		transition: all 0.3s;
 }
 
 .section-products #product-10 .part-1::before {
-    background-image: url("../../src/jaula.jpg");
+    background-image: url("../../src/jaula.png");
     background-size: cover;
 }
 
 .section-products #product-11 .part-1::before {
-    background-image: url("../../src/juguetehamster.jpeg");
+    background-image: url("../../src/jugueteparahamster.png");
     background-size: cover;
 }
 
 .section-products #product-12 .part-1::before {
-    background-image: url("../../src/jaulaparahamster.jpg");
+    background-image: url("../../src/jaulaparahamster.png");
     background-size: cover;
 }
 

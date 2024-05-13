@@ -221,7 +221,7 @@ $(window).resize(function() {
 }).trigger('resize');
 
 $(function() {
-    $(".price").click(async function(){
+    $(document).delegate('.price', 'click', async function() {
         if ($(this).hasClass('converted')) {
             // Si el precio ya ha sido convertido, muestra el precio original y elimina la clase 'converted'
             $(this).find('a').text($(this).data('originalPrice'));
@@ -244,7 +244,7 @@ $(function() {
                 var priceInDollars = priceInPesos / response.dolar.valor;
 
                 // Actualiza el texto del elemento <a> con el nuevo precio en dólares
-                $(this).find('a').text('$' + priceInDollars.toFixed(2));
+                $(this).find('a').text('$' + priceInDollars.toFixed(2) + ' USD');
 
                 // Añade la clase 'converted' al elemento
                 $(this).addClass('converted');
