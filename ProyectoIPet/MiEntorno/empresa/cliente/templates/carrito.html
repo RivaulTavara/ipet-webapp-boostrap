@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="icon" href="{% static 'alumnos/images/favicon.ico' %}" alt="Logo">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{% static 'alumnos/model/css/styleCarrito.css' %}">
+    <link rel="stylesheet" href="{% static 'alumnos/model/css/stylePago.css' %}">
+    <link rel="stylesheet" href="{% static 'alumnos/model/css/styleNavbar.css' %}">
+    <link rel="stylesheet" href="{% static 'alumnos/model/css/stylegeneralmovil.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: var(--navbar-color);">
+    <div class="container-fluid">
+      <a class="navbar-brand no-transition" href="index">
+        <div class="d-flex align-items-center">
+          <img src="{% static 'alumnos/images/favicon.ico' %}" alt="IPet" width="35px" height="35px">
+          <div class="marcontent" style="padding-left: 35px; padding-right: 30px;">
+            <h2>IPet</h2>
+            <h2>IPet</h2>
+          </div>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <div id="divdropdown" class="d-flex">
+                <li class="nav-item">
+                  <a class="nav-link"  href="index#productos" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Productos Destacados</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="index#galeria" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Galería de Productos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#pie-pag" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">¿Quiénes somos?</a>
+                </li>
+              </div>
+            </ul>
+            <div class="navbar-nav ms-auto">
+                <div class="d-flex" style="position: relative;">
+                  <div id="icontel" class="dropdown d-md-block">
+                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <img src="{% static 'alumnos/images/USUARIOSINFOTO.jpeg' %}" class="rounded-circle" alt="Foto de perfil" width="30" height="30">
+                    </a>
+                    <form id="login-form" class="dropdown-menu dropdown-menu-end p-4" action="{% static 'alumnos/model/php/login.php' %}" method="POST">
+                      <div class="mb-3">
+                        <label class="form-label" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: large;" >Correo</label>
+                        <input type="email" class="form-control" id="correo" name="email" required placeholder="ejemplo@correo.com" style="border-color: grey;" />
+                      </div>  
+                      <div class="mb-3">
+                        <label class="form-label" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: large;">Contraseña</label>
+                        <input type="password" id="password" name="password" class="form-control" required placeholder="Xx1234567@" style="border-color: grey;" />
+                      </div>
+                      <div class="mb-3">
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="loggedIn" name="loggedIn" style="border-color: grey;">
+                          <label class="form-check-label fw-semibold mb-2" for="loggedIn">Mantener sesión iniciada.</label>
+                        </div>
+                        <div class="text-center mt-3">
+                          <a href="restablecercon" style="color: blue; justify-content: center;" >¿Olvidaste tu contraseña?</a>
+                        </div>
+                      </div>
+                      <div class="mb-1 mx-auto d-flex justify-content-center align-items-center">
+                        <button type="submit" class="btn btn-primary btn-lg float" style="width: 300px;">Iniciar sesión</button>
+                      </div>
+                      <div class="mb-1 mx-auto d-flex justify-content-center align-items-center">
+                        <a href="registro" class="btn btn-primary btn-lg" style="width: 300px;">Regístrate</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+            </div>
+      </div>
+    </div>
+</nav>
+
+  <div>
+    <div class="ccccard">
+      <div class="row" style="padding-top: 100px; padding-bottom: 40px;">
+          <div class="col-md-8 ccccart">
+              <div class="ccctitle">
+                  <div class="row">
+                      <div class="col"><h4><b>Carrito de compras</b></h4></div>
+                      <div class="col align-self-center text-right text-muted">3 Productos</div>
+                  </div>
+              </div>    
+              <div class="row border-top border-bottom">
+                  <div class="row cccmain align-items-center">
+                      <div class="col-2"><img class="img-fluid" src="{% static 'alumnos/images/churu.png' %}" style="width: 3.5rem;"></div>
+                      <div class="col">
+                          <div class="cccrow text-muted">Alimento</div>
+                          <div class="cccrow">Churu para Gato</div>
+                      </div>
+                      <div class="col">
+                          <a href="#" style="padding: 0 1vh;">-</a><a href="#" class="border">1</a><a href="#">+</a>
+                      </div>
+                      <div class="col">&dollar; 9.990</div>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>                    
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="row cccmain align-items-center">
+                      <div class="col-2"><img class="img-fluid" src="{% static 'alumnos/images/jaula.png' %}" style="width: 3.5rem;"></div>
+                      <div class="col">
+                          <div class="cccrow text-muted">Accesorios</div>
+                          <div class="cccrow">Jaula de Transporte</div>
+                      </div>
+                      <div class="col">
+                          <a href="#" style="padding: 0 1vh;">-</a><a href="#" class="border">1</a><a href="#">+</a>
+                      </div>
+                      <div class="col">&dollar; 29.990</div>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+              </div>
+              <div class="row border-top border-bottom">
+                  <div class="row cccmain align-items-center">
+                      <div class="col-2"><img class="img-fluid" src="{% static 'alumnos/images/correa.png' %}" style="width: 3.5rem;"></div>
+                      <div class="col">
+                          <div class="cccrow text-muted">Accesorios</div>
+                          <div class="cccrow">Correa de Paseo para Perro</div>
+                      </div>
+                      <div class="col">
+                          <a href="#" style="padding: 0 1vh;">-</a><a href="#" class="border">1</a><a href="#">+</a>
+                      </div>
+                      <div class="col">&dollar; 7.990</div>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+              </div>
+              <div class="cccback-to-shop"><a href="index">&leftarrow;</a><span class="text-muted">Volver a la Tienda</span></div>
+          </div>
+          <div class="col-md-4 cccsummary">
+              <div><h5 style="margin-top: 4vh;"><b>Total</b></h5></div>
+              <hr style="margin-top: 1.25rem;">
+              <div class="row">
+                  <div class="col">3 Productos</div>
+                  <div class="col text-right">&dollar; 47.970</div>
+              </div>
+              <form>
+                  <p class="mt-2">Envío</p>
+                  <select>
+                    <option class="text-muted">Envío Estándar &dollar; 3.990</option>
+                    <option class="text-muted">Envío Express &dollar; 5.990</option>
+                    <option class="text-muted">Retiro en Tienda &dollar; 0</option>
+                  </select>
+                  <p>Código Promocional</p>
+                  <input id="code" placeholder="Ingresa tu código">
+              </form>
+              <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                  <div class="col">Total a Pagar</div>
+                  <div class="col text-right">&dollar; 51.960</div>
+              </div>
+              <button type="button" class="cccbtn" data-bs-toggle="modal" data-bs-target="#modalPago">Pagar</button>
+  
+          </div>
+      </div>
+      <script>
+        $(function() {
+          $('[data-toggle="tooltip"]').tooltip()
+        })
+      </script>
+      <div class="modal fade" id="modalPago" tabindex="-1" aria-labelledby="modalPagoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header" >
+              <h5 class="modal-title" id="modalPagoLabel">Método de Pago</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body container py-5">
+              <div class="card-header">
+                <div class="bg-white shadow-sm">
+                    <!-- Credit card form tabs -->
+                    <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
+                        <li class="nav-item"> <a data-bs-toggle="pill" href="#credit-card" class="nav-link active "> <i class="fas fa-credit-card mr-2"></i> Débito/Crédito </a> </li>
+                        <li class="nav-item"> <a data-bs-toggle="pill" href="#paypal" class="nav-link "> <i class="fab fa-paypal mr-2"></i> Paypal </a> </li>
+                        <li class="nav-item"> <a data-bs-toggle="pill" href="#net-banking" class="nav-link "> <i class="fas fa-mobile-alt mr-2"></i> Pago Bancario</a> </li>
+                    </ul>
+                </div>
+                <!-- debito o credito -->
+                <div class="tab-content">
+                    <div id="credit-card" class="tab-pane fade show active pt-3">
+                        <form role="form" onsubmit="event.preventDefault()">
+                            <div class="form-group"> <label for="username">
+                                    <h6>Propietario de la Tarjeta</h6>
+                                </label> <input type="text" name="username" placeholder="Nombre del Propietario" required class="form-control "> </div>
+                            <div class="form-group"> <label for="cardNumber">
+                                    <h6>Número de la Tarjeta</h6>
+                                </label>
+                                <div class="input-group d-flex">
+                                  <input type="text" name="cardNumber" placeholder="Número de Tarjeta Válido" class="form-control " required>
+                                  <span class="input-group-text text-muted span-alineado"> 
+                                    <i class="fab fa-cc-visa mx-1" style="color: rgb(153, 153, 153);"></i> 
+                                    <i class="fab fa-cc-mastercard mx-1" style="color: rgb(153, 153, 153);"></i> 
+                                    <i class="fab fa-cc-amex mx-1" style="color: rgb(153, 153, 153);"></i> 
+                                  </span> 
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group"> <label><span class="hidden-xs">
+                                                <h6>Fecha de Expiración</h6>
+                                            </span></label>
+                                        <div class="input-group"> <input type="number" placeholder="MM" name="" class="form-control" required> <input type="number" placeholder="YY" name="" class="form-control" required> </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group mb-4"> <label data-toggle="tooltip" title="El código de 3 dígitos al reverso de tu tarjeta">
+                                            <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
+                                        </label> <input type="text" required class="form-control"> </div>
+                                </div>
+                            </div>
+                            <div class="card-footer"> <button type="button" class="subscribe btn btn-primary btn-block shadow-sm"> Confirmar Pago </button>
+                        </form>
+                    </div>
+                </div>
+                <!-- Paypal -->
+                <div id="paypal" class="tab-pane fade pt-3">
+                    <h6 class="pb-2">Selecciona tu tipo de cuenta Paypal</h6>
+                    <div class="d-flex align-items-center">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="optradio" id="domestica" value="domestica" checked>
+                        <label class="form-check-label" for="domestica">Domestica</label>
+                      </div>
+                      <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="optradio" id="internacional" value="internacional">
+                        <label class="form-check-label" for="internacional">Internacional</label>
+                      </div>
+                    </div>                  
+                    <p> <button type="button" class="btn btn-primary "><i class="fab fa-paypal mr-2"></i> Iniciar Sesión en Paypal</button> </p>
+                    <p class="text-muted"> Nota: Luego de clickear el botón, serás dirigido a un servidor seguro para el pago. Luego de completar la transacción, serás redirigido de vuelta al carrito de compras para ver los detalles de tu orden.</p>
+                </div> 
+                <!-- bank transfer info -->
+                <div id="net-banking" class="tab-pane fade pt-3">
+                    <div class="form-group "> <label for="Select Your Bank">
+                            <h6>Selecciona tu banco</h6>
+                        </label> <select class="form-control" id="ccmonth">
+                            <option value="" selected disabled>--Por favor, selecciona un banco--</option>
+                            <option>Banco Bice</option>
+                            <option>BBVA</option>
+                            <option>Banco Consorcio</option>
+                            <option>Banco de Chile - Edwards Citi</option>
+                            <option>Banco del Desarrollo</option>
+                            <option>Banco Estado</option>
+                            <option>Banco Falabella</option>
+                            <option>Banco Internacional</option>
+                            <option>Banco Itaú</option>
+                            <option>Banco Paris</option>
+                            <option>Banco Ripley</option>
+                            <option>Banco Santander - Banefe</option>
+                            <option>Bci - Tbanc - Nova</option>
+                            <option>Coopeuch</option>
+                            <option>Corpbanca</option>
+                            <option>Copec Pay</option>
+                            <option>HSBC Bank</option>
+                            <option>Los Héroes</option>
+                            <option>Mercado Pago Emisora S.A</option>
+                            <option>Scotiabank</option>
+                            <option>Scotiabank</option>
+                            <option>TAPP Caja Los Andes</option>
+                            <option>TENPO Prepago</option>
+                            <option>Transbank</option>
+                        </select> </div>
+                    <div class="form-group">
+                        <p> <button type="button" class="btn btn-primary "><i class="fas fa-mobile-alt mr-2"></i> Proceder al Pago</button> </p>
+                    </div>
+                    <p class="text-muted"> Nota: Luego de clickear el botón, serás dirigido a un servidor seguro para el pago. Luego de completar la transacción, serás redirigido de vuelta al carrito de compras para ver los detalles de tu orden.</p>
+                </div>
+            </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="pie-pag" style="background-color: var(--footer-color); padding-top: 1px; color: white; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>¿Quiénes somos?</h5>
+          <p>Somos una tienda en línea especializada en productos para mascotas. Nuestro objetivo es brindar a los dueños de mascotas los mejores productos y servicios para el cuidado y bienestar de sus compañeros peludos.</p>
+        </div>
+        <div class="col-md-6">
+          <h5>Contacto</h5>
+          <p>Dirección: 1153 Las Calilas, Santiago, Chile</p>
+          <p>Teléfono: +56983672634</p>
+          <p>Email: fullinfo@ipet.cl</p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <hr>
+          <p class="text-center">© 2022 iPet. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="{% static 'alumnos/model/js/script.js' %}">
+  
+</body>
+</html>

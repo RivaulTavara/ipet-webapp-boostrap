@@ -1,0 +1,30 @@
+{
+  "database": {
+    "1713539787748": {
+      "host": "127.0.0.1",
+      "port": 3306,
+      "user": "root",
+      "dbType": "MySQL",
+      "name": "ipet",
+      "advance": {
+        "hideSystemSchema": true
+      },
+      "timezone": "+00:00",
+      "usingSSH": false,
+      "useSocksProxy": false,
+      "useHTTPProxy": false,
+      "global": true,
+      "savePassword": "Forever",
+      "readonly": false,
+      "sort": 11,
+      "useSSL": false,
+      "fs": {
+        "showHidden": true
+      },
+      "key": "1713539787748",
+      "connectionKey": "database.connections"
+    }
+  },
+  "nosql": null,
+  "$schema": "http://127.0.0.1:8828/schema.json"
+}
