@@ -1,523 +1,492 @@
-{% include "master.html" %}
+{% extends "master.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block links%}
-    {% endblock%}
-    <style> 
-      .section-products #product-1 .part-1::before {
-        background-image: url("{% static 'cliente/images/casagato.png' %}");
-        background-size: cover;
-        transition: all 0.3s;
-    }
     
-    .section-products #product-2 .part-1::before {
-        background-image: url("{% static 'cliente/images/casaperro.png' %}");
-        background-size: cover;
-    }
-    
-    .section-products #product-3 .part-1::before {
-        background-image: url("{% static 'cliente/images/juguetegato.png' %}");
-        background-size: cover;
-    }
-    
-    .section-products #product-4 .part-1::before {
-        background-image: url("{% static 'cliente/images/jugueteperro.png' %}");
-        background-size: cover;
-    }
-    .section-products #product-5 .part-1::before {
-        background-image: url("{% static 'cliente/images/correa.png' %}");
-        background-size: cover;
-        transition: all 0.3s;
-    }
-    
-    .section-products #product-6 .part-1::before {
-        background-image: url("{% static 'cliente/images/guante.png' %}");
-        background-size: cover;
-    }
-    
-    .section-products #product-7 .part-1::before {
-        background-image: url("{% static 'cliente/images/hamaca.png' %}");
-        background-size: cover;
-    }
-    
-    .section-products #product-8 .part-1::before {
-        background-image: url("{% static 'cliente/images/churu.png' %}");
-        background-size: cover;
-    }
-    .section-products #product-9 .part-1::before {
-        background-image: url("{% static 'cliente/images/kitdelimpieza.png' %}");
-        background-size: cover;
-        transition: all 0.3s;
-    }
-    
-    .section-products #product-10 .part-1::before {
-        background-image: url("{% static 'cliente/images/jaula.png' %}");
-        background-size: cover;
-    }
-    
-    .section-products #product-11 .part-1::before {
-        background-image: url("{% static 'cliente/images/jugueteparahamster.png' %}");
-        background-size: cover;
-    }
-    
-    .section-products #product-12 .part-1::before {
-        background-image: url("{% static 'cliente/images/jaulaparahamster.png' %}");
-        background-size: cover;
-    }
-    </style>
-    <title>IPet</title>
-  </head>
-  <body>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
-    {% block navbar %}
 
+    <style> 
+          .section-products #product-1 .part-1::before {
+            background-image: url("{% static 'cliente/images/casagato.png' %}");
+            background-size: cover;
+            transition: all 0.3s;
+        }
+        
+        .section-products #product-2 .part-1::before {
+            background-image: url("{% static 'cliente/images/casaperro.png' %}");
+            background-size: cover;
+        }
+        
+        .section-products #product-3 .part-1::before {
+            background-image: url("{% static 'cliente/images/juguetegato.png' %}");
+            background-size: cover;
+        }
+        
+        .section-products #product-4 .part-1::before {
+            background-image: url("{% static 'cliente/images/jugueteperro.png' %}");
+            background-size: cover;
+        }
+        .section-products #product-5 .part-1::before {
+            background-image: url("{% static 'cliente/images/correa.png' %}");
+            background-size: cover;
+            transition: all 0.3s;
+        }
+        
+        .section-products #product-6 .part-1::before {
+            background-image: url("{% static 'cliente/images/guante.png' %}");
+            background-size: cover;
+        }
+        
+        .section-products #product-7 .part-1::before {
+            background-image: url("{% static 'cliente/images/hamaca.png' %}");
+            background-size: cover;
+        }
+        
+        .section-products #product-8 .part-1::before {
+            background-image: url("{% static 'cliente/images/churu.png' %}");
+            background-size: cover;
+        }
+        .section-products #product-9 .part-1::before {
+            background-image: url("{% static 'cliente/images/kitdelimpieza.png' %}");
+            background-size: cover;
+            transition: all 0.3s;
+        }
+        
+        .section-products #product-10 .part-1::before {
+            background-image: url("{% static 'cliente/images/jaula.png' %}");
+            background-size: cover;
+        }
+        
+        .section-products #product-11 .part-1::before {
+            background-image: url("{% static 'cliente/images/jugueteparahamster.png' %}");
+            background-size: cover;
+        }
+        
+        .section-products #product-12 .part-1::before {
+            background-image: url("{% static 'cliente/images/jaulaparahamster.png' %}");
+            background-size: cover;
+        }
+    </style>
+
+
+
+    {% block contenido %}
+        <link rel="stylesheet" href="{% static 'cliente/model/css/styleIndex.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
+        <div class="form-login" style="padding-top: 80px;" id="productos">
+            <div class="trends">
+              <div class="bbb_background"></div>
+              <div class="bbb_overlay"></div>
+              <div class="container">
+                  <div class="row">
+                      <div class="col-lg-3">
+                          <div class="bbb_container">
+                              <h1 class="bbb_title">Productos Destacados de la Semana</h1>
+                              <div class="bbb_text">
+                                  <p>Encuentra los productos más destacados de 2022.</p>
+                              </div> 
+                              <div class="bbb_slider_nav d-none d-md-block">
+                                  <div class="bbb_prev bbb_nav"><i class="fas fa-angle-left ml-auto"></i></div>
+                                  <div class="bbb_next bbb_nav"><i class="fas fa-angle-right ml-auto"></i></div>
+                                </div>
+
+                          </div>
+                      </div>
+                      <div class="col-lg-9">
+                          <div class="bbb_slider_container">
+                              <div class="owl-carousel owl-theme bbb_slider">
+                                  <div class="owl-item">
+                                      <div class="bbb_item is_new">
+                                          <div class="bbb_image d-flex flex-column align-items-center justify-content-center"><img src="{% static 'cliente/images/churu.png' %}" alt=""></div>
+                                          <div class="bbb_content">
+                                              <div class="bbb_category"><a href="javascript:void(0);">Alimento</a></div>
+                                              <div class="bbb_info clearfix">
+                                                  <div class="bbb_name"><a href="#product-8">Churu para Gato</a></div>
+                                                  <div class="bbb_text"><a href="javascript:void(0);"></a></div>
+                                                  <div class="bbb_price price"><a href="javascript:void(0);">$9.990 CLP</a></div>
+                                              </div>
+                                          </div>
+                                          <ul class="bbb_marks">
+                                            <li class="offer-icon">Oferta!</li>
+                                          </ul>
+                                          <div class="bbb_fav"><i class="fas fa-heart"></i></div>
+                                      </div>
+                                  </div>
+                                  <div class="owl-item">
+                                      <div class="bbb_item is_new">
+                                          <div class="bbb_image d-flex flex-column align-items-center justify-content-center"><img src="{% static 'cliente/images/kitdelimpieza.png' %}" alt=""></div>
+                                          <div class="bbb_content">
+                                              <div class="bbb_category"><a href="javascript:void(0);">Higine</a></div>
+                                              <div class="bbb_info clearfix">
+                                                  <div class="bbb_name"><a href="#product-9">Kit de Limpieza Canina</a></div>
+                                                  <div class="bbb_price price"><a href="javascript:void(0);">$14.990 CLP</a></div>
+                                              </div>
+                                          </div>
+                                          <ul class="bbb_marks">
+                                            <li class="offer-icon">Oferta!</li>
+                                          </ul>
+                                          <div class="bbb_fav"><i class="fas fa-heart"></i></div>
+                                      </div>
+                                  </div>
+                                  <div class="owl-item">
+                                      <div class="bbb_item is_new">
+                                          <div class="bbb_image d-flex flex-column align-items-center justify-content-center"><img src="{% static 'cliente/images/jaula.png' %}" alt=""></div>
+                                          <div class="bbb_content">
+                                              <div class="bbb_category"><a href="javascript:void(0);">Accesorios</a></div>
+                                              <div class="bbb_info clearfix">
+                                                  <div class="bbb_name"><a href="#product-10">Jaula de Transporte</a></div>
+                                                  <div class="bbb_text"><a href="javascript:void(0);"></a></div>
+                                                  <div class="bbb_price price"><a href="javascript:void(0);">$29.990 CLP</a></div>
+                                              </div>
+                                          </div>
+                                          <ul class="bbb_marks">
+                                            <li class="offer-icon">Oferta!</li>
+                                          </ul>
+                                          <div class="bbb_fav"><i class="fas fa-heart"></i></div>
+                                      </div>
+                                  </div>
+                                  <div class="owl-item">
+                                      <div class="bbb_item is_new">
+                                          <div class="bbb_image d-flex flex-column align-items-center justify-content-center"><img src="{% static 'cliente/images/juguetegato.png' %}" alt=""></div>
+                                          <div class="bbb_content">
+                                              <div class="bbb_category"><a href="javascript:void(0);">Accesorios</a></div>
+                                              <div class="bbb_info clearfix">
+                                                  <div class="bbb_name"><a href="#product-3">Juguete para Gato</a></div>
+                                                  <div class="bbb_text"><a href="javascript:void(0);"></a></div>
+                                                  <div class="bbb_price price"><a href="javascript:void(0);"> $1.990 CLP</a></div>
+                                              </div>
+                                          </div>
+
+                                          <ul class="bbb_marks">
+                                            <li class="offer-icon">Oferta!</li>
+                                        </ul>
+                                            <div class="bbb_fav"><i class="fas fa-heart"></i></div>
+                                      </div>
+                                  </div>
+                                  <div class="owl-item">
+                                      <div class="bbb_item is_new">
+                                          <div class="bbb_image d-flex flex-column align-items-center justify-content-center"><img src="{% static 'cliente/images/correa.png' %}" alt=""></div>
+                                          <div class="bbb_content">
+                                              <div class="bbb_category"><a href="javascript:void(0);">Accesorios</a></div>
+                                              <div class="bbb_info clearfix">
+                                                  <div class="bbb_name"><a href="#product-5">Correa de Paseo para Perro</a></div>
+                                                  <div class="bbb_price price"><a href="javascript:void(0);"> $7.990 CLP</a></div>
+                                              </div>
+                                          </div>
+                                          <ul class="bbb_marks">
+                                            <li class="offer-icon">Oferta!</li>
+                                          </ul>
+                                            <div class="bbb_fav"><i class="fas fa-heart"></i></div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div id="carruselbutton" class="d-md-none ml-auto">
+                        <div class="bbb_prev bbb_nav"><i class="fas fa-angle-left ml-auto"></i></div>
+                        <div class="bbb_next bbb_nav"><i class="fas fa-angle-right ml-auto"></i></div>
+                      </div>
+                  </div>
+            </div>
+
+
+            </div>
+          </div>
+      
+      
+      
+                <!-- Galeria de productos -->
+                <!--De igual manera en la galeria de fotos, esta codeada para que funcione de esta manera
+                no cambiar , esta codeada en 6 secciones con dos imagenes por seccion,
+                para que se pueda ver una al lado de la otra como espejo
+                -->
+                <section class="section-products" id="galeria">
+                  <div class="container">
+                      <div class="row justify-content-center text-center">
+                          <div class="col-md-8 col-lg-6">
+                              <div class="header">
+                                  <h3>Lo Más Vendido</h3>
+                                  <h2>Galeria de Productos</h2>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <!-- Single Product -->
+                          <div class="col-md-6 col-lg-4 col-xl-3">
+                              <div id="product-1" class="single-product">
+                                <div class="part-1">
+                                  <span class="discount">20% off</span>
+                                  <ul>
+                                      <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
+                                      <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                      <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                      <li><a href="#"><i class="fas fa-expand"></i></a></li>                            
+                                    </ul>
+                                  </div>
+                                  <div class="part-2">
+                                      <p class="product-text d-none d-md-none ">Esta acogedora casa para gatos es el refugio perfecto para tu mascota. Hecha con materiales de alta calidad, proporciona un espacio seguro y cómodo para tu gato. Su diseño elegante se adapta a cualquier decoración del hogar.</p>
+                                      <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: GitCat</small></p>
+                                      <p class="product-stock d-none d-md-none"><small class="text-body-secondary">9 Disponibles</small></p>
+                                      <div class="product-title"><a href="javascript:void(0);">Casa para Gato</a></div>
+                                      <div style="display: flex; justify-content: end;">
+                                        <div class="product-old-price price" style="margin-top: 6px;"><a href="javascript:void(0);">$32.990 CLP</a></div>
+                                        <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$26.390 CLP</a></div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <!-- Single Product -->
+                          <div class="col-md-6 col-lg-4 col-xl-3">
+                              <div id="product-2" class="single-product">
+                                  <div class="part-1">
+                                      <ul>
+                                          <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                          <li><a href=""><i class="fas fa-expand"></i></a></li>
+                                      </ul>
+                                  </div>
+                                  <div class="part-2">
+                                      <p class="product-text d-none d-md-none ">Esta robusta casa para perros ofrece el espacio perfecto para tu amigo de cuatro patas. Construida con materiales duraderos, garantiza un refugio seguro y cómodo para tu perro. Su diseño práctico y atractivo se integra perfectamente en cualquier espacio exterior.</p>
+                                      <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: DogStyle</small></p>
+                                      <p class="product-stock d-none d-md-none"><small class="text-body-secondary">50+ Disponibles</small></p>
+                                      <div class="product-title"><a href="javascript:void(0);">Casa para Perro</a></div>
+                                      <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$30.990 CLP</a></div>
+                                  </div>
+                              </div>
+                          </div>
+                          <!-- Single Product -->
+                          <div class="col-md-6 col-lg-4 col-xl-3">
+                              <div id="product-3" class="single-product">
+                                  <div class="part-1">
+                                    <span class="discount">30% off</span>
+                                
+                                      <ul>
+                                          <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                          <li><a href=""><i class="fas fa-expand"></i></a></li>
+                                      </ul>
+                                  </div>
+                                  <div class="part-2">
+                                      <p class="product-text d-none d-md-none ">Este juguete interactivo para gatos garantiza horas de diversión para tu mascota. Diseñado para estimular sus instintos naturales, este juguete mantendrá a tu gato activo y entretenido. Su material resistente asegura una larga durabilidad.</p>
+                                      <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: GitCat</small></p>
+                                      <p class="product-stock d-none d-md-none"><small class="text-body-secondary">50+ Disponibles</small></p>
+                                      <div class="product-title"><a href="javascript:void(0);">Juguete para Gato</a></div>
+                                      <div style="display: flex; justify-content: end;">
+                                        <div class="product-old-price price" style="margin-top: 6px;"><a href="javascript:void(0);">$9.990 CLP</a></div>
+                                        <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$6.990 CLP</a></div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <!-- Single Product -->
+                          <div class="col-md-6 col-lg-4 col-xl-3">
+                              <div id="product-4" class="single-product">
+                                  <div class="part-1">
+                                      <span class="new">Nuevo</span>
+                                      <ul>
+                                          <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                          <li><a href=""><i class="fas fa-expand"></i></a></li>
+                                      </ul>
+                                  </div>
+                                  <div class="part-2">
+                                      <p class="product-text d-none d-md-none ">Este juguete para perros es el compañero de juego perfecto para tu mascota. Diseñado para resistir mordiscos y tirones, este juguete no solo entretiene a tu perro, sino que también ayuda a mantener sus dientes limpios y saludables. Su material duradero garantiza una larga vida útil.</p>
+                                      <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: DogmasFour</small></p>
+                                      <p class="product-stock d-none d-md-none"><small class="text-body-secondary">50+ Disponibles</small></p>
+                                      <div class="product-title"><a href="javascript:void(0);">Juguete para Perro</a></div>
+                                      <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$1.990 CLP</a></div>
+                                  </div>
+                              </div>
+                          </div>
+                          <!-- Single Product -->
+                          <div class="col-md-6 col-lg-4 col-xl-3">
+                              <div id="product-5" class="single-product">
+                                  <div class="part-1">
+                                      <ul>
+                                          <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                          <li><a href=""><i class="fas fa-expand"></i></a></li>
+                                      </ul>
+                                  </div>
+                                  <div class="part-2">
+                                      <p class="product-text d-none d-md-none ">Esta correa de paseo para perros combina comodidad y control. Hecha con materiales resistentes, garantiza durabilidad y seguridad en cada paseo. Su diseño ergonómico proporciona un agarre cómodo para el dueño y un movimiento libre para el perro.</p>
+                                      <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: DogmasFour</small></p>
+                                      <p class="product-stock d-none d-md-none"><small class="text-body-secondary">15 Disponibles</small></p>
+                                      <div class="product-title"><a href="javascript:void(0);">Correa de Paseo</a></div>
+                                      <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$7.990 CLP</a></div>
+                                  </div>
+                              </div>
+                          </div>
+                          <!-- Single Product -->
+                          <div class="col-md-6 col-lg-4 col-xl-3">
+                              <div id="product-6" class="single-product">
+                                  <div class="part-1">
+                                      <span class="discount">50% off</span>
+                                      <ul>
+                                          <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                          <li><a href=""><i class="fas fa-expand"></i></a></li>
+                                      </ul>
+                                  </div>
+                                  <div class="part-2">
+                                    <p class="product-text d-none d-md-none ">Este guante de limpieza hace que el baño de tu mascota sea una experiencia muy agradable para esta. Sus suaves cerdas masajean la piel de tu mascota mientras limpian su pelaje, proporcionando una limpieza profunda y un cuidado delicado. Su diseño ergonómico permite un fácil manejo y control.</p>
+                                    <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: Emporium</small></p>
+                                    <p class="product-stock d-none d-md-none"><small class="text-body-secondary">9 Disponibles</small></p>
+                                    <div class="product-title"><a href="javascript:void(0);">Guante Cepillo quita Pelos</a></div>
+                                    <div style="display: flex; justify-content: end;">
+                                      <div class="product-old-price price" style="margin-top: 6px;"><a href="javascript:void(0);">$3.990 CLP</a></div>
+                                      <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$1.990 CLP</a></div>
+                                    </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <!-- Single Product -->
+                          <div class="col-md-6 col-lg-4 col-xl-3">
+                              <div id="product-7" class="single-product">
+                                  <div class="part-1">
+                                      <ul>
+                                          <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                          <li><a href=""><i class="fas fa-expand"></i></a></li>
+                                      </ul>
+                                  </div>
+                                  <div class="part-2">
+                                      <p class="product-text d-none d-md-none ">Esta hamaca de limpieza canina facilita el aseo de tu mascota. Su diseño seguro y cómodo mantiene a tu perro en posición mientras lo limpias, proporcionando una experiencia de baño más eficiente y agradable. Hecha con materiales resistentes y fáciles de limpiar, es la herramienta perfecta para mantener a tu perro limpio y feliz.</p>
+                                      <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: Emporium</small></p>
+                                      <p class="product-stock d-none d-md-none"><small class="text-body-secondary">13 Disponibles</small></p>
+                                      <div class="product-title price"><a href="javascript:void(0);">Hamaca para Limpieza Canina</a></div>
+                                      <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$5.990 CLP</a></div>
+                                  </div>
+                              </div>
+                          </div>
+                          <!-- Single Product -->
+                          <div class="col-md-6 col-lg-4 col-xl-3">
+                              <div id="product-8" class="single-product">
+                                  <div class="part-1">
+                                      <span class="new">Nuevo</span>
+                                      <ul>
+                                          <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                          <li><a href=""><i class="fas fa-expand"></i></a></li>
+                                      </ul>
+                                  </div>
+                                  <div class="part-2">
+                                      <p class="product-text d-none d-md-none ">Los Churus son el premio perfecto para tu mascota. Hechas con ingredientes de alta calidad, proporcionan un sabor delicioso que a tu gato le encantará. Son fáciles de digerir y ayudan a mantener la salud dental de tu gato.</p>
+                                      <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: Churu</small></p>
+                                      <p class="product-stock d-none d-md-none"><small class="text-body-secondary">50+ Disponibles</small></p>
+                                      <div class="product-title"><a href="javascript:void(0);">Churu para Gatos</a></div>
+                                      <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$2.290 CLP</a></div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6 col-lg-4 col-xl-3">
+                              <div id="product-9" class="single-product">
+                                  <div class="part-1">
+                                      <span class="new">Nuevo</span>
+                                      <ul>
+                                          <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                          <li><a href=""><i class="fas fa-expand"></i></a></li>
+                                      </ul>
+                                  </div>
+                                  <div class="part-2">
+                                      <p class="product-text d-none d-md-none ">Este kit de limpieza canina es esencial para el cuidado de tu perro. Incluye todo lo que necesitas para mantener a tu mascota limpia y saludable. Los productos son de alta calidad y seguros para tu perro. Con este kit, el aseo de tu perro será una tarea fácil y agradable.</p>
+                                      <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: DogmasFour</small></p>
+                                      <p class="product-stock d-none d-md-none"><small class="text-body-secondary">6 Disponibles</small></p>
+                                      <div class="product-title"><a href="javascript:void(0);">Kit de Limpieza Canina</a></div>
+                                      <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$4.990 CLP</a></div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6 col-lg-4 col-xl-3">
+                              <div id="product-10" class="single-product">
+                                  <div class="part-1">
+                                      <span class="new">Nuevo</span>
+                                      <ul>
+                                          <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                          <li><a href=""><i class="fas fa-expand"></i></a></li>
+                                      </ul>
+                                  </div>
+                                  <div class="part-2">
+                                      <p class="product-text d-none d-md-none ">Esta jaula de transporte es ideal para viajar con tu mascota. Su diseño seguro y cómodo garantiza que tu animal esté protegido y tranquilo durante el viaje. Hecha con materiales duraderos, es fácil de limpiar y mantener.</p>
+                                      <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: JohnCage</small></p>
+                                      <p class="product-stock d-none d-md-none"><small class="text-body-secondary">10 Disponibles</small></p>
+                                      <div class="product-title"><a href="javascript:void(0);">Jaula de Transporte</a></div>
+                                      <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$24.990 CLP</a></div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6 col-lg-4 col-xl-3">
+                              <div id="product-11" class="single-product">
+                                  <div class="part-1">
+                                      <span class="new">Nuevo</span>
+                                      <ul>
+                                          <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                          <li><a href=""><i class="fas fa-expand"></i></a></li>
+                                      </ul>
+                                  </div>
+                                  <div class="part-2">
+                                      <p class="product-text d-none d-md-none ">Este juguete para hámster es perfecto para mantener a tu mascota activa y entretenida. Diseñado para estimular el comportamiento natural del hámster, este juguete promueve el ejercicio y reduce el aburrimiento. Hecho con materiales seguros y duraderos, es el regalo perfecto para tu pequeño amigo.</p>
+                                      <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: PickLock</small></p>
+                                      <p class="product-stock d-none d-md-none"><small class="text-body-secondary">25 Disponibles</small></p>
+                                      <div class="product-title"><a href="javascript:void(0);">Juguete para Hamster</a></div>
+                                      <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$4.990 CLP</a></div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6 col-lg-4 col-xl-3">
+                              <div id="product-12" class="single-product">
+                                  <div class="part-1">
+                                    <span class="discount">20% off</span>
+                                      <ul>
+                                          <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                          <li><a href=""><i class="fas fa-expand"></i></a></li>
+                                      </ul>
+                                  </div>
+                                  <div class="part-2">
+                                      <p class="product-text d-none d-md-none ">Esta jaula para hámster ofrece un hogar seguro y cómodo para tu pequeña mascota. Con espacio suficiente para jugar y descansar, esta jaula está diseñada para promover el bienestar de tu hámster. Hecha con materiales duraderos y fáciles de limpiar, es la elección perfecta para tu amigo peludo.</p>
+                                      <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: PickLock</small></p>
+                                      <p class="product-stock d-none d-md-none"><small class="text-body-secondary">33 Disponibles</small></p>
+                                      <div class="product-title"><a href="javascript:void(0);">Jaula para Hamster</a></div>
+                                      <div style="display: flex; justify-content: end;">
+                                        <div class="product-old-price price" style="margin-top: 6px;"><a href="javascript:void(0);">$24.990 CLP</a></div>
+                                        <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$19.990 CLP</a></div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </section>
+              <!--Registro de nuevos usuarios (hypervinculo al archivo registro)-->
+              <div class="alert  alert-dismissible fade show" role="alert" style="position: fixed; bottom: 20px; right: 20px; z-index: 500;">
+                <a href="registro" class="btn btn-primary btn-lg">¿Eres nuevo? ¡Regístrate!</a>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
     {% endblock %}
 
-    <div class="form-login" style="padding-top: 80px;" id="productos">
-      <div class="trends">
-        <div class="bbb_background"></div>
-        <div class="bbb_overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="bbb_container">
-                        <h1 class="bbb_title">Productos Destacados de la Semana</h1>
-                        <div class="bbb_text">
-                            <p>Encuentra los productos más destacados de 2022.</p>
-                        </div> 
-                        <div class="bbb_slider_nav d-none d-md-block">
-                            <div class="bbb_prev bbb_nav"><i class="fas fa-angle-left ml-auto"></i></div>
-                            <div class="bbb_next bbb_nav"><i class="fas fa-angle-right ml-auto"></i></div>
-                          </div>
-                          
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="bbb_slider_container">
-                        <div class="owl-carousel owl-theme bbb_slider">
-                            <div class="owl-item">
-                                <div class="bbb_item is_new">
-                                    <div class="bbb_image d-flex flex-column align-items-center justify-content-center"><img src="{% static 'cliente/images/churu.png' %}" alt=""></div>
-                                    <div class="bbb_content">
-                                        <div class="bbb_category"><a href="javascript:void(0);">Alimento</a></div>
-                                        <div class="bbb_info clearfix">
-                                            <div class="bbb_name"><a href="#product-8">Churu para Gato</a></div>
-                                            <div class="bbb_text"><a href="javascript:void(0);"></a></div>
-                                            <div class="bbb_price price"><a href="javascript:void(0);">$9.990 CLP</a></div>
-                                        </div>
-                                    </div>
-                                    <ul class="bbb_marks">
-                                      <li class="offer-icon">Oferta!</li>
-                                    </ul>
-                                    <div class="bbb_fav"><i class="fas fa-heart"></i></div>
-                                </div>
-                            </div>
-                            <div class="owl-item">
-                                <div class="bbb_item is_new">
-                                    <div class="bbb_image d-flex flex-column align-items-center justify-content-center"><img src="{% static 'cliente/images/kitdelimpieza.png' %}" alt=""></div>
-                                    <div class="bbb_content">
-                                        <div class="bbb_category"><a href="javascript:void(0);">Higine</a></div>
-                                        <div class="bbb_info clearfix">
-                                            <div class="bbb_name"><a href="#product-9">Kit de Limpieza Canina</a></div>
-                                            <div class="bbb_price price"><a href="javascript:void(0);">$14.990 CLP</a></div>
-                                        </div>
-                                    </div>
-                                    <ul class="bbb_marks">
-                                      <li class="offer-icon">Oferta!</li>
-                                    </ul>
-                                    <div class="bbb_fav"><i class="fas fa-heart"></i></div>
-                                </div>
-                            </div>
-                            <div class="owl-item">
-                                <div class="bbb_item is_new">
-                                    <div class="bbb_image d-flex flex-column align-items-center justify-content-center"><img src="{% static 'cliente/images/jaula.png' %}" alt=""></div>
-                                    <div class="bbb_content">
-                                        <div class="bbb_category"><a href="javascript:void(0);">Accesorios</a></div>
-                                        <div class="bbb_info clearfix">
-                                            <div class="bbb_name"><a href="#product-10">Jaula de Transporte</a></div>
-                                            <div class="bbb_text"><a href="javascript:void(0);"></a></div>
-                                            <div class="bbb_price price"><a href="javascript:void(0);">$29.990 CLP</a></div>
-                                        </div>
-                                    </div>
-                                    <ul class="bbb_marks">
-                                      <li class="offer-icon">Oferta!</li>
-                                    </ul>
-                                    <div class="bbb_fav"><i class="fas fa-heart"></i></div>
-                                </div>
-                            </div>
-                            <div class="owl-item">
-                                <div class="bbb_item is_new">
-                                    <div class="bbb_image d-flex flex-column align-items-center justify-content-center"><img src="{% static 'cliente/images/juguetegato.png' %}" alt=""></div>
-                                    <div class="bbb_content">
-                                        <div class="bbb_category"><a href="javascript:void(0);">Accesorios</a></div>
-                                        <div class="bbb_info clearfix">
-                                            <div class="bbb_name"><a href="#product-3">Juguete para Gato</a></div>
-                                            <div class="bbb_text"><a href="javascript:void(0);"></a></div>
-                                            <div class="bbb_price price"><a href="javascript:void(0);"> $1.990 CLP</a></div>
-                                        </div>
-                                    </div>
-                                    
-                                    <ul class="bbb_marks">
-                                      <li class="offer-icon">Oferta!</li>
-                                  </ul>
-                                      <div class="bbb_fav"><i class="fas fa-heart"></i></div>
-                                </div>
-                            </div>
-                            <div class="owl-item">
-                                <div class="bbb_item is_new">
-                                    <div class="bbb_image d-flex flex-column align-items-center justify-content-center"><img src="{% static 'cliente/images/correa.png' %}" alt=""></div>
-                                    <div class="bbb_content">
-                                        <div class="bbb_category"><a href="javascript:void(0);">Accesorios</a></div>
-                                        <div class="bbb_info clearfix">
-                                            <div class="bbb_name"><a href="#product-5">Correa de Paseo para Perro</a></div>
-                                            <div class="bbb_price price"><a href="javascript:void(0);"> $7.990 CLP</a></div>
-                                        </div>
-                                    </div>
-                                    <ul class="bbb_marks">
-                                      <li class="offer-icon">Oferta!</li>
-                                    </ul>
-                                      <div class="bbb_fav"><i class="fas fa-heart"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="carruselbutton" class="d-md-none ml-auto">
-                  <div class="bbb_prev bbb_nav"><i class="fas fa-angle-left ml-auto"></i></div>
-                  <div class="bbb_next bbb_nav"><i class="fas fa-angle-right ml-auto"></i></div>
-                </div>
-            </div>
-      </div>
-      
-      
-      </div>
-    </div>
 
 
 
-          <!-- Galeria de productos -->
-          <!--De igual manera en la galeria de fotos, esta codeada para que funcione de esta manera
-          no cambiar , esta codeada en 6 secciones con dos imagenes por seccion,
-          para que se pueda ver una al lado de la otra como espejo
-          -->
-          <section class="section-products" id="galeria">
-            <div class="container">
-                <div class="row justify-content-center text-center">
-                    <div class="col-md-8 col-lg-6">
-                        <div class="header">
-                            <h3>Lo Más Vendido</h3>
-                            <h2>Galeria de Productos</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <!-- Single Product -->
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div id="product-1" class="single-product">
-                          <div class="part-1">
-                            <span class="discount">20% off</span>
-                            <ul>
-                                <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                                <li><a href="#"><i class="fas fa-expand"></i></a></li>                            
-                              </ul>
-                            </div>
-                            <div class="part-2">
-                                <p class="product-text d-none d-md-none ">Esta acogedora casa para gatos es el refugio perfecto para tu mascota. Hecha con materiales de alta calidad, proporciona un espacio seguro y cómodo para tu gato. Su diseño elegante se adapta a cualquier decoración del hogar.</p>
-                                <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: GitCat</small></p>
-                                <p class="product-stock d-none d-md-none"><small class="text-body-secondary">9 Disponibles</small></p>
-                                <div class="product-title"><a href="javascript:void(0);">Casa para Gato</a></div>
-                                <div style="display: flex; justify-content: end;">
-                                  <div class="product-old-price price" style="margin-top: 6px;"><a href="javascript:void(0);">$32.990 CLP</a></div>
-                                  <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$26.390 CLP</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single Product -->
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div id="product-2" class="single-product">
-                            <div class="part-1">
-                                <ul>
-                                    <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                                    <li><a href=""><i class="fas fa-expand"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="part-2">
-                                <p class="product-text d-none d-md-none ">Esta robusta casa para perros ofrece el espacio perfecto para tu amigo de cuatro patas. Construida con materiales duraderos, garantiza un refugio seguro y cómodo para tu perro. Su diseño práctico y atractivo se integra perfectamente en cualquier espacio exterior.</p>
-                                <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: DogStyle</small></p>
-                                <p class="product-stock d-none d-md-none"><small class="text-body-secondary">50+ Disponibles</small></p>
-                                <div class="product-title"><a href="javascript:void(0);">Casa para Perro</a></div>
-                                <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$30.990 CLP</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single Product -->
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div id="product-3" class="single-product">
-                            <div class="part-1">
-                              <span class="discount">30% off</span>
 
-                                <ul>
-                                    <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                                    <li><a href=""><i class="fas fa-expand"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="part-2">
-                                <p class="product-text d-none d-md-none ">Este juguete interactivo para gatos garantiza horas de diversión para tu mascota. Diseñado para estimular sus instintos naturales, este juguete mantendrá a tu gato activo y entretenido. Su material resistente asegura una larga durabilidad.</p>
-                                <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: GitCat</small></p>
-                                <p class="product-stock d-none d-md-none"><small class="text-body-secondary">50+ Disponibles</small></p>
-                                <div class="product-title"><a href="javascript:void(0);">Juguete para Gato</a></div>
-                                <div style="display: flex; justify-content: end;">
-                                  <div class="product-old-price price" style="margin-top: 6px;"><a href="javascript:void(0);">$9.990 CLP</a></div>
-                                  <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$6.990 CLP</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single Product -->
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div id="product-4" class="single-product">
-                            <div class="part-1">
-                                <span class="new">Nuevo</span>
-                                <ul>
-                                    <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                                    <li><a href=""><i class="fas fa-expand"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="part-2">
-                                <p class="product-text d-none d-md-none ">Este juguete para perros es el compañero de juego perfecto para tu mascota. Diseñado para resistir mordiscos y tirones, este juguete no solo entretiene a tu perro, sino que también ayuda a mantener sus dientes limpios y saludables. Su material duradero garantiza una larga vida útil.</p>
-                                <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: DogmasFour</small></p>
-                                <p class="product-stock d-none d-md-none"><small class="text-body-secondary">50+ Disponibles</small></p>
-                                <div class="product-title"><a href="javascript:void(0);">Juguete para Perro</a></div>
-                                <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$1.990 CLP</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single Product -->
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div id="product-5" class="single-product">
-                            <div class="part-1">
-                                <ul>
-                                    <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                                    <li><a href=""><i class="fas fa-expand"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="part-2">
-                                <p class="product-text d-none d-md-none ">Esta correa de paseo para perros combina comodidad y control. Hecha con materiales resistentes, garantiza durabilidad y seguridad en cada paseo. Su diseño ergonómico proporciona un agarre cómodo para el dueño y un movimiento libre para el perro.</p>
-                                <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: DogmasFour</small></p>
-                                <p class="product-stock d-none d-md-none"><small class="text-body-secondary">15 Disponibles</small></p>
-                                <div class="product-title"><a href="javascript:void(0);">Correa de Paseo</a></div>
-                                <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$7.990 CLP</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single Product -->
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div id="product-6" class="single-product">
-                            <div class="part-1">
-                                <span class="discount">50% off</span>
-                                <ul>
-                                    <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                                    <li><a href=""><i class="fas fa-expand"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="part-2">
-                              <p class="product-text d-none d-md-none ">Este guante de limpieza hace que el baño de tu mascota sea una experiencia muy agradable para esta. Sus suaves cerdas masajean la piel de tu mascota mientras limpian su pelaje, proporcionando una limpieza profunda y un cuidado delicado. Su diseño ergonómico permite un fácil manejo y control.</p>
-                              <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: Emporium</small></p>
-                              <p class="product-stock d-none d-md-none"><small class="text-body-secondary">9 Disponibles</small></p>
-                              <div class="product-title"><a href="javascript:void(0);">Guante Cepillo quita Pelos</a></div>
-                              <div style="display: flex; justify-content: end;">
-                                <div class="product-old-price price" style="margin-top: 6px;"><a href="javascript:void(0);">$3.990 CLP</a></div>
-                                <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$1.990 CLP</a></div>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single Product -->
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div id="product-7" class="single-product">
-                            <div class="part-1">
-                                <ul>
-                                    <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                                    <li><a href=""><i class="fas fa-expand"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="part-2">
-                                <p class="product-text d-none d-md-none ">Esta hamaca de limpieza canina facilita el aseo de tu mascota. Su diseño seguro y cómodo mantiene a tu perro en posición mientras lo limpias, proporcionando una experiencia de baño más eficiente y agradable. Hecha con materiales resistentes y fáciles de limpiar, es la herramienta perfecta para mantener a tu perro limpio y feliz.</p>
-                                <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: Emporium</small></p>
-                                <p class="product-stock d-none d-md-none"><small class="text-body-secondary">13 Disponibles</small></p>
-                                <div class="product-title price"><a href="javascript:void(0);">Hamaca para Limpieza Canina</a></div>
-                                <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$5.990 CLP</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single Product -->
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div id="product-8" class="single-product">
-                            <div class="part-1">
-                                <span class="new">Nuevo</span>
-                                <ul>
-                                    <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                                    <li><a href=""><i class="fas fa-expand"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="part-2">
-                                <p class="product-text d-none d-md-none ">Los Churus son el premio perfecto para tu mascota. Hechas con ingredientes de alta calidad, proporcionan un sabor delicioso que a tu gato le encantará. Son fáciles de digerir y ayudan a mantener la salud dental de tu gato.</p>
-                                <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: Churu</small></p>
-                                <p class="product-stock d-none d-md-none"><small class="text-body-secondary">50+ Disponibles</small></p>
-                                <div class="product-title"><a href="javascript:void(0);">Churu para Gatos</a></div>
-                                <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$2.290 CLP</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div id="product-9" class="single-product">
-                            <div class="part-1">
-                                <span class="new">Nuevo</span>
-                                <ul>
-                                    <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                                    <li><a href=""><i class="fas fa-expand"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="part-2">
-                                <p class="product-text d-none d-md-none ">Este kit de limpieza canina es esencial para el cuidado de tu perro. Incluye todo lo que necesitas para mantener a tu mascota limpia y saludable. Los productos son de alta calidad y seguros para tu perro. Con este kit, el aseo de tu perro será una tarea fácil y agradable.</p>
-                                <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: DogmasFour</small></p>
-                                <p class="product-stock d-none d-md-none"><small class="text-body-secondary">6 Disponibles</small></p>
-                                <div class="product-title"><a href="javascript:void(0);">Kit de Limpieza Canina</a></div>
-                                <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$4.990 CLP</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div id="product-10" class="single-product">
-                            <div class="part-1">
-                                <span class="new">Nuevo</span>
-                                <ul>
-                                    <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                                    <li><a href=""><i class="fas fa-expand"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="part-2">
-                                <p class="product-text d-none d-md-none ">Esta jaula de transporte es ideal para viajar con tu mascota. Su diseño seguro y cómodo garantiza que tu animal esté protegido y tranquilo durante el viaje. Hecha con materiales duraderos, es fácil de limpiar y mantener.</p>
-                                <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: JohnCage</small></p>
-                                <p class="product-stock d-none d-md-none"><small class="text-body-secondary">10 Disponibles</small></p>
-                                <div class="product-title"><a href="javascript:void(0);">Jaula de Transporte</a></div>
-                                <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$24.990 CLP</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div id="product-11" class="single-product">
-                            <div class="part-1">
-                                <span class="new">Nuevo</span>
-                                <ul>
-                                    <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                                    <li><a href=""><i class="fas fa-expand"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="part-2">
-                                <p class="product-text d-none d-md-none ">Este juguete para hámster es perfecto para mantener a tu mascota activa y entretenida. Diseñado para estimular el comportamiento natural del hámster, este juguete promueve el ejercicio y reduce el aburrimiento. Hecho con materiales seguros y duraderos, es el regalo perfecto para tu pequeño amigo.</p>
-                                <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: PickLock</small></p>
-                                <p class="product-stock d-none d-md-none"><small class="text-body-secondary">25 Disponibles</small></p>
-                                <div class="product-title"><a href="javascript:void(0);">Juguete para Hamster</a></div>
-                                <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$4.990 CLP</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div id="product-12" class="single-product">
-                            <div class="part-1">
-                              <span class="discount">20% off</span>
-                                <ul>
-                                    <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                                    <li><a href=""><i class="fas fa-expand"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="part-2">
-                                <p class="product-text d-none d-md-none ">Esta jaula para hámster ofrece un hogar seguro y cómodo para tu pequeña mascota. Con espacio suficiente para jugar y descansar, esta jaula está diseñada para promover el bienestar de tu hámster. Hecha con materiales duraderos y fáciles de limpiar, es la elección perfecta para tu amigo peludo.</p>
-                                <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: PickLock</small></p>
-                                <p class="product-stock d-none d-md-none"><small class="text-body-secondary">33 Disponibles</small></p>
-                                <div class="product-title"><a href="javascript:void(0);">Jaula para Hamster</a></div>
-                                <div style="display: flex; justify-content: end;">
-                                  <div class="product-old-price price" style="margin-top: 6px;"><a href="javascript:void(0);">$24.990 CLP</a></div>
-                                  <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">$19.990 CLP</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Registro de nuevos usuarios (hypervinculo al archivo registro)-->
-        <div class="alert  alert-dismissible fade show" role="alert" style="position: fixed; bottom: 20px; right: 20px; z-index: 500;">
-          <a href="registro" class="btn btn-primary btn-lg">¿Eres nuevo? ¡Regístrate!</a>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-              
-        <!--Pie de pagina, aqui va el quienes somos, direccion, redes sociales, etc...-->
-        <footer id="pie-pag" style="background-color: var(--footer-color); padding-top: 1px; color: white; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-          <div class="container mt-5">
-            <div class="row">
-              <div class="col-md-6">
-                <h5>¿Quiénes somos?</h5>
-                <p>Somos una tienda en línea especializada en productos para mascotas. Nuestro objetivo es brindar a los dueños de mascotas los mejores productos y servicios para el cuidado y bienestar de sus compañeros peludos.</p>
-              </div>
-              <div class="col-md-6">
-                <h5>Contacto</h5>
-                <p>Dirección: 1153 Las Calilas, Santiago, Chile</p>
-                <p>Teléfono: +56983672634</p>
-                <p>Email: fullinfo@ipet.cl</p>
-              </div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-                <hr>
-                <p class="text-center">© 2022 iPet. Todos los derechos reservados.</p>
-              </div>
-            </div>
-          </div>
-        </footer>
-      
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script src="{% static 'cliente/model/js/script.js' %}"></script>
+    
 
-  </body>
     
     
       
 
     
     
-</html>
