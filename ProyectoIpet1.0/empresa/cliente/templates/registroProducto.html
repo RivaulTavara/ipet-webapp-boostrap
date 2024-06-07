@@ -1,0 +1,80 @@
+{% extends "modoAdmin.html" %}
+{% load static %}
+
+{% block tituloPrincipal %} Registro de Productos {% endblock %}
+
+{% block mensaje%}
+
+{% if exito %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">  
+        {{exito}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endif %}
+
+{% if error %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{error}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endif %}
+
+{% endblock %}
+
+{% block contenidoTabla  %}
+
+    
+    <form action="{% url 'guardarProducto' %}" method="POST">
+        {% csrf_token %}
+        <div class="row" style="padding-bottom: 30px">
+            <div class="col-12 col-md-2 offset-md-3" >Nombre Producto</div>
+            <div class="col-12 col-md-5">
+                <input type="hidden" name="txtId" value="0{{item.id}}">
+                <input type="text" name="txtNombre" class="form-control" value="{{item.nombre}}">
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 30px">
+            <div class="col-12 col-md-2 offset-md-3" >Marca Producto</div>
+            <div class="col-12 col-md-5">
+                <input type="text" name="txtMarca" class="form-control" value="{{item.marca}}">
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 30px">
+            <div class="col-12 col-md-2 offset-md-3">Descripción</div>
+            <div class="col-12 col-md-5">
+                <input type="text" name="txtDescripcion" class="form-control" value="{{item.descripcion}}">
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 30px">
+            <div class="col-12 col-md-2 offset-md-3">Precio</div>
+            <div class="col-12 col-md-5">
+                <input type="number" name="txtPrecio" class="form-control" value="{{item.precio|floatformat:'-2'}}">
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 30px">
+            <div class="col-12 col-md-2 offset-md-3">Stock</div>
+            <div class="col-12 col-md-5">
+            <input type="number" name="txtStock" class="form-control" value="{{item.stock}}">          
+        </div>
+        </div>
+        <div class="row" style="padding-bottom: 30px">
+            <div class="col-12 col-md-2 offset-md-3">Fecha de Elaboración</div>
+            <div class="col-12 col-md-5">
+            <input type="date" name="txtCreado_en" class="form-control" value="{{item.creado_en|date:'Y-m-d'}}"> 
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 100px">
+            <div class="col-12 col-md-2 offset-md-3">Opciones</div>
+            <div class="col-12 col-md-5">
+                <input type="submit" name="btnGuardar" class="btn btn-danger" value="Guardar">
+                <input type="submit" name="btnLimpiar" class="btn btn-outline-secondary" value="Limpiar">
+                <a href="{% url 'listarProducto' %}" class="btn btn-success">Listar</a>
+            </div>
+        </div>
+        
+    </form>
+{% endblock %}
+
+
+
+

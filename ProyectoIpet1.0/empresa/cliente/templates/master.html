@@ -90,36 +90,48 @@
     {% endblock %}
 
 
+    
+    <div class="container">
+      <h1 class="text-center" style="padding-top: 80px; padding-bottom: 60px">{% block tituloPrincipal %}{% endblock %}</h1>
+      {% block mensaje    %}{% endblock %}
+      {% block contenidoTabla    %}{% endblock %}
+      <div class="container">{% block listado %}{% endblock %}</div>
+      
+    </div>
+
+    
     {% block scriptsjs %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="{% static 'cliente/model/js/script.js' %}"></script>
     {% endblock%}
 
+
     {% block footer %}
-    <footer id="pie-pag" style="background-color: var(--footer-color); padding-top: 1px; color: white; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-md-6">
-            <h5>¿Quiénes somos?</h5>
-            <p>Somos una tienda en línea especializada en productos para mascotas. Nuestro objetivo es brindar a los dueños de mascotas los mejores productos y servicios para el cuidado y bienestar de sus compañeros peludos.</p>
+        <footer id="pie-pag" style="background-color: var(--footer-color); padding-top: 1px; color: white; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+          <div class="container mt-5">
+            <div class="row">
+              <div class="col-md-6">
+                <h5>¿Quiénes somos?</h5>
+                <p>Somos una tienda en línea especializada en productos para mascotas. Nuestro objetivo es brindar a los dueños de mascotas los mejores productos y servicios para el cuidado y bienestar de sus compañeros peludos.</p>
+              </div>
+              <div class="col-md-6">
+                <h5>Contacto</h5>
+                <p>Dirección: 1153 Las Calilas, Santiago, Chile</p>
+                <p>Teléfono: +56983672634</p>
+                <p>Email: fullinfo@ipet.cl</p>
+              </div>
+            </div>
           </div>
-          <div class="col-md-6">
-            <h5>Contacto</h5>
-            <p>Dirección: 1153 Las Calilas, Santiago, Chile</p>
-            <p>Teléfono: +56983672634</p>
-            <p>Email: fullinfo@ipet.cl</p>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <hr>
+                <p class="text-center">© 2022 iPet. Todos los derechos reservados.</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <hr>
-            <p class="text-center">© 2022 iPet. Todos los derechos reservados.</p>
-          </div>
-        </div>
-      </div>
-    </footer>
+        </footer>
     {% endblock %}
+      
 </body>
 </html>

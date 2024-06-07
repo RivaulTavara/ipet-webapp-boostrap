@@ -1,0 +1,48 @@
+{% extends "modoAdmin.html"%}
+{% load static %}
+{% block tituloPrincipal %} Productos {% endblock %}
+{% block mensaje    %}
+    {% if exito %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{exito}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
+    {% if error %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{error}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
+{% endblock %}
+{% block listado %}
+    <table class="table table-responsive table-striped">
+        <tr>
+            <th>Nombre</th>
+            <th>Marca</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Creado en</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+        {% for item in listado  %}
+            <tr>
+                <td>{{ item.nombre| capfirst }}</td>
+                <td>{{ item.marca| capfirst }}</td>
+                <td>{{ item.descripcion| capfirst }}</td>
+                <td>{{ item.precio }}</td>
+                <td>{{ item.stock }}</td>
+                <td>{{item.creado_en|date:'d-m-Y'|capfirst }}</td>
+                <td><a href="{% url 'buscarProducto' pk=item.id %}" class="btn btn-warning">Modificar</a></td>
+                <td><a href="{% url 'eliminarProducto' pk=item.id %}" class="btn btn-danger">Eliminar</a></td>
+            </tr>
+
+        {% endfor %}
+    </table>
+    <div class="text-end" style="padding-top: 70px;">
+        <a href="{% url 'registroProducto' %}" class="btn btn-primary mt-auto">Ingresar</a>
+        <br><br>
+    </div>
+{% endblock %}
