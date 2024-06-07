@@ -19,6 +19,7 @@ class Cliente(models.Model):
         return self.nombre + ' ' + self.apellido
 
 class Producto(models.Model):
+    imagen = models.ImageField(upload_to='productos/', blank=True, null=True)
     nombre = models.CharField(max_length=255)
     marca = models.CharField(max_length=255)
     descripcion = models.TextField(blank=True, null=True)

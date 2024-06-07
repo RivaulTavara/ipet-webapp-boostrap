@@ -16,32 +16,40 @@
     {% endif %}
 {% endblock %}
 {% block listado %}
-    <table class="table table-responsive table-striped">
-        <tr>
-            <th>Nombre</th>
-            <th>Marca</th>
-            <th>Descripcion</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th>Creado en</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
-        </tr>
-        {% for item in listado  %}
-            <tr>
-                <td>{{ item.nombre| capfirst }}</td>
-                <td>{{ item.marca| capfirst }}</td>
-                <td>{{ item.descripcion| capfirst }}</td>
-                <td>{{ item.precio }}</td>
-                <td>{{ item.stock }}</td>
-                <td>{{item.creado_en|date:'d-m-Y'|capfirst }}</td>
-                <td><a href="{% url 'buscarProducto' pk=item.id %}" class="btn btn-warning">Modificar</a></td>
-                <td><a href="{% url 'eliminarProducto' pk=item.id %}" class="btn btn-danger">Eliminar</a></td>
-            </tr>
 
-        {% endfor %}
-    </table>
-    <div class="text-end" style="padding-top: 70px;">
+    
+        
+        <div style="height: 370px; overflow: auto; scrollbar-width: none;">
+            <table class="table table-responsive table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Marca</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Creado en</th>
+                    <th>Imagen</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+                {% for item in listado  %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.nombre| capfirst }}</td>
+                        <td>{{ item.marca| capfirst }}</td>
+                        <td>{{ item.descripcion| capfirst }}</td>
+                        <td>{{ item.precio }}</td>
+                        <td>{{ item.stock }}</td>
+                        <td>{{item.creado_en|date:'d-m-Y'|capfirst }}</td>
+                        <td>{{ item.imagen }}</td>
+                        <td><a href="{% url 'buscarProducto' pk=item.id %}" class="btn btn-warning">Modificar</a></td>
+                        <td><a href="{% url 'eliminarProducto' pk=item.id %}" class="btn btn-danger">Eliminar</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    <div class="text-end" style="padding-top: 30px;">
         <a href="{% url 'registroProducto' %}" class="btn btn-primary mt-auto">Ingresar</a>
         <br><br>
     </div>

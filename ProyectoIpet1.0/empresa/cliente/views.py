@@ -47,16 +47,33 @@ def listarProducto(request):
 def guardarProducto(request):
     context = {}
     if request.method == 'POST':
+        id = request.POST.get('txtId')
         nombre = request.POST['txtNombre']
         marca = request.POST['txtMarca']
         descripcion = request.POST['txtDescripcion']
         precio = request.POST['txtPrecio']
         stock = request.POST['txtStock']
         fecha = request.POST['txtCreado_en']
+        imagen = request.FILES['txtImagen'] if 'txtImagen' in request.FILES else None
+
 
         if 'btnGuardar' in request.POST:
-            Producto.objects.create(nombre=nombre, marca=marca, descripcion=descripcion, precio=precio, stock=stock, creado_en=fecha)        
-            context['exito'] = "Los datos fueron guardados"
+            if id== '0':
+                Producto.objects.create(imagen=imagen, nombre=nombre, marca=marca, descripcion=descripcion, precio=precio, stock=stock, creado_en=fecha)        
+                context['exito'] = "Los datos fueron guardados"
+            else:
+                item = Producto.objects.get(pk=id)
+                if imagen:
+                    item.imagen = imagen
+                item.nombre = nombre
+                item.marca = marca
+                item.descripcion = descripcion
+                item.precio = precio
+                item.stock = stock
+                item.creado_en = fecha
+                item.save()
+                context['exito'] = "Los datos fueron actualizados"
+
 
     return render(request, 'registroProducto.html', context)
 

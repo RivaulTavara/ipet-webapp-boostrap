@@ -24,7 +24,7 @@
 {% block contenidoTabla  %}
 
     
-    <form action="{% url 'guardarProducto' %}" method="POST">
+    <form action="{% url 'guardarProducto' %}" method="POST" enctype="multipart/form-data" >
         {% csrf_token %}
         <div class="row" style="padding-bottom: 30px">
             <div class="col-12 col-md-2 offset-md-3" >Nombre Producto</div>
@@ -61,6 +61,12 @@
             <div class="col-12 col-md-2 offset-md-3">Fecha de Elaboración</div>
             <div class="col-12 col-md-5">
             <input type="date" name="txtCreado_en" class="form-control" value="{{item.creado_en|date:'Y-m-d'}}"> 
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 30px">
+            <div class="col-12 col-md-2 offset-md-3">Cargar Imagen</div>
+            <div class="col-12 col-md-5">
+                <input type="file" name="txtImagen" class="form-control" value="{{item.imagen}}">
             </div>
         </div>
         <div class="row" style="padding-bottom: 100px">
