@@ -16,41 +16,51 @@
     {% endif %}
 {% endblock %}
 {% block listado %}
-
-    
         
-        <div style="height: 370px; overflow: auto; scrollbar-width: none;">
-            <table class="table table-responsive table-striped">
-                <tr>
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th>Marca</th>
-                    <th>Descripcion</th>
-                    <th>Precio</th>
-                    <th>Stock</th>
-                    <th>Creado en</th>
-                    <th>Imagen</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
-                </tr>
-                {% for item in listado  %}
+            
+            
+        <div style="height: 350px;">
+            <div>
+                <table class="table table-responsive table-striped">
                     <tr>
-                        <td>{{ item.id }}</td>
-                        <td>{{ item.nombre| capfirst }}</td>
-                        <td>{{ item.marca| capfirst }}</td>
-                        <td>{{ item.descripcion| capfirst }}</td>
-                        <td>{{ item.precio }}</td>
-                        <td>{{ item.stock }}</td>
-                        <td>{{item.creado_en|date:'d-m-Y'|capfirst }}</td>
-                        <td>{{ item.imagen }}</td>
-                        <td><a href="{% url 'buscarProducto' pk=item.id %}" class="btn btn-warning">Modificar</a></td>
-                        <td><a href="{% url 'eliminarProducto' pk=item.id %}" class="btn btn-danger">Eliminar</a></td>
+                        <th style="width: 3%;">Id</th>
+                        <th style="width: 15%;">Nombre</th>
+                        <th style="width: 10%;">Marca</th>
+                        <th style="width: 10%;">Precio</th>
+                        <th style="width: 10%;">Stock</th>
+                        <th style="width: 10%;">Creado en</th>
+                        <th style="width: 10%;">Imagen</th>
+                        <th style="width: 10%;">Editar</th>
+                        <th style="width: 10%;">Eliminar</th>
                     </tr>
-                {% endfor %}
-            </table>
+                </table>
+                <div style="height: 350px; overflow: auto; scrollbar-width: none;">
+                    <table class="table table-responsive table-striped">
+                        {% for item in listado  %}
+                            <tr>
+                                <td style="width: 3%;"><div>{{ item.id }}</div></td>
+                                <td style="width: 15%;"><div>{{ item.nombre }}</div></td>
+                                <td style="width: 10%;"><div>{{ item.marca| capfirst }}</div></td>
+                                <td style="width: 10%;"><div>{{ item.precio }}</div></td>
+                                <td style="width: 10%;"><div>{{ item.stock }}</div></td>
+                                <td style="width: 10%;"><div>{{item.creado_en|date:'d-m-Y'|capfirst }}</div></td>
+                                <td style="width: 10%;"><div>
+                                    {% if item.imagen %}
+                                        <a href="javascript:void(0);" class="btn btn-success fas fa-check-circle"></a>
+                                    {% else %}
+                                    <a href="javascript:void(0);" class="btn btn-danger fas fas fa-ban"></a>
+                                    {% endif %}
+                                </div></td>
+                                <td style="width: 10%;"><div><a href="{% url 'buscarProducto' pk=item.id %}" class="btn btn-warning fas fa-edit"></a></div></td>
+                                <td style="width: 10%;"><div><a href="{% url 'eliminarProducto' pk=item.id %}" class="btn btn-danger far fa-window-close"></a></div></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+            </div>
         </div>
-    <div class="text-end" style="padding-top: 30px;">
-        <a href="{% url 'registroProducto' %}" class="btn btn-primary mt-auto">Ingresar</a>
-        <br><br>
-    </div>
+        <div class="text-end" style="padding-top: 60px;">
+            <a href="{% url 'registroProducto' %}" class="btn btn-primary mt-auto">Ingresar</a>
+        </div>
 {% endblock %}
