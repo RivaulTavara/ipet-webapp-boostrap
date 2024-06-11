@@ -1,0 +1,131 @@
+
+{% extends "modoAdmin.html" %}
+{% load static %}
+
+
+{% block tituloPrincipal %} Registro de Clientes {% endblock %}
+
+{% block mensaje%}
+
+{% if exito %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">  
+        {{exito}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endif %}
+
+{% if error %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{error}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endif %}
+
+{% endblock %}
+
+{% block contenidoTabla  %}
+
+    
+    <form action="{% url 'guardarCliente' %}" method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <div class="row" style="padding-bottom: 30px">
+            <div class="col-12 col-md-2 offset-md-3" >Rut</div>
+            <div class="col-12 col-md-5">
+                <input type="text" name="txtRut" class="form-control" pattern="^\d{7,8}-[\dKk]{1}$" title="Por favor, ingresa el RUT sin puntos y con guión. Ejemplo: 12345678-9" required placeholder="XXXXXXXX-X" value="{{item.rut}}">
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 30px">
+            <div class="col-12 col-md-2 offset-md-3" >Correo</div>
+            <div class="col-12 col-md-5">
+                <input type="email" name="txtCorreo" class="form-control" pattern=".+@.+\.com$" title="Por favor, ingresa un correo válido. Ejemplo: ejemplo@correo.com" required placeholder="ejemplo@correo.com" value="{{item.correo}}">
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 30px">
+            <div class="col-12 col-md-2 offset-md-3" >Nombre</div>
+            <div class="col-12 col-md-5">
+                <input type="text" name="txtNombre" class="form-control" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$" title="Por favor, ingresa solo letras." required placeholder="Pedro" value="{{item.nombre}}">
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 30px">
+            <div class="col-12 col-md-2 offset-md-3" >Apellido</div>
+            <div class="col-12 col-md-5">
+                <input type="text" name="txtApellido" class="form-control" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$" title="Por favor, ingresa solo letras." required placeholder="Pascal" value="{{item.apellido}}">
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 30px">
+            <div class="col-12 col-md-2 offset-md-3" >Contraseña</div>
+            <div class="col-12 col-md-5">
+                <input type="text" name="txtContrasena" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="La contraseña debe contener al menos un carácter especial, una letra mayúscula, una letra minúscula y un número." required placeholder="Xx1234567@" value="{{item.contrasena}}">
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 30px">
+            <div class="col-12 col-md-2 offset-md-3" >Direccion</div>
+            <div class="col-12 col-md-5">
+                <input type="text" name="txtDireccion" class="form-control" required placeholder="Introduce tu dirección" value="{{item.direccion}}">
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 30px">
+            <div class="col-12 col-md-2 offset-md-3" >Fecha de Nacimiento</div>
+            <div class="col-12 col-md-5">
+                <input type="date" name="txtFecha" class="form-control" value="{{item.fecha_de_nacimiento|date:'Y-m-d'}}">
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 30px">
+            <div class="col-12 col-md-2 offset-md-3" >Telefono</div>
+            <div class="col-12 col-md-5">
+                <input type="number" name="txtTelefono" class="form-control" value="{{item.telefono}}">
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 30px">
+            <div class="col-12 col-md-2 offset-md-3" >Region</div>
+            <div class="col-12 col-md-5">
+                <select type="text" name="txtRegion" class="form-select" value="{{item.region}}">
+                    <option value="">- Selecciona una región -</option>
+                    <option value="Región de Arica y Parinacota">Región de Arica y Parinacota</option>
+                    <option value="Región de Tarapacá">Región de Tarapacá</option>
+                    <option value="Región de Antofagasta">Región de Antofagasta</option>
+                    <option value="Región de Atacama">Región de Atacama</option>
+                    <option value="Región de Coquimbo">Región de Coquimbo</option>
+                    <option value=">Región de Valparaíso">Región de Valparaíso</option>
+                    <option value="Región Metropolitana de Santiago">Región Metropolitana de Santiago</option>
+                    <option value="Región del Libertador General Bernardo O'Higgins">Región del Libertador General Bernardo O'Higgins</option>
+                    <option value="Región del Maule">Región del Maule</option>
+                    <option value="Región de Ñuble">Región de Ñuble</option>
+                    <option value="Región del Biobío">Región del Biobío</option>
+                    <option value="Región de La Araucanía">Región de La Araucanía</option>
+                    <option value="Región de Los Ríos">Región de Los Ríos</option>
+                    <option value="Región de Los Lagos">Región de Los Lagos</option>
+                    <option value="Región de Aysén del General Carlos Ibáñez del Campo">Región de Aysén del General Carlos Ibáñez del Campo</option>
+                    <option value="Región de Magallanes y de la Antártica Chilena">Región de Magallanes y de la Antártica Chilena</option>
+                </select>  
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 30px">
+            <div class="col-12 col-md-2 offset-md-3" >Nivel Educacional</div>
+            <div class="col-12 col-md-5">
+                <select type="text" name="txtNivel_Educacional" class="form-select" value="{{item.nivel_educacional}}">
+                    <option value="">- Selecciona un nivel educacional -</option>
+                    <option value="Primer ciclo">Primer ciclo</option>
+                    <option value="Segundo ciclo">Segundo ciclo</option>
+                    <option value="Técnico">Técnico</option>
+                    <option value="Profesional">Profesional</option>
+                    <option value="Sin estudios">Sin estudios</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="row" style="padding-bottom: 100px">
+            <div class="col-12 col-md-2 offset-md-3">Opciones</div>
+            <div class="col-12 col-md-5">
+                <input type="submit" name="btnGuardar" class="btn btn-danger" value="Guardar">
+                <input type="submit" name="btnLimpiar" class="btn btn-outline-secondary" value="Limpiar">
+                <a href="{% url 'listarCliente' %}" class="btn btn-success">Listar</a>
+            </div>
+        </div>
+        
+    </form>
+{% endblock %}
+
+
+
+

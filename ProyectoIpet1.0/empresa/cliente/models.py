@@ -1,12 +1,11 @@
 from django.db import models
 
 class Cliente(models.Model):
-    rut = models.CharField(primary_key=True, max_length=10)
+    rut = models.CharField(max_length=10, unique=True)
     correo = models.EmailField(max_length=255, unique=True)
     nombre = models.CharField(max_length=255)
     apellido = models.CharField(max_length=255)
     contrasena = models.CharField(max_length=255)
-    salt = models.CharField(max_length=255)
     direccion = models.CharField(max_length=255, blank=True, null=True)
     fecha_de_nacimiento = models.DateField(blank=True, null=True)
     telefono = models.CharField(max_length=9, unique=True)

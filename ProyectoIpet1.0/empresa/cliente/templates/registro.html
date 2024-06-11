@@ -15,14 +15,15 @@
         
           <!-- Registeration Form -->
           <div class="col-md-7 col-lg-6 ml-auto" style="overflow-y: auto; height: 100vh; scrollbar-width: none;">
-            <form id="marginform" action="{% static 'cliente/model/php/controlador_register.php' %}" method="post">
-                  <div class="row">
-                  
+            <form id="marginform" action="{% url 'guardarCliente' %}" method="POST" enctype="multipart/form-data" >
+              {% csrf_token %}
+              <div class="row">
                       <!-- Rut-->
                       <div class="mb-4">
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-id-card text-muted" style="width: 15px;"></i></span>
-                            <input type="text" class="form-control bg-white border-left-0 border-md" name="rut" id="rut" pattern="^\d{7,8}-[\dKk]{1}$" title="Por favor, ingresa el RUT sin puntos y con guión. Ejemplo: 12345678-9" required placeholder="XXXXXXXX-X">
+                            <input type="text" name="txtRut" class="form-control bg-white border-left-0 border-md" pattern="^\d{7,8}-[\dKk]{1}$" title="Por favor, ingresa el RUT sin puntos y con guión. Ejemplo: 12345678-9" required placeholder="XXXXXXXX-X" value="{{item.rut}}">
+
                           </div>
                       </div>
                     
@@ -30,7 +31,8 @@
                       <div class="mb-4">
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-envelope text-muted" style="width: 15px;"></i></span>
-                            <input type="email" class="form-control bg-white border-left-0 border-md" name="correo" id="correo" pattern=".+@.+\.com$" title="Por favor, ingresa un correo válido. Ejemplo: ejemplo@correo.com" required placeholder="ejemplo@correo.com">                      
+                            <input type="email" name="txtCorreo" class="form-control bg-white border-left-0 border-md" pattern=".+@.+\.com$" title="Por favor, ingresa un correo válido. Ejemplo: ejemplo@correo.com" required placeholder="ejemplo@correo.com" value="{{item.correo}}">
+
                           </div>
                       </div>
                     
@@ -38,7 +40,8 @@
                       <div class="mb-4">
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-user text-muted" style="width: 15px;"></i></span>
-                            <input type="text" class="form-control bg-white border-left-0 border-md" id="nombre" name="nombre" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$" title="Por favor, ingresa solo letras." required placeholder="Pedro">
+                            <input type="text" name="txtNombre" class="form-control bg-white border-left-0 border-md" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$" title="Por favor, ingresa solo letras." required placeholder="Pedro" value="{{item.nombre}}">
+
                         </div>
                       </div>
                     
@@ -46,7 +49,8 @@
                       <div class="mb-4">
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-user text-muted" style="width: 15px;"></i></span>
-                            <input type="text" name="apellido" class="form-control bg-white border-left-0 border-md" id="apellido" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$" title="Por favor, ingresa solo letras." required placeholder="Pascal">
+                            <input type="text" name="txtApellido" class="form-control bg-white border-left-0 border-md" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$" title="Por favor, ingresa solo letras." required placeholder="Pascal" value="{{item.apellido}}">
+
                           </div>
                       </div>
                     
@@ -54,7 +58,8 @@
                       <div class="mb-4">
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-lock text-muted" style="width: 15px;"></i></span>
-                            <input type="password" id="password" name="password" class="form-control bg-white border-left-0 border-md" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="La contraseña debe contener al menos un carácter especial, una letra mayúscula, una letra minúscula y un número." required placeholder="Xx1234567@">
+                            <input type="text" name="txtContrasena" class="form-control bg-white border-left-0 border-md" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="La contraseña debe contener al menos un carácter especial, una letra mayúscula, una letra minúscula y un número." required placeholder="Xx1234567@" value="{{item.contrasena}}">
+
                           </div>
                       </div>
                     
@@ -63,7 +68,8 @@
                       <div class="mb-4">
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-calendar text-muted" style="width: 15px;"></i></span>
-                            <input type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-control bg-white border-left-0 border-md" required/>
+                            <input type="date" name="txtFecha" class="form-control bg-white border-left-0 border-md" value="{{item.fecha_de_nacimiento|date:'Y-m-d'}}">
+
                           </div>
                       </div>
                     
@@ -72,7 +78,8 @@
                       <div class="mb-4">
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-phone-square text-muted" style="width: 15px;"></i></span>
-                            <input type="tel" class="form-control bg-white border-left-0 border-md" id="telefono" name="telefono" pattern="^9\d{8}$" inputmode="numeric" title="Por favor, ingresa un número de teléfono válido con 9 dígitos y comenzando con 9. Ejemplo: 912345678" required placeholder="9 XXXX XXXX">
+                            <input type="number" name="txtTelefono" class="form-control bg-white border-left-0 border-md" value="{{item.telefono}}">
+
                           </div>
                       </div>
                     
@@ -80,7 +87,8 @@
                       <div class="mb-4">
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-location-arrow text-muted" style="width: 15px;"></i></span>
-                            <input type="text" class="form-control bg-white border-left-0 border-md" id="direccion" name="direccion" required placeholder="Introduce tu dirección">
+                            <input type="text" name="txtDireccion" class="form-control bg-white border-left-0 border-md" required placeholder="Introduce tu dirección" value="{{item.direccion}}">
+
                           </div>
                       </div>
                     
@@ -88,7 +96,8 @@
                       <div class="mb-4">
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-map-marker text-muted" style="width: 15px;"></i></span>
-                            <select id="region" name="region" class="form-select custom-select bg-white border-left-0 border-md">
+                            <select type="text" name="txtRegion" class="form-select custom-select bg-white border-left-0 border-md" value="{{item.region}}">
+
                               <option value="">- Selecciona una región -</option>
                               <option value="Región de Arica y Parinacota">Región de Arica y Parinacota</option>
                               <option value="Región de Tarapacá">Región de Tarapacá</option>
@@ -114,7 +123,8 @@
                       <div class="mb-4">
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-graduation-cap text-muted" style="width: 15px;"></i></span>
-                            <select id="nivelEducacional" name="nivelEducacional" class="form-select custom-select bg-white border-left-0 border-md">
+                            <select type="text" name="txtNivel_Educacional" class="form-select custom-select bg-white border-left-0 border-md" value="{{item.nivel_educacional}}">
+
                               <option value="">- Selecciona un nivel educacional -</option>
                               <option value="Primer ciclo">Primer ciclo</option>
                               <option value="Segundo ciclo">Segundo ciclo</option>
@@ -128,7 +138,7 @@
                     
                       <!-- Registrarse -->
                       <div class="form-group col-lg-12 mx-auto mb-0">
-                        <button type="submit" class="btn btn-primary btn-block py-2" name="registro">Registrarse</button>
+                        <button type="submit" class="btn btn-primary btn-block py-2" name="btnGuardar">Registrarse</button>
                       </div>
                     
                       <!-- texto divisor -->

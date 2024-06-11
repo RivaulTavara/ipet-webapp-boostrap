@@ -1,0 +1,76 @@
+{% extends "modoAdmin.html"%}
+{% load static %}
+{% block tituloPrincipal %} Clientes {% endblock %}
+{% block mensaje    %}
+    {% if exito %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{exito}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
+    {% if error %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{error}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
+{% endblock %}
+{% block listado %}
+    
+
+    <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="table-responsive" style="scrollbar-width: none;" data-pattern="priority-columns">
+              <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Rut</th>
+                        <th>Correo</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Contraseña</th>
+                        <th>Direccion</th>
+                        <th>Fecha Nac.</th>
+                        <th>Telefono</th>
+                        <th>Region</th>
+                        <th>Nvl. Educ.</th>
+                        <th>Creado en</th>
+                        <th>Ult. Login</th>
+                        <th>Modificar</th>
+                        <th>Eliminar</th>
+                      </tr>
+                 
+                </thead>
+                <tbody>
+                    {% for item in listado  %}
+                        <tr>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.rut }}</td>
+                        <td>{{ item.correo }}</td>
+                        <td>{{ item.nombre }}</td>
+                        <td>{{ item.apellido }}</td>
+                        <td>{{ item.contrasena }}</td>
+                        <td>{{ item.direccion }}</td>
+                        <td>{{ item.fecha_de_nacimiento|date:'d-m-Y'|capfirst }}</td>
+                        <td>{{ item.telefono }}</td>
+                        <td>{{ item.region }}</td>
+                        <td>{{ item.nivel_educacional }}</td>
+                        <td>{{item.creado_en|date:'d-m-Y'|capfirst }}</td>
+                        <td>{{item.ultimo_login|date:'d-m-Y'|capfirst }}</td>
+                        <td><a href="{% url 'buscarCliente' pk=item.id %}" class="btn btn-warning fas fa-edit"></a></td>
+                        <td><a href="{% url 'eliminarCliente' pk=item.id %}" class="btn btn-danger far fa-window-close"></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                
+              </table>
+            </div><!--end of .table-responsive-->
+          </div>
+        </div>
+    </div>
+    <div class="text-end" style="padding-bottom: 20px;">
+        <a href="{% url 'registroCliente' %}" class="btn btn-primary mt-auto">Ingresar</a>
+    </div>
+{% endblock %}
