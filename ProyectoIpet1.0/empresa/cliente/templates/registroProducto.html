@@ -95,11 +95,11 @@
               
               </div>
             </div>
-            <div class="row" style="padding-bottom: 100px">
-                  <div class="col-12 col-md-2 offset-md-3">Opciones</div>
+            <div class="row justify-content-end" style="padding-top: 20px;">
+              <div class="col-12 col-md-2 offset-md-3">Opciones</div>
                   <div class="col-12 col-md-5">
                       <input type="submit" name="btnGuardar" class="btn btn-danger" value="Guardar">
-                      <input type="submit" name="btnLimpiar" class="btn btn-outline-secondary" value="Limpiar">
+                      <a href="{% url 'registroProducto' %}" class="btn btn-outline-secondary" value="Limpiar">Limpiar</a>
                       <a href="{% url 'listarProducto' %}" class="btn btn-success">Listar</a>
                   </div>
             </div>
