@@ -23,64 +23,91 @@
 
 {% block contenidoTabla  %}
 
-    
-    <form action="{% url 'guardarProducto' %}" method="POST" enctype="multipart/form-data" >
-        {% csrf_token %}
-        <div class="row" style="padding-bottom: 30px">
-            <div class="col-12 col-md-2 offset-md-3" >Nombre Producto</div>
-            <div class="col-12 col-md-5">
-                <input type="hidden" name="txtId" value="0{{item.id}}">
-                <input type="text" name="txtNombre" class="form-control" value="{{item.nombre}}">
+
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-8 ml-auto" >
+        <form action="{% url 'guardarProducto' %}" method="POST" enctype="multipart/form-data" >
+            <div style="overflow-y: auto; height: 65vh; scrollbar-width: none;">
+              {% csrf_token %}
+              <div class="row">
+                      <!-- Nombre Producto -->
+                      <div class="mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-marker text-muted" style="width: 15px;"></i></span>
+                            <input type="hidden" name="txtId" value="0{{item.id}}">
+                            <input type="text" name="txtNombre" class="form-control bg-white border-left-0 border-md" required placeholder="DestrozaMadres3000" value="{{item.nombre}}">
+                          </div>
+                      </div>
+                    
+                      <!-- Marca Producto -->
+                      <div class="mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-marker text-muted" style="width: 15px;"></i></span>
+                            <input type="text" name="txtMarca" class="form-control bg-white border-left-0 border-md" required placeholder="PeaceKeaper" value="{{item.marca}}">
+                          </div>
+                      </div>
+                    
+                      <!-- Descripcion -->
+                      <div class="mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-marker text-muted" style="width: 15px;"></i></span>
+                            <input type="text" name="txtDescripcion" class="form-control bg-white border-left-0 border-md" required placeholder="PeaceKeaper" value="{{item.descripcion}}">
+                        </div>
+                      </div>
+                    
+                      <!-- Precio -->
+                      <div class="mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-marker text-muted" style="width: 15px;"></i></span>
+                            <input type="number" name="txtPrecio" class="form-control bg-white border-left-0 border-md" pattern="\d*" title="Por favor, ingresa solo números." required placeholder="99999" value="{{item.precio|floatformat:'-2'}}">
+                          </div>
+                      </div>
+
+                    
+                      <!-- Stock -->
+                      <div class="mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-marker text-muted" style="width: 15px;"></i></span>
+                            <input type="number" name="txtStock" class="form-control bg-white border-left-0 border-md" pattern="\d*" title="Por favor, ingresa solo números." required placeholder="150" value="{{item.stock}}">
+                          </div>
+                      </div>
+                    
+                    
+                      <!-- Fecha de Nacimiento -->
+                      <div class="mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-calendar text-muted" style="width: 15px;"></i></span>
+                            <input type="date" name="txtCreado_en" class="form-control bg-white border-left-0 border-md" value="{{item.creado_en|date:'Y-m-d'}}" title="Debe ingresar una fecha válida." required>
+                          </div>
+                      </div>
+                    
+                    
+                      <!-- Imagen Producto -->
+                      <div class="mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-paperclip text-muted" style="width: 15px;"></i></span>
+                            <input type="file" name="txtImagen" class="form-control bg-white border-left-0 border-md" value="{{item.imagen.url}}" title="Debe ingresar una imagen" required>
+                          </div>
+                      </div>
+                    
+                     
+              
+              </div>
             </div>
-        </div>
-        <div class="row" style="padding-bottom: 30px">
-            <div class="col-12 col-md-2 offset-md-3" >Marca Producto</div>
-            <div class="col-12 col-md-5">
-                <input type="text" name="txtMarca" class="form-control" value="{{item.marca}}">
+            <div class="row" style="padding-bottom: 100px">
+                  <div class="col-12 col-md-2 offset-md-3">Opciones</div>
+                  <div class="col-12 col-md-5">
+                      <input type="submit" name="btnGuardar" class="btn btn-danger" value="Guardar">
+                      <input type="submit" name="btnLimpiar" class="btn btn-outline-secondary" value="Limpiar">
+                      <a href="{% url 'listarProducto' %}" class="btn btn-success">Listar</a>
+                  </div>
             </div>
-        </div>
-        <div class="row" style="padding-bottom: 30px">
-            <div class="col-12 col-md-2 offset-md-3">Descripción</div>
-            <div class="col-12 col-md-5">
-                <input type="text" name="txtDescripcion" class="form-control" value="{{item.descripcion}}">
-            </div>
-        </div>
-        <div class="row" style="padding-bottom: 30px">
-            <div class="col-12 col-md-2 offset-md-3">Precio</div>
-            <div class="col-12 col-md-5">
-                <input type="number" name="txtPrecio" class="form-control" value="{{item.precio|floatformat:'-2'}}">
-            </div>
-        </div>
-        <div class="row" style="padding-bottom: 30px">
-            <div class="col-12 col-md-2 offset-md-3">Stock</div>
-            <div class="col-12 col-md-5">
-            <input type="number" name="txtStock" class="form-control" value="{{item.stock}}">          
-        </div>
-        </div>
-        <div class="row" style="padding-bottom: 30px">
-            <div class="col-12 col-md-2 offset-md-3">Fecha de Elaboración</div>
-            <div class="col-12 col-md-5">
-            <input type="date" name="txtCreado_en" class="form-control" value="{{item.creado_en|date:'Y-m-d'}}"> 
-            </div>
-        </div>
-        <div class="row" style="padding-bottom: 30px">
-            <div class="col-12 col-md-2 offset-md-3">Cargar Imagen</div>
-            <div class="col-12 col-md-5">
-                <input type="file" name="txtImagen" class="form-control" value="{{item.imagen}}">
-            </div>
-        </div>
-        <div class="row" style="padding-bottom: 100px">
-            <div class="col-12 col-md-2 offset-md-3">Opciones</div>
-            <div class="col-12 col-md-5">
-                <input type="submit" name="btnGuardar" class="btn btn-danger" value="Guardar">
-                <input type="submit" name="btnLimpiar" class="btn btn-outline-secondary" value="Limpiar">
-                <a href="{% url 'listarProducto' %}" class="btn btn-success">Listar</a>
-            </div>
-        </div>
-        
-    </form>
+        </form>
+      </div>
+    </div>
+</div>
+
 {% endblock %}
-
-
 
 

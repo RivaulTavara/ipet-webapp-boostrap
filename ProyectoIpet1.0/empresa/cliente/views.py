@@ -125,6 +125,9 @@ def eliminarProducto(request, pk):
     context['listado'] = Producto.objects.all()
     return render(request, 'listarProducto.html', context)
 
+
+
+
 def guardarCliente(request):
     context = {}
     if request.method == 'POST':
@@ -141,28 +144,24 @@ def guardarCliente(request):
         creado_en = timezone.now()
         ultimo_login =  timezone.now()
 
-
-
         if 'btnGuardar' in request.POST:
-            if rut:
-                Cliente.objects.create(rut=rut, correo=correo, nombre=nombre, apellido=apellido, contrasena=contrasena, direccion=direccion, fecha_de_nacimiento=fecha_de_nacimiento, telefono=telefono, region=region, nivel_educacional=nivel_educacional, creado_en=creado_en, ultimo_login=ultimo_login)
-                context['exito'] = "Los datos fueron guardados"
-            else:
-                item = Cliente.objects.get(pk=rut)
+            if Cliente.objects.filter(rut=rut).exists():
+                item = Cliente.objects.get(rut=rut)
                 item.correo = correo
                 item.nombre = nombre
                 item.apellido = apellido
                 item.contrasena = contrasena
                 item.direccion = direccion
                 item.fecha_de_nacimiento = fecha_de_nacimiento
-                item.telefono = telefono
                 item.region = region
                 item.nivel_educacional = nivel_educacional
                 item.creado_en = creado_en
                 item.ultimo_login = ultimo_login
                 item.save()
                 context['exito'] = "Los datos fueron actualizados"
-
+            else:
+                Cliente.objects.create(rut=rut, correo=correo, nombre=nombre, apellido=apellido, contrasena=contrasena, direccion=direccion, fecha_de_nacimiento=fecha_de_nacimiento, telefono=telefono, region=region, nivel_educacional=nivel_educacional, creado_en=creado_en, ultimo_login=ultimo_login)
+                context['exito'] = "Los datos fueron guardados"
 
     return render(request, 'registroCliente.html', context)
 
