@@ -8,9 +8,14 @@ from .models import Cliente,Producto
 
 # Create your views here.
 def index(request):
-    productos = Producto.objects.all()  # Obtiene todos los productos
-    print(productos)
-    return render(request, 'index.html', {'productos': productos})
+    # Obtiene todos los productos
+    productos = Producto.objects.all()
+
+    # Obtiene 5 productos al azar
+    randomprod = Producto.objects.order_by('?')[:5]
+
+    # Pasa ambos conjuntos de productos a la plantilla
+    return render(request, 'index.html', {'productos': productos, 'randomprod': randomprod})
 
 def modoAdmin(request):
     cliente = Cliente.objects.all() # select * from cliente

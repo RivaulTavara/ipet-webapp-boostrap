@@ -1,190 +1,119 @@
 {% extends "master.html" %}
 {% load static %}
 {% load filters %}
-
 {% block contenido %}
-        
-        <link rel="stylesheet" href="{% static 'cliente/model/css/styleIndex.css' %}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
-        <div class="form-login" style="padding-top: 80px;" id="productos">
-            <div class="trends">
-              <div class="bbb_background"></div>
-              <div class="bbb_overlay"></div>
-              <div class="container">
-                  <div class="row">
-                      <div class="col-lg-3">
-                          <div class="bbb_container">
-                              <h1 class="bbb_title">Productos Destacados de la Semana</h1>
-                              <div class="bbb_text">
-                                  <p>Encuentra los productos más destacados de 2022.</p>
-                              </div> 
-                              <div class="bbb_slider_nav d-none d-md-block">
-                                  <div class="bbb_prev bbb_nav"><i class="fas fa-angle-left ml-auto"></i></div>
-                                  <div class="bbb_next bbb_nav"><i class="fas fa-angle-right ml-auto"></i></div>
-                                </div>
-
-                          </div>
-                      </div>
-                      <div class="col-lg-9">
-                          <div class="bbb_slider_container">
-                              <div class="owl-carousel owl-theme bbb_slider">
-                                  <div class="owl-item">
-                                      <div class="bbb_item is_new">
-                                          <div class="bbb_image d-flex flex-column align-items-center justify-content-center"><img src="{% static 'cliente/images/churu.png' %}" alt=""></div>
-                                          <div class="bbb_content">
-                                              <div class="bbb_category"><a href="javascript:void(0);">Alimento</a></div>
-                                              <div class="bbb_info clearfix">
-                                                  <div class="bbb_name"><a href="#product-8">Churu para Gato</a></div>
-                                                  <div class="bbb_text"><a href="javascript:void(0);"></a></div>
-                                                  <div class="bbb_price price"><a href="javascript:void(0);">$9.990 CLP</a></div>
-                                              </div>
-                                          </div>
-                                          <ul class="bbb_marks">
-                                            <li class="offer-icon">Oferta!</li>
-                                          </ul>
-                                          <div class="bbb_fav"><i class="fas fa-heart"></i></div>
-                                      </div>
-                                  </div>
-                                  <div class="owl-item">
-                                      <div class="bbb_item is_new">
-                                          <div class="bbb_image d-flex flex-column align-items-center justify-content-center"><img src="{% static 'cliente/images/kitdelimpieza.png' %}" alt=""></div>
-                                          <div class="bbb_content">
-                                              <div class="bbb_category"><a href="javascript:void(0);">Higine</a></div>
-                                              <div class="bbb_info clearfix">
-                                                  <div class="bbb_name"><a href="#product-9">Kit de Limpieza Canina</a></div>
-                                                  <div class="bbb_price price"><a href="javascript:void(0);">$14.990 CLP</a></div>
-                                              </div>
-                                          </div>
-                                          <ul class="bbb_marks">
-                                            <li class="offer-icon">Oferta!</li>
-                                          </ul>
-                                          <div class="bbb_fav"><i class="fas fa-heart"></i></div>
-                                      </div>
-                                  </div>
-                                  <div class="owl-item">
-                                      <div class="bbb_item is_new">
-                                          <div class="bbb_image d-flex flex-column align-items-center justify-content-center"><img src="{% static 'cliente/images/jaula.png' %}" alt=""></div>
-                                          <div class="bbb_content">
-                                              <div class="bbb_category"><a href="javascript:void(0);">Accesorios</a></div>
-                                              <div class="bbb_info clearfix">
-                                                  <div class="bbb_name"><a href="#product-10">Jaula de Transporte</a></div>
-                                                  <div class="bbb_text"><a href="javascript:void(0);"></a></div>
-                                                  <div class="bbb_price price"><a href="javascript:void(0);">$29.990 CLP</a></div>
-                                              </div>
-                                          </div>
-                                          <ul class="bbb_marks">
-                                            <li class="offer-icon">Oferta!</li>
-                                          </ul>
-                                          <div class="bbb_fav"><i class="fas fa-heart"></i></div>
-                                      </div>
-                                  </div>
-                                  <div class="owl-item">
-                                      <div class="bbb_item is_new">
-                                          <div class="bbb_image d-flex flex-column align-items-center justify-content-center"><img src="{% static 'cliente/images/juguetegato.png' %}" alt=""></div>
-                                          <div class="bbb_content">
-                                              <div class="bbb_category"><a href="javascript:void(0);">Accesorios</a></div>
-                                              <div class="bbb_info clearfix">
-                                                  <div class="bbb_name"><a href="#product-3">Juguete para Gato</a></div>
-                                                  <div class="bbb_text"><a href="javascript:void(0);"></a></div>
-                                                  <div class="bbb_price price"><a href="javascript:void(0);"> $1.990 CLP</a></div>
-                                              </div>
-                                          </div>
-
-                                          <ul class="bbb_marks">
-                                            <li class="offer-icon">Oferta!</li>
-                                        </ul>
-                                            <div class="bbb_fav"><i class="fas fa-heart"></i></div>
-                                      </div>
-                                  </div>
-                                  <div class="owl-item">
-                                      <div class="bbb_item is_new">
-                                          <div class="bbb_image d-flex flex-column align-items-center justify-content-center"><img src="{% static 'cliente/images/correa.png' %}" alt=""></div>
-                                          <div class="bbb_content">
-                                              <div class="bbb_category"><a href="javascript:void(0);">Accesorios</a></div>
-                                              <div class="bbb_info clearfix">
-                                                  <div class="bbb_name"><a href="#product-5">Correa de Paseo para Perro</a></div>
-                                                  <div class="bbb_price price"><a href="javascript:void(0);"> $7.990 CLP</a></div>
-                                              </div>
-                                          </div>
-                                          <ul class="bbb_marks">
-                                            <li class="offer-icon">Oferta!</li>
-                                          </ul>
-                                            <div class="bbb_fav"><i class="fas fa-heart"></i></div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div id="carruselbutton" class="d-md-none ml-auto">
-                        <div class="bbb_prev bbb_nav"><i class="fas fa-angle-left ml-auto"></i></div>
-                        <div class="bbb_next bbb_nav"><i class="fas fa-angle-right ml-auto"></i></div>
-                      </div>
-                  </div>
-            </div>
-
-            </div>
-          </div>
-      
-      
-      
-                <!-- Galeria de productos -->
-                <!--De igual manera en la galeria de fotos, esta codeada para que funcione de esta manera
-                no cambiar , esta codeada en 6 secciones con dos imagenes por seccion,
-                para que se pueda ver una al lado de la otra como espejo
-                -->
-                <style> 
-                    {% for producto in productos %}
-                        .section-products #product-{{ producto.id }} .part-1::before {
-                            background-image: url("{% static producto.imagen %}");
-                            background-size: cover;
-                        }
-                    {% endfor %}
-                </style>
-                <section class="section-products" id="galeria">
-                  <div class="container">
-                      <div class="row justify-content-center text-center">
-                          <div class="col-md-8 col-lg-6">
-                              <div class="header">
-                                  <h3>Lo Más Vendido</h3>
-                                  <h2>Galeria de Productos</h2>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">
-                        {% for producto in productos %}
-                            <div class="col-md-6 col-lg-4 col-xl-3">
-                                <div id="product-{{ producto.id }}" class="single-product" style="background-image: {% static producto.imagen %}; background-size: cover; transition: all 0.3s;">
-                                    <div class="part-1">
-                                        <span class="discount">{{ producto.descuento }}% off</span>
-                                        <ul>
-                                            <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
-                                            <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                            <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                                            <li><a href=""><i class="fas fa-expand"></i></a></li>
-                                        </ul>
+    
+    <link rel="stylesheet" href="{% static 'cliente/model/css/styleIndex.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
+    <div class="form-login" style="padding-top: 80px;" id="productos">
+        <div class="trends">
+            <div class="bbb_background"></div>
+            <div class="bbb_overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="bbb_container">
+                            <h1 class="bbb_title">Productos Destacados de la Semana</h1>
+                            <div class="bbb_text">
+                                <p>Encuentra los productos más destacados de 2022.</p>
+                            </div> 
+                            <div class="bbb_slider_nav d-none d-md-block">
+                                <div class="bbb_prev bbb_nav"><i class="fas fa-angle-left ml-auto"></i></div>
+                                <div class="bbb_next bbb_nav"><i class="fas fa-angle-right ml-auto"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="bbb_slider_container">
+                            <div class="owl-carousel owl-theme bbb_slider">
+                            {% for producto in randomprod %}
+                            <div class="owl-item">
+                                <div class="bbb_item is_new">
+                                    <div class="bbb_image d-flex flex-column align-items-center justify-content-center">
+                                        <img src="{{ producto.imagen }}" alt="{{ producto.nombre }}">
                                     </div>
-                                    <div class="part-2">
-                                        <p class="product-text d-none d-md-none ">{{ producto.descripcion }}</p>
-                                        <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: {{ producto.marca }}</small></p>
-                                        <p class="product-stock d-none d-md-none"><small class="text-body-secondary">{{ producto.stock }}+ Disponibles</small></p>
-                                        <div class="product-title"><a href="javascript:void(0);">{{ producto.nombre }}</a></div>
-                                        <div style="display: flex; justify-content: end;">
-                                            <div class="product-old-price price" style="margin-top: 6px;"><a href="javascript:void(0);">${{ producto.precio|format_price }} CLP</a></div>
-                                            <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">${{ producto.precio|format_price }} CLP</a></div>
+                                    <div class="bbb_content">
+                                        <div class="bbb_category"><a href="javascript:void(0);">{{ producto.categoria }}</a></div>
+                                        <div class="bbb_info clearfix">
+                                            <div class="bbb_name"><a href="#product-{{ producto.id }}">{{ producto.nombre }}</a></div>
+                                            <div class="bbb_price price"><a href="javascript:void(0);">${{ producto.precio|format_price }} CLP</a></div>
                                         </div>
                                     </div>
+                                    <ul class="bbb_marks">
+                                        <li class="offer-icon">Oferta!</li>
+                                    </ul>
+                                    <div class="bbb_fav"><i class="fas fa-heart"></i></div>
                                 </div>
                             </div>
-                        {% endfor %}
-                      </div>
-                  </div>
-              </section>
-              <!--Registro de nuevos usuarios (hypervinculo al archivo registro)-->
-              <div class="alert  alert-dismissible fade show" role="alert" style="position: fixed; bottom: 20px; right: 20px; z-index: 500;">
-                <a href="registro" class="btn btn-primary btn-lg">¿Eres nuevo? ¡Regístrate!</a>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                      </div>
-    {% endblock %}
-
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div id="carruselbutton" class="d-md-none ml-auto">
+                    <div class="bbb_prev bbb_nav"><i class="fas fa-angle-left ml-auto"></i></div>
+                    <div class="bbb_next bbb_nav"><i class="fas fa-angle-right ml-auto"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- Galeria de productos -->
+        <!--De igual manera en la galeria de fotos, esta codeada para que funcione de esta manera
+        no cambiar , esta codeada en 6 secciones con dos imagenes por seccion,
+        para que se pueda ver una al lado de la otra como espejo
+        -->
+        <style> 
+            {% for producto in productos %}
+                .section-products #product-{{ producto.id }} .part-1::before {
+                    background-image: url("{% static producto.imagen %}");
+                    background-size: cover;
+                }
+            {% endfor %}
+        </style>
+        <section class="section-products" id="galeria">
+            <div class="container">
+                <div class="row justify-content-center text-center">
+                    <div class="col-md-8 col-lg-6">
+                        <div class="header">
+                            <h3>Lo Más Vendido</h3>
+                            <h2>Galeria de Productos</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                {% for producto in productos %}
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div id="product-{{ producto.id }}" class="single-product" style="background-image: {% static producto.imagen %}; background-size: cover; transition: all 0.3s;">
+                            <div class="part-1">
+                                <span class="discount">{{ producto.descuento }}% off</span>
+                                <ul>
+                                    <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
+                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                    <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                    <li><a href=""><i class="fas fa-expand"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="part-2">
+                                <p class="product-text d-none d-md-none ">{{ producto.descripcion }}</p>
+                                <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: {{ producto.marca }}</small></p>
+                                <p class="product-stock d-none d-md-none"><small class="text-body-secondary">{{ producto.stock }}+ Disponibles</small></p>
+                                <div class="product-title"><a href="javascript:void(0);">{{ producto.nombre }}</a></div>
+                                <div style="display: flex; justify-content: end;">
+                                    <div class="product-old-price price" style="margin-top: 6px;"><a href="javascript:void(0);">${{ producto.precio|format_price }} CLP</a></div>
+                                    <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">${{ producto.precio|format_price }} CLP</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!--Registro de nuevos usuarios (hypervinculo al archivo registro)-->
+        <div class="alert  alert-dismissible fade show" role="alert" style="position: fixed; bottom: 20px; right: 20px; z-index: 500;">
+            <a href="registro" class="btn btn-primary btn-lg">¿Eres nuevo? ¡Regístrate!</a>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+{% endblock %}

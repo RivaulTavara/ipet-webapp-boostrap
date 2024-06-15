@@ -167,26 +167,7 @@ document.querySelectorAll('.bbb_name a').forEach(function(link) {
     });
 });
 
-$('#login-form').on('submit', function(e) {
-    e.preventDefault();
-  
-    $.ajax({
-      url: '../model/php/login.php',
-      type: 'POST',
-      data: $(this).serialize(),
-      dataType: 'json',
-      success: function(data) {
-        if (data.success) {
-          window.location.href = '/usuario.html';
-        } else if (data.error) {
-          alert(data.error);
-        }
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-        console.error(textStatus, errorThrown);
-      }
-    });
-});
+
 
 $('.owl-carousel').owlCarousel({
     loop: true,
@@ -219,6 +200,10 @@ $(window).resize(function() {
         $('#icontel').removeClass('ms-auto');
     }
 }).trigger('resize');
+
+
+
+
 
 $(function() {
     $(document).delegate('.price', 'click', async function() {
