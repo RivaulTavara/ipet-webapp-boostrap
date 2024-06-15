@@ -3,14 +3,14 @@ from django.utils import timezone
 from django.shortcuts import redirect
 
 
+
 from .models import Cliente,Producto
 
 # Create your views here.
 def index(request):
-    cliente = Cliente.objects.all() # select * from cliente
-    context = {"cliente":cliente}
-    print(cliente)
-    return render(request, 'index.html', context)
+    productos = Producto.objects.all()  # Obtiene todos los productos
+    print(productos)
+    return render(request, 'index.html', {'productos': productos})
 
 def modoAdmin(request):
     cliente = Cliente.objects.all() # select * from cliente
