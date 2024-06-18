@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.utils import timezone
 from django.shortcuts import redirect
+from django.http import JsonResponse
+from .models import Carrito, Cliente,Producto
+from .carrito import Carrito
 
-
-
-from .models import Cliente,Producto
 
 # Create your views here.
 def index(request):
@@ -24,10 +24,47 @@ def modoAdmin(request):
     return render(request, 'modoAdmin.html', context)
 
 def carrito(request):
-    cliente = Cliente.objects.all() # select * from cliente
-    context = {"cliente":cliente}
-    print(cliente)
-    return render(request, 'carrito.html', context)
+    carrito = Carrito(request)
+    productos = Producto.objects.all()
+    total = sum(int(producto['precio_unitario']) * producto['cantidad'] for producto in carrito.carrito.values())
+    tot_cant=sum(int(producto['cantidad']) for producto in carrito.carrito.values())
+    return render(request, 'carrito.html', {'productos': productos, 'carrito': carrito, 'total': total, 'tot_cant': tot_cant})
+
+def agregarAlCarrito(request, producto_id):
+    producto = Producto.objects.get(id=producto_id)
+    carrito = Carrito(request)
+    imagen_url = str(producto.imagen.url)
+    if imagen_url.startswith('/'):
+        imagen_url = imagen_url[1:]
+    carrito.agregar(producto=producto, imagen_url=imagen_url)
+    return redirect('index')
+
+
+
+
+def agregarProductoCarrito(request, producto_id):
+    producto = Producto.objects.get(id=producto_id)
+    carrito = Carrito(request)
+    carrito.agregar(producto=producto)
+    return redirect('carrito')
+
+def eliminarProductoCarrito(request, producto_id):
+    producto = Producto.objects.get(id=producto_id)
+    carrito = Carrito(request)
+    carrito.eliminar(producto=producto)
+    return redirect('carrito')
+
+def restarProductoCarrito(request, producto_id):
+    producto = Producto.objects.get(id=producto_id)
+    carrito = Carrito(request)
+    carrito.restar(producto=producto)
+    return redirect('carrito')
+
+def limpiarCarrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar_carrito()
+    return redirect('carrito')
+
 
 def inicioSesion(request):
     cliente = Cliente.objects.all() # select * from cliente

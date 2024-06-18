@@ -64,6 +64,8 @@
         no cambiar , esta codeada en 6 secciones con dos imagenes por seccion,
         para que se pueda ver una al lado de la otra como espejo
         -->
+        
+
         <style> 
             {% for producto in productos %}
                 .section-products #product-{{ producto.id }} .part-1::before {
@@ -72,6 +74,16 @@
                 }
             {% endfor %}
         </style>
+
+        <section class="section-products" id="galeria">
+            <div class="container">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="toggleCurrency">
+                    <label class="form-check-label" for="toggleCurrency">Cambiar Moneda</label>
+                </div>
+            </div>
+        </section>
+        
         <section class="section-products" id="galeria">
             <div class="container">
                 <div class="row justify-content-center text-center">
@@ -85,13 +97,13 @@
                 <div class="row">
                 {% for producto in productos %}
                     <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div id="product-{{ producto.id }}" class="single-product" style="background-image: {% static producto.imagen %}; background-size: cover; transition: all 0.3s;">
+                        <div id="product-{{ producto.id }}" class="single-product">
                             <div class="part-1">
                                 <span class="discount">{{ producto.descuento }}% off</span>
                                 <ul>
                                     <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
                                     <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                    <li><a href="{% url 'agregarAlCarrito' producto.id %}"><i class="fas fa-plus"></i></a></li>                                    
                                     <li><a href=""><i class="fas fa-expand"></i></a></li>
                                 </ul>
                             </div>
@@ -111,6 +123,13 @@
                 </div>
             </div>
         </section>
+        <script>
+            $(function() {
+                $('#toggleCurrency').change(function() {
+                    $('.price').trigger('click');
+                });
+            });
+        </script>
         <!--Registro de nuevos usuarios (hypervinculo al archivo registro)-->
         <div class="alert  alert-dismissible fade show" role="alert" style="position: fixed; bottom: 20px; right: 20px; z-index: 500;">
             <a href="registro" class="btn btn-primary btn-lg">¿Eres nuevo? ¡Regístrate!</a>

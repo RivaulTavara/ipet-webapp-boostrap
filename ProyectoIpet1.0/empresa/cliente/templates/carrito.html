@@ -1,60 +1,38 @@
 {% extends "master.html" %}
 {% load static %}
-
+{% load filters %}
+{% load mathfilters %}
 {%block contenido%}
     <link rel="stylesheet" href="{% static 'cliente/model/css/styleCarrito.css' %}">
     <link rel="stylesheet" href="{% static 'cliente/model/css/stylePago.css' %}">
     <div>
       <div class="ccccard">
-        <div class="row" style="padding-top: 100px; padding-bottom: 40px;">
+        <div class="row" style="padding-top: 100px; padding-bottom: 10px;">
             <div class="col-md-8 ccccart">
                 <div class="ccctitle">
                     <div class="row">
                         <div class="col"><h4><b>Carrito de compras</b></h4></div>
-                        <div class="col align-self-center text-right text-muted">3 Productos</div>
+                        <div class="col align-self-center text-right text-muted">{{tot_cant}} Productos</div>
                     </div>
                 </div>    
-                <div class="row border-top border-bottom">
-                    <div class="row cccmain align-items-center">
-                        <div class="col-2"><img class="img-fluid" src="{% static 'cliente/images/churu.png' %}" style="width: 3.5rem;"></div>
-                        <div class="col">
-                            <div class="cccrow text-muted">Alimento</div>
-                            <div class="cccrow">Churu para Gato</div>
+                <div style="overflow: auto; height: 45vh; scrollbar-width: none; padding-right: 10px;">
+                    {% for id, producto in request.session.carrito.items %}
+                        <div class="row border-top border-bottom">
+                            <div class="row cccmain align-items-center">
+                                
+                                <div class="col-2"><img class="img-fluid" src="{{ producto.imagen }}" style="width: 10rem;"></div>                                
+                                <div class="col">
+                                    <div class="cccrow text-muted">{{ producto.nombre }}</div>
+                                    <div class="cccrow">{{ producto.marca }}</div>
+                                </div>
+                                <div class="col">
+                                    <a href="{% url 'restarProductoCarrito' producto.producto_id %}" style="padding: 0 1vh;">-</a><a href="javascript:void(0);" class="border">{{ producto.cantidad }}</a><a href="{% url 'agregarProductoCarrito' producto.producto_id %}">+</a>
+                                </div>
+                                <div class="col">&dollar; {{ producto.precio_unitario|multiply:producto.cantidad|format_price }}</div>
+                                <a href="{% url 'eliminarProductoCarrito' producto.producto_id %}" class="btn btn-close" aria-label="Close"></a>                        
+                            </div>
                         </div>
-                        <div class="col">
-                            <a href="#" style="padding: 0 1vh;">-</a><a href="#" class="border">1</a><a href="#">+</a>
-                        </div>
-                        <div class="col">&dollar; 9.990</div>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>                    
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="row cccmain align-items-center">
-                        <div class="col-2"><img class="img-fluid" src="{% static 'cliente/images/jaula.png' %}" style="width: 3.5rem;"></div>
-                        <div class="col">
-                            <div class="cccrow text-muted">Accesorios</div>
-                            <div class="cccrow">Jaula de Transporte</div>
-                        </div>
-                        <div class="col">
-                            <a href="#" style="padding: 0 1vh;">-</a><a href="#" class="border">1</a><a href="#">+</a>
-                        </div>
-                        <div class="col">&dollar; 29.990</div>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                </div>
-                <div class="row border-top border-bottom">
-                    <div class="row cccmain align-items-center">
-                        <div class="col-2"><img class="img-fluid" src="{% static 'cliente/images/correa.png' %}" style="width: 3.5rem;"></div>
-                        <div class="col">
-                            <div class="cccrow text-muted">Accesorios</div>
-                            <div class="cccrow">Correa de Paseo para Perro</div>
-                        </div>
-                        <div class="col">
-                            <a href="#" style="padding: 0 1vh;">-</a><a href="#" class="border">1</a><a href="#">+</a>
-                        </div>
-                        <div class="col">&dollar; 7.990</div>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                    {% endfor %}
                 </div>
                 <div class="cccback-to-shop"><a href="index">&leftarrow; Volver a la Tienda</a><span class="text-muted"></span></div>
             </div>
@@ -62,23 +40,22 @@
                 <div><h5 style="margin-top: 4vh;"><b>Total</b></h5></div>
                 <hr style="margin-top: 1.25rem;">
                 <div class="row">
-                    <div class="col">3 Productos</div>
-                    <div class="col text-right">&dollar; 47.970</div>
+                    <div class="col">{{tot_cant}} Productos</div>
+                    <div class="col text-right">&dollar; {{total|format_price}}</div>
                 </div>
                 <form>
                     <p class="mt-2">Envío</p>
-                    <select>
-                      <option class="text-muted">Envío Estándar &dollar; 3.990</option>
-                      <option class="text-muted">Envío Express &dollar; 5.990</option>
-                      <option class="text-muted">Retiro en Tienda &dollar; 0</option>
-                    </select>
+                    <select id="envio">
+                        <option value="3990" class="text-muted">Envío Estándar &dollar; 3.990</option>
+                        <option value="5990" class="text-muted">Envío Express &dollar; 5.990</option>
+                        <option value="0" class="text-muted">Retiro en Tienda &dollar; 0</option>
+                      </select>
                     <p>Código Promocional</p>
                     <input id="code" placeholder="Ingresa tu código">
                 </form>
                 <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                     <div class="col">Total a Pagar</div>
-                    <div class="col text-right">&dollar; 51.960</div>
-                </div>
+                    <div class="col total-pagar">&dollar; {{total|format_price}}</div>                </div>
                 <button type="button" class="cccbtn" data-bs-toggle="modal" data-bs-target="#modalPago">Pagar</button>
               
             </div>

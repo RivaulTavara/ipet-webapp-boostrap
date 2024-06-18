@@ -84,9 +84,80 @@
         </div>
       </div>
   </nav>
+  {% endblock %}
+  {% block contenido %}
+    <div class="container mt-5 pt-5">
+        <!-- Mensaje de Bienvenida -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="bg-secondary text-white p-4 rounded text-center">
+                    <h1>Bienvenido al Panel de Administración</h1>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Resumen de Ventas -->
+        <div class="row mb-4">
+            <!-- Ventas Totales -->
+            <div class="col-md-4">
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">Ventas Totales</h5>
+                        <p class="card-text">$12,345</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Productos Vendidos -->
+            <div class="col-md-4">
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">Productos Vendidos</h5>
+                        <p class="card-text">678</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Ganancias -->
+            <div class="col-md-4">
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">Ganancias</h5>
+                        <p class="card-text">$8,912</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Gráfico de Ventas (Simulado con Chart.js) -->
+        <div class="row mb-4">
+          <div class="col-12">
+              <div class="card bg-light">
+                  <div class="card-body">
+                      <h2 class="card-title text-center">Gráfico de Ventas</h2>
+                      <canvas id="ventasChart" style="max-width: 600px; margin: 0 auto;"></canvas>
+                  </div>
+              </div>
+          </div>
+        </div>
+        
+        <!-- Últimas Actividades -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title text-center">Últimas Actividades</h2>
+                        <ul class="list-group">
+                            <li class="list-group-item">Venta de 10 unidades de Producto A - Ganancia: $200</li>
+                            <li class="list-group-item">Nuevo producto añadido: Producto B</li>
+                            <li class="list-group-item">Venta de 5 unidades de Producto C - Ganancia: $150</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     {% endblock %}
-    {% block contenido %}
-    {% endblock %}
+    
+
 
 
     
@@ -103,7 +174,31 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="{% static 'cliente/model/js/script.js' %}"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/rwd-table-patterns.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      // Inicializar Chart.js dentro del contexto DOMContentLoaded
+      document.addEventListener('DOMContentLoaded', function () {
+          var ctx = document.getElementById('ventasChart').getContext('2d');
+          var chart = new Chart(ctx, {
+              // Tipo de gráfico
+              type: 'line',
+              
+              // Datos para nuestro dataset
+              data: {
+                  labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
+                  datasets: [{
+                      label: 'Ventas',
+                      backgroundColor: 'green',
+                      borderColor: 'green',
+                      data: [0, 10, 5, 2, 20, 30, 45]
+                  }]
+              },
+              
+              // Opciones de configuración
+              options: {}
+          });
+      });
+  </script>
     {% endblock%}
 
 

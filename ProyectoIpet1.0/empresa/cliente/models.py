@@ -13,6 +13,7 @@ class Cliente(models.Model):
     nivel_educacional = models.CharField(max_length=255, blank=True, null=True)
     creado_en = models.DateTimeField(auto_now_add=True)
     ultimo_login = models.DateTimeField(blank=True, null=True)
+    admin = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nombre + ' ' + self.apellido
@@ -36,10 +37,11 @@ class Pedido(models.Model):
     def __str__(self):
         return 'Pedido ' + str(self.id) + ' - ' + str(self.Cliente)
 
-class ItemPedido(models.Model):
+class Carrito(models.Model):
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
+    precio = models.IntegerField()
 
     def __str__(self):
         return 'Item ' + str(self.id) + ' - ' + str(self.producto)
