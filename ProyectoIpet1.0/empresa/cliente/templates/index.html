@@ -124,9 +124,29 @@
             </div>
         </section>
         <script>
-            $(function() {
+            $(document).ready(function() {
                 $('#toggleCurrency').change(function() {
                     $('.price').trigger('click');
+                });
+            });
+
+
+            $(document).ready(function() {
+                $(document).on('click', 'a[href^="/cliente/agregarAlCarrito/"]', function(event) {
+                    event.preventDefault();  // Evita que el enlace recargue la página
+            
+                    $.ajax({
+                        url: $(this).attr('href'),  // Usa el href del enlace como URL para la solicitud AJAX
+                        type: 'GET',
+                        success: function(response) {
+                            // Aquí puedes manejar la respuesta del servidor
+                            console.log(response);
+                        },
+                        error: function(error) {
+                            // Aquí puedes manejar cualquier error que ocurra durante la solicitud
+                            console.log(error);
+                        }
+                    });
                 });
             });
         </script>
