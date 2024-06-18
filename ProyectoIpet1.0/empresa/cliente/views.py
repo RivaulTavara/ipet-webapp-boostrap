@@ -14,6 +14,11 @@ def index(request):
     # Obtiene 5 productos al azar
     randomprod = Producto.objects.order_by('?')[:5]
 
+    for producto in productos:
+        if producto.precio_Oferta:
+            descuento = (producto.precio - producto.precio_Oferta) / producto.precio * 100
+            producto.descuento = round(descuento)
+
     # Pasa ambos conjuntos de productos a la plantilla
     return render(request, 'index.html', {'productos': productos, 'randomprod': randomprod})
 
@@ -129,14 +134,18 @@ def guardarProducto(request):
         marca = request.POST['txtMarca']
         descripcion = request.POST['txtDescripcion']
         precio = request.POST['txtPrecio']
+        precio_Oferta = request.POST['txtPrecioOferta']
         stock = request.POST['txtStock']
         fecha = request.POST['txtCreado_en']
         imagen = request.FILES['txtImagen'] if 'txtImagen' in request.FILES else None
 
+        # Si txtPrecioOferta es una cadena vacía, establece precio_Oferta en None
+        if precio_Oferta == '':
+            precio_Oferta = None
 
         if 'btnGuardar' in request.POST:
             if id== '0':
-                Producto.objects.create(imagen=imagen, nombre=nombre, marca=marca, descripcion=descripcion, precio=precio, stock=stock, creado_en=fecha)        
+                Producto.objects.create(imagen=imagen, nombre=nombre, marca=marca, descripcion=descripcion, precio=precio, precioOferta=precio_Oferta, stock=stock, creado_en=fecha)        
                 context['exito'] = "Los datos fueron guardados"
             else:
                 item = Producto.objects.get(pk=id)
@@ -146,11 +155,11 @@ def guardarProducto(request):
                 item.marca = marca
                 item.descripcion = descripcion
                 item.precio = precio
+                item.precio_Oferta = precio_Oferta
                 item.stock = stock
                 item.creado_en = fecha
                 item.save()
                 context['exito'] = "Los datos fueron actualizados"
-
 
     return render(request, 'registroProducto.html', context)
 

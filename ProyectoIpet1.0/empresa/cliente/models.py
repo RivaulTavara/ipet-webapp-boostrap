@@ -24,6 +24,7 @@ class Producto(models.Model):
     marca = models.CharField(max_length=255)
     descripcion = models.TextField(blank=True, null=True)
     precio = models.IntegerField()
+    precio_Oferta = models.IntegerField(blank=True, null=True)
     stock = models.IntegerField()
     creado_en = models.DateField()
     

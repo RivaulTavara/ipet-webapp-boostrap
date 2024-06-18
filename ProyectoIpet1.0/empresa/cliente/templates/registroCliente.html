@@ -2,6 +2,8 @@
 {% extends "modoAdmin.html" %}
 {% load static %}
 
+{% block contenido %}
+{% endblock %}
 
 {% block tituloPrincipal %} Registro de Clientes {% endblock %}
 
@@ -35,8 +37,9 @@
           <div style="overflow-y: auto; height: 65vh; scrollbar-width: none;">
             {% csrf_token %}
             <div class="row">
-                    <!-- Rut-->
+                    <!-- Rut -->
                     <div class="mb-4">
+                      <p>Rut:</p>
                       <div class="input-group">
                           <span class="input-group-text"><i class="fa fa-id-card text-muted" style="width: 15px;"></i></span>
                           <input type="text" name="txtRut" class="form-control bg-white border-left-0 border-md" pattern="^\d{7,8}-[\dKk]{1}$" title="Por favor, ingresa el RUT sin puntos y con guión. Ejemplo: 12345678-9" required placeholder="XXXXXXXX-X" value="{{item.rut}}">
@@ -46,6 +49,7 @@
                   
                     <!-- Email -->
                     <div class="mb-4">
+                      <p>Email:</p>
                       <div class="input-group">
                           <span class="input-group-text"><i class="fa fa-envelope text-muted" style="width: 15px;"></i></span>
                           <input type="email" name="txtCorreo" class="form-control bg-white border-left-0 border-md" pattern=".+@.+\..+$" title="Por favor, ingresa un correo válido. Ejemplo: ejemplo@correo.com" required placeholder="ejemplo@correo.com" value="{{item.correo}}">
@@ -55,6 +59,7 @@
                   
                     <!-- Primer Nombre -->
                     <div class="mb-4">
+                      <p>Primer Nombre:</p>
                       <div class="input-group">
                           <span class="input-group-text"><i class="fa fa-user text-muted" style="width: 15px;"></i></span>
                           <input type="text" name="txtNombre" class="form-control bg-white border-left-0 border-md" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$" title="Por favor, ingresa solo letras." required placeholder="Pedro" value="{{item.nombre}}">
@@ -64,6 +69,7 @@
                   
                     <!-- Apellidos-->
                     <div class="mb-4">
+                      <p>Primer Apellido:</p>
                       <div class="input-group">
                           <span class="input-group-text"><i class="fa fa-user text-muted" style="width: 15px;"></i></span>
                           <input type="text" name="txtApellido" class="form-control bg-white border-left-0 border-md" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$" title="Por favor, ingresa solo letras." required placeholder="Pascal" value="{{item.apellido}}">
@@ -73,6 +79,7 @@
                   
                     <!-- Contraseña-->
                     <div class="mb-4">
+                      <p>Contraseña:</p>
                       <div class="input-group">
                           <span class="input-group-text"><i class="fa fa-lock text-muted" style="width: 15px;"></i></span>
                           <input type="text" name="txtContrasena" class="form-control bg-white border-left-0 border-md" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="La contraseña debe contener al menos 8 carácteres, un carácter especial, una letra mayúscula, una letra minúscula y un número." required placeholder="Xx1234567@" value="{{item.contrasena}}">
@@ -83,6 +90,7 @@
                   
                     <!-- Fecha de Nacimiento -->
                     <div class="mb-4">
+                      <p>Fecha de Nacimiento:</p>
                       <div class="input-group">
                           <span class="input-group-text"><i class="fa fa-calendar text-muted" style="width: 15px;"></i></span>
                           <input type="date" name="txtFecha" class="form-control bg-white border-left-0 border-md" value="{{item.fecha_de_nacimiento|date:'Y-m-d'}}" title="Debe ingresar una fecha válida." required>
@@ -93,6 +101,7 @@
                   
                     <!-- Telefono -->
                     <div class="mb-4">
+                      <p>Telefono:</p>
                       <div class="input-group">
                           <span class="input-group-text"><i class="fa fa-phone-square text-muted" style="width: 15px;"></i></span>
                           <input type="text" name="txtTelefono" class="form-control bg-white border-left-0 border-md" value="{{item.telefono}}" title="Debe ingresar un telefono de al menos 8 dígitos (9XXXXXXXX)." pattern="\d{8,}" required>
@@ -102,6 +111,7 @@
                   
                     <!-- Direccion -->
                     <div class="mb-4">
+                      <p>Direccion:</p>
                       <div class="input-group">
                           <span class="input-group-text"><i class="fa fa-location-arrow text-muted" style="width: 15px;"></i></span>
                           <input type="text" name="txtDireccion" class="form-control bg-white border-left-0 border-md" required placeholder="Introduce tu dirección." value="{{item.direccion}}">
@@ -111,6 +121,7 @@
                   
                     <!-- Region -->
                     <div class="mb-4">
+                      <p>Region:</p>
                       <div class="input-group">
                           <span class="input-group-text"><i class="fa fa-map-marker text-muted" style="width: 15px;"></i></span>
                           <select type="text" name="txtRegion" class="form-select custom-select bg-white border-left-0 border-md" value="{{item.region}}" required>
@@ -138,6 +149,7 @@
                   
                     <!-- Nivel Educacional -->
                     <div class="mb-4">
+                      <p>Nivel Educacional:</p>
                       <div class="input-group">
                           <span class="input-group-text"><i class="fa fa-graduation-cap text-muted" style="width: 15px;"></i></span>
                           <select type="text" name="txtNivel_Educacional" class="form-select custom-select bg-white border-left-0 border-md" value="{{item.nivel_educacional}}" required placeholder="Debes seleccionar un nivel educacional.">

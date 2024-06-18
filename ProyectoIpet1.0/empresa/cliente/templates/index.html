@@ -92,7 +92,9 @@
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div id="product-{{ producto.id }}" class="single-product">
                             <div class="part-1">
-                                <span class="discount">{{ producto.descuento }}% off</span>
+                                {% if producto.precio_Oferta %}
+                                    <span class="discount">{{ producto.descuento }}% off</span>
+                                {% endif %}
                                 <ul>
                                     <li><a href="{% url 'agregarAlCarritoYRedirigir' producto.id %}"><i class="fas fa-shopping-cart"></i></a></li>
                                     <li><a href="#"><i class="fas fa-heart"></i></a></li>
@@ -106,8 +108,12 @@
                                 <p class="product-stock d-none d-md-none"><small class="text-body-secondary">{{ producto.stock }}+ Disponibles</small></p>
                                 <div class="product-title"><a href="javascript:void(0);">{{ producto.nombre }}</a></div>
                                 <div style="display: flex; justify-content: end;">
-                                    <div class="product-old-price price" style="margin-top: 6px;"><a href="javascript:void(0);">${{ producto.precio|format_price }} CLP</a></div>
-                                    <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">${{ producto.precio|format_price }} CLP</a></div>
+                                    {% if producto.precio_Oferta %}
+                                        <div class="product-old-price price" style="margin-top: 6px;"><a href="javascript:void(0);">${{ producto.precio|format_price }} CLP</a></div>
+                                        <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">${{ producto.precio_Oferta|format_price }} CLP</a></div>
+                                    {% else %}
+                                        <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">${{ producto.precio|format_price }} CLP</a></div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

@@ -47,9 +47,9 @@
                 <form>
                     <p class="mt-2">Envío</p>
                     <select id="envio">
+                        <option value="0" class="text-muted">Retiro en Tienda &dollar; 0</option>
                         <option value="3990" class="text-muted">Envío Estándar &dollar; 3.990</option>
                         <option value="5990" class="text-muted">Envío Express &dollar; 5.990</option>
-                        <option value="0" class="text-muted">Retiro en Tienda &dollar; 0</option>
                       </select>
                     <p>Código Promocional</p>
                     <input id="code" placeholder="Ingresa tu código">
@@ -181,8 +181,6 @@
       </div>
     </div>
     <script>
-        
-
         $(document).ready(function() {
             $(".ntm").click(function(event) {
                 event.preventDefault();
@@ -202,6 +200,17 @@
                     }
                 });
             });
+        });
+
+        function formatNumber(num) {
+            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+        }
+        
+        document.getElementById('envio').addEventListener('change', function() {
+            var total = parseFloat({{ total|default:"0" }});
+            var envio = parseFloat(this.value);
+            var totalConEnvio = total + envio;
+            document.querySelector('.total-pagar a').textContent = '$ ' + formatNumber(totalConEnvio.toFixed(0));
         });
     </script>
 {%endblock%}

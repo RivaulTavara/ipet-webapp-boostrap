@@ -33,6 +33,7 @@
                             <th>Nombre</th>
                             <th>Marca</th>
                             <th>Precio</th>
+                            <th>Precio Of.</th>
                             <th>Stock</th>
                             <th>Creado en</th>
                             <th>Imagen</th>
@@ -48,6 +49,7 @@
                                 <td><div>{{ item.nombre }}</div></td>
                                 <td><div>{{ item.marca| capfirst }}</div></td>
                                 <td><div>{{ item.precio }}</div></td>
+                                <td><div>{{ item.precio_Oferta }}</div></td>
                                 <td><div>{{ item.stock }}</div></td>
                                 <td><div>{{item.creado_en|date:'d-m-Y'|capfirst }}</div></td>
                                 <td><div>

@@ -1,5 +1,7 @@
 {% extends "modoAdmin.html" %}
 {% load static %}
+{% block contenido %}
+{% endblock %}
 
 {% block tituloPrincipal %} Registro de Productos {% endblock %}
 
@@ -33,6 +35,7 @@
               <div class="row">
                       <!-- Nombre Producto -->
                       <div class="mb-4">
+                        <p>Nombre Producto: </p>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-marker text-muted" style="width: 15px;"></i></span>
                             <input type="hidden" name="txtId" value="0{{item.id}}">
@@ -42,6 +45,7 @@
                     
                       <!-- Marca Producto -->
                       <div class="mb-4">
+                        <p>Marca Producto: </p>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-marker text-muted" style="width: 15px;"></i></span>
                             <input type="text" name="txtMarca" class="form-control bg-white border-left-0 border-md" required placeholder="PeaceKeaper" value="{{item.marca}}">
@@ -50,6 +54,7 @@
                     
                       <!-- Descripcion -->
                       <div class="mb-4">
+                        <p>Descripcion: </p>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-marker text-muted" style="width: 15px;"></i></span>
                             <input type="text" name="txtDescripcion" class="form-control bg-white border-left-0 border-md" required placeholder="PeaceKeaper" value="{{item.descripcion}}">
@@ -58,15 +63,26 @@
                     
                       <!-- Precio -->
                       <div class="mb-4">
+                        <p>Precio: </p>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-marker text-muted" style="width: 15px;"></i></span>
                             <input type="number" name="txtPrecio" class="form-control bg-white border-left-0 border-md" pattern="\d*" title="Por favor, ingresa solo números." required placeholder="99999" value="{{item.precio|floatformat:'-2'}}">
                           </div>
                       </div>
-
+                      
+                      <!-- Precio Oferta -->
+                      <div class="mb-4">
+                        <p>Precio Oferta: </p>
+                        <div class="input-group">
+                          <span class="input-group-text"><i class="fas fa-marker text-muted" style="width: 15px;"></i></span>
+                          <input type="number" name="txtPrecioOferta" class="form-control bg-white border-left-0 border-md" pattern="\d*" title="Por favor, ingresa solo números." placeholder="99999" value="{{item.precioOferta|default_if_none:''|floatformat:'-2'}}">
+                        </div>
+                      </div>
+                      
                     
                       <!-- Stock -->
                       <div class="mb-4">
+                        <p>Stock: </p>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-marker text-muted" style="width: 15px;"></i></span>
                             <input type="number" name="txtStock" class="form-control bg-white border-left-0 border-md" pattern="\d*" title="Por favor, ingresa solo números." required placeholder="150" value="{{item.stock}}">
@@ -76,6 +92,7 @@
                     
                       <!-- Fecha de Nacimiento -->
                       <div class="mb-4">
+                        <p>Fecha de Nacimiento: </p>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-calendar text-muted" style="width: 15px;"></i></span>
                             <input type="date" name="txtCreado_en" class="form-control bg-white border-left-0 border-md" value="{{item.creado_en|date:'Y-m-d'}}" title="Debe ingresar una fecha válida." required>
@@ -85,6 +102,7 @@
                     
                       <!-- Imagen Producto -->
                       <div class="mb-4">
+                        <p>Imagen Producto: </p>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-paperclip text-muted" style="width: 15px;"></i></span>
                             <input type="file" name="txtImagen" class="form-control bg-white border-left-0 border-md" value="{{item.imagen.url}}" title="Debe ingresar una imagen" required>
