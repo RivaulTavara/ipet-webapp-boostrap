@@ -1,3 +1,6 @@
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     var botones = document.querySelectorAll('.fas.fa-expand');
 
@@ -201,4 +204,24 @@ $(window).resize(function() {
     }
 }).trigger('resize');
 
+document.addEventListener('DOMContentLoaded', function() {
+    $('.price').click(async function() {
+        if ($(this).hasClass('converted')) {
+            $(this).find('a').text($(this).data('originalPrice'));
+            $(this).removeClass('converted');
+        } else {
+            $(this).data('originalPrice', $(this).find('a').text());
+            var priceText = $(this).find('a').text().replace(/[^0-9]/g, '');
+            var priceInPesos = parseFloat(priceText);
+            try {
+                const response = await $.getJSON('https://mindicador.cl/api');
+                var priceInDollars = priceInPesos / response.dolar.valor;
+                $(this).find('a').text('$' + priceInDollars.toFixed(2) + ' USD');
+                $(this).addClass('converted');
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    });
+});
 
