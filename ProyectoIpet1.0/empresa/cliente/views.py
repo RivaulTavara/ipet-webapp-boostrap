@@ -39,6 +39,15 @@ def agregarAlCarrito(request, producto_id):
     carrito.agregar(producto=producto, imagen_url=imagen_url)
     return redirect('index')
 
+def agregarAlCarritoYRedirigir(request, producto_id):
+    producto = Producto.objects.get(id=producto_id)
+    carrito = Carrito(request)
+    imagen_url = str(producto.imagen.url)
+    if imagen_url.startswith('/'):
+        imagen_url = imagen_url[1:]
+    carrito.agregar(producto=producto, imagen_url=imagen_url)
+    return redirect('carrito')
+
 
 
 

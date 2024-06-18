@@ -37,10 +37,6 @@
   }
 
   
-  .dropdown-menu {
-    animation: fadeOut 0.5s;
-  } 
-  
   .dropdown-menu.show {
     animation: fadeIn 0.5s;
   }
@@ -593,8 +589,4 @@ section{
 .bbb_new{
     background: var(--navbar-color)
 }
-
-
-
-
 

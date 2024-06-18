@@ -75,14 +75,7 @@
             {% endfor %}
         </style>
 
-        <section class="section-products" id="galeria">
-            <div class="container">
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="toggleCurrency">
-                    <label class="form-check-label" for="toggleCurrency">Cambiar Moneda</label>
-                </div>
-            </div>
-        </section>
+        
         
         <section class="section-products" id="galeria">
             <div class="container">
@@ -101,7 +94,7 @@
                             <div class="part-1">
                                 <span class="discount">{{ producto.descuento }}% off</span>
                                 <ul>
-                                    <li><a href="carrito"><i class="fas fa-shopping-cart"></i></a></li>
+                                    <li><a href="{% url 'agregarAlCarritoYRedirigir' producto.id %}"><i class="fas fa-shopping-cart"></i></a></li>
                                     <li><a href="#"><i class="fas fa-heart"></i></a></li>
                                     <li><a href="{% url 'agregarAlCarrito' producto.id %}"><i class="fas fa-plus"></i></a></li>                                    
                                     <li><a href=""><i class="fas fa-expand"></i></a></li>
@@ -125,15 +118,14 @@
         </section>
         <script>
             $(document).ready(function() {
-                $('#toggleCurrency').change(function() {
-                    $('.price').trigger('click');
-                });
-            });
-
-
-            $(document).ready(function() {
                 $(document).on('click', 'a[href^="/cliente/agregarAlCarrito/"]', function(event) {
                     event.preventDefault();  // Evita que el enlace recargue la página
+            
+                    // Guarda una referencia al enlace
+                    var link = $(this);
+            
+                    // Cambia el color de fondo del enlace a negro
+                    link.css('background-color', 'grey');
             
                     $.ajax({
                         url: $(this).attr('href'),  // Usa el href del enlace como URL para la solicitud AJAX
@@ -141,6 +133,11 @@
                         success: function(response) {
                             // Aquí puedes manejar la respuesta del servidor
                             console.log(response);
+            
+                            // Cambia el color de fondo del enlace de vuelta a su color original después de 0.5 segundos
+                            setTimeout(function() {
+                                link.css('background-color', '');
+                            }, 70);
                         },
                         error: function(error) {
                             // Aquí puedes manejar cualquier error que ocurra durante la solicitud
@@ -149,8 +146,6 @@
                     });
                 });
             });
-
-            
         </script>
         <!--Registro de nuevos usuarios (hypervinculo al archivo registro)-->
         <div class="alert  alert-dismissible fade show" role="alert" style="position: fixed; bottom: 20px; right: 20px; z-index: 500;">

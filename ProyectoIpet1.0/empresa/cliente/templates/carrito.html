@@ -5,7 +5,7 @@
 {%block contenido%}
     <link rel="stylesheet" href="{% static 'cliente/model/css/styleCarrito.css' %}">
     <link rel="stylesheet" href="{% static 'cliente/model/css/stylePago.css' %}">
-    <div>
+    <div id="loles">
       <div class="ccccard">
         <div class="row" style="padding-top: 100px; padding-bottom: 10px;">
             <div class="col-md-8 ccccart">
@@ -15,7 +15,7 @@
                         <div class="col align-self-center text-right text-muted">{{tot_cant}} Productos</div>
                     </div>
                 </div>    
-                <div style="overflow: auto; height: 45vh; scrollbar-width: none; padding-right: 10px;">
+                <div style="overflow: auto; height: 45vh; scrollbar-width: none; padding-right: 10px;" id="jajalol">
                     {% for id, producto in request.session.carrito.items %}
                         <div class="row border-top border-bottom">
                             <div class="row cccmain align-items-center">
@@ -26,10 +26,11 @@
                                     <div class="cccrow">{{ producto.marca }}</div>
                                 </div>
                                 <div class="col">
-                                    <a href="{% url 'restarProductoCarrito' producto.producto_id %}" style="padding: 0 1vh;">-</a><a href="javascript:void(0);" class="border">{{ producto.cantidad }}</a><a href="{% url 'agregarProductoCarrito' producto.producto_id %}">+</a>
+                                    <a href="{% url 'restarProductoCarrito' producto.producto_id %}" style="padding: 0 1vh;" class="ntm">-</a><a href="javascript:void(0);" class="border">{{ producto.cantidad }}</a><a href="{% url 'agregarProductoCarrito' producto.producto_id %}" class="ntm">+</a>
                                 </div>
-                                <div class="col">&dollar; {{ producto.precio_unitario|multiply:producto.cantidad|format_price }}</div>
-                                <a href="{% url 'eliminarProductoCarrito' producto.producto_id %}" class="btn btn-close" aria-label="Close"></a>                        
+
+                                <div class="col price"><a href="javascript:void(0);" style="text-decoration: none;">&dollar; {{ producto.precio_unitario|multiply:producto.cantidad|format_price }}</a></div>                                
+                                <a href="{% url 'eliminarProductoCarrito' producto.producto_id %}" class="btn btn-close ntm" aria-label="Close"></a>                        
                             </div>
                         </div>
                     {% endfor %}
@@ -41,7 +42,7 @@
                 <hr style="margin-top: 1.25rem;">
                 <div class="row">
                     <div class="col">{{tot_cant}} Productos</div>
-                    <div class="col text-right">&dollar; {{total|format_price}}</div>
+                    <div class="col text-right price"><a href="javascript:void(0);" style="text-decoration: none;">&dollar; {{total|format_price}}</a></div>                                
                 </div>
                 <form>
                     <p class="mt-2">Envío</p>
@@ -55,7 +56,8 @@
                 </form>
                 <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                     <div class="col">Total a Pagar</div>
-                    <div class="col total-pagar">&dollar; {{total|format_price}}</div>                </div>
+                    <div class="col total-pagar price"><a href="javascript:void(0);" style="text-decoration: none;">&dollar; {{total|format_price}}</a></div>                                
+                </div>
                 <button type="button" class="cccbtn" data-bs-toggle="modal" data-bs-target="#modalPago">Pagar</button>
               
             </div>
@@ -178,4 +180,28 @@
         </div>
       </div>
     </div>
+    <script>
+        
+
+        $(document).ready(function() {
+            $(".ntm").click(function(event) {
+                event.preventDefault();
+        
+                // Guarda la posición de desplazamiento del carrito
+                var scrollPosition = $("#jajalol").scrollTop();
+        
+                $.ajax({
+                    url: $(this).attr('href'),  // URL del servidor que maneja la adición, eliminación o resta de productos
+                    type: 'GET',
+                    success: function(data) {
+                        // Actualiza la parte de la página que muestra los productos en el carrito
+                        $("#loles").html(data);
+        
+                        // Restaura la posición de desplazamiento del carrito
+                        $("#jajalol").scrollTop(scrollPosition);
+                    }
+                });
+            });
+        });
+    </script>
 {%endblock%}
