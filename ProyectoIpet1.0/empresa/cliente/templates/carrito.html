@@ -2,6 +2,8 @@
 {% load static %}
 {% load filters %}
 {% load mathfilters %}
+{% block switch %}
+{% endblock %}
 {%block contenido%}
     <link rel="stylesheet" href="{% static 'cliente/model/css/styleCarrito.css' %}">
     <link rel="stylesheet" href="{% static 'cliente/model/css/stylePago.css' %}">
@@ -28,9 +30,8 @@
                                 <div class="col">
                                     <a href="{% url 'restarProductoCarrito' producto.producto_id %}" style="padding: 0 1vh;" class="ntm">-</a><a href="javascript:void(0);" class="border">{{ producto.cantidad }}</a><a href="{% url 'agregarProductoCarrito' producto.producto_id %}" class="ntm">+</a>
                                 </div>
-
-                                <div class="col price"><a href="javascript:void(0);" style="text-decoration: none;">&dollar; {{ producto.precio_unitario|multiply:producto.cantidad|format_price }}</a></div>                                
-                                <a href="{% url 'eliminarProductoCarrito' producto.producto_id %}" class="btn btn-close ntm" aria-label="Close"></a>                        
+                                    <div class="col price"><a href="javascript:void(0);" style="text-decoration: none;">&dollar; {{ producto.precio_unitario|multiply:producto.cantidad|format_price }}</a></div>                              
+                                    <a href="{% url 'eliminarProductoCarrito' producto.producto_id %}" class="btn btn-close ntm" aria-label="Close"></a>                        
                             </div>
                         </div>
                     {% endfor %}
@@ -188,6 +189,9 @@
                 // Guarda la posición de desplazamiento del carrito
                 var scrollPosition = $("#jajalol").scrollTop();
         
+                // Guarda el valor seleccionado en el <select> de envío
+                var selectedEnvio = $('#envio').val();
+        
                 $.ajax({
                     url: $(this).attr('href'),  // URL del servidor que maneja la adición, eliminación o resta de productos
                     type: 'GET',
@@ -197,10 +201,15 @@
         
                         // Restaura la posición de desplazamiento del carrito
                         $("#jajalol").scrollTop(scrollPosition);
+        
+                        // Restaura el valor seleccionado en el <select> de envío
+                        $('#envio').val(selectedEnvio);
                     }
                 });
             });
         });
+
+        
 
         function formatNumber(num) {
             return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')

@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.utils import timezone
 from django.shortcuts import redirect
-from django.http import JsonResponse
 from .models import Carrito, Cliente,Producto
 from .carrito import Carrito
 

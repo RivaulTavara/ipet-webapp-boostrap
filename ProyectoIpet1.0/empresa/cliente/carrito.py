@@ -17,12 +17,13 @@ class Carrito:
                 'imagen': imagen_url,
                 'producto_id': producto.id,
                 'nombre': producto.nombre,
-                'precio_unitario': producto.precio,  # Guarda el precio unitario
+                'precio_unitario': producto.precio_Oferta if producto.precio_Oferta else producto.precio,  # Guarda el precio de oferta si existe, de lo contrario guarda el precio unitario
                 'cantidad': 1,
             }
         else:
             self.carrito[id]['cantidad'] += 1
         self.guardar_carrito()
+        
     def guardar_carrito(self):
         self.session['carrito'] = self.carrito
         self.session.modified = True
@@ -40,8 +41,6 @@ class Carrito:
             self.carrito[id]['cantidad'] -= 1
             if self.carrito[id]['cantidad'] < 1:
                 self.eliminar(producto)
-            else:
-                self.carrito[id]['precio'] = self.carrito[id]['precio_unitario'] * self.carrito[id]['cantidad']
             self.guardar_carrito()
             
     def limpiar_carrito(self):
