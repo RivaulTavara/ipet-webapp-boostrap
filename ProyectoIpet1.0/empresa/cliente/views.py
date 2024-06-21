@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from .models import Carrito, Cliente,Producto, listaDeseos
 from .carrito import Carrito
 from .listaDeseos import listaDeseos
-
+import random
 
 # Create your views here.
 def index(request):
@@ -27,6 +27,10 @@ def modoAdmin(request):
     context = {"cliente":cliente}
     print(cliente)
     return render(request, 'modoAdmin.html', context)
+
+def producto_detalle(request, producto_id):
+    producto = Producto.objects.get(id=producto_id)
+    return render(request, 'producto_Detalle.html', {'producto': producto})
 
 def listadeseos(request):
     lista = listaDeseos(request)
@@ -150,6 +154,15 @@ def listarCliente(request):
     context = {'listado': listado}
     return render(request, 'listarCliente.html', context)
 
+
+
+def generar_numero_aleatorio():
+    rango = range(1000000, 9999999)  # Cambiado a 7 dígitos
+    while True:
+        numero_aleatorio = random.choice(rango)
+        if not Producto.objects.filter(modelo=numero_aleatorio).exists():
+            return numero_aleatorio
+
 def guardarProducto(request):
     context = {}
     if request.method == 'POST':
@@ -162,6 +175,7 @@ def guardarProducto(request):
         stock = request.POST['txtStock']
         fecha = request.POST['txtCreado_en']
         imagen = request.FILES['txtImagen'] if 'txtImagen' in request.FILES else None
+        categoria = request.POST['txtCategoria']
 
         # Si txtPrecioOferta es una cadena vacía, establece precio_Oferta en None
         if precio_Oferta == '':
@@ -169,7 +183,8 @@ def guardarProducto(request):
 
         if 'btnGuardar' in request.POST:
             if id== '0':
-                Producto.objects.create(imagen=imagen, nombre=nombre, marca=marca, descripcion=descripcion, precio=precio, precioOferta=precio_Oferta, stock=stock, creado_en=fecha)        
+                modelo = generar_numero_aleatorio()
+                Producto.objects.create(imagen=imagen, nombre=nombre, marca=marca, descripcion=descripcion, precio=precio, precioOferta=precio_Oferta, stock=stock, creado_en=fecha, modelo=modelo, categoria=categoria)        
                 context['exito'] = "Los datos fueron guardados"
             else:
                 item = Producto.objects.get(pk=id)
@@ -182,11 +197,11 @@ def guardarProducto(request):
                 item.precio_Oferta = precio_Oferta
                 item.stock = stock
                 item.creado_en = fecha
+                item.categoria = categoria
                 item.save()
                 context['exito'] = "Los datos fueron actualizados"
 
     return render(request, 'registroProducto.html', context)
-
 def buscarProducto(request, pk):
     context = {}
     try:

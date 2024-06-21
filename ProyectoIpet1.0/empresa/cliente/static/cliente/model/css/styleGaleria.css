@@ -8,6 +8,15 @@
     overflow: hidden;
     transition: 0.5s all;
 }
+
+.nft .content {
+    position: absolute; /* Posiciona este elemento en relación a su padre más cercano con posición no estática (en este caso, .nft) */
+    top: 100%; /* Posiciona este elemento en la parte inferior de su padre */
+    left: 0;
+    width: 100%; /* Asegura que el elemento se extienda a todo el ancho de su padre */
+    /* El resto de tus estilos */
+}
+
 .nft hr{
     width: 100%;
     border: none;
@@ -21,7 +30,7 @@
 .nft .main{
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     width: 100%;
     padding: 1.5rem;
 } 

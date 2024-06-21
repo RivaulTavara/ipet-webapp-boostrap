@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Cliente(models.Model):
     rut = models.CharField(max_length=10, unique=True)
     correo = models.EmailField(max_length=255, unique=True)
@@ -27,6 +28,8 @@ class Producto(models.Model):
     precio_Oferta = models.IntegerField(blank=True, null=True)
     stock = models.IntegerField()
     creado_en = models.DateField()
+    modelo = models.IntegerField(blank=True, null=True)
+    categoria = models.CharField(max_length=255)
     
     def __str__(self):
         return self.nombre

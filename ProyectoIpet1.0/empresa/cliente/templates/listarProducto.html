@@ -35,6 +35,8 @@
                             <th>Precio</th>
                             <th>Precio Of.</th>
                             <th>Stock</th>
+                            <th>Modelo</th>
+                            <th>Categoria</th>
                             <th>Creado en</th>
                             <th>Imagen</th>
                             <th>Editar</th>
@@ -51,6 +53,8 @@
                                 <td><div>{{ item.precio }}</div></td>
                                 <td><div>{{ item.precio_Oferta }}</div></td>
                                 <td><div>{{ item.stock }}</div></td>
+                                <td><div>{{ item.modelo }}</div></td>
+                                <td><div>{{ item.categoria }}</div></td>
                                 <td><div>{{item.creado_en|date:'d-m-Y'|capfirst }}</div></td>
                                 <td><div>
                                     {% if item.imagen %}
