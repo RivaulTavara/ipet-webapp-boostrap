@@ -41,6 +41,7 @@
                         <th>Nvl. Educ.</th>
                         <th>Creado en</th>
                         <th>Ult. Login</th>
+                        <th>Admin</th>
                         <th>Modificar</th>
                         <th>Eliminar</th>
                       </tr>
@@ -60,8 +61,9 @@
                         <td>{{ item.telefono }}</td>
                         <td>{{ item.region }}</td>
                         <td>{{ item.nivel_educacional }}</td>
-                        <td>{{item.creado_en|date:'d-m-Y'|capfirst }}</td>
-                        <td>{{item.ultimo_login|date:'d-m-Y'|capfirst }}</td>
+                        <td>{{ item.creado_en|date:'d-m-Y'|capfirst }}</td>
+                        <td>{{ item.ultimo_login|date:'d-m-Y'|capfirst }}</td>
+                        <td>{{ item.admin }}</td>
                         <td><a href="{% url 'buscarCliente' pk=item.id %}" class="btn btn-warning fas fa-edit"></a></td>
                         <td><a href="{% url 'eliminarCliente' pk=item.id %}" class="btn btn-danger far fa-window-close"></a></td>
                         </tr>

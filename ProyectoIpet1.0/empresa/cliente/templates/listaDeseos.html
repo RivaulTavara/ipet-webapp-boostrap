@@ -1,0 +1,45 @@
+{% extends "master.html" %}
+{% load static %}
+{% load filters %}
+{% load mathfilters %}
+{% block switch %}
+{% endblock %}
+{% block contenido %}
+<link rel="stylesheet" href="{% static 'cliente/model/css/styleListaDeseos.css' %}">
+
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+    <div style="margin: 5rem auto">
+        <div class="nft">
+            <div class='main'>
+                <img class='tokenImage' src="productos/casagato.png" />
+                <div class="content">
+                    <h2>Casa para Gato</h2>
+                    <p class='description'>Our Kibertopiks will give you nothing, waste your money on us.</p>
+                    <div class='tokenInfo'>
+                        <div class="stock">
+                            <p><ins>Stock: </ins>+333 Disponibles</p>
+                        </div>
+                        <div class='creador'>
+                            <p><ins>Marca: </ins> Kiberbash</p>
+                        </div>
+                        <div class="precio">
+                            <p>11 days left</p>
+                        </div>
+                        <hr />
+                        <ul>
+                            <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                            <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                            <li><a href="#"><i class="fas fa-plus"></i></a></li>                                    
+                            <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+   {% endblock %}

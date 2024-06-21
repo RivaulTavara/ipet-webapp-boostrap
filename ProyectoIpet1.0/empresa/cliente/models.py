@@ -46,3 +46,11 @@ class Carrito(models.Model):
 
     def __str__(self):
         return 'Item ' + str(self.id) + ' - ' + str(self.producto)
+    
+class listaDeseos(models.Model):
+    Cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return 'Item ' + str(self.id) + ' - ' + str(self.producto)
+    

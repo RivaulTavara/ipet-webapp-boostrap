@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.utils import timezone
 from django.shortcuts import redirect
-from .models import Carrito, Cliente,Producto
+from .models import Carrito, Cliente,Producto, listaDeseos
 from .carrito import Carrito
+from .listaDeseos import listaDeseos
 
 
 # Create your views here.
@@ -26,6 +27,33 @@ def modoAdmin(request):
     context = {"cliente":cliente}
     print(cliente)
     return render(request, 'modoAdmin.html', context)
+
+def listadeseos(request):
+    lista = listaDeseos(request)
+    productos = Producto.objects.all()
+    return render(request, 'listaDeseos.html', {'productos': productos, 'lista': lista})
+
+def agregarAListaDeseos(request, producto_id):
+    producto = Producto.objects.get(id=producto_id)
+    lista = listaDeseos(request)
+    imagen_url = str(producto.imagen.url)
+    if imagen_url.startswith('/'):
+        imagen_url = imagen_url[1:]
+    lista.agregar(producto=producto, imagen_url=imagen_url)
+    return redirect('index')
+
+def eliminarDeListaDeseos(request, producto_id):
+    producto = Producto.objects.get(id=producto_id)
+    lista = listaDeseos(request)
+    lista.eliminar(producto=producto)
+    lista.guardar_listaDeseos()
+    return redirect('listaDeseos')
+
+def limpiarListaDeseos(request):
+    lista = listaDeseos(request)
+    lista.limpiar_listaDeseos()
+    return redirect('listaDeseos')
+
 
 def carrito(request):
     carrito = Carrito(request)
@@ -51,9 +79,6 @@ def agregarAlCarritoYRedirigir(request, producto_id):
         imagen_url = imagen_url[1:]
     carrito.agregar(producto=producto, imagen_url=imagen_url)
     return redirect('carrito')
-
-
-
 
 def agregarProductoCarrito(request, producto_id):
     producto = Producto.objects.get(id=producto_id)
