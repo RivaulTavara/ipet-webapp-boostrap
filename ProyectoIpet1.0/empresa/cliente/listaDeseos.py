@@ -17,8 +17,10 @@ class listaDeseos:
                 'imagen': imagen_url,
                 'producto_id': producto.id,
                 'nombre': producto.nombre,
-                'descripcion': producto.descripcion,
-                'marca': producto.marca,
+                'precio': producto.precio,
+                'precio_Oferta': producto.precio_Oferta,
+
+
             }
         else:
             self.listaDeseos[id]['cantidad'] += 1

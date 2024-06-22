@@ -108,7 +108,7 @@
                                                                     <button class="block_quantity__button block_quantity__down"></button>
                                                                 </div>
                                                                 <div class="large-6 small-12 column end">
-                                                                    <button class="button button_addToCard">Añadir al Carrito</button>
+                                                                    <a href="{% url 'agregarMultiplesAlCarrito' producto.id %}"><button class="button button_addToCard">Añadir al Carrito</button></a>                                                                    
                                                                 </div>
                                                             </div>
                                                     </div>
@@ -125,12 +125,14 @@
         
         </main>
     <script>
-            
-        /*
-        I want to thank Paul Rudnitskiy for his idea.
-        If you need full work version you can download it here  https://github.com/BlackStar1991/CardProduct
-        */
-
+        $(document).ready(function() {
+            $('.button_addToCard').click(function(e) {
+                e.preventDefault();
+                var cantidad = $('.block_quantity__number').val();
+                var url = "{% url 'agregarMultiplesAlCarrito' producto.id %}";
+                window.location.href = url + "?cantidad=" + cantidad;
+            });
+        });
 
 
         window.onload = function () {

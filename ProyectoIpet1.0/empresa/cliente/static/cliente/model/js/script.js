@@ -2,7 +2,7 @@
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    var botones = document.querySelectorAll('.fas.fa-expand');
+    var botones = document.querySelectorAll('#expand');
 
     botones.forEach(function(boton) {
         boton.addEventListener('click', function(event) {
@@ -162,7 +162,7 @@ document.querySelectorAll('.bbb_name a').forEach(function(link) {
         event.preventDefault();
         var targetId = this.getAttribute('href');
         var targetElement = document.querySelector(targetId);
-        var expandLink = targetElement.querySelector('li a .fa-expand');
+        var expandLink = targetElement.querySelector('ul a .fa-expand');
         if (expandLink) {
             window.scrollTo(0, targetElement.offsetTop);
             expandLink.click();

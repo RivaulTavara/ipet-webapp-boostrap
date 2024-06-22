@@ -4,7 +4,6 @@
 {% block contenido %}
     
     <link rel="stylesheet" href="{% static 'cliente/model/css/styleIndex.css' %}">
-    <link rel="stylesheet" href="{% static 'cliente/model/css/styleGaleria.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
@@ -62,10 +61,11 @@
         <!-- Galeria de productos -->
         <style> 
             {% for producto in productos %}
-                .section-products #product-{{ producto.id }} .part-1::before {
-                    background-image: url("{% static producto.imagen %}");
-                    background-size: cover;
-                }
+            .section-products #product-{{ producto.id }} .part-1::before {
+                background-image: url("{{ producto.imagen }}");
+                background-size: contain; /* Cambia 'cover' por 'contain' */
+                background-repeat: no-repeat; /* Añade esto para evitar que la imagen se repita */
+            }
             {% endfor %}
         </style>
 
@@ -90,20 +90,27 @@
                                     <span class="discount">{{ producto.descuento }}% off</span>
                                 {% endif %}
                                 <ul>
-                                    <li><a href="{% url 'agregarAlCarritoYRedirigir' producto.id %}"><i class="fas fa-shopping-cart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                    <li><a href="{% url 'agregarAlCarrito' producto.id %}"><i class="fas fa-plus"></i></a></li>                                    
-                                    <li><a href=""><i class="fas fa-expand"></i></a></li>
+                                    <a href="{% url 'agregarAlCarritoYRedirigir' producto.id %}"><button class="buttonM"><i class="fas fa-shopping-cart"></i></button></a>
+                                    {% if producto.en_lista_deseos %}
+                                        <a href="{% url 'eliminarDeListaDeseosIndex' producto.id %}"><button class="buttonM deseos" data-id="{{ producto.id }}"><i class="fas fa-heart" style="color: red;"></i></button></a>
+                                    {% else %}
+                                        <a href="{% url 'agregarAListaDeseos' producto.id %}"><button class="buttonM deseos" data-id="{{ producto.id }}"><i class="fas fa-heart"></i></button></a>
+                                    {% endif %}
+                                    <a href="{% url 'agregarAlCarrito' producto.id %}"><button class="buttonM"><i class="fas fa-plus"></i></button></a>
+                                    <a id="expand"><button class="buttonM"><i class="fas fa-expand"></i></button></a>
+                            
+
+
                                 </ul>
                             </div>
                             <div class="part-2">
                                 <p class="product-text d-none d-md-none ">{{ producto.descripcion }}</p>
                                 <p class="product-brand d-none d-md-none"><small class="text-body-secondary">Marca: {{ producto.marca }}</small></p>
                                 <p class="product-stock d-none d-md-none"><small class="text-body-secondary">{{ producto.stock }}+ Disponibles</small></p>
-                                <div class="product-title"><a href="javascript:void(0);">{{ producto.nombre }}</a></div>
+                                <div class="product-title"><a href="{% url 'producto_detalle' producto.id %}">{{ producto.nombre }}</a></div>
                                 <div style="display: flex; justify-content: end;">
                                     {% if producto.precio_Oferta %}
-                                        <div class="product-old-price price" style="margin-top: 6px;"><a href="javascript:void(0);">${{ producto.precio|format_price }} CLP</a></div>
+                                        <div class="product-old-price price" style="margin-top: 6px; color: red;"><del><a href="javascript:void(0);">${{ producto.precio|format_price }} CLP</a></del></div>
                                         <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">${{ producto.precio_Oferta|format_price }} CLP</a></div>
                                     {% else %}
                                         <div class="product-price btn rounded-pill product-button price"><a href="javascript:void(0);">${{ producto.precio|format_price }} CLP</a></div>
@@ -118,7 +125,39 @@
         </section>
         <script>
             $(document).ready(function() {
-                $(document).on('click', 'a[href^="/cliente/agregarAlCarrito/"], a[href^="/cliente/agregarAListaDeseos/"]', function(event) {
+                $(document).on('click', '.deseos', function(event) {
+                    event.preventDefault();  // Evita que el enlace se siga como de costumbre
+
+                    var button = $(this);  // El botón que fue clickeado
+                    var productId = button.data('id');  // El id del producto
+                    var link = button.parent();  // El enlace que contiene el botón
+                    var url = link.attr('href');  // La URL actual del enlace
+
+                    $.ajax({
+                        url: url,  // Usa la URL actual del enlace para la solicitud AJAX
+                        type: 'GET',
+                        success: function(response) {
+                            // Aquí puedes manejar la respuesta del servidor
+                            console.log(response);
+
+                            // Cambia el botón y la URL según la respuesta del servidor
+                            if (url.includes('eliminarDeListaDeseosIndex')) {
+                                button.find('i').css('color', 'white');
+                                link.attr('href', '/cliente/agregarAListaDeseos/' + productId);
+                            } else {
+                                button.find('i').css('color', 'red');
+                                link.attr('href', '/cliente/eliminarDeListaDeseosIndex/' + productId);
+                            }
+                        },
+                        error: function(error) {
+                            // Maneja el error
+                            console.log(error);
+                        }
+                    });
+                });
+            });
+            $(document).ready(function() {
+                $(document).on('click', 'a[href^="/cliente/agregarAlCarrito/"], a[href^="/cliente/agregarAListaDeseos/"], a[href^="/cliente/eliminarDeListaDeseosIndex/"]', function(event) {
                     event.preventDefault();  // Evita que el enlace recargue la página
             
                     // Guarda una referencia al enlace

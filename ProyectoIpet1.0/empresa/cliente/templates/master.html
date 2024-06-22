@@ -34,14 +34,9 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <div id="divdropdown" class="d-flex">
-                    <li class="nav-item">
-                      <a class="nav-link" href="{% url 'index' %}#productos" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Productos Destacados</a>                    </li>
-                    <li class="nav-item">
-                      
-                      <a class="nav-link" href="{% url 'index' %}#galeria" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Productos Destacados</a>                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#pie-pag" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">¿Quiénes somos?</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#productos" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Productos Destacados</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#galeria" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Galeria de Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pie-pag" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">¿Quiénes somos?</a></li>
                   </div>
                 </ul>
                 <div class="navbar-nav ms-auto">
@@ -53,10 +48,10 @@
                           <span>USD</span> <!-- Texto a la derecha del switch -->
                         </div>
                       {%endblock%}
-                      <a id="iconcar" class="nav-link d-md-block" style="padding-top: 13px; padding-right: 25px; height: 38px;" href="listaDeseos">
+                      <a id="iconcar" class="nav-link d-md-block" style="padding-top: 13px; padding-right: 25px; height: 38px;" href={% url 'listadeseos' %}>
                         <i class="fas fa-heart" style="color: white;" ></i>
                       </a>
-                      <a id="iconcar" class="nav-link d-md-block" style="padding-top: 13px; padding-right: 25px; height: 38px;" href="carrito">
+                      <a id="iconcar" class="nav-link d-md-block" style="padding-top: 13px; padding-right: 25px; height: 38px;" href="{% url 'carrito' %}">
                         <i class="fas fa-shopping-cart" style="color: white;" ></i>
                       </a>
                       <div id="icontel" class="dropdown d-md-block">

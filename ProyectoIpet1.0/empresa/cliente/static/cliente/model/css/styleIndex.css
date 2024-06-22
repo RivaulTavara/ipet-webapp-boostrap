@@ -11,7 +11,7 @@
 
 .product-button {
     /* Estilos base para el botón */
-    background-color: #353635; /* Verde */
+    background-color: #3d3d3d; 
     border: none;
     color: white;
     padding: 15px 32px;
@@ -23,10 +23,10 @@
     cursor: pointer;
   }
 
-.product-button:hover {
-    /* Estilos para el botón cuando el mouse está sobre él */
-    background-color: #4CAF50;
-    transition: background-color 0.3s ease-in-out; /* Slow color transition */
+  .product-button:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0px 2px 10px 5px #4d4c4c;
 }
 
 
@@ -85,7 +85,25 @@ a:hover {
     height: 290px;
     max-height: 290px;
     margin-bottom: 20px;
+    border-radius: 1rem;
     overflow: hidden;
+    box-shadow: 0 5px 15px 4px rgba(0, 0, 0, 0.2);
+    
+
+}
+
+
+.productoa .single-product .part-1 {
+    position: relative;
+}
+
+.productoa .single-product .part-1 .remove-productoa {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
 }
 
 .section-products .single-product .part-1::before {
@@ -100,7 +118,8 @@ a:hover {
 }
 
 .section-products .single-product:hover .part-1::before {
-		transform: scale(1.2,1.2) rotate(5deg);
+		transform: scale(1.1,1.1) rotate(5deg);
+        
 }
 
 
@@ -111,7 +130,8 @@ a:hover {
     top: 15px;
     left: 20px;
     color: #ffffff;
-    background-color: var(--navbar-color);
+    background-color: red;
+    border-radius: .7rem;
     padding: 2px 8px;
     text-transform: uppercase;
     font-size: 0.85rem;
@@ -124,7 +144,7 @@ a:hover {
 
 .section-products .single-product .part-1 ul {
     position: absolute;
-    bottom: -41px;
+    bottom: -61px;
     left: 20px;
     margin: 0;
     padding: 0;
@@ -134,7 +154,7 @@ a:hover {
 }
 
 .section-products .single-product:hover .part-1 ul {
-    bottom: 30px;
+    bottom: 10px;
     opacity: 1;
 }
 
@@ -207,7 +227,6 @@ a:hover {
     padding: 0 7px;
     margin-right: 2px;
     font-size: large;
-    color: white;
 }
 
 .section-products .single-product .part-2 .product-old-price::after {
@@ -233,6 +252,10 @@ a:hover {
     color: black;
 }
 
+.fa-times-circle{
+    color: black;
+}
+
 
 
 .buttonM {
@@ -241,7 +264,7 @@ a:hover {
     cursor: pointer;
     font-size: 20px;
     position: relative;
-    background-color: #5a5a5a;
+    background-color: #3d3d3d;
     border: none;
     color: #fff;
     width: 50px;
@@ -253,13 +276,13 @@ a:hover {
   
   .buttonM:hover {
     background: #fff;
-    box-shadow: 0px 2px 10px 5px #5a5a5a;
+    box-shadow: 0px 2px 10px 5px #4d4c4c;
     color: #000;
   }
   
   .buttonM:after {
     content: "";
-    background: #5a5a5a;
+    background: #3d3d3d;
     display: block;
     position: absolute;
     padding-top: 300%;
@@ -278,6 +301,16 @@ a:hover {
   }
   
   .buttonM:focus { outline:0; }
+
+  /* Establecer el color inicial de los iconos a blanco */
+    .buttonM .fas {
+        color: white;
+    }
+
+    /* Cambiar el color de los iconos a negro en el hover */
+    .buttonM:hover .fas {
+        color: black;
+    }
   
 
 

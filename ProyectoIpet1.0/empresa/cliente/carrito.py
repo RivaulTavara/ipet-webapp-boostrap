@@ -7,8 +7,7 @@ class Carrito:
             self.carrito = self.session['carrito'] = {}
         else:
             self.carrito = carrito
-
-    def agregar(self, producto, imagen_url=None):
+    def agregar(self, producto, cantidad=1, imagen_url=None):
         id = str(producto.id)
         if imagen_url is None:
             imagen_url = producto.imagen.url
@@ -18,11 +17,12 @@ class Carrito:
                 'producto_id': producto.id,
                 'nombre': producto.nombre,
                 'precio_unitario': producto.precio_Oferta if producto.precio_Oferta else producto.precio,  # Guarda el precio de oferta si existe, de lo contrario guarda el precio unitario
-                'cantidad': 1,
+                'cantidad': cantidad,
             }
         else:
-            self.carrito[id]['cantidad'] += 1
+            self.carrito[id]['cantidad'] += cantidad
         self.guardar_carrito()
+
         
     def guardar_carrito(self):
         self.session['carrito'] = self.carrito

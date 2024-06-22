@@ -5,6 +5,8 @@ from .models import Carrito, Cliente,Producto, listaDeseos
 from .carrito import Carrito
 from .listaDeseos import listaDeseos
 import random
+from django.http import QueryDict
+
 
 # Create your views here.
 def index(request):
@@ -13,6 +15,13 @@ def index(request):
 
     # Obtiene 5 productos al azar
     randomprod = Producto.objects.order_by('?')[:5]
+
+    lista_deseos = request.session.get('listaDeseos', {})
+
+    # Para cada producto, verifica si su ID está en la lista de deseos
+    for producto in productos:
+        producto.en_lista_deseos = str(producto.id) in lista_deseos
+
 
     for producto in productos:
         if producto.precio_Oferta:
@@ -46,17 +55,24 @@ def agregarAListaDeseos(request, producto_id):
     lista.agregar(producto=producto, imagen_url=imagen_url)
     return redirect('index')
 
+def eliminarDeListaDeseosIndex(request, producto_id):
+    producto = Producto.objects.get(id=producto_id)
+    lista = listaDeseos(request)
+    lista.eliminar(producto=producto)
+    lista.guardar_listaDeseos()
+    return redirect('index')
+
 def eliminarDeListaDeseos(request, producto_id):
     producto = Producto.objects.get(id=producto_id)
     lista = listaDeseos(request)
     lista.eliminar(producto=producto)
     lista.guardar_listaDeseos()
-    return redirect('listaDeseos')
+    return redirect('listadeseos')
 
 def limpiarListaDeseos(request):
     lista = listaDeseos(request)
     lista.limpiar_listaDeseos()
-    return redirect('listaDeseos')
+    return redirect('listadeseos')
 
 
 def carrito(request):
@@ -65,6 +81,18 @@ def carrito(request):
     total = sum(int(producto['precio_unitario']) * producto['cantidad'] for producto in carrito.carrito.values())
     tot_cant=sum(int(producto['cantidad']) for producto in carrito.carrito.values())
     return render(request, 'carrito.html', {'productos': productos, 'carrito': carrito, 'total': total, 'tot_cant': tot_cant})
+
+
+def agregarMultiplesAlCarrito(request, producto_id):
+    cantidad = request.GET.get('cantidad', 1)  # obtiene la cantidad de los parámetros de la URL, por defecto es 1 si no se proporciona
+    producto = Producto.objects.get(id=producto_id)
+    carrito = Carrito(request)
+    imagen_url = str(producto.imagen.url)
+    if imagen_url.startswith('/'):
+        imagen_url = imagen_url[1:]
+    for _ in range(int(cantidad)):
+        carrito.agregar(producto=producto, imagen_url=imagen_url)
+    return redirect('carrito')
 
 def agregarAlCarrito(request, producto_id):
     producto = Producto.objects.get(id=producto_id)
