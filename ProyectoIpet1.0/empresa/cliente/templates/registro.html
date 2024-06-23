@@ -16,7 +16,7 @@
         
           <!-- Registeration Form -->
           <div class="col-md-7 col-lg-6 ml-auto" style="overflow-y: auto; height: 100vh; scrollbar-width: none;">
-            <form id="marginform" action="{% url 'guardarCliente' %}" method="POST" enctype="multipart/form-data" >
+            <form id="marginform" action="{% url 'guardarUsuario' %}" method="POST" enctype="multipart/form-data" >
               {% csrf_token %}
               <div class="row">
                 <div class="mb-4">
@@ -33,7 +33,7 @@
                         <p>Email:</p>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-envelope text-muted" style="width: 15px;"></i></span>
-                            <input type="email" name="txtCorreo" class="form-control bg-white border-left-0 border-md" pattern=".+@.+\..+$" title="Por favor, ingresa un correo válido. Ejemplo: ejemplo@correo.com" required placeholder="ejemplo@correo.com" value="{{item.correo}}">
+                            <input type="email" name="txtCorreo" class="form-control bg-white border-left-0 border-md" pattern=".+@.+\..+$" title="Por favor, ingresa un correo válido. Ejemplo: ejemplo@correo.com" required placeholder="ejemplo@correo.com" value="{{item.email}}">
         
                           </div>
                       </div>
@@ -43,7 +43,7 @@
                         <p>Primer Nombre:</p>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-user text-muted" style="width: 15px;"></i></span>
-                            <input type="text" name="txtNombre" class="form-control bg-white border-left-0 border-md" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$" title="Por favor, ingresa solo letras." required placeholder="Pedro" value="{{item.nombre}}">
+                            <input type="text" name="txtNombre" class="form-control bg-white border-left-0 border-md" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$" title="Por favor, ingresa solo letras." required placeholder="Pedro" value="{{item.first_name}}">
         
                         </div>
                       </div>
@@ -53,7 +53,7 @@
                         <p>Primer Apellido:</p>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-user text-muted" style="width: 15px;"></i></span>
-                            <input type="text" name="txtApellido" class="form-control bg-white border-left-0 border-md" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$" title="Por favor, ingresa solo letras." required placeholder="Pascal" value="{{item.apellido}}">
+                            <input type="text" name="txtApellido" class="form-control bg-white border-left-0 border-md" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$" title="Por favor, ingresa solo letras." required placeholder="Pascal" value="{{item.last_name}}">
         
                           </div>
                       </div>
