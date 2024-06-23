@@ -52,20 +52,22 @@
                         <tr>
                         <td>{{ item.id }}</td>
                         <td>{{ item.rut }}</td>
-                        <td>{{ item.correo }}</td>
-                        <td>{{ item.nombre }}</td>
-                        <td>{{ item.apellido }}</td>
-                        <td>{{ item.contrasena }}</td>
+                        <td>{{ item.email }}</td>
+                        <td>{{ item.first_name }}</td>
+                        <td>{{ item.last_name }}</td>
+                        <td style="max-width: 100px;">
+                            <div style="overflow-x: auto; scrollbar-width: none; white-space: nowrap;">{{ item.password }}</div>
+                        </td>                        
                         <td>{{ item.direccion }}</td>
                         <td>{{ item.fecha_de_nacimiento|date:'d-m-Y'|capfirst }}</td>
                         <td>{{ item.telefono }}</td>
                         <td>{{ item.region }}</td>
                         <td>{{ item.nivel_educacional }}</td>
-                        <td>{{ item.creado_en|date:'d-m-Y'|capfirst }}</td>
-                        <td>{{ item.ultimo_login|date:'d-m-Y'|capfirst }}</td>
-                        <td>{{ item.admin }}</td>
-                        <td><a href="{% url 'buscarCliente' pk=item.id %}" class="btn btn-warning fas fa-edit"></a></td>
-                        <td><a href="{% url 'eliminarCliente' pk=item.id %}" class="btn btn-danger far fa-window-close"></a></td>
+                        <td>{{ item.date_joined|date:'d-m-Y'|capfirst }}</td>
+                        <td>{{ item.last_login|date:'d-m-Y'|capfirst }}</td>
+                        <td>{{ item.is_staff }}</td>
+                        <td><a href="{% url 'buscarUsuario' pk=item.id %}" class="btn btn-warning fas fa-edit"></a></td>
+                        <td><a href="{% url 'eliminarUsuario' pk=item.id %}" class="btn btn-danger far fa-window-close"></a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -76,6 +78,6 @@
         </div>
     </div>
     <div class="text-end" style="padding-bottom: 20px;">
-        <a href="{% url 'registroCliente' %}" class="btn btn-primary mt-auto">Ingresar</a>
+        <a href="{% url 'registroUsuario' %}" class="btn btn-primary mt-auto">Ingresar</a>
     </div>
 {% endblock %}

@@ -3,7 +3,7 @@ def total_carrito(request):
     if request.user.is_authenticated:
         if "carrito" in request.session:
             for key, value in request.session["carrito"].items():
-                total += int(value["precio"])
+                total += int(value["precio_unitario"])
     return {"total_carrito": total}
 
 def total_listaDeseos(request):

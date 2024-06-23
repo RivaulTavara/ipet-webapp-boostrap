@@ -64,7 +64,7 @@
               <ul class="navbar-nav">
                 <div id="divdropdown" class="d-flex">
                   <li class="nav-item">
-                    <a class="nav-link"  href="{% url 'listarCliente' %}" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Clientes</a>
+                    <a class="nav-link"  href="{% url 'listarUsuario' %}" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Usuarios</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'listarProducto' %}" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Productos</a>
@@ -75,12 +75,15 @@
                 </div>
               </ul>
               <div class="navbar-nav ms-auto">
-                <div class="d-flex" style="position: relative;">  
-                  <a id="iconcar" class="nav-link d-md-block" style="padding-top: 10px; padding-right: 35px; height: 38px;" href="index">
-                    <i class="fas fa-sign-out-alt " style="color: white;" ></i>
-                  </a>
-                </div>
-            </div>
+                <form method="POST" action="{% url 'logout' %}">
+                  {% csrf_token %}
+                  <div class="d-flex" style="position: relative;">  
+                    <button id="iconcar" class="nav-link d-md-block" style="padding-top: 10px; padding-right: 35px; height: 38px;">
+                      <i class="fas fa-sign-out-alt" style="color: white;"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
         </div>
       </div>
   </nav>

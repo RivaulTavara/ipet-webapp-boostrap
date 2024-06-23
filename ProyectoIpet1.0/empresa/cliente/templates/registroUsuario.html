@@ -5,7 +5,7 @@
 {% block contenido %}
 {% endblock %}
 
-{% block tituloPrincipal %} Registro de Clientes {% endblock %}
+{% block tituloPrincipal %} Registro de Usuarios {% endblock %}
 
 {% block mensaje%}
 
@@ -33,9 +33,8 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8 col-lg-8 ml-auto" >
-      <form action="{% url 'guardarCliente' %}" method="POST" enctype="multipart/form-data" >
-          <div style="overflow-y: auto; height: 65vh; scrollbar-width: none;">
-            {% csrf_token %}
+      <form action="{% url 'guardarUsuario' %}" method="POST" enctype="multipart/form-data" >
+        <div style="overflow-x: hidden; overflow-y: auto; height: 65vh;">            {% csrf_token %}
             <div class="row">
                     <!-- Rut -->
                     <div class="mb-4">
@@ -52,7 +51,7 @@
                       <p>Email:</p>
                       <div class="input-group">
                           <span class="input-group-text"><i class="fa fa-envelope text-muted" style="width: 15px;"></i></span>
-                          <input type="email" name="txtCorreo" class="form-control bg-white border-left-0 border-md" pattern=".+@.+\..+$" title="Por favor, ingresa un correo válido. Ejemplo: ejemplo@correo.com" required placeholder="ejemplo@correo.com" value="{{item.correo}}">
+                          <input type="email" name="txtCorreo" class="form-control bg-white border-left-0 border-md" pattern=".+@.+\..+$" title="Por favor, ingresa un correo válido. Ejemplo: ejemplo@correo.com" required placeholder="ejemplo@correo.com" value="{{item.email}}">
       
                         </div>
                     </div>
@@ -62,7 +61,7 @@
                       <p>Primer Nombre:</p>
                       <div class="input-group">
                           <span class="input-group-text"><i class="fa fa-user text-muted" style="width: 15px;"></i></span>
-                          <input type="text" name="txtNombre" class="form-control bg-white border-left-0 border-md" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$" title="Por favor, ingresa solo letras." required placeholder="Pedro" value="{{item.nombre}}">
+                          <input type="text" name="txtNombre" class="form-control bg-white border-left-0 border-md" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$" title="Por favor, ingresa solo letras." required placeholder="Pedro" value="{{item.first_name}}">
       
                       </div>
                     </div>
@@ -72,7 +71,7 @@
                       <p>Primer Apellido:</p>
                       <div class="input-group">
                           <span class="input-group-text"><i class="fa fa-user text-muted" style="width: 15px;"></i></span>
-                          <input type="text" name="txtApellido" class="form-control bg-white border-left-0 border-md" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$" title="Por favor, ingresa solo letras." required placeholder="Pascal" value="{{item.apellido}}">
+                          <input type="text" name="txtApellido" class="form-control bg-white border-left-0 border-md" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$" title="Por favor, ingresa solo letras." required placeholder="Pascal" value="{{item.last_name}}">
       
                         </div>
                     </div>
@@ -82,7 +81,7 @@
                       <p>Contraseña:</p>
                       <div class="input-group">
                           <span class="input-group-text"><i class="fa fa-lock text-muted" style="width: 15px;"></i></span>
-                          <input type="text" name="txtContrasena" class="form-control bg-white border-left-0 border-md" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="La contraseña debe contener al menos 8 carácteres, un carácter especial, una letra mayúscula, una letra minúscula y un número." required placeholder="Xx1234567@" value="{{item.contrasena}}">
+                          <input type="text" name="txtContrasena" class="form-control bg-white border-left-0 border-md" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="La contraseña debe contener al menos 8 carácteres, un carácter especial, una letra mayúscula, una letra minúscula y un número." required placeholder="Xx1234567@">
       
                         </div>
                     </div>
@@ -119,6 +118,15 @@
                         </div>
                     </div>
                   
+                    <!-- Es Admin -->
+                    <div class="mb-4">
+                      <p>¿Es administrador?</p>
+                      <div class="input-group">
+                        <input type="checkbox" name="chkEsAdmin" value="true" {% if item.is_staff %}checked{% endif %}>
+                        <label for="chkEsAdmin" style="padding-left: 30px;">Marcar si el usuario es administrador</label>
+                      </div>
+                    </div>
+
                     <!-- Region -->
                     <div class="mb-4">
                       <p>Region:</p>
@@ -171,8 +179,8 @@
                 <div class="col-12 col-md-2 offset-md-3">Opciones</div>
                 <div class="col-12 col-md-5">
                     <input type="submit" name="btnGuardar" class="btn btn-danger" value="Guardar">
-                    <a href="{% url 'registroCliente' %}" class="btn btn-outline-secondary" value="Limpiar">Limpiar</a>
-                    <a href="{% url 'listarCliente' %}" class="btn btn-success">Listar</a>
+                    <a href="{% url 'registroUsuario' %}" class="btn btn-outline-secondary" value="Limpiar">Limpiar</a>
+                    <a href="{% url 'listarUsuario' %}" class="btn btn-success">Listar</a>
                 </div>
           </div>
       </form>

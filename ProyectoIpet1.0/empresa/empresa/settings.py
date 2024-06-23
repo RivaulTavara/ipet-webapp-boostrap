@@ -127,3 +127,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'cliente/static')
+
+
+AUTH_USER_MODEL = 'cliente.UserAuth'
+
+
+LOGOUT_REDIRECT_URL = '/cliente/login/'
+
