@@ -44,7 +44,7 @@
                                     <ul class="bbb_marks">
                                         <li class="offer-icon">Oferta!</li>
                                     </ul>
-                                    <a href="{% url 'agregarAListaDeseos' producto.id %}" ><div class="bbb_fav"><i class="fas fa-heart"></i></div></a>
+                                    <a href="{% url 'gestionarListaDeseos' 'agregar' producto.id 'index'%}" ><div class="bbb_fav"><i class="fas fa-heart"></i></div></a>
                                 </div>
                             </div>
                             {% endfor %}
@@ -90,13 +90,13 @@
                                     <span class="discount">{{ producto.descuento }}% off</span>
                                 {% endif %}
                                 <ul>
-                                    <a href="{% url 'agregarAlCarritoYRedirigir' producto.id %}"><button class="buttonM"><i class="fas fa-shopping-cart"></i></button></a>
+                                    <a href="{% url 'gestionarCarrito' 'agregar' producto.id 'carrito' %}" id="aacc"><button class="buttonM"><i class="fas fa-shopping-cart"></i></button></a>
                                     {% if producto.en_lista_deseos %}
-                                        <a href="{% url 'eliminarDeListaDeseosIndex' producto.id %}"><button class="buttonM deseos" data-id="{{ producto.id }}"><i class="fas fa-heart" style="color: red;"></i></button></a>
+                                        <a href="{% url 'gestionarListaDeseos' 'eliminar' producto.id 'index' %}" id="edldi"><button class="buttonM deseos" data-id="{{ producto.id }}"><i class="fas fa-heart" style="color: red;"></i></button></a>
                                     {% else %}
-                                        <a href="{% url 'agregarAListaDeseos' producto.id %}"><button class="buttonM deseos" data-id="{{ producto.id }}"><i class="fas fa-heart"></i></button></a>
+                                        <a href="{% url 'gestionarListaDeseos' 'agregar' producto.id 'index' %}" id="aald"><button class="buttonM deseos" data-id="{{ producto.id }}"><i class="fas fa-heart"></i></button></a>
                                     {% endif %}
-                                    <a href="{% url 'agregarAlCarrito' producto.id %}"><button class="buttonM"><i class="fas fa-plus"></i></button></a>
+                                    <a href="{% url 'gestionarCarrito' 'agregar' producto.id  'index' %}" id="aaci"><button class="buttonM"><i class="fas fa-plus"></i></button></a>
                                     <a id="expand"><button class="buttonM"><i class="fas fa-expand"></i></button></a>
                             
 
@@ -124,40 +124,43 @@
             </div>
         </section>
         <script>
-            $(document).ready(function() {
-                $(document).on('click', '.deseos', function(event) {
-                    event.preventDefault();  // Evita que el enlace se siga como de costumbre
+                $(document).ready(function() {
+                    $(document).on('click', '.deseos', function(event) {
+                        event.preventDefault();  // Evita que el enlace se siga como de costumbre
 
-                    var button = $(this);  // El botón que fue clickeado
-                    var productId = button.data('id');  // El id del producto
-                    var link = button.parent();  // El enlace que contiene el botón
-                    var url = link.attr('href');  // La URL actual del enlace
+                        var button = $(this);  // El botón que fue clickeado
+                        var productId = button.data('id');  // El id del producto
+                        var link = button.closest('a');  // El enlace que contiene el botón
+                        var url = link.attr('href');  // La URL actual del enlace
 
-                    $.ajax({
-                        url: url,  // Usa la URL actual del enlace para la solicitud AJAX
-                        type: 'GET',
-                        success: function(response) {
-                            // Aquí puedes manejar la respuesta del servidor
-                            console.log(response);
+                        $.ajax({
+                            url: url,  // Usa la URL actual del enlace para la solicitud AJAX
+                            type: 'GET',
+                            success: function(response) {
+                                // Aquí puedes manejar la respuesta del servidor
+                                console.log(response);
 
-                            // Cambia el botón y la URL según la respuesta del servidor
-                            if (url.includes('eliminarDeListaDeseosIndex')) {
-                                button.find('i').css('color', 'white');
-                                link.attr('href', '/cliente/agregarAListaDeseos/' + productId);
-                            } else {
-                                button.find('i').css('color', 'red');
-                                link.attr('href', '/cliente/eliminarDeListaDeseosIndex/' + productId);
+                                // Cambia el botón y la URL según la respuesta del servidor
+                                if (url.includes('eliminar')) {
+                                    button.find('i').css('color', 'white');
+                                    link.attr('href', '/cliente/gestionarListaDeseos/agregar/' + productId + '/index/');
+                                } else if (url.includes('agregar')) {
+                                    button.find('i').css('color', 'red');
+                                    link.attr('href', '/cliente/gestionarListaDeseos/eliminar/' + productId + '/index/');
+                                }
+
+                                // Actualiza la variable url con la nueva URL del enlace
+                                url = link.attr('href');
+                            },
+                            error: function(error) {
+                                // Maneja el error
+                                console.log(error);
                             }
-                        },
-                        error: function(error) {
-                            // Maneja el error
-                            console.log(error);
-                        }
+                        });
                     });
                 });
-            });
             $(document).ready(function() {
-                $(document).on('click', 'a[href^="/cliente/agregarAlCarrito/"], a[href^="/cliente/agregarAListaDeseos/"], a[href^="/cliente/eliminarDeListaDeseosIndex/"]', function(event) {
+                $(document).on('click', '#aaci, #aald, #edldi', function(event) {
                     event.preventDefault();  // Evita que el enlace recargue la página
             
                     // Guarda una referencia al enlace

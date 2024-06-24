@@ -33,13 +33,12 @@
                             
                             <div id="product-{{ producto.producto_id }}" class="single-product">
                                 <div class="part-1">
-                                    <a href="{% url 'eliminarDeListaDeseos' producto.producto_id %}" class="remove-productoa"><i class="fas fa-times-circle"></i></a>
+                                    <a href="{% url 'gestionarListaDeseos' 'eliminar' producto.producto_id 'listadeseos' %}" class="remove-productoa"><i class="fas fa-times-circle"></i></a>
                                     {% if producto.precio_Oferta %}
                                         <span class="discount">{{ producto.precio|calcular_descuento:producto.precio_Oferta }}% off</span>
                                     {% endif %}
                                     <ul>
-                                        <a href="{% url 'agregarAlCarritoYRedirigir' producto.producto_id %}"><button class="buttonM"><i class="fas fa-shopping-cart"></i></button></a>
-                                    
+                                        <a href="{% url 'gestionarCarrito' 'agregar' producto.producto_id 'carrito' %}"><button class="buttonM"><i class="fas fa-shopping-cart"></i></button></a>                                    
 
                                     </ul>
                                 </div>

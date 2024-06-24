@@ -1,43 +1,24 @@
-from django.shortcuts import render
+import random
+from django import forms
+from django.shortcuts import render, redirect
 from django.utils import timezone
-from django.shortcuts import redirect
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
 from .models import Carrito, UserAuth, Producto, listaDeseos
 from .carrito import Carrito
 from .listaDeseos import listaDeseos
-import random
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.hashers import make_password
-from django.contrib.auth import authenticate, login, logout
+from .utils import validar_rut
 
 
+#VISTA GENERAL 
 
-
-
-
-# Create your views here.
-def index(request):
-    # Obtiene todos los productos
-    productos = Producto.objects.all()
-
-    # Obtiene 5 productos al azar
-    randomprod = Producto.objects.order_by('?')[:5]
-
-    lista_deseos = request.session.get('listaDeseos', {})
-
-    # Para cada producto, verifica si su ID está en la lista de deseos
-    for producto in productos:
-        producto.en_lista_deseos = str(producto.id) in lista_deseos
-
-
-    for producto in productos:
-        if producto.precio_Oferta:
-            descuento = (producto.precio - producto.precio_Oferta) / producto.precio * 100
-            producto.descuento = round(descuento)
-
-    # Pasa ambos conjuntos de productos a la plantilla
-    return render(request, 'index.html', {'productos': productos, 'randomprod': randomprod})
-
+def generar_numero_aleatorio():
+    rango = range(1000000, 9999999)  # Cambiado a 7 dígitos
+    while True:
+        numero_aleatorio = random.choice(rango)
+        if not Producto.objects.filter(modelo=numero_aleatorio).exists():
+            return numero_aleatorio
 
 @login_required
 def modoAdmin(request):
@@ -46,149 +27,6 @@ def modoAdmin(request):
     context = {"admins": admins}
     print(admins)
     return render(request, 'modoAdmin.html', context)
-
-def producto_detalle(request, producto_id):
-    producto = Producto.objects.get(id=producto_id)
-    return render(request, 'producto_Detalle.html', {'producto': producto})
-
-@login_required
-def listadeseos(request):
-    lista = listaDeseos(request)
-    productos = Producto.objects.all()
-    return render(request, 'listaDeseos.html', {'productos': productos, 'lista': lista})
-
-@login_required
-def agregarAListaDeseos(request, producto_id):
-    producto = Producto.objects.get(id=producto_id)
-    lista = listaDeseos(request)
-    imagen_url = str(producto.imagen.url)
-    if imagen_url.startswith('/'):
-        imagen_url = imagen_url[1:]
-    lista.agregar(producto=producto, imagen_url=imagen_url)
-    return redirect('index')
-
-@login_required
-def eliminarDeListaDeseosIndex(request, producto_id):
-    producto = Producto.objects.get(id=producto_id)
-    lista = listaDeseos(request)
-    lista.eliminar(producto=producto)
-    lista.guardar_listaDeseos()
-    return redirect('index')
-
-def eliminarDeListaDeseos(request, producto_id):
-    producto = Producto.objects.get(id=producto_id)
-    lista = listaDeseos(request)
-    lista.eliminar(producto=producto)
-    lista.guardar_listaDeseos()
-    return redirect('listadeseos')
-
-def limpiarListaDeseos(request):
-    lista = listaDeseos(request)
-    lista.limpiar_listaDeseos()
-    return redirect('listadeseos')
-
-@login_required
-def carrito(request):
-    carrito = Carrito(request)
-    productos = Producto.objects.all()
-    total = sum(int(producto['precio_unitario']) * producto['cantidad'] for producto in carrito.carrito.values())
-    tot_cant=sum(int(producto['cantidad']) for producto in carrito.carrito.values())
-    return render(request, 'carrito.html', {'productos': productos, 'carrito': carrito, 'total': total, 'tot_cant': tot_cant})
-
-@login_required
-def agregarMultiplesAlCarrito(request, producto_id):
-    cantidad = request.GET.get('cantidad', 1)  # obtiene la cantidad de los parámetros de la URL, por defecto es 1 si no se proporciona
-    producto = Producto.objects.get(id=producto_id)
-    carrito = Carrito(request)
-    imagen_url = str(producto.imagen.url)
-    if imagen_url.startswith('/'):
-        imagen_url = imagen_url[1:]
-    for _ in range(int(cantidad)):
-        carrito.agregar(producto=producto, imagen_url=imagen_url)
-    return redirect('carrito')
-
-@login_required
-def agregarAlCarrito(request, producto_id):
-    producto = Producto.objects.get(id=producto_id)
-    carrito = Carrito(request)
-    imagen_url = str(producto.imagen.url)
-    if imagen_url.startswith('/'):
-        imagen_url = imagen_url[1:]
-    carrito.agregar(producto=producto, imagen_url=imagen_url)
-    return redirect('index')
-
-@login_required
-def agregarAlCarritoYRedirigir(request, producto_id):
-    producto = Producto.objects.get(id=producto_id)
-    carrito = Carrito(request)
-    imagen_url = str(producto.imagen.url)
-    if imagen_url.startswith('/'):
-        imagen_url = imagen_url[1:]
-    carrito.agregar(producto=producto, imagen_url=imagen_url)
-    return redirect('carrito')
-
-
-def agregarProductoCarrito(request, producto_id):
-    producto = Producto.objects.get(id=producto_id)
-    carrito = Carrito(request)
-    carrito.agregar(producto=producto)
-    return redirect('carrito')
-
-def eliminarProductoCarrito(request, producto_id):
-    producto = Producto.objects.get(id=producto_id)
-    carrito = Carrito(request)
-    carrito.eliminar(producto=producto)
-    return redirect('carrito')
-
-def restarProductoCarrito(request, producto_id):
-    producto = Producto.objects.get(id=producto_id)
-    carrito = Carrito(request)
-    carrito.restar(producto=producto)
-    return redirect('carrito')
-
-def limpiarCarrito(request):
-    carrito = Carrito(request)
-    carrito.limpiar_carrito()
-    return redirect('carrito')
-
-@login_required
-def restablecercon(request):
-    cliente = UserAuth.objects.all() # select * from cliente
-    context = {"cliente":cliente}
-    print(cliente)
-    return render(request, 'restablecercon.html', context)
-
-
-
-def inicioSesion(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            if user.is_staff:  # Verifica si el usuario es un administrador
-                return redirect('modoAdmin')  # Redirige al usuario a la página de administración
-            else:
-                return redirect('index')  # Redirige al usuario a la página 'home'
-        else:
-            # Si la autenticación falla, vuelve a renderizar la página de inicio de sesión con un mensaje de error
-            context = {"error": "Correo y/o contraseña incorrectos"}
-            return render(request, 'registration/login.html', context)
-    else:
-        return render(request, 'registration/login.html')
-
-def exit(request):
-    logout(request)
-    return redirect('login')
-
-
-def registro(request):
-    cliente = UserAuth.objects.all() # select * from cliente
-    context = {"cliente":cliente}
-    print(cliente)
-    return render(request, 'registro.html', context)
-
 
 @login_required
 def registroProducto(request):
@@ -219,13 +57,159 @@ def listarUsuario(request):
     context = {'listado': listado}
     return render(request, 'listarUsuario.html', context)
 
+def index(request):
+    # Obtiene todos los productos
+    productos = Producto.objects.all()
 
-def generar_numero_aleatorio():
-    rango = range(1000000, 9999999)  # Cambiado a 7 dígitos
-    while True:
-        numero_aleatorio = random.choice(rango)
-        if not Producto.objects.filter(modelo=numero_aleatorio).exists():
-            return numero_aleatorio
+    # Obtiene 5 productos al azar
+    randomprod = Producto.objects.order_by('?')[:5]
+
+    lista_deseos = request.session.get('listaDeseos', {})
+
+    # Para cada producto, verifica si su ID está en la lista de deseos
+    for producto in productos:
+        producto.en_lista_deseos = str(producto.id) in lista_deseos
+        if producto.precio_Oferta:
+            descuento = (producto.precio - producto.precio_Oferta) / producto.precio * 100
+            producto.descuento = round(descuento)
+
+    # Pasa ambos conjuntos de productos a la plantilla
+    return render(request, 'index.html', {'productos': productos, 'randomprod': randomprod})
+
+def producto_detalle(request, producto_id):
+    producto = Producto.objects.get(id=producto_id)
+    return render(request, 'producto_Detalle.html', {'producto': producto})
+
+
+@login_required
+def listadeseos(request):
+    lista = listaDeseos(request)
+    productos = Producto.objects.all()
+    return render(request, 'listaDeseos.html', {'productos': productos, 'lista': lista})
+
+@login_required
+def carrito(request):
+    carrito = Carrito(request)
+    productos = Producto.objects.all()
+    total = sum(int(producto['precio_unitario']) * producto['cantidad'] for producto in carrito.carrito.values())
+    tot_cant=sum(int(producto['cantidad']) for producto in carrito.carrito.values())
+    return render(request, 'carrito.html', {'productos': productos, 'carrito': carrito, 'total': total, 'tot_cant': tot_cant})
+
+@login_required
+def restablecercon(request):
+    cliente = UserAuth.objects.all() # select * from cliente
+    context = {"cliente":cliente}
+    print(cliente)
+    return render(request, 'restablecercon.html', context)
+
+def registro(request):
+    cliente = UserAuth.objects.all() # select * from cliente
+    context = {"cliente":cliente}
+    print(cliente)
+    return render(request, 'registro.html', context)
+
+def inicioSesion(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            if user.is_staff:  # Verifica si el usuario es un administrador
+                return redirect('modoAdmin')  # Redirige al usuario a la página de administración
+            else:
+                return redirect('index')  # Redirige al usuario a la página 'home'
+        else:
+            # Si la autenticación falla, vuelve a renderizar la página de inicio de sesión con un mensaje de error
+            context = {"error": "Correo y/o contraseña incorrectos"}
+            return render(request, 'registration/login.html', context)
+    else:
+        return render(request, 'registration/login.html')
+
+def exit(request):
+    logout(request)
+    return redirect('login')
+
+
+
+
+
+
+
+
+
+
+
+#VISTA USUARIO
+
+@login_required
+def gestionarListaDeseos(request, accion, producto_id=None, redirigir=None):
+    lista = listaDeseos(request)
+    producto = None
+    if producto_id is not None:
+        producto = Producto.objects.get(id=producto_id)
+        imagen_url = str(producto.imagen.url)
+        if imagen_url.startswith('/'):
+            imagen_url = imagen_url[1:]
+
+    if accion == 'agregar':
+        lista.agregar(producto=producto, imagen_url=imagen_url)
+    elif accion == 'eliminar':
+        lista.eliminar(producto=producto)
+        lista.guardar_listaDeseos()
+    elif accion == 'limpiar':
+        lista.limpiar_listaDeseos()
+
+    if redirigir == 'index':
+        return redirect('index')
+    elif redirigir == 'listadeseos':
+        return redirect('listadeseos')
+    else:
+        return redirect('index')
+    
+
+
+@login_required
+def gestionarCarrito(request, accion, producto_id=None, redirigir=None):
+    carrito = Carrito(request)
+    producto = None
+    if producto_id is not None:
+        producto = Producto.objects.get(id=producto_id)
+        imagen_url = str(producto.imagen.url)
+        if imagen_url.startswith('/'):
+            imagen_url = imagen_url[1:]
+
+    cantidad = request.GET.get('cantidad', 1)  # obtiene la cantidad de los parámetros de la URL, por defecto es 1 si no se proporciona
+
+    if accion == 'agregar':
+        for _ in range(int(cantidad)):
+            carrito.agregar(producto=producto, imagen_url=imagen_url)
+    elif accion == 'eliminar':
+        carrito.eliminar(producto=producto)
+    elif accion == 'restar':
+        carrito.restar(producto=producto)
+    elif accion == 'limpiar':
+        carrito.limpiar_carrito()
+
+    if redirigir == 'index':
+        return redirect('index')
+    elif redirigir == 'carrito':
+        return redirect('carrito')
+    else:
+        return redirect('carrito')
+
+
+
+
+
+
+
+
+
+
+
+#VISTA ADMINISTRADOR
+
 
 @login_required
 def guardarProducto(request):
@@ -269,39 +253,29 @@ def guardarProducto(request):
     return render(request, 'registroProducto.html', context)
 
 @login_required
-def buscarProducto(request, pk):
+def gestionarProducto(request, pk, accion):
     context = {}
     try:
-        item = Producto.objects.get(pk = pk)
-        context['item'] = item
+        item = Producto.objects.get(pk=pk)
+        if accion == 'eliminar':
+            item.delete()
+            context['exito'] = "El producto fue eliminado"
+            return redirect('listarProducto')
+        else:  # asumimos que cualquier otra acción es 'buscar'
+            context['item'] = item
+            return render(request, 'registroProducto.html', context)
     except:
-        context['error'] = 'Error al buscar el registro'
-
-    return render(request, 'registroProducto.html', context)
-
-@login_required
-def eliminarProducto(request, pk):
-    context = {}
-    try:
-        item = Producto.objects.get(pk = pk)
-        item.delete()
-        context['exito'] = "El item fue eliminado"
-    except:
-        context['error'] = "El item NO fue eliminado"
-
-    context['listado'] = Producto.objects.all()
-    return render(request, 'listarProducto.html', context)
-
-
-
-
-
-
+        context['error'] = "Error al buscar el registro"
+        return render(request, 'registroProducto.html', context)
+    
 def guardarUsuario(request):
     User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
     context = {}
     if request.method == 'POST':
         rut = request.POST['txtRut']
+        if not validar_rut(rut):
+            context['error'] = 'El RUT ingresado no es válido.'
+            return render(request, 'registroUsuario.html', context)
         email = request.POST['txtCorreo']
         contrasena = request.POST['txtContrasena']
         nombre = request.POST['txtNombre']
@@ -336,25 +310,19 @@ def guardarUsuario(request):
 
     return render(request, 'registroUsuario.html', context)
 
-def buscarUsuario(request, pk):
+@login_required
+def gestionarUsuario(request, pk, accion):
     User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
     context = {}
     try:
         item = User.objects.get(pk=pk)
-        context['item'] = item
+        if accion == 'eliminar':
+            item.delete()
+            context['exito'] = "El usuario fue eliminado"
+            return redirect('listarUsuario')
+        else:  # asumimos que cualquier otra acción es 'buscar'
+            context['item'] = item
+            return render(request, 'registroUsuario.html', context)
     except:
-        context['error'] = 'Error al buscar el registro'
-
-    return render(request, 'registroUsuario.html', context)
-
-def eliminarUsuario(request, pk):
-    User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
-    context = {}
-    try:
-        item = User.objects.get(pk=pk)
-        item.delete()
-        context['exito'] = "El usuario fue eliminado"
-    except:
-        context['error'] = "El usuario NO fue eliminado"
-
-    return redirect('listarUsuario')
+        context['error'] = "Error al buscar el registro"
+        return render(request, 'registroUsuario.html', context)

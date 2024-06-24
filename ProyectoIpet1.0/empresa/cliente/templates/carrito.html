@@ -28,10 +28,10 @@
                                     <div class="cccrow">{{ producto.marca }}</div>
                                 </div>
                                 <div class="col">
-                                    <a href="{% url 'restarProductoCarrito' producto.producto_id %}" style="padding: 0 1vh;" class="ntm">-</a><a href="javascript:void(0);" class="border">{{ producto.cantidad }}</a><a href="{% url 'agregarProductoCarrito' producto.producto_id %}" class="ntm">+</a>
+                                    <a href="{% url 'gestionarCarrito' 'restar' producto.producto_id  'carrito' %}" style="padding: 0 1vh;" class="ntm">-</a><a href="javascript:void(0);" class="border">{{ producto.cantidad }}</a><a href="{% url 'gestionarCarrito' 'agregar' producto.producto_id 'carrito' %}" class="ntm">+</a>
                                 </div>
                                     <div class="col price"><a href="javascript:void(0);" style="text-decoration: none;">&dollar; {{ producto.precio_unitario|multiply:producto.cantidad|format_price }}</a></div>                              
-                                    <a href="{% url 'eliminarProductoCarrito' producto.producto_id %}" class="btn btn-close ntm" aria-label="Close"></a>                        
+                                    <a href="{% url 'gestionarCarrito' 'eliminar' producto.producto_id  'carrito' %}" class="btn btn-close ntm" aria-label="Close"></a>                        
                             </div>
                         </div>
                     {% endfor %}

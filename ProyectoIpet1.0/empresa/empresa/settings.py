@@ -131,7 +131,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'cliente/static')
 
 AUTH_USER_MODEL = 'cliente.UserAuth'
 
-LOGIN_REDIRECT_URL = '/cliente/index/'
+LOGIN_REDIRECT_URL = '/cliente/index'
 
 LOGOUT_REDIRECT_URL = '/cliente/login/'
 

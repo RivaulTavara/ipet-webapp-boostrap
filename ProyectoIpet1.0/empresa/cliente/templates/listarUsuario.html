@@ -66,8 +66,8 @@
                         <td>{{ item.date_joined|date:'d-m-Y'|capfirst }}</td>
                         <td>{{ item.last_login|date:'d-m-Y'|capfirst }}</td>
                         <td>{{ item.is_staff }}</td>
-                        <td><a href="{% url 'buscarUsuario' pk=item.id %}" class="btn btn-warning fas fa-edit"></a></td>
-                        <td><a href="{% url 'eliminarUsuario' pk=item.id %}" class="btn btn-danger far fa-window-close"></a></td>
+                        <td><a href="{% url 'gestionarUsuario' pk=item.id accion='buscar' %}" class="btn btn-warning fas fa-edit"></a></td>
+                        <td><a href="{% url 'gestionarUsuario' pk=item.id accion='eliminar' %}" class="btn btn-danger far fa-window-close"></a></td>
                         </tr>
                     {% endfor %}
                 </tbody>

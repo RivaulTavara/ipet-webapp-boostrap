@@ -34,16 +34,17 @@
   <div class="row justify-content-center">
     <div class="col-md-8 col-lg-8 ml-auto" >
       <form action="{% url 'guardarUsuario' %}" method="POST" enctype="multipart/form-data" >
-        <div style="overflow-x: hidden; overflow-y: auto; height: 65vh;">            {% csrf_token %}
+        <div style="overflow-x: hidden; overflow-y: auto; height: 65vh;">            
+          {% csrf_token %}
             <div class="row">
                     <!-- Rut -->
                     <div class="mb-4">
                       <p>Rut:</p>
                       <div class="input-group">
                           <span class="input-group-text"><i class="fa fa-id-card text-muted" style="width: 15px;"></i></span>
-                          <input type="text" name="txtRut" class="form-control bg-white border-left-0 border-md" pattern="^\d{7,8}-[\dKk]{1}$" title="Por favor, ingresa el RUT sin puntos y con guión. Ejemplo: 12345678-9" required placeholder="XXXXXXXX-X" value="{{item.rut}}">
-      
-                        </div>
+                          <input id="rutInput" type="text" name="txtRut" class="form-control bg-white border-left-0 border-md" pattern="^\d{7,8}-[\dKk]{1}$" title="Por favor, ingresa el RUT sin puntos y con guión. Ejemplo: 12345678-9" required placeholder="XXXXXXXX-X" value="{{item.rut}}">
+                      </div>
+                      <p id="rutError" style="color: red; display: none;">El RUT ingresado no es válido.</p>
                     </div>
                   
                     <!-- Email -->
@@ -103,7 +104,7 @@
                       <p>Telefono:</p>
                       <div class="input-group">
                           <span class="input-group-text"><i class="fa fa-phone-square text-muted" style="width: 15px;"></i></span>
-                          <input type="text" name="txtTelefono" class="form-control bg-white border-left-0 border-md" value="{{item.telefono}}" title="Debe ingresar un telefono de al menos 8 dígitos (9XXXXXXXX)." pattern="\d{8,}" required>
+                          <input type="text" name="txtTelefono" class="form-control bg-white border-left-0 border-md" value="{{item.telefono}}" title="Debe ingresar un telefono de al menos 8 dígitos (9XXXXXXXX)." placeholder="XXXXXXXXX" pattern="\d{8,}" required>
       
                         </div>
                     </div>
@@ -188,6 +189,37 @@
   </div>
 </div>
     
+
+<script>
+  document.getElementById('rutInput').addEventListener('input', function() {
+    var rut = this.value;
+    if (!validar_rut(rut)) {
+        document.getElementById('rutError').style.display = 'block';
+    } else {
+        document.getElementById('rutError').style.display = 'none';
+    }
+});
+
+function validar_rut(rut) {
+    rut = rut.replace("-", "");
+    var cuerpo = rut.slice(0, -1);
+    var dv = rut.slice(-1).toUpperCase();
+
+    var reversa = Array.from(cuerpo).reverse().map(Number);
+    var factor = 2;
+    var suma = 0;
+    for (var d of reversa) {
+        suma += d * factor;
+        factor = factor == 7 ? 2 : factor + 1;
+    }
+
+    var resto = suma % 11;
+    var dv_calculado = resto == 0 ? '0' : resto == 1 ? 'K' : String(11 - resto);
+
+    return dv == dv_calculado;
+}
+</script>
+
 {% endblock %}
 
 

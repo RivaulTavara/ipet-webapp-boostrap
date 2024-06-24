@@ -99,18 +99,17 @@
                                                                 <p class="block_price__shipping">Envío se cobra por separado</p>
                                                             </div>
                                                         </div>
-                                                            <div class="block_quantity clearfix d-flex" >
-                                                                <span class="text_specification">Cantidad</span>
-                                                                <div class="block_quantity__chooseBlock">
-                                                                    <input class="block_quantity__number" name="quantityNumber"
-                                                                        type="text" min="1" value="1">
-                                                                    <button class="block_quantity__button block_quantity__up"></button>
-                                                                    <button class="block_quantity__button block_quantity__down"></button>
-                                                                </div>
-                                                                <div class="large-6 small-12 column end">
-                                                                    <a href="{% url 'agregarMultiplesAlCarrito' producto.id %}"><button class="button button_addToCard">Añadir al Carrito</button></a>                                                                    
-                                                                </div>
+                                                        <div class="block_quantity clearfix d-flex" >
+                                                            <span class="text_specification">Cantidad</span>
+                                                            <div class="block_quantity__chooseBlock">
+                                                                <input id="cantidad" class="block_quantity__number" name="quantityNumber" type="text" min="1" value="1">
+                                                                <button class="block_quantity__button block_quantity__up"></button>
+                                                                <button class="block_quantity__button block_quantity__down"></button>
                                                             </div>
+                                                            <div class="large-6 small-12 column end">
+                                                                <a id="agregar-carrito" href="{% url 'gestionarCarrito' 'agregar' producto.id 'carrito' %}"><button class="button button_addToCard">Añadir al Carrito</button></a>                                                                    
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -126,11 +125,11 @@
         </main>
     <script>
         $(document).ready(function() {
-            $('.button_addToCard').click(function(e) {
-                e.preventDefault();
-                var cantidad = $('.block_quantity__number').val();
-                var url = "{% url 'agregarMultiplesAlCarrito' producto.id %}";
-                window.location.href = url + "?cantidad=" + cantidad;
+            $('#agregar-carrito').on('click', function(event) {
+                event.preventDefault();
+                var cantidad = $('#cantidad').val();
+                var url = $(this).attr('href') + '?cantidad=' + cantidad;
+                window.location.href = url;
             });
         });
 
