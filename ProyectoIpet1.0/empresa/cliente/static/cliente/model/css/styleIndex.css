@@ -239,24 +239,6 @@ a:hover {
     transform: translateY(-50%);
 }
 
-.fa-shopping-cart{
-    color: black;
-}
-.fa-heart{
-    color: black;
-}
-.fa-plus{
-    color: black;
-}
-.fa-expand{
-    color: black;
-}
-
-.fa-times-circle{
-    color: black;
-}
-
-
 
 .buttonM {
     text-align: center;
@@ -309,7 +291,7 @@ a:hover {
 
     /* Cambiar el color de los iconos a negro en el hover */
     .buttonM:hover .fas {
-        color: black;
+        color: rgb(0, 0, 0);
     }
   
 

@@ -17,6 +17,7 @@
     {% endfor %}
 </style>
 
+
     <section class="section-products" id="galeria">
         <div class="container" style="padding-top: 80px;">
             <div class="row justify-content-center text-center">
@@ -64,3 +65,15 @@
 
 
    {% endblock %}
+
+{% block banner%}
+   {% if user.is_authenticated %}
+    <div></div>
+   {% else %}
+     <!--Registro de nuevos usuarios (hypervinculo al archivo registro)-->
+     <div class="alert  alert-dismissible fade show" role="alert" style="position: fixed; bottom: 20px; right: 20px; z-index: 500;">
+       <a href="registro" class="btn btn-primary btn-lg">¿Eres nuevo? ¡Regístrate!</a>
+       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+     </div>
+   {% endif %}
+{% endblock %}

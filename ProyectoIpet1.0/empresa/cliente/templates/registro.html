@@ -24,6 +24,8 @@
                         <p>Rut:</p>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-id-card text-muted" style="width: 15px;"></i></span>
+                            <input type="hidden" name="txtId" value="{{item.id}}">
+                            <input type="hidden" name="origen" value="registro">
                             <input id="rutInput" type="text" name="txtRut" class="form-control bg-white border-left-0 border-md" pattern="^\d{7,8}-[\dKk]{1}$" title="Por favor, ingresa el RUT sin puntos y con guión. Ejemplo: 12345678-9" required placeholder="XXXXXXXX-X" value="{{item.rut}}">
                         </div>
                         <p id="rutError" style="color: red; display: none;">El RUT ingresado no es válido.</p>
@@ -184,6 +186,9 @@
           </div>
       </div>
     </div>
+
+    {%block banner%}
+    {%endblock%}
     <script>
       document.getElementById('rutInput').addEventListener('input', function() {
         var rut = this.value;

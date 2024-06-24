@@ -1,6 +1,6 @@
 {% extends "modoAdmin.html"%}
 {% load static %}
-{% block tituloPrincipal %} Clientes {% endblock %}
+{% block tituloPrincipal %} Usuarios {% endblock %}
 {% block mensaje    %}
     {% if exito %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -24,7 +24,7 @@
     <div class="container">
         <div class="row">
           <div class="col-12">
-            <div class="table-responsive" style="overflow-y: auto; height: 65vh; scrollbar-width: none;" data-pattern="priority-columns">
+            <div class="table-responsive" style="overflow-y: auto; height: 65vh; " data-pattern="priority-columns">
               <table class="table table-hover table-striped">
                 <thead>
                     <tr>

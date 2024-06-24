@@ -14,6 +14,17 @@
     <link rel="stylesheet" href="{% static 'cliente/model/css/stylegeneralmovil.css' %}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     {% endblock %}
+    <style>
+      #iconadmin:hover .fas {
+        color: rgb(218, 197, 8) !important;
+      }
+      
+      #iconlist:hover .fas {
+          color: rgb(218, 8, 8) !important;
+      }
+    
+    
+    </style>
 </head>
 <body>
     {% block navbar %}
@@ -48,9 +59,18 @@
                           <span>USD</span> <!-- Texto a la derecha del switch -->
                         </div>
                       {%endblock%}
-                      <a id="iconcar" class="nav-link d-md-block" style="padding-top: 13px; padding-right: 25px; height: 38px;" href={% url 'listadeseos' %}>
-                        <i class="fas fa-heart" style="color: white;" ></i>
-                      </a>
+                      {% if request.user.is_staff %}
+                      <div id="iconadmin">
+                        <a id="iconacar" class="nav-link d-md-block" style="padding-top: 13px; padding-right: 25px; height: 38px;" href={% url 'modoAdmin' %}>
+                          <i class="fas fa-crown" style="color: white;" ></i>
+                        </a>
+                      </div>
+                      {% endif %}
+                      <div id="iconlist">
+                        <a id="iconcar" class="nav-link d-md-block" style="padding-top: 13px; padding-right: 25px; height: 38px;" href={% url 'listadeseos' %}>
+                          <i class="fas fa-heart" style="color: white;" ></i>
+                        </a>
+                      </div>
                       <a id="iconcar" class="nav-link d-md-block" style="padding-top: 13px; padding-right: 25px; height: 38px;" href="{% url 'carrito' %}">
                         <i class="fas fa-shopping-cart" style="color: white;" ></i>
                       </a>
@@ -69,7 +89,7 @@
                                 <p>{{ user.first_name }} {{ user.last_name }}</p>                                
                                 <form method="POST" action="{% url 'logout' %}" style="display: flex; flex-direction: column;">
                                   {% csrf_token %}
-                                    <button class="nav-link d-md-block">Cerrar Sesion</button>
+                                  <button class="nav-link d-md-block btn btn-danger btn-rounded " style="background-color: red; color: white;">Cerrar Sesion</button>
                                 </form>
                             </div>
                         {% else %}
@@ -121,7 +141,21 @@
     {% endblock %}
 
 
-    
+
+    {% block banner%}
+      {% if user.is_authenticated %}
+      {% else %}
+        <!--Registro de nuevos usuarios (hypervinculo al archivo registro)-->
+        <div class="alert  alert-dismissible fade show" role="alert" style="position: fixed; bottom: 20px; right: 20px; z-index: 500;">
+          <a href="registro" class="btn btn-primary btn-lg">¿Eres nuevo? ¡Regístrate!</a>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endif %}
+    {% endblock %}
+
+
+
+
     <div class="container">
       <h1 class="text-center" style="padding-top: 80px; padding-bottom: 60px">{% block tituloPrincipal %}{% endblock %}</h1>
       {% block mensaje    %}{% endblock %}

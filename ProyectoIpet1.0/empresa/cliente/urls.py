@@ -37,6 +37,10 @@ urlpatterns = [
     path('registroMarca', views.registroMarca, name='registroMarca'),
     path('guardarMarca', views.guardarMarca, name='guardarMarca'),
     path('gestionarMarca/<int:pk>/<str:accion>/', views.gestionarMarca, name='gestionarMarca'),
+    path('listarFormaDePago', views.listarFormaDePago, name='listarFormaDePago'),
+    path('registroFormaDePago', views.registroFormaDePago, name='registroFormaDePago'),
+    path('guardarFormaDePago', views.guardarFormaDePago, name='guardarFormaDePago'),
+    path('gestionarFormaDePago/<int:pk>/<str:accion>/', views.gestionarFormaDePago, name='gestionarFormaDePago'),
             ]
 
 if settings.DEBUG:

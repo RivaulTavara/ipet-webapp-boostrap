@@ -1,6 +1,6 @@
 {% extends "modoAdmin.html"%}
 {% load static %}
-{% block tituloPrincipal %} Marca {% endblock %}
+{% block tituloPrincipal %} FormaDePago {% endblock %}
 {% block mensaje    %}
     {% if exito %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -43,8 +43,8 @@
                                 <td><div>{{ item.id }}</div></td>
                                 <td><div>{{ item.nombre }}</div></td>
                                 <td><div>{{ item.is_active }}</div></td>
-                                <td><div><a href="{% url 'gestionarMarca' pk=item.id accion='buscar' %}" class="btn btn-warning fas fa-edit"></a></div></td>
-                                <td><div><a href="{% url 'gestionarMarca' pk=item.id accion='eliminar' %}" class="btn btn-danger far fa-window-close"></a></div></td>
+                                <td><div><a href="{% url 'gestionarFormaDePago' pk=item.id accion='buscar' %}" class="btn btn-warning fas fa-edit"></a></div></td>
+                                <td><div><a href="{% url 'gestionarFormaDePago' pk=item.id accion='eliminar' %}" class="btn btn-danger far fa-window-close"></a></div></td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -56,6 +56,14 @@
         </div>
 
         <div class="text-end" style="padding-bottom: 20px;">
-            <a href="{% url 'registroMarca' %}" class="btn btn-primary mt-auto">Ingresar</a>
+            <a href="{% url 'registroFormaDePago' %}" class="btn btn-primary mt-auto">Ingresar</a>
         </div>
 {% endblock %}
+
+
+
+
+
+
+
+

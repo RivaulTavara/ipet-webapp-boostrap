@@ -75,11 +75,15 @@
                       <li><a class="dropdown-item" href="{% url 'listarProducto' %}" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Listar Productos</a></li>
                       <li><a class="dropdown-item" href="{% url 'listarCategoria' %}" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Listar Categorias</a></li>
                       <li><a class="dropdown-item" href="{% url 'listarMarca' %}" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Listar Marcas</a></li>
+                      <li><a class="dropdown-item" href="{% url 'listarFormaDePago' %}" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Listar Forma De Pago</a></li>
                   </li>
                 
                 </div>
               </ul>
               <div class="navbar-nav ms-auto">
+                <a id="iconcar" class="nav-link d-md-block" style="padding-top: 13px; padding-right: 25px; height: 38px;" href="{% url 'index' %}">
+                  <i class="fas fa-home" style="color: white;" ></i>
+                </a>
                 <div class="d-flex" style="position: relative;"> 
 
                   <div class="sec-center"> 	
@@ -95,7 +99,7 @@
                       <p>{{ user.first_name }} {{ user.last_name }}</p>                                
                       <form method="POST" action="{% url 'logout' %}" style="display: flex; flex-direction: column;">
                         {% csrf_token %}
-                          <button class="nav-link d-md-block">Cerrar Sesion</button>
+                          <button class="nav-link d-md-block btn btn-danger btn-rounded " style="background-color: red; color: white;">Cerrar Sesion</button>
                       </form>
                   </div>
                 </div>

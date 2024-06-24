@@ -188,9 +188,20 @@
                 });
             });
         </script>
-        <!--Registro de nuevos usuarios (hypervinculo al archivo registro)-->
-        <div class="alert  alert-dismissible fade show" role="alert" style="position: fixed; bottom: 20px; right: 20px; z-index: 500;">
+        {% block banner%}
+        {% if user.is_authenticated %}
+              <!--Registro de nuevos usuarios (hypervinculo al archivo registro)-->
+              <div class="alert  alert-dismissible fade show" role="alert" style="position: fixed; bottom: 20px; right: 20px; z-index: 500;">
+                <a href="javascript:void(0);" class="btn btn-primary btn-lg">!Bienvenido/a {{ user.first_name}}! Disfruta tu visita ;)</a>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+        {% else %}
+          <!--Registro de nuevos usuarios (hypervinculo al archivo registro)-->
+          <div class="alert  alert-dismissible fade show" role="alert" style="position: fixed; bottom: 20px; right: 20px; z-index: 500;">
             <a href="registro" class="btn btn-primary btn-lg">¿Eres nuevo? ¡Regístrate!</a>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+          </div>
+        {% endif %}
+      {% endblock %}
+  
 {% endblock %}

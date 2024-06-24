@@ -2,15 +2,18 @@ import random
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.contrib.auth import get_user_model
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import authenticate, login, logout
-from .models import Carrito, UserAuth, Producto, listaDeseos, Categoria, Marca 
+from .models import Carrito, UserAuth, Producto, listaDeseos, Categoria, Marca, FormaDePago
 from .carrito import Carrito
 from .listaDeseos import listaDeseos
 from .utils import validar_rut
 
 
 #VISTA GENERAL 
+
+def es_admin(user):
+    return user.is_staff
 
 def generar_numero_aleatorio():
     rango = range(1000000, 9999999)  # Cambiado a 7 dígitos
@@ -19,7 +22,7 @@ def generar_numero_aleatorio():
         if not Producto.objects.filter(codigo=numero_aleatorio).exists():
             return numero_aleatorio
 
-@login_required
+@user_passes_test(es_admin, login_url='index')
 def modoAdmin(request):
     User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
     admins = User.objects.filter(is_staff=True)  # Obtiene todos los usuarios que son administradores
@@ -27,7 +30,7 @@ def modoAdmin(request):
     print(admins)
     return render(request, 'modoAdmin.html', context)
 
-@login_required
+@user_passes_test(es_admin, login_url='index')
 def registroProducto(request):
     User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
     marcas = Marca.objects.all()
@@ -37,21 +40,21 @@ def registroProducto(request):
     context = {"clientes": clientes}
     print(clientes)
     return render(request, 'registroProducto.html', {'marcas': marcas, 'categorias': categorias})
-@login_required
+@user_passes_test(es_admin, login_url='index')
 def listarProducto(request):
     listado = Producto.objects.all()
     context = {'listado': listado}
     return render(request, 'listarProducto.html', context)
 
 
-@login_required
+@user_passes_test(es_admin, login_url='index')
 def registroUsuario(request):
     clientes = UserAuth.objects.all()  # Obtiene todos los usuarios
     context = {'clientes': clientes}
     print(clientes)
     return render(request, 'registroUsuario.html', context)
 
-@login_required
+@user_passes_test(es_admin, login_url='index')
 def listarUsuario(request):
     User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
     listado = User.objects.all()  # Obtiene todos los usuarios
@@ -109,27 +112,40 @@ def registro(request):
     print(cliente)
     return render(request, 'registro.html', context)
 
-@login_required
+@user_passes_test(es_admin, login_url='index')
+def registroFormaDePago(request):
+    User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
+    clientes = User.objects.all()  # Obtiene todos los usuarios
+    context = {"clientes": clientes}
+    return render(request, 'registroFormaDePago.html', context)
+
+@user_passes_test(es_admin, login_url='index')
+def listarFormaDePago(request):
+    listado = FormaDePago.objects.all()
+    context = {'listado': listado}
+    return render(request, 'listarFormaDePago.html', context)
+
+@user_passes_test(es_admin, login_url='index')
 def registroCategoria(request):
     User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
     clientes = User.objects.all()  # Obtiene todos los usuarios
     context = {"clientes": clientes}
     return render(request, 'registroCategoria.html', context)
 
-@login_required
+@user_passes_test(es_admin, login_url='index')
 def listarCategoria(request):
     listado = Categoria.objects.all()
     context = {'listado': listado}
     return render(request, 'listarCategoria.html', context)
 
-@login_required
+@user_passes_test(es_admin, login_url='index')
 def registroMarca(request):
     User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
     clientes = User.objects.all()  # Obtiene todos los usuarios
     context = {"clientes": clientes}
     return render(request, 'registroMarca.html', context)
 
-@login_required
+@user_passes_test(es_admin, login_url='index')
 def listarMarca(request):
     listado = Marca.objects.all()
     context = {'listado': listado}
@@ -240,7 +256,7 @@ def gestionarCarrito(request, accion, producto_id=None, redirigir=None):
 #VISTA ADMINISTRADOR
 
 
-@login_required
+@user_passes_test(es_admin, login_url='index')
 def guardarProducto(request):
     context = {}
     context['marcas'] = Marca.objects.all()
@@ -288,7 +304,7 @@ def guardarProducto(request):
 
     return render(request, 'registroProducto.html', context)
 
-@login_required
+@user_passes_test(es_admin, login_url='index')
 def gestionarProducto(request, pk, accion):
     context = {}
     try:
@@ -303,7 +319,8 @@ def gestionarProducto(request, pk, accion):
     except:
         context['error'] = "Error al buscar el registro"
         return render(request, 'registroProducto.html', context)
-@login_required
+
+
 def guardarUsuario(request):
     User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
     context = {}
@@ -322,31 +339,40 @@ def guardarUsuario(request):
         region = request.POST['txtRegion']
         nivel_educacional = request.POST['txtNivel_Educacional']
         es_admin = 'chkEsAdmin' in request.POST  # Verifica si el checkbox 'chkAdmin' está marcado
-
         if 'btnGuardar' in request.POST:
-            if User.objects.filter(email=email).exists():
-                user = User.objects.get(email=email)
+            id_usuario = request.POST.get('txtId', '0')  # Devuelve '0' si 'txtId' no existe en el diccionario
+            if id_usuario not in ['0', ''] and id_usuario.isdigit() and User.objects.filter(id=id_usuario).exists():
+                user = User.objects.get(id=id_usuario)
+                # Actualiza los campos del usuario
                 user.email = email
-                user.rut = rut
                 user.set_password(contrasena)
                 user.first_name = nombre
                 user.last_name = apellido
                 user.direccion = direccion
                 user.fecha_de_nacimiento = fecha_de_nacimiento
-                user.telefono = telefono
                 user.region = region
                 user.nivel_educacional = nivel_educacional
                 user.last_login = timezone.now()  # Actualiza el último inicio de sesión del usuario
                 user.is_staff = es_admin  # Actualiza el estado de administrador del usuario
+                # Solo actualiza el teléfono si se proporciona un nuevo número
+                if telefono != user.telefono:
+                    user.telefono = telefono
+                if rut != user.rut:
+                    user.rut = rut
                 user.save()
                 context['exito'] = "Los datos fueron actualizados"
             else:
-                user = User.objects.create_user(email=email, rut=rut, password=contrasena, first_name=nombre, last_name=apellido, direccion=direccion, fecha_de_nacimiento=fecha_de_nacimiento, telefono=telefono, region=region, nivel_educacional=nivel_educacional, last_login=timezone.now(), is_staff=es_admin)
+                # Si el ID no existe en la base de datos, crea un nuevo usuario
+                user = User.objects.create_user(rut=rut, email=email, password=contrasena, first_name=nombre, last_name=apellido, direccion=direccion, fecha_de_nacimiento=fecha_de_nacimiento, telefono=telefono, region=region, nivel_educacional=nivel_educacional, last_login=timezone.now(), is_staff=es_admin)
                 context['exito'] = "Los datos fueron guardados"
+            origen = request.POST.get('origen', 'registro')  # Devuelve 'registro' si 'origen' no existe en el diccionario
+            if origen == 'admin':
+                return render(request, 'registroUsuario.html', context)
+            else:
+                return redirect('login')
 
-    return render(request, 'registroUsuario.html', context)
 
-@login_required
+@user_passes_test(es_admin, login_url='index')
 def gestionarUsuario(request, pk, accion):
     User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
     context = {}
@@ -364,7 +390,7 @@ def gestionarUsuario(request, pk, accion):
         return render(request, 'registroUsuario.html', context)
     
 
-@login_required
+@user_passes_test(es_admin, login_url='index')
 def guardarCategoria(request):
     context = {}
     if request.method == 'POST':
@@ -385,7 +411,7 @@ def guardarCategoria(request):
 
     return render(request, 'registroCategoria.html', context)
 
-@login_required
+@user_passes_test(es_admin, login_url='index')
 def gestionarCategoria(request, pk, accion):
     context = {}
     try:
@@ -401,7 +427,7 @@ def gestionarCategoria(request, pk, accion):
         context['error'] = "Error al buscar el registro"
         return render(request, 'registroCategoria.html', context)
 
-@login_required
+@user_passes_test(es_admin, login_url='index')
 def guardarMarca(request):
     context = {}
     if request.method == 'POST':
@@ -422,7 +448,8 @@ def guardarMarca(request):
 
     return render(request, 'registroMarca.html', context)
 
-@login_required
+
+@user_passes_test(es_admin, login_url='index')
 def gestionarMarca(request, pk, accion):
     context = {}
     try:
@@ -437,3 +464,40 @@ def gestionarMarca(request, pk, accion):
     except:
         context['error'] = "Error al buscar el registro"
         return render(request, 'registroMarca.html', context)
+    
+@user_passes_test(es_admin, login_url='index')
+def guardarFormaDePago(request):
+    context = {}
+    if request.method == 'POST':
+        id = request.POST.get('txtId')
+        nombre = request.POST['txtNombre']
+        is_active = request.POST['txtIsActive'] == 'True'
+
+        if 'btnGuardar' in request.POST:
+            if id == '0':
+                FormaDePago.objects.create(nombre=nombre, is_active=is_active)
+                context['exito'] = "Los datos fueron guardados"
+            else:
+                item = FormaDePago.objects.get(pk=id)
+                item.nombre = nombre
+                item.is_active = is_active
+                item.save()
+                context['exito'] = "Los datos fueron actualizados"
+
+    return render(request, 'registroFormaDePago.html', context)
+
+@user_passes_test(es_admin, login_url='index')
+def gestionarFormaDePago(request, pk, accion):
+    context = {}
+    try:
+        item = FormaDePago.objects.get(pk=pk)
+        if accion == 'eliminar':
+            item.delete()
+            context['exito'] = "La categoría fue eliminada"
+            return redirect('listarFormaDePago')
+        else:  # asumimos que cualquier otra acción es 'buscar'
+            context['item'] = item
+            return render(request, 'registroFormaDePago.html', context)
+    except:
+        context['error'] = "Error al buscar el registro"
+        return render(request, 'registroFormaDePago.html', context)
