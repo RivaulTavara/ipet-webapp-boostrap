@@ -133,5 +133,6 @@ AUTH_USER_MODEL = 'cliente.UserAuth'
 
 LOGIN_REDIRECT_URL = '/cliente/index'
 
-LOGOUT_REDIRECT_URL = '/cliente/login/'
+
+LOGOUT_REDIRECT_URL = '/cliente/login'
 

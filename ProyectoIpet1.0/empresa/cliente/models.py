@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 
+
 class UserAuthManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -38,20 +39,7 @@ class UserAuth(AbstractUser):
         return True
     
     
-class Producto(models.Model):
-    imagen = models.ImageField(upload_to='productos/', blank=True, null=True)
-    nombre = models.CharField(max_length=255)
-    marca = models.CharField(max_length=255)
-    descripcion = models.TextField(blank=True, null=True)
-    precio = models.IntegerField()
-    precio_Oferta = models.IntegerField(blank=True, null=True)
-    stock = models.IntegerField()
-    creado_en = models.DateField()
-    modelo = models.IntegerField(blank=True, null=True)
-    categoria = models.CharField(max_length=255)
-    
-    def __str__(self):
-        return self.nombre
+
 
 class Pedido(models.Model):
     Cliente = models.ForeignKey(UserAuth, on_delete=models.CASCADE)
@@ -60,6 +48,40 @@ class Pedido(models.Model):
     def __str__(self):
         return 'Pedido ' + str(self.id) + ' - ' + str(self.Cliente)
 
+
+    
+
+class Categoria(models.Model):
+    nombre = models.CharField(max_length=255)
+    is_active = models.BooleanField(default=True)
+    
+    def __str__(self):
+        return self.nombre
+    
+class Marca(models.Model):
+    nombre = models.CharField(max_length=255)
+    is_active = models.BooleanField(default=True)
+    
+    def __str__(self):
+        return self.nombre
+    
+
+    
+class Producto(models.Model):
+    imagen = models.ImageField(upload_to='productos/', blank=True, null=True)
+    nombre = models.CharField(max_length=255)
+    marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
+    descripcion = models.TextField(blank=True, null=True)
+    precio = models.IntegerField()
+    precio_Costo = models.IntegerField(blank=True, null=True)
+    precio_Oferta = models.IntegerField(blank=True, null=True)
+    stock = models.IntegerField()
+    creado_en = models.DateField()
+    codigo = models.IntegerField(blank=True, null=True)
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)    
+    def __str__(self):
+        return self.nombre, self.marca, self.categoria
+    
 class Carrito(models.Model):
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
@@ -75,4 +97,3 @@ class listaDeseos(models.Model):
     
     def __str__(self):
         return 'Item ' + str(self.id) + ' - ' + str(self.producto)
-    

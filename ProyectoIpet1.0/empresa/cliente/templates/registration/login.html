@@ -62,6 +62,11 @@
                 <div class="formbg">
                   <div class="formbg-inner padding-horizontal--24">
                     <span class="padding-bottom--15" style="padding-bottom: 20px;">Inicia Sesión con tu Cuenta.</span>
+                    {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                    {% endif %}
                     <form id="stripe-login" method="post" action="">
                       {% csrf_token %}
                       <div class="field padding-bottom--24">

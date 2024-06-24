@@ -67,11 +67,16 @@
                     <a class="nav-link"  href="{% url 'listarUsuario' %}" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Usuarios</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'listarProducto' %}" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Productos</a>
-                  </li>
-                  <li class="nav-item">
                     <a class="nav-link" href="" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Pedidos</a>
                   </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Productos</a>
+                    <ul class="dropdown-menu" style="background-color: var(--navbar-color);">
+                      <li><a class="dropdown-item" href="{% url 'listarProducto' %}" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Listar Productos</a></li>
+                      <li><a class="dropdown-item" href="{% url 'listarCategoria' %}" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Listar Categorias</a></li>
+                      <li><a class="dropdown-item" href="{% url 'listarMarca' %}" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Listar Marcas</a></li>
+                  </li>
+                
                 </div>
               </ul>
               <div class="navbar-nav ms-auto">

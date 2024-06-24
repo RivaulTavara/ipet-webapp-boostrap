@@ -30,8 +30,11 @@
   }
 
 
-
-
+  
+.dropdown-menu li a:hover {
+	background-color: var(--navbar-color) !important;
+	color: black !important;
+}
 
 .marcontent {
 	position: relative;

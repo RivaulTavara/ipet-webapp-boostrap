@@ -1,11 +1,14 @@
 from django.contrib import admin
-from .models import  UserAuth , Producto, Pedido, Carrito
+from .models import  UserAuth , Producto, Pedido, Carrito, listaDeseos, Categoria, Marca
 
 # Register your models here.
 admin.site.register(UserAuth)
 admin.site.register(Producto)
 admin.site.register(Pedido)
 admin.site.register(Carrito)
+admin.site.register(listaDeseos)
+admin.site.register(Categoria)
+admin.site.register(Marca)
 
 
 # ejercicios agregar los otros modelos

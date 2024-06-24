@@ -1,11 +1,10 @@
 import random
-from django import forms
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from .models import Carrito, UserAuth, Producto, listaDeseos
+from .models import Carrito, UserAuth, Producto, listaDeseos, Categoria, Marca 
 from .carrito import Carrito
 from .listaDeseos import listaDeseos
 from .utils import validar_rut
@@ -17,7 +16,7 @@ def generar_numero_aleatorio():
     rango = range(1000000, 9999999)  # Cambiado a 7 dígitos
     while True:
         numero_aleatorio = random.choice(rango)
-        if not Producto.objects.filter(modelo=numero_aleatorio).exists():
+        if not Producto.objects.filter(codigo=numero_aleatorio).exists():
             return numero_aleatorio
 
 @login_required
@@ -31,11 +30,13 @@ def modoAdmin(request):
 @login_required
 def registroProducto(request):
     User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
+    marcas = Marca.objects.all()
+    categorias = Categoria.objects.all()
+
     clientes = User.objects.all()  # Obtiene todos los usuarios
     context = {"clientes": clientes}
     print(clientes)
-    return render(request, 'registroProducto.html', context)
-
+    return render(request, 'registroProducto.html', {'marcas': marcas, 'categorias': categorias})
 @login_required
 def listarProducto(request):
     listado = Producto.objects.all()
@@ -95,7 +96,7 @@ def carrito(request):
     tot_cant=sum(int(producto['cantidad']) for producto in carrito.carrito.values())
     return render(request, 'carrito.html', {'productos': productos, 'carrito': carrito, 'total': total, 'tot_cant': tot_cant})
 
-@login_required
+
 def restablecercon(request):
     cliente = UserAuth.objects.all() # select * from cliente
     context = {"cliente":cliente}
@@ -107,6 +108,34 @@ def registro(request):
     context = {"cliente":cliente}
     print(cliente)
     return render(request, 'registro.html', context)
+
+@login_required
+def registroCategoria(request):
+    User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
+    clientes = User.objects.all()  # Obtiene todos los usuarios
+    context = {"clientes": clientes}
+    return render(request, 'registroCategoria.html', context)
+
+@login_required
+def listarCategoria(request):
+    listado = Categoria.objects.all()
+    context = {'listado': listado}
+    return render(request, 'listarCategoria.html', context)
+
+@login_required
+def registroMarca(request):
+    User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
+    clientes = User.objects.all()  # Obtiene todos los usuarios
+    context = {"clientes": clientes}
+    return render(request, 'registroMarca.html', context)
+
+@login_required
+def listarMarca(request):
+    listado = Marca.objects.all()
+    context = {'listado': listado}
+    return render(request, 'listarMarca.html', context)
+
+
 
 def inicioSesion(request):
     if request.method == 'POST':
@@ -214,17 +243,23 @@ def gestionarCarrito(request, accion, producto_id=None, redirigir=None):
 @login_required
 def guardarProducto(request):
     context = {}
+    context['marcas'] = Marca.objects.all()
+    context['categorias'] = Categoria.objects.all()
     if request.method == 'POST':
         id = request.POST.get('txtId')
         nombre = request.POST['txtNombre']
-        marca = request.POST['txtMarca']
+        marca_id = request.POST['txtMarca']
         descripcion = request.POST['txtDescripcion']
+        precio_Costo = request.POST['txtPrecioCosto']
         precio = request.POST['txtPrecio']
         precio_Oferta = request.POST['txtPrecioOferta']
         stock = request.POST['txtStock']
         fecha = request.POST['txtCreado_en']
         imagen = request.FILES['txtImagen'] if 'txtImagen' in request.FILES else None
-        categoria = request.POST['txtCategoria']
+        categoria_id = request.POST['txtCategoria']
+
+        marca = Marca.objects.get(pk=marca_id)
+        categoria = Categoria.objects.get(pk=categoria_id)
 
         # Si txtPrecioOferta es una cadena vacía, establece precio_Oferta en None
         if precio_Oferta == '':
@@ -232,8 +267,8 @@ def guardarProducto(request):
 
         if 'btnGuardar' in request.POST:
             if id== '0':
-                modelo = generar_numero_aleatorio()
-                Producto.objects.create(imagen=imagen, nombre=nombre, marca=marca, descripcion=descripcion, precio=precio, precioOferta=precio_Oferta, stock=stock, creado_en=fecha, modelo=modelo, categoria=categoria)        
+                codigo = generar_numero_aleatorio()
+                Producto.objects.create(imagen=imagen, nombre=nombre, marca=marca, descripcion=descripcion, precio_Costo=precio_Costo , precio=precio, precio_Oferta=precio_Oferta, stock=stock, creado_en=fecha, codigo=codigo, categoria=categoria)
                 context['exito'] = "Los datos fueron guardados"
             else:
                 item = Producto.objects.get(pk=id)
@@ -242,6 +277,7 @@ def guardarProducto(request):
                 item.nombre = nombre
                 item.marca = marca
                 item.descripcion = descripcion
+                item.precio_Costo = precio_Costo
                 item.precio = precio
                 item.precio_Oferta = precio_Oferta
                 item.stock = stock
@@ -267,7 +303,7 @@ def gestionarProducto(request, pk, accion):
     except:
         context['error'] = "Error al buscar el registro"
         return render(request, 'registroProducto.html', context)
-    
+@login_required
 def guardarUsuario(request):
     User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
     context = {}
@@ -326,3 +362,78 @@ def gestionarUsuario(request, pk, accion):
     except:
         context['error'] = "Error al buscar el registro"
         return render(request, 'registroUsuario.html', context)
+    
+
+@login_required
+def guardarCategoria(request):
+    context = {}
+    if request.method == 'POST':
+        id = request.POST.get('txtId')
+        nombre = request.POST['txtNombre']
+        is_active = request.POST['txtIsActive'] == 'True'
+
+        if 'btnGuardar' in request.POST:
+            if id == '0':
+                Categoria.objects.create(nombre=nombre, is_active=is_active)
+                context['exito'] = "Los datos fueron guardados"
+            else:
+                item = Categoria.objects.get(pk=id)
+                item.nombre = nombre
+                item.is_active = is_active
+                item.save()
+                context['exito'] = "Los datos fueron actualizados"
+
+    return render(request, 'registroCategoria.html', context)
+
+@login_required
+def gestionarCategoria(request, pk, accion):
+    context = {}
+    try:
+        item = Categoria.objects.get(pk=pk)
+        if accion == 'eliminar':
+            item.delete()
+            context['exito'] = "La categoría fue eliminada"
+            return redirect('listarCategoria')
+        else:  # asumimos que cualquier otra acción es 'buscar'
+            context['item'] = item
+            return render(request, 'registroCategoria.html', context)
+    except:
+        context['error'] = "Error al buscar el registro"
+        return render(request, 'registroCategoria.html', context)
+
+@login_required
+def guardarMarca(request):
+    context = {}
+    if request.method == 'POST':
+        id = request.POST.get('txtId')
+        nombre = request.POST['txtNombre']
+        is_active = request.POST['txtIsActive'] == 'True'
+
+        if 'btnGuardar' in request.POST:
+            if id == '0':
+                Marca.objects.create(nombre=nombre, is_active=is_active)
+                context['exito'] = "Los datos fueron guardados"
+            else:
+                item = Marca.objects.get(pk=id)
+                item.nombre = nombre
+                item.is_active = is_active
+                item.save()
+                context['exito'] = "Los datos fueron actualizados"
+
+    return render(request, 'registroMarca.html', context)
+
+@login_required
+def gestionarMarca(request, pk, accion):
+    context = {}
+    try:
+        item = Marca.objects.get(pk=pk)
+        if accion == 'eliminar':
+            item.delete()
+            context['exito'] = "La categoría fue eliminada"
+            return redirect('listarMarca')
+        else:  # asumimos que cualquier otra acción es 'buscar'
+            context['item'] = item
+            return render(request, 'registroMarca.html', context)
+    except:
+        context['error'] = "Error al buscar el registro"
+        return render(request, 'registroMarca.html', context)

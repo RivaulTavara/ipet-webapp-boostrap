@@ -13,8 +13,11 @@
             <div class="col-md-8 ccccart">
                 <div class="ccctitle">
                     <div class="row">
-                        <div class="col"><h4><b>Carrito de compras</b></h4></div>
-                        <div class="col align-self-center text-right text-muted">{{tot_cant}} Productos</div>
+                        <div class="col-md-5"><h4><b>Carrito de compras</b></h4></div>
+                        <div class="col-md-6 align-self-center text-right text-muted">{{tot_cant}} Productos</div>
+                        <div class="col-md-1 text-right">
+                          <a href={% url 'gestionarCarrito' 'limpiar' %}><i class='fas fa-trash-alt' style=" color: black;"></i></a>
+                        </div>
                     </div>
                 </div>    
                 <div style="overflow: auto; height: 45vh; scrollbar-width: none; padding-right: 10px;" id="jajalol">
@@ -24,11 +27,11 @@
                                 
                                 <div class="col-2"><img class="img-fluid" src="{{ producto.imagen }}" style="width: 10rem;"></div>                                
                                 <div class="col">
-                                    <div class="cccrow text-muted">{{ producto.nombre }}</div>
-                                    <div class="cccrow">{{ producto.marca }}</div>
+                                    <div class="cccrow text-muted"><a href="{% url 'producto_detalle' producto.producto_id %}" style="text-decoration: none;">{{ producto.nombre }}</a></div>
+                                    <div class="cccrow"></div>
                                 </div>
                                 <div class="col">
-                                    <a href="{% url 'gestionarCarrito' 'restar' producto.producto_id  'carrito' %}" style="padding: 0 1vh;" class="ntm">-</a><a href="javascript:void(0);" class="border">{{ producto.cantidad }}</a><a href="{% url 'gestionarCarrito' 'agregar' producto.producto_id 'carrito' %}" class="ntm">+</a>
+                                    <a href="{% url 'gestionarCarrito' 'restar' producto.producto_id  'carrito' %}" style="padding: 0 0.7vh; text-decoration: none;" class="ntm">-</a><a href="javascript:void(0);" class="border" style="text-decoration: none;">{{ producto.cantidad }}</a><a href="{% url 'gestionarCarrito' 'agregar' producto.producto_id 'carrito' %}" style="padding: 0 0.7vh; text-decoration: none;" class="ntm">+</a>
                                 </div>
                                     <div class="col price"><a href="javascript:void(0);" style="text-decoration: none;">&dollar; {{ producto.precio_unitario|multiply:producto.cantidad|format_price }}</a></div>                              
                                     <a href="{% url 'gestionarCarrito' 'eliminar' producto.producto_id  'carrito' %}" class="btn btn-close ntm" aria-label="Close"></a>                        

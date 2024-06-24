@@ -7,8 +7,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('logout/', views.exit, name='logout'),
-    path('login/', views.inicioSesion, name='login'),
-    path('index', views.index, name='index'),
+    path('login', views.inicioSesion, name='cliente_login'),
+    path('index', views.index, name='index'),    
     #path('modoAdmin', views.modoAdmin, name='modoAdmin'), 
     path('carrito', views.carrito, name='carrito'), 
     path('restablecercon', views.restablecercon, name='restablecercon'),
@@ -29,6 +29,14 @@ urlpatterns = [
     path('gestionarCarrito/<str:accion>/<int:producto_id>/<str:redirigir>/', views.gestionarCarrito, name='gestionarCarrito'),
     path('gestionarCarrito/<str:accion>/<int:producto_id>/', views.gestionarCarrito, name='gestionarCarrito'),
     path('gestionarCarrito/<str:accion>/', views.gestionarCarrito, name='gestionarCarrito'),
+    path('listarCategoria', views.listarCategoria, name='listarCategoria'),
+    path('registroCategoria', views.registroCategoria, name='registroCategoria'),
+    path('guardarCategoria', views.guardarCategoria, name='guardarCategoria'),
+    path('gestionarCategoria/<int:pk>/<str:accion>/', views.gestionarCategoria, name='gestionarCategoria'),
+    path('listarMarca', views.listarMarca, name='listarMarca'),
+    path('registroMarca', views.registroMarca, name='registroMarca'),
+    path('guardarMarca', views.guardarMarca, name='guardarMarca'),
+    path('gestionarMarca/<int:pk>/<str:accion>/', views.gestionarMarca, name='gestionarMarca'),
             ]
 
 if settings.DEBUG:
