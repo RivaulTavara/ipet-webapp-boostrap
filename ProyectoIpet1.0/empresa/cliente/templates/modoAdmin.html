@@ -75,14 +75,25 @@
                 </div>
               </ul>
               <div class="navbar-nav ms-auto">
-                <form method="POST" action="{% url 'logout' %}">
-                  {% csrf_token %}
-                  <div class="d-flex" style="position: relative;">  
-                    <button id="iconcar" class="nav-link d-md-block" style="padding-top: 10px; padding-right: 35px; height: 38px;">
-                      <i class="fas fa-sign-out-alt" style="color: white;"></i>
-                    </button>
+                <div class="d-flex" style="position: relative;"> 
+
+                  <div class="sec-center"> 	
+                    <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
+                    <label class="for-dropdown dropdown" for="dropdown">
+                        <a class="dropdown-toggle nav-link">
+                          <img src="{% static 'cliente/images/USUARIOSINFOTO.jpeg' %}" class="rounded-circle" alt="Foto de perfil" width="30" height="30">
+                        </a>
+                      <i class="uil uil-arrow-down"></i></label>
+                    <div class="section-dropdown text-center">
+                      <img src="{% static 'cliente/images/USUARIOSINFOTO.jpeg' %}" class="rounded-circle mb-4" alt="Foto de perfil" width="100" height="100">
+                      <p>{{ user.email }}</p>
+                      <p>{{ user.first_name }} {{ user.last_name }}</p>                                
+                      <form method="POST" action="{% url 'logout' %}" style="display: flex; flex-direction: column;">
+                        {% csrf_token %}
+                          <button class="nav-link d-md-block">Cerrar Sesion</button>
+                      </form>
                   </div>
-                </form>
+                </div>
               </div>
         </div>
       </div>

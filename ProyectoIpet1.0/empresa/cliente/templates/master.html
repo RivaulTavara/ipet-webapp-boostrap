@@ -55,43 +55,67 @@
                         <i class="fas fa-shopping-cart" style="color: white;" ></i>
                       </a>
                       {% block dropdown %}
-                        <div id="icontel" class="dropdown d-md-block">
-                          <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{% static 'cliente/images/USUARIOSINFOTO.jpeg' %}" class="rounded-circle" alt="Foto de perfil" width="30" height="30">
-                          </a>
-                          <form id="login-form" class="dropdown-menu dropdown-menu-end p-4" action="/cliente/login/" method="POST">
-                            {% csrf_token %}
-                            <div class="mb-3">
-                              <label for='email' class="form-label" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: large;" >Correo</label>
-                              <input type="text" class="form-control" id="correo" name="username" required placeholder="ejemplo@correo.com" style="border-color: grey;" />
-                            </div>  
-                            <div class="mb-3">
-                              <label for='password' class="form-label" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: large;">Contraseña</label>
-                              <input type="password" id="password" name="password" class="form-control" required placeholder="Xx1234567@" style="border-color: grey;" />
+                        {% if user.is_authenticated %}
+                            <div class="sec-center"> 	
+                              <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
+                              <label class="for-dropdown dropdown" for="dropdown">
+                                  <a class="dropdown-toggle nav-link">
+                                    <img src="{% static 'cliente/images/USUARIOSINFOTO.jpeg' %}" class="rounded-circle" alt="Foto de perfil" width="30" height="30">
+                                  </a>
+                                <i class="uil uil-arrow-down"></i></label>
+                              <div class="section-dropdown text-center">
+                                <img src="{% static 'cliente/images/USUARIOSINFOTO.jpeg' %}" class="rounded-circle mb-4" alt="Foto de perfil" width="100" height="100">
+                                <p>{{ user.email }}</p>
+                                <p>{{ user.first_name }} {{ user.last_name }}</p>                                
+                                <form method="POST" action="{% url 'logout' %}" style="display: flex; flex-direction: column;">
+                                  {% csrf_token %}
+                                    <button class="nav-link d-md-block">Cerrar Sesion</button>
+                                </form>
                             </div>
-                            <div class="mb-3">
-                              <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="loggedIn" name="loggedIn" style="border-color: grey;">
-                                <label class="form-check-label fw-semibold mb-2" for="loggedIn">Mantener sesión iniciada.</label>
-                              </div>
-                              <div class="text-center mt-3">
-                                <a href="{% url 'restablecercon'%}" style="color: blue; justify-content: center;" >¿Olvidaste tu contraseña?</a>
-                              </div>
+                        {% else %}
+                            <div class="sec-center"> 	
+                              <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
+                              <label class="for-dropdown dropdown" for="dropdown">
+                                  <a class="dropdown-toggle nav-link">
+                                    <img src="{% static 'cliente/images/USUARIOSINFOTO.jpeg' %}" class="rounded-circle" alt="Foto de perfil" width="30" height="30">
+                                  </a>
+                                <i class="uil uil-arrow-down"></i></label>
+                              <div class="section-dropdown"> 
+                                  <form id="login-form" action="/cliente/login/" method="POST">
+                                      {% csrf_token %}
+                                      <div class="mb-3">
+                                        <label for='email' class="form-label" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: large;" >Correo</label>
+                                        <input type="text" class="form-control" id="correo" name="username" required placeholder="ejemplo@correo.com" style="border-color: grey;" />
+                                      </div>  
+                                      <div class="mb-3">
+                                        <label for='password' class="form-label" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: large;">Contraseña</label>
+                                        <input type="password" id="password" name="password" class="form-control" required placeholder="Xx1234567@" style="border-color: grey;" />
+                                      </div>
+                                      <div class="mb-3">
+                                        <div class="form-check">
+                                          <input type="checkbox" class="form-check-input" id="loggedIn" name="loggedIn" style="border-color: grey;">
+                                          <label class="form-check-label fw-semibold mb-2" for="loggedIn">Mantener sesión iniciada.</label>
+                                        </div>
+                                        <div class="text-center mt-3">
+                                          <a href="{% url 'restablecercon'%}" style="color: blue; justify-content: center;" >¿Olvidaste tu contraseña?</a>
+                                        </div>
+                                      </div>
+                                      <div class="mb-1 mx-auto d-flex justify-content-center align-items-center">
+                                        <button type="submit" name="submit" class="btn btn-primary btn-lg float" style="width: 300px;">Iniciar sesión</button>
+                                      </div>
+                                      <div class="mb-1 mx-auto d-flex justify-content-center align-items-center">
+                                        <a href="{% url 'registro'%}" class="btn btn-primary btn-lg" style="width: 300px;">Regístrate</a>
+                                      </div>
+                                  </form>
                             </div>
-                            <div class="mb-1 mx-auto d-flex justify-content-center align-items-center">
-                              <button type="submit" name="submit" class="btn btn-primary btn-lg float" style="width: 300px;">Iniciar sesión</button>
-                            </div>
-                            <div class="mb-1 mx-auto d-flex justify-content-center align-items-center">
-                              <a href="{% url 'registro'%}" class="btn btn-primary btn-lg" style="width: 300px;">Regístrate</a>
-                            </div>
-                          </form>
-                        </div>
+                        {% endif %}
                       {% endblock %}
                     </div>
                 </div>
           </div>
         </div>
     </nav>
+
     {% endblock %}
     {% block contenido %}
     {% endblock %}
@@ -111,6 +135,9 @@
 
 
     {% block footer %}
+
+    
+
         <footer id="pie-pag" style="background-color: var(--footer-color); padding-top: 1px; color: white; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
           <div class="container mt-5">
             <div class="row">
