@@ -8,7 +8,7 @@
     }
 
     .card img {
-        width: 100%; /* Make the image take up the full width of the card */
+        width: 100%; /* Make the image take up the full width of the card */    
         align-items: center;
     }
 
@@ -113,8 +113,7 @@
     }
 
     #iconcar{
-        position: absolute;
-        left: 0;
+        position: relative;
         z-index: 100;
     }
     
@@ -139,5 +138,26 @@
     
     #h2registro{
     	padding-top: 110px;
+    }
+
+
+    #lel{
+        display: none;
+    }
+    
+    #lala{
+        display: active;
+    }
+}
+
+
+@media only screen and (min-width: 768px) {
+
+    #lala{
+        display: none;
+    }
+
+    #lel{
+        display: active;
     }
 }

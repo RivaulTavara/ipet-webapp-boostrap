@@ -81,7 +81,6 @@
               <div class="modal-body container py-5">
                 <div class="card-header">
                   <div class="bg-white shadow-sm">
-                      <!-- Credit card form tabs -->
                       <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
                           <li class="nav-item"> <a data-bs-toggle="pill" href="#credit-card" class="nav-link active "> <i class="fas fa-credit-card mr-2"></i> Débito/Crédito </a> </li>
                           <li class="nav-item"> <a data-bs-toggle="pill" href="#paypal" class="nav-link "> <i class="fab fa-paypal mr-2"></i> Paypal </a> </li>
@@ -189,23 +188,21 @@
             $(".ntm").click(function(event) {
                 event.preventDefault();
         
-                // Guarda la posición de desplazamiento del carrito
+
                 var scrollPosition = $("#jajalol").scrollTop();
         
-                // Guarda el valor seleccionado en el <select> de envío
+ 
                 var selectedEnvio = $('#envio').val();
         
                 $.ajax({
-                    url: $(this).attr('href'),  // URL del servidor que maneja la adición, eliminación o resta de productos
+                    url: $(this).attr('href'),
                     type: 'GET',
                     success: function(data) {
-                        // Actualiza la parte de la página que muestra los productos en el carrito
                         $("#loles").html(data);
         
-                        // Restaura la posición de desplazamiento del carrito
+
                         $("#jajalol").scrollTop(scrollPosition);
         
-                        // Restaura el valor seleccionado en el <select> de envío
                         $('#envio').val(selectedEnvio);
                     }
                 });

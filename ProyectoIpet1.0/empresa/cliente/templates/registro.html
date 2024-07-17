@@ -8,13 +8,12 @@
     <link rel="stylesheet" href="{% static 'cliente/model/css/styleRegistro.css' %}">
     <div class="container">
       <div class="row  align-items-center">
-          <!-- For Demo Purpose -->
           <div class="col-md-5 pr-lg-5 mb-5 mb-md-0" style="margin-right: 70px;">
               <img src="{% static 'cliente/images/perro y gato.png' %}" alt="" class="img-fluid mb-3 d-none d-md-block">
               <h2 id="h2registro" style="text-align: center;">Registro de nuevos usuarios</h2>
           </div>
         
-          <!-- Registeration Form -->
+          <!-- Form registro-->
           <div class="col-md-7 col-lg-6 ml-auto" style="overflow-y: auto; height: 100vh; scrollbar-width: none;">
             <form id="marginform" action="{% url 'guardarUsuario' %}" method="POST" enctype="multipart/form-data" >
               {% csrf_token %}
@@ -153,14 +152,12 @@
                         <button type="submit" class="btn btn-primary btn-block py-2" name="btnGuardar">Registrarse</button>
                       </div>
                     
-                      <!-- texto divisor -->
                       <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
                           <div class="border-bottom w-100 ml-5"></div>
                           <span class="px-2 small text-muted font-weight-bold text-muted">O</span>
                           <div class="border-bottom w-100 mr-5"></div>
                       </div>
                     
-                      <!-- registro por redes sociales -->
                       <div style="text-align: center;">
                         <div class="form-group col-lg-12 ms-auto">
                             <a href="#" class="btn btn-primary btn-block py-2 btn-facebook">
@@ -176,7 +173,6 @@
                         </div>
                       </div>
                     
-                      <!-- Sesion existente -->
                       <div class="text-center w-100" style="padding-top: 15px; padding-bottom: 20px;">
                           <p class="text-muted font-weight-bold">Ya estás registrado? <a href="{% url 'cliente_login'%}" class="text-primary ml-2">Inicia Sesión</a></p>
                       </div>

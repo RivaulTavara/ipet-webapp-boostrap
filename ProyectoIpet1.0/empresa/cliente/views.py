@@ -16,7 +16,7 @@ def es_admin(user):
     return user.is_staff
 
 def generar_numero_aleatorio():
-    rango = range(1000000, 9999999)  # Cambiado a 7 dígitos
+    rango = range(1000000, 9999999) 
     while True:
         numero_aleatorio = random.choice(rango)
         if not Producto.objects.filter(codigo=numero_aleatorio).exists():
@@ -24,19 +24,19 @@ def generar_numero_aleatorio():
 
 @user_passes_test(es_admin, login_url='index')
 def modoAdmin(request):
-    User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
-    admins = User.objects.filter(is_staff=True)  # Obtiene todos los usuarios que son administradores
+    User = get_user_model()  
+    admins = User.objects.filter(is_staff=True)  
     context = {"admins": admins}
     print(admins)
     return render(request, 'modoAdmin.html', context)
 
 @user_passes_test(es_admin, login_url='index')
 def registroProducto(request):
-    User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
+    User = get_user_model() 
     marcas = Marca.objects.all()
     categorias = Categoria.objects.all()
 
-    clientes = User.objects.all()  # Obtiene todos los usuarios
+    clientes = User.objects.all()  
     context = {"clientes": clientes}
     print(clientes)
     return render(request, 'registroProducto.html', {'marcas': marcas, 'categorias': categorias})
@@ -49,35 +49,35 @@ def listarProducto(request):
 
 @user_passes_test(es_admin, login_url='index')
 def registroUsuario(request):
-    clientes = UserAuth.objects.all()  # Obtiene todos los usuarios
+    clientes = UserAuth.objects.all() 
     context = {'clientes': clientes}
     print(clientes)
     return render(request, 'registroUsuario.html', context)
 
 @user_passes_test(es_admin, login_url='index')
 def listarUsuario(request):
-    User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
-    listado = User.objects.all()  # Obtiene todos los usuarios
+    User = get_user_model()  
+    listado = User.objects.all()  
     context = {'listado': listado}
     return render(request, 'listarUsuario.html', context)
 
 def index(request):
-    # Obtiene todos los productos
+ 
     productos = Producto.objects.all()
 
-    # Obtiene 5 productos al azar
+   
     randomprod = Producto.objects.order_by('?')[:5]
 
     lista_deseos = request.session.get('listaDeseos', {})
 
-    # Para cada producto, verifica si su ID está en la lista de deseos
+   
     for producto in productos:
         producto.en_lista_deseos = str(producto.id) in lista_deseos
         if producto.precio_Oferta:
             descuento = (producto.precio - producto.precio_Oferta) / producto.precio * 100
             producto.descuento = round(descuento)
 
-    # Pasa ambos conjuntos de productos a la plantilla
+    
     return render(request, 'index.html', {'productos': productos, 'randomprod': randomprod})
 
 def producto_detalle(request, producto_id):
@@ -101,21 +101,21 @@ def carrito(request):
 
 
 def restablecercon(request):
-    cliente = UserAuth.objects.all() # select * from cliente
+    cliente = UserAuth.objects.all() 
     context = {"cliente":cliente}
     print(cliente)
     return render(request, 'restablecercon.html', context)
 
 def registro(request):
-    cliente = UserAuth.objects.all() # select * from cliente
+    cliente = UserAuth.objects.all() 
     context = {"cliente":cliente}
     print(cliente)
     return render(request, 'registro.html', context)
 
 @user_passes_test(es_admin, login_url='index')
 def registroFormaDePago(request):
-    User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
-    clientes = User.objects.all()  # Obtiene todos los usuarios
+    User = get_user_model() 
+    clientes = User.objects.all()  
     context = {"clientes": clientes}
     return render(request, 'registroFormaDePago.html', context)
 
@@ -127,8 +127,8 @@ def listarFormaDePago(request):
 
 @user_passes_test(es_admin, login_url='index')
 def registroCategoria(request):
-    User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
-    clientes = User.objects.all()  # Obtiene todos los usuarios
+    User = get_user_model()  
+    clientes = User.objects.all()
     context = {"clientes": clientes}
     return render(request, 'registroCategoria.html', context)
 
@@ -140,8 +140,8 @@ def listarCategoria(request):
 
 @user_passes_test(es_admin, login_url='index')
 def registroMarca(request):
-    User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
-    clientes = User.objects.all()  # Obtiene todos los usuarios
+    User = get_user_model() 
+    clientes = User.objects.all()  
     context = {"clientes": clientes}
     return render(request, 'registroMarca.html', context)
 
@@ -160,12 +160,11 @@ def inicioSesion(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            if user.is_staff:  # Verifica si el usuario es un administrador
-                return redirect('modoAdmin')  # Redirige al usuario a la página de administración
+            if user.is_staff: 
+                return redirect('modoAdmin') 
             else:
-                return redirect('index')  # Redirige al usuario a la página 'home'
+                return redirect('index') 
         else:
-            # Si la autenticación falla, vuelve a renderizar la página de inicio de sesión con un mensaje de error
             context = {"error": "Correo y/o contraseña incorrectos"}
             return render(request, 'registration/login.html', context)
     else:
@@ -174,12 +173,6 @@ def inicioSesion(request):
 def exit(request):
     logout(request)
     return redirect('login')
-
-
-
-
-
-
 
 
 
@@ -224,7 +217,7 @@ def gestionarCarrito(request, accion, producto_id=None, redirigir=None):
         if imagen_url.startswith('/'):
             imagen_url = imagen_url[1:]
 
-    cantidad = request.GET.get('cantidad', 1)  # obtiene la cantidad de los parámetros de la URL, por defecto es 1 si no se proporciona
+    cantidad = request.GET.get('cantidad', 1) 
 
     if accion == 'agregar':
         for _ in range(int(cantidad)):
@@ -277,7 +270,6 @@ def guardarProducto(request):
         marca = Marca.objects.get(pk=marca_id)
         categoria = Categoria.objects.get(pk=categoria_id)
 
-        # Si txtPrecioOferta es una cadena vacía, establece precio_Oferta en None
         if precio_Oferta == '':
             precio_Oferta = None
 
@@ -313,7 +305,7 @@ def gestionarProducto(request, pk, accion):
             item.delete()
             context['exito'] = "El producto fue eliminado"
             return redirect('listarProducto')
-        else:  # asumimos que cualquier otra acción es 'buscar'
+        else: 
             context['item'] = item
             return render(request, 'registroProducto.html', context)
     except:
@@ -322,7 +314,7 @@ def gestionarProducto(request, pk, accion):
 
 
 def guardarUsuario(request):
-    User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
+    User = get_user_model()
     context = {}
     if request.method == 'POST':
         rut = request.POST['txtRut']
@@ -338,12 +330,11 @@ def guardarUsuario(request):
         telefono = request.POST['txtTelefono']
         region = request.POST['txtRegion']
         nivel_educacional = request.POST['txtNivel_Educacional']
-        es_admin = 'chkEsAdmin' in request.POST  # Verifica si el checkbox 'chkAdmin' está marcado
+        es_admin = 'chkEsAdmin' in request.POST 
         if 'btnGuardar' in request.POST:
-            id_usuario = request.POST.get('txtId', '0')  # Devuelve '0' si 'txtId' no existe en el diccionario
+            id_usuario = request.POST.get('txtId', '0')  
             if id_usuario not in ['0', ''] and id_usuario.isdigit() and User.objects.filter(id=id_usuario).exists():
                 user = User.objects.get(id=id_usuario)
-                # Actualiza los campos del usuario
                 user.email = email
                 user.set_password(contrasena)
                 user.first_name = nombre
@@ -352,9 +343,8 @@ def guardarUsuario(request):
                 user.fecha_de_nacimiento = fecha_de_nacimiento
                 user.region = region
                 user.nivel_educacional = nivel_educacional
-                user.last_login = timezone.now()  # Actualiza el último inicio de sesión del usuario
-                user.is_staff = es_admin  # Actualiza el estado de administrador del usuario
-                # Solo actualiza el teléfono si se proporciona un nuevo número
+                user.last_login = timezone.now()  
+                user.is_staff = es_admin 
                 if telefono != user.telefono:
                     user.telefono = telefono
                 if rut != user.rut:
@@ -362,10 +352,9 @@ def guardarUsuario(request):
                 user.save()
                 context['exito'] = "Los datos fueron actualizados"
             else:
-                # Si el ID no existe en la base de datos, crea un nuevo usuario
                 user = User.objects.create_user(rut=rut, email=email, password=contrasena, first_name=nombre, last_name=apellido, direccion=direccion, fecha_de_nacimiento=fecha_de_nacimiento, telefono=telefono, region=region, nivel_educacional=nivel_educacional, last_login=timezone.now(), is_staff=es_admin)
                 context['exito'] = "Los datos fueron guardados"
-            origen = request.POST.get('origen', 'registro')  # Devuelve 'registro' si 'origen' no existe en el diccionario
+            origen = request.POST.get('origen', 'registro') 
             if origen == 'admin':
                 return render(request, 'registroUsuario.html', context)
             else:
@@ -374,7 +363,7 @@ def guardarUsuario(request):
 
 @user_passes_test(es_admin, login_url='index')
 def gestionarUsuario(request, pk, accion):
-    User = get_user_model()  # Obtiene el modelo de usuario actual (UserAuth)
+    User = get_user_model() 
     context = {}
     try:
         item = User.objects.get(pk=pk)
@@ -382,7 +371,7 @@ def gestionarUsuario(request, pk, accion):
             item.delete()
             context['exito'] = "El usuario fue eliminado"
             return redirect('listarUsuario')
-        else:  # asumimos que cualquier otra acción es 'buscar'
+        else: 
             context['item'] = item
             return render(request, 'registroUsuario.html', context)
     except:
@@ -420,7 +409,7 @@ def gestionarCategoria(request, pk, accion):
             item.delete()
             context['exito'] = "La categoría fue eliminada"
             return redirect('listarCategoria')
-        else:  # asumimos que cualquier otra acción es 'buscar'
+        else: 
             context['item'] = item
             return render(request, 'registroCategoria.html', context)
     except:
@@ -458,7 +447,7 @@ def gestionarMarca(request, pk, accion):
             item.delete()
             context['exito'] = "La categoría fue eliminada"
             return redirect('listarMarca')
-        else:  # asumimos que cualquier otra acción es 'buscar'
+        else:
             context['item'] = item
             return render(request, 'registroMarca.html', context)
     except:
@@ -495,7 +484,7 @@ def gestionarFormaDePago(request, pk, accion):
             item.delete()
             context['exito'] = "La categoría fue eliminada"
             return redirect('listarFormaDePago')
-        else:  # asumimos que cualquier otra acción es 'buscar'
+        else:
             context['item'] = item
             return render(request, 'registroFormaDePago.html', context)
     except:

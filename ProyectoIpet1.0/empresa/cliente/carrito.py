@@ -16,7 +16,7 @@ class Carrito:
                 'imagen': imagen_url,
                 'producto_id': producto.id,
                 'nombre': producto.nombre,
-                'precio_unitario': producto.precio_Oferta if producto.precio_Oferta else producto.precio,  # Guarda el precio de oferta si existe, de lo contrario guarda el precio unitario
+                'precio_unitario': producto.precio_Oferta if producto.precio_Oferta else producto.precio,  
                 'cantidad': cantidad,
             }
         else:

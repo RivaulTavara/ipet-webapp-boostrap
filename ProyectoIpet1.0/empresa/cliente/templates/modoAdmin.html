@@ -110,7 +110,6 @@
   {% endblock %}
   {% block contenido %}
     <div class="container mt-5 pt-5">
-        <!-- Mensaje de Bienvenida -->
         <div class="row mb-4">
             <div class="col-12">
                 <div class="bg-secondary text-white p-4 rounded text-center">
@@ -119,9 +118,7 @@
             </div>
         </div>
         
-        <!-- Resumen de Ventas -->
         <div class="row mb-4">
-            <!-- Ventas Totales -->
             <div class="col-md-4">
                 <div class="card bg-success text-white">
                     <div class="card-body">
@@ -130,7 +127,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Productos Vendidos -->
             <div class="col-md-4">
                 <div class="card bg-success text-white">
                     <div class="card-body">
@@ -139,7 +135,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Ganancias -->
             <div class="col-md-4">
                 <div class="card bg-success text-white">
                     <div class="card-body">
@@ -150,7 +145,6 @@
             </div>
         </div>
         
-        <!-- Gráfico de Ventas (Simulado con Chart.js) -->
         <div class="row mb-4">
           <div class="col-12">
               <div class="card bg-light">
@@ -162,7 +156,6 @@
           </div>
         </div>
         
-        <!-- Últimas Actividades -->
         <div class="row mb-4">
             <div class="col-12">
                 <div class="card">
@@ -199,14 +192,11 @@
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/rwd-table-patterns.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-      // Inicializar Chart.js dentro del contexto DOMContentLoaded
       document.addEventListener('DOMContentLoaded', function () {
           var ctx = document.getElementById('ventasChart').getContext('2d');
           var chart = new Chart(ctx, {
-              // Tipo de gráfico
               type: 'line',
               
-              // Datos para nuestro dataset
               data: {
                   labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
                   datasets: [{
@@ -217,7 +207,6 @@
                   }]
               },
               
-              // Opciones de configuración
               options: {}
           });
       });

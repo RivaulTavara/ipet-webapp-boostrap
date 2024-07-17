@@ -136,7 +136,7 @@
 
         window.onload = function () {
 
-            //// SLIDER
+          
             var slider = document.getElementsByClassName("sliderBlock_items");
             var slides = document.getElementsByClassName("sliderBlock_items__itemPhoto");
             var next = document.getElementsByClassName("sliderBlock_controls__arrowForward")[0];
@@ -145,7 +145,7 @@
             var currentSlideItem = document.getElementsByClassName("sliderBlock_positionControls__paginatorItem");
 
             var currentSlide = 0;
-            var slideInterval = setInterval(nextSlide, 5000);  /// Delay time of slides
+            var slideInterval = setInterval(nextSlide, 5000); 
 
             function nextSlide() {
                 goToSlide(currentSlide + 1);
@@ -185,9 +185,6 @@
             goToSlideAfterPushTheMiniBlock();
 
 
-        /////////////////////////////////////////////////////////
-
-        ///// Specification Field
 
 
             var buttonFullSpecification = document.getElementsByClassName("block_specification")[0];

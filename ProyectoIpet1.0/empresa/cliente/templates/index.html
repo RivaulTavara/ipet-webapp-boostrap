@@ -67,8 +67,8 @@
             {% for producto in productos %}
             .section-products #product-{{ producto.id }} .part-1::before {
                 background-image: url("{{ producto.imagen }}");
-                background-size: contain; /* Cambia 'cover' por 'contain' */
-                background-repeat: no-repeat; /* Añade esto para evitar que la imagen se repita */
+                background-size: contain; 
+                background-repeat: no-repeat; 
             }
             {% endfor %}
         </style>
@@ -132,21 +132,21 @@
         <script>
                 $(document).ready(function() {
                     $(document).on('click', '.deseos', function(event) {
-                        event.preventDefault();  // Evita que el enlace se siga como de costumbre
+                        event.preventDefault(); 
 
-                        var button = $(this);  // El botón que fue clickeado
-                        var productId = button.data('id');  // El id del producto
-                        var link = button.closest('a');  // El enlace que contiene el botón
-                        var url = link.attr('href');  // La URL actual del enlace
+                        var button = $(this); 
+                        var productId = button.data('id'); 
+                        var link = button.closest('a');
+                        var url = link.attr('href'); 
 
                         $.ajax({
-                            url: url,  // Usa la URL actual del enlace para la solicitud AJAX
+                            url: url, 
                             type: 'GET',
                             success: function(response) {
-                                // Aquí puedes manejar la respuesta del servidor
+                               
                                 console.log(response);
 
-                                // Cambia el botón y la URL según la respuesta del servidor
+                              
                                 if (url.includes('eliminar')) {
                                     button.find('i').css('color', 'white');
                                     link.attr('href', '/cliente/gestionarListaDeseos/agregar/' + productId + '/index/');
@@ -155,7 +155,7 @@
                                     link.attr('href', '/cliente/gestionarListaDeseos/eliminar/' + productId + '/index/');
                                 }
 
-                                // Actualiza la variable url con la nueva URL del enlace
+                              
                                 url = link.attr('href');
                             },
                             error: function(error) {
@@ -167,21 +167,21 @@
                 });
             $(document).ready(function() {
                 $(document).on('click', '#aaci, #aald, #edldi', function(event) {
-                    event.preventDefault();  // Evita que el enlace recargue la página
+                    event.preventDefault();  
             
-                    // Guarda una referencia al enlace
+           
                     var link = $(this);
             
                     $.ajax({
-                        url: $(this).attr('href'),  // Usa el href del enlace como URL para la solicitud AJAX
+                        url: $(this).attr('href'),  
                         type: 'GET',
                         success: function(response) {
-                            // Aquí puedes manejar la respuesta del servidor
+                       
                             console.log(response);
             
                         },
                         error: function(error) {
-                            // Aquí puedes manejar cualquier error que ocurra durante la solicitud
+                       
                             console.log(error);
                         }
                     });
