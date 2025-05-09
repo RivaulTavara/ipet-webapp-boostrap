@@ -36,28 +36,6 @@
 	color: black !important;
 }
 
-.marcontent {
-	position: relative;
-}
-
-.marcontent h2 {
-	font-size: xx-large;
-	position: absolute;
-	transform: translate(-50%, -50%);
-}
-
-.marcontent h2:nth-child(1) {
-	color: transparent;
-	-webkit-text-stroke: 0px black;
-  color: black;
-}
-
-.marcontent h2:nth-child(2) {
-  -webkit-text-stroke: 0px black;
-	color: white;
-	animation: animate 4s ease-in-out infinite;
-}
-
 @keyframes animate {
 	0%,
 	100% {
