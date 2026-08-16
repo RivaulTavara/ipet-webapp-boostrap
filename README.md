@@ -1,44 +1,43 @@
-# Carrito de Compras
+# 🐾 iPet — E-commerce & Plataforma de Adopción de Mascotas
 
-Este es un carrito de compras hecho usando HTML5, CSS3 y Boostrap 5.
+**iPet** es una aplicación web integral diseñada para la venta de productos para mascotas y la gestión de procesos de adopción animal. Combina un catálogo interactivo con carrito de compras y un flujo dinámico para la postulación e integración de nuevos adoptantes.
 
-## Estructura del Proyecto
+---
 
-- "Main" contiene los archivos principales de html.
-- "Documentacion" contiene los requerimientos de la evaluacion.
-- "SRC" contiene las imagenes y demás recursos de el carrito de compras.
+## 🛠️ Stack Tecnológico
 
-## Requerimientos
+- **Frontend:** HTML5, CSS3, JavaScript, Bootstrap 5 (Diseño 100% Responsivo).
+- **Backend:** Python.
+- **Base de Datos:** MySQL.
+- **Arquitectura / Herramientas:** Modelo Relacional, APIs / HTTP POST, Git & GitHub.
 
-1. Crear bosquejo o “mockup” para el análisis de las nuevas funcionalidades requeridas por el cliente.
-2. Agregar un menú que permita acceder a las distintas páginas solicitadas.
-3. Mejorar la portada del sitio modificando la imagen de portada por un carrusel de imágenes que muestre los productos destacados, acompañado de una descripción y precio de venta (de al menos 3 productos).
-4. Incluir una galería de imágenes (de al menos 6 productos) que permita a los visitantes ver todos los productos disponibles hasta ese momento. Cada imagen debe mostrar: imagen del producto, descripción, precio, stock y marca.
-5. Construir una página para el registro de nuevos usuarios que cumpla con los siguientes requerimientos solicitados por la Fundación para recopilar información acerca de los postulantes que desean adoptar una mascota:
-    - Información como texto: Rut, nombre, apellido, correo, fecha de nacimiento y teléfono
-    - Información seleccionable:Región y nivel educacional (Doctor, Magíster, Profesional, etc)
-6. Construir los formularios de los datos maestros o mantenedores requeridos para el proyecto y definidos en el modelo de datos.
-7. Escoger los inputs adecuados a los tipos de datos definidos en cada una de las tablas y/o modelo de datos.
-8. Considere que las páginas deben ser correctamente visualizado tanto en la versión web como en la versión móvil del sitio. (Responsiva)
-9. Aplique estilos CSS propios o bien utilice el apoyo de un framework CSS para lograr que el formulario posea una apariencia acorde al resto del sitio.
+---
 
-## Base de Datos
+## 🚀 Características Principales
 
-Para el formulario de registro, los campos se mapearán a las columnas de la base de datos MySQL de la siguiente manera:
+### 🛒 E-commerce & Carrito de Compras
+* **Portada Dinámica:** Carrusel interactivo destacando productos estrella con descripciones y precios.
+* **Catálogo & Galería:** Vista detallada de productos con gestión de *stock*, precios, marcas y descripciones.
+* **Navegación Fluida:** Menú principal adaptativo con acceso rápido a las distintas secciones del sitio.
 
-- Rut (rut): mapeado a la columna `rut` en la tabla `usuarios`
-- Nombre (nombre): mapeado a la columna `nombre` en la tabla `usuarios`
+### 🐶 Módulo de Adopción & Registro
+* **Formulario de Postulación:** Registro para postulantes de adopción con validaciones en cliente y servidor.
+* **Captura de Datos Completa:** Recopilación de información personal, contacto, región y nivel educacional.
+* **Mantenedores / Datos Maestros:** Formularios y vistas CRUD alineados con el modelo de datos relacional.
 
-## PHP
+---
 
-En este proyecto, PHP se utiliza para manejar la lógica del servidor, incluyendo la interacción con la base de datos y la generación de páginas HTML dinámicas.
+## ⚙️ Flujo de Datos & Backend
 
-## Flujo de Datos del Registro
+1. **Envío de Requerimientos:** El cliente interactúa con la interfaz web y envía formularios mediante peticiones `HTTP POST`.
+2. **Validación en Servidor:** El backend Python valida la integridad y formato de los datos recibidos (correo, RUT, campos obligatorios).
+3. **Persistencia de Datos:** Mapeo de la información e inserción directa en la base de datos MySQL (ej. tabla `usuarios`).
+4. **Respuestas Dinámicas:** Manejo de excepciones, redirecciones de confirmación (*registro exitoso*) y retroalimentación de errores en tiempo real.
 
-El flujo de datos del registro comienza cuando el usuario llena el formulario de registro en la página de registro. Cuando el usuario envía el formulario, los datos del formulario se envían a un script PHP en el servidor a través de una solicitud HTTP POST.
+---
 
-El script PHP recibe los datos del formulario, los valida para asegurarse de que cumplen con los requisitos necesarios (por ejemplo, que todos los campos requeridos están presentes, que el formato del correo electrónico es correcto, etc.), y luego inserta los datos en la base de datos.
+## 📱 Adaptabilidad (Responsive Design)
 
-Una vez que los datos se han insertado con éxito en la base de datos, el script PHP puede redirigir al usuario a una nueva página (por ejemplo, una página de "registro exitoso") y/o enviar una respuesta al navegador del usuario para confirmar que el registro fue exitoso.
+El sitio fue construido bajo un enfoque *Mobile-First*, garantizando una experiencia visual y funcional óptima tanto en dispositivos móviles como en pantallas de escritorio mediante **Bootstrap 5** y estilos CSS personalizados.
 
-Si ocurre un error en cualquier punto de este proceso (por ejemplo, si la validación de los datos del formulario falla, o si hay un problema al insertar los datos en la base de datos), el script PHP enviará una respuesta adecuada al navegador del usuario para informarle del error.
+---
