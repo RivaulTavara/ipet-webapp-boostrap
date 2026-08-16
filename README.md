@@ -1,3 +1,5 @@
+Estado: Proyecto académico completado.
+
 # 🐾 iPet — E-commerce & Plataforma de Adopción de Mascotas
 
 **iPet** es una aplicación web integral diseñada para la venta de productos para mascotas y la gestión de procesos de adopción animal. Combina un catálogo interactivo con carrito de compras y un flujo dinámico para la postulación e integración de nuevos adoptantes.
